@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
+  <title id="title">Memory-leaf symbol</title>
+  <circle cx="48" cy="48" r="43" fill="#fff8e8"/>
+  <path d="M23 55c6-24 27-34 51-30-1 25-14 45-40 47-9 1-14-6-11-17z" fill="#6fbe67" stroke="#2f8f83" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M30 66c11-14 23-23 38-34" fill="none" stroke="#fff1c7" stroke-width="5" stroke-linecap="round"/>
+  <path d="M42 56h15v-9H47v-8h13" fill="none" stroke="#4b63c7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="60" cy="39" r="5" fill="#ffe577"/>
+</svg>
