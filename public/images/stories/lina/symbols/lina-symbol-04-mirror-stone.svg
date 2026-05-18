@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
+  <title id="title">Mirror-stone symbol</title>
+  <circle cx="48" cy="48" r="43" fill="#fff8e8"/>
+  <ellipse cx="48" cy="50" rx="27" ry="33" fill="#24345f" stroke="#93b7ff" stroke-width="4"/>
+  <ellipse cx="48" cy="50" rx="18" ry="24" fill="#354b86" opacity=".78"/>
+  <path d="M41 61c4-3 7-3 11 0M50 49c-6 2-8 6-4 10" fill="none" stroke="#fff8e8" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="58" cy="35" r="5" fill="#c8d7ff"/>
+</svg>
