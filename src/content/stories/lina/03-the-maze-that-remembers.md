@@ -495,4 +495,5 @@ It sounded like a book opening.
 ---
 
 [Previous story: The Cloud That Cries](/read/lina/02-the-cloud-that-cries/)  
-[Back to Lina](/read/lina/)
+[Back to Lina](/read/lina/)  
+[Next story: The Mirror Pool](/read/lina/04-the-mirror-pool/)
