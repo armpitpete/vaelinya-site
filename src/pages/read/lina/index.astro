@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const linaStories = (await getCollection('stories', ({ data }) => data.arc === 'Lina'))
+  .sort((a, b) => a.data.story_number - b.data.story_number);
+---
+<BaseLayout title="Lina" description="Lina’s first eight stories in Vaelinya.">
+  <section class="page-section">
+    <p class="eyebrow">Lina of Vaelinya</p>
+    <h1>Lina’s eight stories</h1>
+    <p>Lina is the first bridge child: a listener, a witness, and a quiet connector.</p>
+    <div class="story-grid">
+      {linaStories.map((story) => (
+        <a class="story-card" href={story.data.public_url}>
+          <span>Story {story.data.story_number}</span>
+          <strong>{story.data.title}</strong>
+          <p>{story.data.description}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
