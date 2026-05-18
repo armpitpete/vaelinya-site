@@ -2,29 +2,46 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="Vaelinya is your next adventure" description="A colourful story world of memory, weather, borders, childhood, ritual, language, song, care, and brave attention.">
-  <section class="hero">
-    <p class="eyebrow">Welcome to Vaelinya</p>
-    <h1>Vaelinya is your next adventure.</h1>
-    <p>A colourful story world of memory, weather, borders, childhood, ritual, language, song, care, and brave attention.</p>
+  <section class="hero hero-illustrated">
+    <div class="hero-copy">
+      <p class="eyebrow">Welcome to Vaelinya</p>
+      <h1>Vaelinya is your next adventure.</h1>
+      <p>A colourful story world of memory, weather, borders, childhood, ritual, language, song, care, and brave attention.</p>
+    </div>
+    <div class="hero-art" aria-label="Illustrated placeholder showing a glowing bridge, mist, stars, and paths into Vaelinya">
+      <div class="sun-orb"></div>
+      <div class="map-line line-one"></div>
+      <div class="map-line line-two"></div>
+      <div class="bridge-arc"></div>
+      <div class="mist-band"></div>
+      <div class="star star-one">✦</div>
+      <div class="star star-two">✧</div>
+      <div class="figure-dot"></div>
+      <p>illustration space</p>
+    </div>
   </section>
 
   <section class="door-grid" aria-label="Four doorways into Vaelinya">
     <a class="door-card read" href="/read/">
+      <span class="symbol-circle">✦</span>
       <span>Read</span>
       <strong>Read the stories</strong>
       <p>Begin with Lina’s eight stories, then meet the other children.</p>
     </a>
     <a class="door-card world" href="/world/">
+      <span class="symbol-circle">◎</span>
       <span>World</span>
       <strong>Explore the world</strong>
       <p>Find the Rim, the Rimaeri, the Warm Remembering, and strange places.</p>
     </a>
     <a class="door-card language" href="/language/">
+      <span class="symbol-circle">⌁</span>
       <span>Language</span>
       <strong>Learn the language</strong>
       <p>Start with small words, sounds, names, and gentle practice.</p>
     </a>
     <a class="door-card artefacts" href="/artefacts/">
+      <span class="symbol-circle">◇</span>
       <span>Artefacts</span>
       <strong>Discover artefacts</strong>
       <p>Maps, symbols, chant cards, story objects, and printables.</p>
