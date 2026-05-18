@@ -797,4 +797,5 @@ And for once, that was its whole voice.
 ---
 
 [Previous story: The Sleeping Tree](/read/lina/05-the-sleeping-tree/)  
-[Back to Lina](/read/lina/)
+[Back to Lina](/read/lina/)  
+[Next story: The Star That Forgot to Shine](/read/lina/07-the-star-that-forgot-to-shine/)
