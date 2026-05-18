@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
+  <title id="title">Bridge-light symbol</title>
+  <circle cx="48" cy="48" r="43" fill="#fff8e8"/>
+  <path d="M19 60c8-21 20-31 29-31s21 10 29 31" fill="none" stroke="#7b4ecb" stroke-width="8" stroke-linecap="round"/>
+  <path d="M27 60h42" fill="none" stroke="#f3b43f" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="48" cy="66" r="7" fill="#ffe577"/>
+  <path d="M48 50v16" stroke="#ffe577" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="48" cy="66" r="15" fill="none" stroke="#ffe577" stroke-opacity=".35" stroke-width="5"/>
+</svg>
