@@ -509,4 +509,5 @@ It was keeping.
 ---
 
 [Previous story: The Mirror Pool](/read/lina/04-the-mirror-pool/)  
-[Back to Lina](/read/lina/)
+[Back to Lina](/read/lina/)  
+[Next story: The Song That Found Its Voice](/read/lina/06-the-song-that-found-its-voice/)
