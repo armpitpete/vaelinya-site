@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
+  <title id="title">Rain-memory symbol</title>
+  <circle cx="48" cy="48" r="43" fill="#fff8e8"/>
+  <path d="M31 51c-8 0-14-6-14-13 0-8 7-14 15-13 5-9 20-10 27-2 9-2 18 5 18 14 0 8-7 14-16 14H31z" fill="#8fb6d9" stroke="#5b78a8" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M49 57c7 9 7 17 0 22-7-5-7-13 0-22z" fill="#f3b43f"/>
+  <path d="M40 76c-5 0-10 2-14 6 9 2 18 1 27-3-4-2-8-3-13-3z" fill="#7cc7d8"/>
+  <circle cx="49" cy="71" r="13" fill="none" stroke="#f3b43f" stroke-opacity=".25" stroke-width="5"/>
+</svg>
