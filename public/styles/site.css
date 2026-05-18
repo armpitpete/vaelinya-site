@@ -221,6 +221,18 @@ a { color: inherit; }
   gap: 0.65rem;
 }
 
+.story-card-pending {
+  background: rgba(31, 23, 48, 0.08);
+  color: var(--ink);
+  border: 1px dashed rgba(31, 23, 48, 0.3);
+}
+
+.story-card-pending strong,
+.story-card-pending span,
+.story-card-pending p {
+  opacity: 0.78;
+}
+
 .symbol-circle {
   width: 3rem;
   height: 3rem;
@@ -248,6 +260,7 @@ a { color: inherit; }
 .door-card p, .story-card p { margin-bottom: 0; }
 
 .read, .story-card { background: var(--read); }
+.story-card-pending { background: rgba(31, 23, 48, 0.08); }
 .world { background: var(--world); }
 .language { background: var(--language); }
 .artefacts { background: var(--artefacts); }
