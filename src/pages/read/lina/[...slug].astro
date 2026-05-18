@@ -1,0 +1,25 @@
+---
+import { getCollection, render } from 'astro:content';
+import StoryLayout from '../../../layouts/StoryLayout.astro';
+
+export async function getStaticPaths() {
+  const stories = await getCollection('stories', ({ data }) => data.arc === 'Lina');
+
+  return stories.map((story) => ({
+    params: { slug: story.id.replace(/^lina\//, '').replace(/\.md$/, '') },
+    props: { story },
+  }));
+}
+
+const { story } = Astro.props;
+const { Content } = await render(story);
+---
+<StoryLayout
+  title={story.data.title}
+  description={story.data.description}
+  series={story.data.series}
+  storyNumber={story.data.story_number}
+  totalStories={story.data.total_stories}
+>
+  <Content />
+</StoryLayout>
