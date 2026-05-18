@@ -565,4 +565,5 @@ Lina closed her fingers around the mirror-stone and followed.
 ---
 
 [Previous story: The Maze That Remembers](/read/lina/03-the-maze-that-remembers/)  
-[Back to Lina](/read/lina/)
+[Back to Lina](/read/lina/)  
+[Next story: The Sleeping Tree](/read/lina/05-the-sleeping-tree/)
