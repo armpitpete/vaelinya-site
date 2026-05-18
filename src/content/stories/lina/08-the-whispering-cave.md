@@ -1,6 +1,6 @@
 ---
 title: "The Whispering Cave"
-description: "Lina enters a cave full of whispers and learns which voice is asking to be answered."
+description: "Lina enters a cave full of whispers and answers the one true voice."
 section: "read"
 series: "Lina of Vaelinya"
 arc: "Lina"
@@ -10,6 +10,8 @@ status: "ready"
 public_url: "/read/lina/08-the-whispering-cave/"
 old_url: "/stories/canon/solo/child-01-lina/08-story/"
 hero_image: "/images/stories/lina/whispering-cave.webp"
+symbol: "/images/stories/lina/symbols/lina-symbol-08-listening-stone.svg"
+symbol_alt: "A listening-stone with eight tiny lights for The Whispering Cave."
 related_world:
   - "/world/the-rim/"
   - "/world/the-warm-remembering/"
@@ -23,7 +25,7 @@ related_artefacts:
 
 **Lina — Story 8 of 8**
 
-Lina enters a cave full of whispers and learns which voice is asking to be answered.
+Lina enters a cave full of whispers and answers the one true voice.
 
 ---
 
@@ -31,11 +33,7 @@ The cave had been there all along.
 
 That was the first unsettling thing.
 
-It had not risen from the ground like the maze. It had not lowered itself like the cloud. It had not arrived as a shining bead, a sleeping tree, a broken song, or a star fallen into the grass.
-
-It had waited.
-
-Below the high grass hill, where the seventh guide-star had found its place again, the land dipped toward a dark opening in the rocks. Moss grew thick around the cave-mouth. Thin roots hung over the entrance like old threads. Water moved somewhere inside, one drop at a time.
+It had waited below the high grass hill, where the seventh guide-star had found its place again. The land dipped toward a dark opening in the rocks. Moss grew thick around the cave-mouth. Thin roots hung over the entrance like old threads. Water moved somewhere inside, one drop at a time.
 
 Drip.
 
@@ -59,13 +57,13 @@ Come in.
 
 Go back.
 
-Too small.
-
-Too late.
-
 This way.
 
-Not for you.
+Wrong way.
+
+Too dark.
+
+Too far.
 
 Here.
 
@@ -83,7 +81,7 @@ Lina did not laugh.
 
 The whispers had touched something behind her ribs.
 
-Some of them sounded like wind. Some sounded like adults speaking from another room. Some sounded like children trying not to cry. One sounded almost like Lina herself when she was younger and hiding under a table with her hands over her ears.
+Some of them sounded like wind. Some sounded like adults speaking from another room. Some sounded like children whispering through a door. One sounded almost like a child calling from behind a closed place.
 
 Her mother stood a little way behind them, wrapped in her dark shawl.
 
@@ -91,21 +89,19 @@ Her mother stood a little way behind them, wrapped in her dark shawl.
 
 Lina looked at the cave-mouth.
 
-The dark inside it did not look empty.
-
-It looked crowded.
+The dark inside it looked crowded.
 
 “I know,” Lina said.
 
-That helped. A choice felt different when it had a door back out of it.
+That helped. A choice felt different when it had a way back out of it.
 
 The cave whispered again.
 
-Too much.
+Too dark.
 
-Too small.
+Too far.
 
-Too late.
+Wrong way.
 
 Here.
 
@@ -149,7 +145,7 @@ She touched the memory-leaf.
 
 The cave whispered:
 
-You left her.
+You lost the way.
 
 Lina’s fingers closed around the cloth.
 
@@ -157,7 +153,7 @@ The memory-leaf warmed gently.
 
 The whisper changed shape.
 
-You found her.
+You found the way.
 
 Lina breathed.
 
@@ -165,7 +161,7 @@ She touched the mirror-stone.
 
 The cave whispered:
 
-You are not brave yet.
+Too soon.
 
 The footstep mark pressed under her thumb.
 
@@ -177,7 +173,7 @@ She touched the path-reed.
 
 The cave whispered:
 
-No one will hear you.
+No one knows this tune.
 
 The reed hummed once.
 
@@ -203,9 +199,7 @@ Too dark.
 
 Go back.
 
-Too late.
-
-Too small.
+Too many turns.
 
 Here.
 
@@ -253,29 +247,27 @@ Cool air touched her face.
 
 The cave whispered at once.
 
-Too small.
+Too dark.
 
-Too slow.
+Too narrow.
 
-Too strange.
+Too many turns.
 
-You ask too many questions.
+You should have brought a lamp.
 
-You should have sung louder.
+You should have waited outside.
 
-You should have spoken sooner.
+You should have taken the wider path.
 
-You should have woken the tree.
-
-You should have kept the star.
+You should have kept the star in your hand.
 
 Lina stopped at the entrance.
 
-The words crowded close. They used pieces of truth because that was how they got in. She had been small. She had been slow sometimes. She had asked many questions. She had not always spoken soon enough.
+The words crowded close. They used pieces of truth because that was how they got in. The cave was dark. The way was narrow. A lamp would have been useful. A star in her hand might have felt safer.
 
-But the cave made each true piece sharp in the wrong direction.
+But each whisper bent the truth in the wrong direction.
 
-The bridge had not needed louder.
+The bridge had not needed louder singing.
 
 The tree had not needed waking.
 
@@ -301,9 +293,9 @@ Come in.
 
 Go back.
 
-You are wanted.
+This way.
 
-You are wrong.
+Wrong way.
 
 Answer.
 
@@ -331,33 +323,29 @@ That was worse.
 
 They came gently, almost kindly, as if each one were trying to help.
 
-Stay quiet.
+Stay still.
 
-Keep safe.
+Keep close.
 
-Do not trouble anyone.
+Do not splash.
 
-Be good.
+Do not sing.
 
-Be easier.
+Be quiet.
 
-Be brighter.
-
-Be useful.
+Be quick.
 
 Be brave now.
 
-Be less.
+Be careful.
 
-Be more.
+Be smaller than the echo.
 
-Be anything but what you are before anyone decides to leave.
+Be louder than the dark.
 
 Lina’s throat tightened.
 
-Those were old shapes.
-
-Some were from people. Some were from fear. Some were from the tired world trying to make children fit through smaller doors. Some might never have belonged to anyone, but had been repeated so often that the cave had learned them by heart.
+Those were cave-voices. Some were warnings. Some were worries. Some were only old echoes that had forgotten where they began.
 
 She sat down on a dry stone in the middle of the chamber.
 
@@ -365,35 +353,35 @@ The whispers moved around her like moths.
 
 For a moment, she wanted to answer all of them.
 
-No, I am not too much.
+No, that is not the way.
 
-No, I do not have to be easier.
+No, that is only an echo.
 
-No, I do not have to be brighter.
+No, that voice is hurrying me.
 
-No, I am not wrong.
+No, that one is trying to frighten me.
 
-But the memory-leaf warmed in her pocket, and Lina remembered the maze. Quick answers could be another kind of hiding.
+But the memory-leaf warmed in her pocket, and Lina remembered the maze.
+
+Quick answers could become another way of getting lost.
 
 She listened first.
 
-That was what she had learned.
-
-The bridge had taught her to answer, but only after hearing the song.
+The bridge had taught her to hear before answering.
 
 The cloud had taught her to stay.
 
-The maze had taught her not to abandon the hidden child.
+The maze had taught her to look for what was hidden.
 
-The pool had taught her one step could come before the brave feeling.
+The pool had taught her one step.
 
-The tree had taught her that keeping could look like doing nothing.
+The tree had taught her to wait.
 
-The path-song had taught her that a voice needed the right carrier.
+The path-song had taught her to find the right voice.
 
-The star had taught her that light needed the right place.
+The star had taught her that light needed its place.
 
-Now the cave was asking for sorting.
+Now the cave was asking her to choose which whisper was true.
 
 Not all whispers were the same.
 
@@ -403,11 +391,11 @@ It hummed softly.
 
 The nearest whispers trembled.
 
-Too strange.
+Too far.
 
 The reed hummed.
 
-Too much.
+Wrong way.
 
 The reed hummed.
 
@@ -453,9 +441,9 @@ Yours.
 
 Not yours.
 
-Too late.
+Too many turns.
 
-Too small.
+Too dark.
 
 Answer.
 
@@ -471,21 +459,21 @@ Lina put her hand into the water.
 
 It was so cold that her fingers hurt at once.
 
-The cave whispered in a voice that sounded like an adult being sensible.
+The cave whispered in a voice that sounded like someone being sensible.
 
-Leave what is buried.
+Leave what is hidden.
 
 The memory-leaf warmed.
 
-A second whisper, using Lina’s own younger voice, said:
+A second whisper said:
 
-If you answer, they will hear you.
+If you answer, the cave will hear you.
 
 The mirror-stone pressed against her pocket.
 
 A third whisper said:
 
-If they hear you, you will have to keep speaking forever.
+If the cave hears you, the echo may answer back.
 
 The path-reed hummed.
 
@@ -493,7 +481,7 @@ Lina paused with her hand in the water.
 
 That whisper had a hook.
 
-She did not want to have to keep speaking forever. She did not want every brave step to become a road she was ordered to walk every day. She did not want the world to say, You spoke once, so now speaking is easy for you.
+She did not know what the echo might do. It might come back larger. It might come back strange. It might come back sounding like Lina and not Lina at all.
 
 Her fingers touched the listening-stone.
 
@@ -519,19 +507,15 @@ For one breath, there was no whisper at all.
 
 Then every whisper returned at once.
 
-Too late.
+Too far.
 
-Too small.
+Too dark.
 
-Too much.
+Wrong way.
 
-Not enough.
+Wrong turn.
 
-Wrong answer.
-
-Wrong child.
-
-Wrong voice.
+Wrong stone.
 
 Wrong—
 
@@ -553,7 +537,9 @@ Lina sat on the stone floor with the listening-stone in her wet hand.
 
 The line at its centre opened.
 
-Not into an eye. Into light.
+Not into an eye.
+
+Into light.
 
 Eight small points brightened around the edge of the stone, one by one.
 
@@ -579,7 +565,11 @@ The true whisper moved through the chamber.
 
 I am still here.
 
-Lina understood then that it was not a person trapped in the ordinary way. It was a voice. A real one. A voice that had been buried under old instructions, old fear, old echoes, and all the words people used when they wanted quiet instead of truth.
+Lina understood then that it was a voice.
+
+A real one.
+
+It had been covered by old echoes for a long time. Some echoes were warnings. Some were worries. Some were only noise. The true voice had waited underneath them all.
 
 It did not need rescuing like a lamb.
 
@@ -705,7 +695,7 @@ Lina thought about that.
 
 The answer mattered.
 
-Not every voice needed a name before it deserved an answer. Not every buried thing belonged to one person only. Some voices were made from many people being unheard in the same shape.
+Some voices were old. Some voices had been echoed by many people. Lina did not know whose voice this had been first. She only knew it was real enough to answer.
 
 “I do not know,” Lina said. “Maybe more than one.”
 
@@ -797,11 +787,9 @@ Eight story-marks.
 
 The cave whispered once through them.
 
-Not too much.
+Not too dark.
 
-Not too small.
-
-Not too late.
+Not too far.
 
 Here.
 
@@ -827,7 +815,7 @@ Her mother came to stand beside her.
 
 Lina thought about that.
 
-She was still afraid of caves. At least a little. She was still afraid of loud rooms, wrong laughter, being too much, being too late, and being asked to be brave every time because she had managed it once.
+She was still a little afraid of caves. She was still afraid of loud echoes, sudden laughter, and being asked to be brave before she was ready.
 
 But the fear had more space around it now.
 
