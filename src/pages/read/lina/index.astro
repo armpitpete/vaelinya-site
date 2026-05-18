@@ -2,8 +2,21 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
-const linaStories = (await getCollection('stories', ({ data }) => data.arc === 'Lina'))
+const activeStories = (await getCollection('stories', ({ data }) => data.arc === 'Lina'))
   .sort((a, b) => a.data.story_number - b.data.story_number);
+
+const storyByNumber = new Map(activeStories.map((story) => [story.data.story_number, story]));
+
+const linaStoryPlan = [
+  { number: 1, title: 'The Bridge That Sang Back' },
+  { number: 2, title: 'The Cloud That Cries' },
+  { number: 3, title: 'The Maze That Remembers' },
+  { number: 4, title: 'The Mirror Pool' },
+  { number: 5, title: 'The Sleeping Tree' },
+  { number: 6, title: 'The Song That Found Its Voice' },
+  { number: 7, title: 'The Star That Forgot to Shine' },
+  { number: 8, title: 'The Whispering Cave' },
+];
 ---
 <BaseLayout title="Lina" description="Lina’s first eight stories in Vaelinya.">
   <section class="page-section">
@@ -11,13 +24,27 @@ const linaStories = (await getCollection('stories', ({ data }) => data.arc === '
     <h1>Lina’s eight stories</h1>
     <p>Lina is the first bridge child: a listener, a witness, and a quiet connector.</p>
     <div class="story-grid">
-      {linaStories.map((story) => (
-        <a class="story-card" href={story.data.public_url}>
-          <span>Story {story.data.story_number}</span>
-          <strong>{story.data.title}</strong>
-          <p>{story.data.description}</p>
-        </a>
-      ))}
+      {linaStoryPlan.map((plannedStory) => {
+        const story = storyByNumber.get(plannedStory.number);
+
+        if (story) {
+          return (
+            <a class="story-card" href={story.data.public_url}>
+              <span>Story {story.data.story_number}</span>
+              <strong>{story.data.title}</strong>
+              <p>{story.data.description}</p>
+            </a>
+          );
+        }
+
+        return (
+          <article class="story-card story-card-pending" aria-label={`${plannedStory.title} is coming after repair`}>
+            <span>Story {plannedStory.number}</span>
+            <strong>{plannedStory.title}</strong>
+            <p>Coming after repair.</p>
+          </article>
+        );
+      })}
     </div>
   </section>
 </BaseLayout>
