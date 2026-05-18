@@ -245,6 +245,20 @@ a { color: inherit; }
   margin-bottom: auto;
 }
 
+.story-card-symbol {
+  width: 3.25rem;
+  height: 3.25rem;
+  display: block;
+  object-fit: contain;
+  margin-bottom: 0.35rem;
+  padding: 0.45rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.55),
+    0 0.55rem 1.4rem rgba(31, 23, 48, 0.16);
+}
+
 .door-card span:not(.symbol-circle), .story-card span {
   font-size: 0.85rem;
   font-weight: 900;
@@ -329,5 +343,6 @@ a { color: inherit; }
   .site-nav { align-items: flex-start; flex-direction: column; }
   .door-grid, .story-grid { grid-template-columns: 1fr; }
   .door-card, .story-card { min-height: 11rem; }
+  .story-card-symbol { width: 2.85rem; height: 2.85rem; }
   .site-footer { flex-direction: column; }
 }
