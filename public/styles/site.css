@@ -216,6 +216,11 @@ a { color: inherit; }
   color: white;
 }
 
+.story-card {
+  justify-content: flex-start;
+  gap: 0.65rem;
+}
+
 .symbol-circle {
   width: 3rem;
   height: 3rem;
