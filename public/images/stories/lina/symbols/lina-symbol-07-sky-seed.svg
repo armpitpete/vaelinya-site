@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
+  <title id="title">Sky-seed symbol</title>
+  <circle cx="48" cy="48" r="43" fill="#fff8e8"/>
+  <path d="M48 18c15 13 22 27 0 58-22-31-15-45 0-58z" fill="#9fb7ff" stroke="#4b63c7" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M48 31l5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1z" fill="#fff8e8" stroke="#ffe577" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="48" cy="75" r="5" fill="#f3b43f"/>
+</svg>
