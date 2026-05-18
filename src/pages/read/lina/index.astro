@@ -17,6 +17,41 @@ const linaStoryPlan = [
   { number: 7, title: 'The Star That Forgot to Shine' },
   { number: 8, title: 'The Whispering Cave' },
 ];
+
+const linaStorySymbols = new Map([
+  [1, {
+    src: '/images/stories/lina/symbols/lina-symbol-01-bridge-light.svg',
+    alt: 'A small glowing bridge symbol for The Bridge That Sang Back.',
+  }],
+  [2, {
+    src: '/images/stories/lina/symbols/lina-symbol-02-rain-memory.svg',
+    alt: 'A small crying cloud symbol for The Cloud That Cries.',
+  }],
+  [3, {
+    src: '/images/stories/lina/symbols/lina-symbol-03-memory-leaf.svg',
+    alt: 'A leaf with a maze-line symbol for The Maze That Remembers.',
+  }],
+  [4, {
+    src: '/images/stories/lina/symbols/lina-symbol-04-mirror-stone.svg',
+    alt: 'A mirror-stone with one glowing footstep for The Mirror Pool.',
+  }],
+  [5, {
+    src: '/images/stories/lina/symbols/lina-symbol-05-sleeping-bud.svg',
+    alt: 'A closed glowing bud symbol for The Sleeping Tree.',
+  }],
+  [6, {
+    src: '/images/stories/lina/symbols/lina-symbol-06-path-reed.svg',
+    alt: 'A glowing path-reed symbol for The Song That Found Its Voice.',
+  }],
+  [7, {
+    src: '/images/stories/lina/symbols/lina-symbol-07-sky-seed.svg',
+    alt: 'A small sky-seed symbol for The Star That Forgot to Shine.',
+  }],
+  [8, {
+    src: '/images/stories/lina/symbols/lina-symbol-08-listening-stone.svg',
+    alt: 'A listening-stone with eight tiny lights for The Whispering Cave.',
+  }],
+]);
 ---
 <BaseLayout title="Lina" description="Lina’s first eight stories in Vaelinya.">
   <section class="page-section">
@@ -26,10 +61,21 @@ const linaStoryPlan = [
     <div class="story-grid">
       {linaStoryPlan.map((plannedStory) => {
         const story = storyByNumber.get(plannedStory.number);
+        const fallbackSymbol = linaStorySymbols.get(plannedStory.number);
+        const symbolSrc = story?.data.symbol ?? fallbackSymbol?.src;
+        const symbolAlt = story?.data.symbol_alt ?? fallbackSymbol?.alt ?? '';
 
         if (story) {
           return (
             <a class="story-card" href={story.data.public_url}>
+              {symbolSrc && (
+                <img
+                  class="story-card-symbol"
+                  src={symbolSrc}
+                  alt={symbolAlt}
+                  loading="lazy"
+                />
+              )}
               <span>Story {story.data.story_number}</span>
               <strong>{story.data.title}</strong>
               <p>{story.data.description}</p>
@@ -39,6 +85,14 @@ const linaStoryPlan = [
 
         return (
           <article class="story-card story-card-pending" aria-label={`${plannedStory.title} is coming after repair`}>
+            {symbolSrc && (
+              <img
+                class="story-card-symbol"
+                src={symbolSrc}
+                alt={symbolAlt}
+                loading="lazy"
+              />
+            )}
             <span>Story {plannedStory.number}</span>
             <strong>{plannedStory.title}</strong>
             <p>Coming after repair.</p>
