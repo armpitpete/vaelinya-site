@@ -377,4 +377,5 @@ It had remembered how to rise.
 ---
 
 [Previous story: The Bridge That Sang Back](/read/lina/01-the-bridge-that-sang-back/)  
-[Back to Lina](/read/lina/)
+[Back to Lina](/read/lina/)  
+[Next story: The Maze That Remembers](/read/lina/03-the-maze-that-remembers/)
