@@ -3,144 +3,62 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 const words = [
   {
-    word: 'NAVAN',
-    vaelinya_form: 'NAVAN',
-    meaning: 'Remember.',
-    pronunciation: 'NAH-van',
-    pronunciation_ipa: '/ˈnɑːvæn/',
-    use: 'Use it as a remembrance-word: a small act of keeping truth, care, or return alive.',
-    notes: 'It can hold the sense of keeping truth active and returning to what must not be lost.',
+    word: 'NAVAN', vaelinya_form: 'NAVAN', meaning: 'Remember.', pronunciation: 'NAH-van', pronunciation_ipa: '/ˈnɑːvæn/', use: 'Use it as a remembrance-word: a small act of keeping truth, care, or return alive.', notes: 'It can hold the sense of keeping truth active and returning to what must not be lost.',
   },
   {
-    word: 'Rimaeri',
-    vaelinya_form: 'Rimaeri',
-    meaning: 'The people of the Rim.',
-    pronunciation: 'rih-MAIR-ee',
-    pronunciation_ipa: '/rɪˈmɛəri/',
-    use: 'Use it for the people’s own name for themselves, especially when talking about Rim identity from inside the culture.',
-    notes: 'The name used among the people themselves. Outsiders may call them Rimmers.',
+    word: 'Rimaeri', vaelinya_form: 'Rimaeri', meaning: 'The people of the Rim.', pronunciation: 'rih-MAIR-ee', pronunciation_ipa: '/rɪˈmɛəri/', use: 'Use it for the people’s own name for themselves, especially when talking about Rim identity from inside the culture.', notes: 'The name used among the people themselves. Outsiders may call them Rimmers.',
   },
   {
-    word: 'Rimmers',
-    vaelinya_form: 'not a Vaelinya self-name',
-    meaning: 'An outsider word for the people of the Rim.',
-    pronunciation: 'RIM-ers',
-    pronunciation_ipa: '/ˈrɪməz/',
-    use: 'Use it only when the outsider point of view matters.',
-    notes: 'It can be ordinary, careless, affectionate, dismissive, or rude depending on who says it and why. The site normally uses Rimaeri.',
+    word: 'Rimmers', vaelinya_form: 'not a Vaelinya self-name', meaning: 'An outsider word for the people of the Rim.', pronunciation: 'RIM-ers', pronunciation_ipa: '/ˈrɪməz/', use: 'Use it only when the outsider point of view matters.', notes: 'It can be ordinary, careless, affectionate, dismissive, or rude depending on who says it and why. The site normally uses Rimaeri.',
   },
   {
-    word: 'The Rim',
-    vaelinya_form: 'not yet fixed',
-    meaning: 'The borderland edge-place of Vaelinya.',
-    pronunciation: 'the rim',
-    pronunciation_ipa: '/ðə rɪm/',
-    use: 'Use it for the place where crossing, weather, travel, belonging, and change are especially important.',
-    notes: 'A public world term rather than a hidden language term. It connects directly to the World section.',
+    word: 'The Rim', vaelinya_form: 'not yet fixed', meaning: 'The borderland edge-place of Vaelinya.', pronunciation: 'the rim', pronunciation_ipa: '/ðə rɪm/', use: 'Use it for the place where crossing, weather, travel, belonging, and change are especially important.', notes: 'A public world term rather than a hidden language term. It connects directly to the World section.',
   },
   {
-    word: 'route-house',
-    vaelinya_form: 'not yet fixed',
-    meaning: 'A house, shelter, or recognised stopping place tied to a route.',
-    pronunciation: 'ROOT-house',
-    pronunciation_ipa: '/ˈruːt haʊs/',
-    use: 'Use it for a place where travellers, messages, agreements, or route knowledge may rest for a while.',
-    notes: 'A Rimaeri-life term connected to cloth-patterns, waiting, witnesses, and safe movement across the Rim.',
+    word: 'route-house', vaelinya_form: 'not yet fixed', meaning: 'A house, shelter, or recognised stopping place tied to a route.', pronunciation: 'ROOT-house', pronunciation_ipa: '/ˈruːt haʊs/', use: 'Use it for a place where travellers, messages, agreements, or route knowledge may rest for a while.', notes: 'A Rimaeri-life term connected to cloth-patterns, waiting, witnesses, and safe movement across the Rim.',
   },
   {
-    word: 'route-pattern',
-    vaelinya_form: 'not yet fixed',
-    meaning: 'The expected repeated behaviour of a route, crossing, or travelled way.',
-    pronunciation: 'ROOT PAT-ern',
-    pronunciation_ipa: '/ˈruːt ˈpætən/',
-    use: 'Use it when a route follows a known sequence, or when that sequence has changed.',
-    notes: 'Important for Pattern Child material and altered-crossing stories.',
+    word: 'route-pattern', vaelinya_form: 'not yet fixed', meaning: 'The expected repeated behaviour of a route, crossing, or travelled way.', pronunciation: 'ROOT PAT-ern', pronunciation_ipa: '/ˈruːt ˈpætən/', use: 'Use it when a route follows a known sequence, or when that sequence has changed.', notes: 'Important for Pattern Child material and altered-crossing stories.',
   },
   {
-    word: 'more than one witness',
-    vaelinya_form: 'not yet fixed',
-    meaning: 'A fairness rule: some promises or agreements need more than one person to remember and confirm them.',
-    pronunciation: 'more than wun WIT-ness',
-    pronunciation_ipa: '/mɔː ðæn wʌn ˈwɪtnəs/',
-    use: 'Use it when an agreement affects several people, a route, or a shared duty.',
-    notes: 'A practical Rimaeri social rule. It keeps memory from becoming private power.',
+    word: 'more than one witness', vaelinya_form: 'not yet fixed', meaning: 'A fairness rule: some promises or agreements need more than one person to remember and confirm them.', pronunciation: 'more than wun WIT-ness', pronunciation_ipa: '/mɔː ðæn wʌn ˈwɪtnəs/', use: 'Use it when an agreement affects several people, a route, or a shared duty.', notes: 'A practical Rimaeri social rule. It keeps memory from becoming private power.',
   },
   {
-    word: 'wait-call',
-    vaelinya_form: 'not yet fixed',
-    meaning: 'A call, sign, or signal that tells people to pause before moving on.',
-    pronunciation: 'WAIT-call',
-    pronunciation_ipa: '/ˈweɪt kɔːl/',
-    use: 'Use it for a practical signal on routes, crossings, or shared paths.',
-    notes: 'A Rimaeri-life term connected to weather, route safety, and careful movement.',
+    word: 'wait-call', vaelinya_form: 'not yet fixed', meaning: 'A call, sign, or signal that tells people to pause before moving on.', pronunciation: 'WAIT-call', pronunciation_ipa: '/ˈweɪt kɔːl/', use: 'Use it for a practical signal on routes, crossings, or shared paths.', notes: 'A Rimaeri-life term connected to weather, route safety, and careful movement.',
   },
   {
-    word: 'The Warm Remembering',
-    vaelinya_form: 'not yet fixed',
-    meaning: 'A way of understanding care, continuity, and shared remembrance in Vaelinya.',
-    pronunciation: 'the warm ree-MEM-ber-ing',
-    pronunciation_ipa: '/ðə wɔːm rɪˈmɛmbərɪŋ/',
-    use: 'Use it when memory is held through people, language, place, relationship, songs, witness, or repeated acts.',
-    notes: 'A public concept term tied to the World section and the larger Vaelinya theme of keeping what matters alive.',
+    word: 'The Warm Remembering', vaelinya_form: 'not yet fixed', meaning: 'A way of understanding care, continuity, and shared remembrance in Vaelinya.', pronunciation: 'the warm ree-MEM-ber-ing', pronunciation_ipa: '/ðə wɔːm rɪˈmɛmbərɪŋ/', use: 'Use it when memory is held through people, language, place, relationship, songs, witness, or repeated acts.', notes: 'A public concept term tied to the World section and the larger Vaelinya theme of keeping what matters alive.',
   },
   {
-    word: 'bridge child',
-    vaelinya_form: 'not yet fixed',
-    meaning: 'A child who connects, listens, crosses, or helps different sides understand one another.',
-    pronunciation: 'BRIJ child',
-    pronunciation_ipa: '/ˈbrɪdʒ tʃaɪld/',
-    use: 'Use it for Lina’s early role: listener, witness, connector, and careful crosser.',
-    notes: 'A reader-facing story term connected to Lina’s first arc.',
+    word: 'bridge child', vaelinya_form: 'not yet fixed', meaning: 'A child who connects, listens, crosses, or helps different sides understand one another.', pronunciation: 'BRIJ child', pronunciation_ipa: '/ˈbrɪdʒ tʃaɪld/', use: 'Use it for Lina’s early role: listener, witness, connector, and careful crosser.', notes: 'A reader-facing story term connected to Lina’s first arc.',
   },
   {
-    word: 'halaphalendrael',
-    vaelinya_form: 'halaphalendrael',
-    meaning: 'A stable public Vaelinyan name-word awaiting fuller context.',
-    pronunciation: 'ha-la-pha-len-dra-el',
-    pronunciation_ipa: '/hælæphælɛndræɛl/',
-    use: 'Use it carefully as a sound-form and name anchor until fuller public context is ready.',
-    notes: 'Included as a pronunciation anchor because its sound-form is stable.',
+    word: 'halaphalendrael', vaelinya_form: 'halaphalendrael', meaning: 'A stable public Vaelinyan name-word awaiting fuller context.', pronunciation: 'ha-la-pha-len-dra-el', pronunciation_ipa: '/hælæphælɛndræɛl/', use: 'Use it carefully as a sound-form and name anchor until fuller public context is ready.', notes: 'Included as a pronunciation anchor because its sound-form is stable.',
   },
 ];
 ---
 <BaseLayout title="Lexicon" description="A growing public lexicon for Vaelinya.">
-  <section class="page-section">
-    <p class="eyebrow">Language</p>
-    <h1>Lexicon</h1>
-    <p class="lede">The public lexicon gathers stable Vaelinyan words and key world terms in small, readable entries. Each entry gives English term, Vaelinya form, meaning, pronunciation, pronunciation_ipa, use, and notes.</p>
-    <p>Read the meaning first. Say the word aloud next. Some Vaelinya forms are not yet fixed; those are marked clearly rather than invented.</p>
-    <div class="lexicon-list">
-      {words.map((entry) => (
-        <article class="lexicon-entry">
-          <h2>{entry.word}</h2>
-          <dl>
-            <div>
-              <dt>Vaelinya form</dt>
-              <dd>{entry.vaelinya_form}</dd>
-            </div>
-            <div>
-              <dt>Meaning</dt>
-              <dd>{entry.meaning}</dd>
-            </div>
-            <div>
-              <dt>Pronunciation</dt>
-              <dd>{entry.pronunciation}</dd>
-            </div>
-            <div>
-              <dt>pronunciation_ipa</dt>
-              <dd>{entry.pronunciation_ipa}</dd>
-            </div>
-            <div>
-              <dt>Use</dt>
-              <dd>{entry.use}</dd>
-            </div>
-            <div>
-              <dt>Notes</dt>
-              <dd>{entry.notes}</dd>
-            </div>
-          </dl>
-        </article>
-      ))}
-    </div>
-  </section>
+<section class="page-section lexicon-page">
+<p class="eyebrow">Language</p>
+<h1>Lexicon</h1>
+<p class="lede">The public lexicon gathers stable Vaelinyan words and key world terms in small, readable entries.</p>
+<p>Each card keeps the same fields: English term, Vaelinya form, meaning, pronunciation, pronunciation_ipa, use, and notes.</p>
+<div class="lexicon-list">
+{words.map((entry) => (
+<article class="lexicon-entry">
+<header class="lexicon-entry-header">
+<h2>{entry.word}</h2>
+<p>{entry.meaning}</p>
+</header>
+<dl class="lexicon-fields">
+<div><dt>Vaelinya form</dt><dd>{entry.vaelinya_form}</dd></div>
+<div><dt>Pronunciation</dt><dd>{entry.pronunciation}</dd></div>
+<div><dt>pronunciation_ipa</dt><dd>{entry.pronunciation_ipa}</dd></div>
+<div class="wide-field"><dt>Use</dt><dd>{entry.use}</dd></div>
+<div class="wide-field"><dt>Notes</dt><dd>{entry.notes}</dd></div>
+</dl>
+</article>
+))}
+</div>
+</section>
 </BaseLayout>
