@@ -3,62 +3,99 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 const words = [
   {
-    word: 'NAVAN', vaelinya_form: 'NAVAN', meaning: 'Remember.', pronunciation: 'NAH-van', pronunciation_ipa: '/ˈnɑːvæn/', use: 'Use it as a remembrance-word: a small act of keeping truth, care, or return alive.', notes: 'It can hold the sense of keeping truth active and returning to what must not be lost.',
+    word: 'aelok',
+    vaelinya_form: 'aelok',
+    meaning: 'home-place',
+    pronunciation: 'AY-lok',
+    pronunciation_ipa: '/ˈeɪ.lɒk/',
+    what: 'A place where someone can settle without guarding themselves.',
+    richer: 'It is more than shelter. It is a place where the body and mind can stop bracing.',
+    use: 'Use it for a room, home, corner, settlement, or gathering-place that lets someone feel inwardly safe.',
+    not_for: 'Do not use it for ordinary buildings, legal property, ownership, or belonging in general.',
+    example: 'In her small painted kitchen, he found aelok before he found the courage to speak.',
+    plain_english: 'In her kitchen, he found a true home-place before he found words.',
   },
   {
-    word: 'Rimaeri', vaelinya_form: 'Rimaeri', meaning: 'The people of the Rim.', pronunciation: 'rih-MAIR-ee', pronunciation_ipa: '/rɪˈmɛəri/', use: 'Use it for the people’s own name for themselves, especially when talking about Rim identity from inside the culture.', notes: 'The name used among the people themselves. Outsiders may call them Rimmers.',
+    word: 'meras',
+    vaelinya_form: 'meras',
+    meaning: 'belonging',
+    pronunciation: 'MEH-ras',
+    pronunciation_ipa: '/ˈmɛ.ræs/',
+    what: 'The felt condition of being rightly placed among others.',
+    richer: 'It is belonging as something lived in the body and in relationship, not just membership on paper.',
+    use: 'Use it for social belonging, safe recognition, and the feeling of being rightly placed among people.',
+    not_for: 'Do not use it for official membership, bureaucratic inclusion, or simply being present somewhere.',
+    example: 'She felt meras only when her own name could be spoken there without caution.',
+    plain_english: 'She felt true belonging only when she could be herself there.',
   },
   {
-    word: 'Rimmers', vaelinya_form: 'not a Vaelinya self-name', meaning: 'An outsider word for the people of the Rim.', pronunciation: 'RIM-ers', pronunciation_ipa: '/ˈrɪməz/', use: 'Use it only when the outsider point of view matters.', notes: 'It can be ordinary, careless, affectionate, dismissive, or rude depending on who says it and why. The site normally uses Rimaeri.',
+    word: 'naerith',
+    vaelinya_form: 'naerith',
+    meaning: 'lived memory-trace',
+    pronunciation: 'NAIR-ith',
+    pronunciation_ipa: '/ˈneə.rɪθ/',
+    what: 'A lived or felt trace of what has been experienced.',
+    richer: 'It is memory that still moves through a person, place, body, or atmosphere.',
+    use: 'Use it for a song, voice, loss, joy, meeting, room, or place that still carries what happened there.',
+    not_for: 'Do not use it for factual recall alone, records, technical memory, or ordinary skill-memory.',
+    example: 'The hall still held a naerith of their singing after the candles had gone out.',
+    plain_english: 'The hall still carried a living trace of their singing after the candles were out.',
   },
   {
-    word: 'The Rim', vaelinya_form: 'not yet fixed', meaning: 'The borderland edge-place of Vaelinya.', pronunciation: 'the rim', pronunciation_ipa: '/ðə rɪm/', use: 'Use it for the place where crossing, weather, travel, belonging, and change are especially important.', notes: 'A public world term rather than a hidden language term. It connects directly to the World section.',
+    word: 'orivai',
+    vaelinya_form: 'orivai',
+    meaning: 'meaningful return',
+    pronunciation: 'OR-ih-vye',
+    pronunciation_ipa: '/ˈɒr.ɪ.vaɪ/',
+    what: 'A return that restores place, relation, or selfhood.',
+    richer: 'It is coming back in a way that matters, especially after absence.',
+    use: 'Use it for homecoming, restored relation, returning to a person, or coming back to a truer state of self.',
+    not_for: 'Do not use it for routine travel, object routing, simple repetition, or neutral movement back.',
+    example: 'At the old gate, her orivai felt less like arrival than being received again by her own life.',
+    plain_english: 'At the old gate, her return felt like being welcomed back into her life.',
   },
   {
-    word: 'route-house', vaelinya_form: 'not yet fixed', meaning: 'A house, shelter, or recognised stopping place tied to a route.', pronunciation: 'ROOT-house', pronunciation_ipa: '/ˈruːt haʊs/', use: 'Use it for a place where travellers, messages, agreements, or route knowledge may rest for a while.', notes: 'A Rimaeri-life term connected to cloth-patterns, waiting, witnesses, and safe movement across the Rim.',
-  },
-  {
-    word: 'route-pattern', vaelinya_form: 'not yet fixed', meaning: 'The expected repeated behaviour of a route, crossing, or travelled way.', pronunciation: 'ROOT PAT-ern', pronunciation_ipa: '/ˈruːt ˈpætən/', use: 'Use it when a route follows a known sequence, or when that sequence has changed.', notes: 'Important for Pattern Child material and altered-crossing stories.',
-  },
-  {
-    word: 'more than one witness', vaelinya_form: 'not yet fixed', meaning: 'A fairness rule: some promises or agreements need more than one person to remember and confirm them.', pronunciation: 'more than wun WIT-ness', pronunciation_ipa: '/mɔː ðæn wʌn ˈwɪtnəs/', use: 'Use it when an agreement affects several people, a route, or a shared duty.', notes: 'A practical Rimaeri social rule. It keeps memory from becoming private power.',
-  },
-  {
-    word: 'wait-call', vaelinya_form: 'not yet fixed', meaning: 'A call, sign, or signal that tells people to pause before moving on.', pronunciation: 'WAIT-call', pronunciation_ipa: '/ˈweɪt kɔːl/', use: 'Use it for a practical signal on routes, crossings, or shared paths.', notes: 'A Rimaeri-life term connected to weather, route safety, and careful movement.',
-  },
-  {
-    word: 'The Warm Remembering', vaelinya_form: 'not yet fixed', meaning: 'A way of understanding care, continuity, and shared remembrance in Vaelinya.', pronunciation: 'the warm ree-MEM-ber-ing', pronunciation_ipa: '/ðə wɔːm rɪˈmɛmbərɪŋ/', use: 'Use it when memory is held through people, language, place, relationship, songs, witness, or repeated acts.', notes: 'A public concept term tied to the World section and the larger Vaelinya theme of keeping what matters alive.',
-  },
-  {
-    word: 'bridge child', vaelinya_form: 'not yet fixed', meaning: 'A child who connects, listens, crosses, or helps different sides understand one another.', pronunciation: 'BRIJ child', pronunciation_ipa: '/ˈbrɪdʒ tʃaɪld/', use: 'Use it for Lina’s early role: listener, witness, connector, and careful crosser.', notes: 'A reader-facing story term connected to Lina’s first arc.',
-  },
-  {
-    word: 'halaphalendrael', vaelinya_form: 'halaphalendrael', meaning: 'A stable public Vaelinyan name-word awaiting fuller context.', pronunciation: 'ha-la-pha-len-dra-el', pronunciation_ipa: '/hælæphælɛndræɛl/', use: 'Use it carefully as a sound-form and name anchor until fuller public context is ready.', notes: 'Included as a pronunciation anchor because its sound-form is stable.',
+    word: 'eirav',
+    vaelinya_form: 'eirav',
+    meaning: 'meaningful arrival',
+    pronunciation: 'EYE-rav',
+    pronunciation_ipa: '/ˈaɪ.ræv/',
+    what: 'An arrival that changes the emotional or social field because the one arriving matters.',
+    richer: 'It is arrival with weight. The room changes because this person has entered it.',
+    use: 'Use it for a first entrance or arrival that alters attention, feeling, atmosphere, or relation.',
+    not_for: 'Do not use it for transport timing, packages, neutral scheduling, or return after absence.',
+    example: 'Her eirav changed the whole table before she had said a word.',
+    plain_english: 'Her arrival changed the whole mood of the table before she spoke.',
   },
 ];
 ---
-<BaseLayout title="Lexicon" description="A growing public lexicon for Vaelinya.">
-<section class="page-section lexicon-page">
-<p class="eyebrow">Language</p>
-<h1>Lexicon</h1>
-<p class="lede">The public lexicon gathers stable Vaelinyan words and key world terms in small, readable entries.</p>
-<p>Each card keeps the same fields: English term, Vaelinya form, meaning, pronunciation, pronunciation_ipa, use, and notes.</p>
-<div class="lexicon-list">
-{words.map((entry) => (
-<article class="lexicon-entry">
-<header class="lexicon-entry-header">
-<h2>{entry.word}</h2>
-<p>{entry.meaning}</p>
-</header>
-<dl class="lexicon-fields">
-<div><dt>Vaelinya form</dt><dd>{entry.vaelinya_form}</dd></div>
-<div><dt>Pronunciation</dt><dd>{entry.pronunciation}</dd></div>
-<div><dt>pronunciation_ipa</dt><dd>{entry.pronunciation_ipa}</dd></div>
-<div class="wide-field"><dt>Use</dt><dd>{entry.use}</dd></div>
-<div class="wide-field"><dt>Notes</dt><dd>{entry.notes}</dd></div>
-</dl>
-</article>
-))}
-</div>
-</section>
+<BaseLayout title="Lexicon" description="Five first Vaelinya words for home, belonging, memory, return, and arrival.">
+  <section class="page-section lexicon-page">
+    <p class="eyebrow">Language</p>
+    <h1>Vaelinya words</h1>
+    <p class="lede">Start with five small words. Each one names something felt: home-place, belonging, memory, return, or arrival.</p>
+    <p>These are public Vaelinya words, not the whole grammar. Learn them as doorway words first.</p>
+
+    <div class="lexicon-list">
+      {words.map((entry) => (
+        <article class="lexicon-entry">
+          <header class="lexicon-entry-header">
+            <h2>{entry.word}</h2>
+            <p>{entry.meaning}</p>
+          </header>
+
+          <dl class="lexicon-fields">
+            <div><dt>Vaelinya form</dt><dd>{entry.vaelinya_form}</dd></div>
+            <div><dt>Pronunciation</dt><dd>{entry.pronunciation}</dd></div>
+            <div><dt>IPA</dt><dd>{entry.pronunciation_ipa}</dd></div>
+            <div class="wide-field"><dt>What it means</dt><dd>{entry.what} {entry.richer}</dd></div>
+            <div class="wide-field"><dt>Use it for</dt><dd>{entry.use}</dd></div>
+            <div class="wide-field"><dt>Do not use it for</dt><dd>{entry.not_for}</dd></div>
+            <div class="wide-field"><dt>Example</dt><dd>{entry.example}</dd></div>
+            <div class="wide-field"><dt>Plain English</dt><dd>{entry.plain_english}</dd></div>
+          </dl>
+        </article>
+      ))}
+    </div>
+  </section>
 </BaseLayout>
