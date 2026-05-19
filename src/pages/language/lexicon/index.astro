@@ -4,6 +4,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 const words = [
   {
     word: 'NAVAN',
+    vaelinya_form: 'NAVAN',
     meaning: 'Remember.',
     pronunciation: 'NAH-van',
     pronunciation_ipa: '/ˈnɑːvæn/',
@@ -12,6 +13,7 @@ const words = [
   },
   {
     word: 'Rimaeri',
+    vaelinya_form: 'Rimaeri',
     meaning: 'The people of the Rim.',
     pronunciation: 'rih-MAIR-ee',
     pronunciation_ipa: '/rɪˈmɛəri/',
@@ -20,6 +22,7 @@ const words = [
   },
   {
     word: 'Rimmers',
+    vaelinya_form: 'not a Vaelinya self-name',
     meaning: 'An outsider word for the people of the Rim.',
     pronunciation: 'RIM-ers',
     pronunciation_ipa: '/ˈrɪməz/',
@@ -28,6 +31,7 @@ const words = [
   },
   {
     word: 'The Rim',
+    vaelinya_form: 'not yet fixed',
     meaning: 'The borderland edge-place of Vaelinya.',
     pronunciation: 'the rim',
     pronunciation_ipa: '/ðə rɪm/',
@@ -36,6 +40,7 @@ const words = [
   },
   {
     word: 'route-house',
+    vaelinya_form: 'not yet fixed',
     meaning: 'A house, shelter, or recognised stopping place tied to a route.',
     pronunciation: 'ROOT-house',
     pronunciation_ipa: '/ˈruːt haʊs/',
@@ -44,6 +49,7 @@ const words = [
   },
   {
     word: 'route-pattern',
+    vaelinya_form: 'not yet fixed',
     meaning: 'The expected repeated behaviour of a route, crossing, or travelled way.',
     pronunciation: 'ROOT PAT-ern',
     pronunciation_ipa: '/ˈruːt ˈpætən/',
@@ -52,6 +58,7 @@ const words = [
   },
   {
     word: 'more than one witness',
+    vaelinya_form: 'not yet fixed',
     meaning: 'A fairness rule: some promises or agreements need more than one person to remember and confirm them.',
     pronunciation: 'more than wun WIT-ness',
     pronunciation_ipa: '/mɔː ðæn wʌn ˈwɪtnəs/',
@@ -60,6 +67,7 @@ const words = [
   },
   {
     word: 'wait-call',
+    vaelinya_form: 'not yet fixed',
     meaning: 'A call, sign, or signal that tells people to pause before moving on.',
     pronunciation: 'WAIT-call',
     pronunciation_ipa: '/ˈweɪt kɔːl/',
@@ -68,6 +76,7 @@ const words = [
   },
   {
     word: 'The Warm Remembering',
+    vaelinya_form: 'not yet fixed',
     meaning: 'A way of understanding care, continuity, and shared remembrance in Vaelinya.',
     pronunciation: 'the warm ree-MEM-ber-ing',
     pronunciation_ipa: '/ðə wɔːm rɪˈmɛmbərɪŋ/',
@@ -76,6 +85,7 @@ const words = [
   },
   {
     word: 'bridge child',
+    vaelinya_form: 'not yet fixed',
     meaning: 'A child who connects, listens, crosses, or helps different sides understand one another.',
     pronunciation: 'BRIJ child',
     pronunciation_ipa: '/ˈbrɪdʒ tʃaɪld/',
@@ -84,6 +94,7 @@ const words = [
   },
   {
     word: 'halaphalendrael',
+    vaelinya_form: 'halaphalendrael',
     meaning: 'A stable public Vaelinyan name-word awaiting fuller context.',
     pronunciation: 'ha-la-pha-len-dra-el',
     pronunciation_ipa: '/hælæphælɛndræɛl/',
@@ -96,13 +107,17 @@ const words = [
   <section class="page-section">
     <p class="eyebrow">Language</p>
     <h1>Lexicon</h1>
-    <p class="lede">The public lexicon gathers stable Vaelinyan words and key world terms in small, readable entries. Each entry gives meaning, pronunciation, pronunciation_ipa, use, and notes.</p>
-    <p>Read the meaning first. Say the word aloud next. The International Phonetic Alphabet line is there for precision, but the plain pronunciation is enough for a first reader.</p>
+    <p class="lede">The public lexicon gathers stable Vaelinyan words and key world terms in small, readable entries. Each entry gives English term, Vaelinya form, meaning, pronunciation, pronunciation_ipa, use, and notes.</p>
+    <p>Read the meaning first. Say the word aloud next. Some Vaelinya forms are not yet fixed; those are marked clearly rather than invented.</p>
     <div class="lexicon-list">
       {words.map((entry) => (
         <article class="lexicon-entry">
           <h2>{entry.word}</h2>
           <dl>
+            <div>
+              <dt>Vaelinya form</dt>
+              <dd>{entry.vaelinya_form}</dd>
+            </div>
             <div>
               <dt>Meaning</dt>
               <dd>{entry.meaning}</dd>
