@@ -59,6 +59,7 @@ a { color: inherit; }
   font-weight: 900;
   text-decoration: none;
   letter-spacing: 0.02em;
+  flex-shrink: 0;
 }
 
 .nav-links {
@@ -66,6 +67,7 @@ a { color: inherit; }
   flex-wrap: wrap;
   gap: 0.35rem 0.75rem;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .nav-links a {
@@ -340,7 +342,21 @@ a { color: inherit; }
 }
 
 @media (max-width: 860px) {
-  .site-nav { align-items: flex-start; flex-direction: column; }
+  .site-nav {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0.6rem 1rem;
+  }
+
+  .nav-links a {
+    white-space: nowrap;
+  }
+
   .door-grid, .story-grid { grid-template-columns: 1fr; }
   .door-card, .story-card { min-height: 11rem; }
   .story-card-symbol { width: 3.25rem; height: 3.25rem; }
