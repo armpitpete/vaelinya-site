@@ -7,9 +7,47 @@ interface Props {
   series: string;
   storyNumber: number;
   totalStories: number;
+  relatedWorld?: string[];
+  relatedLanguage?: string[];
+  relatedArtefacts?: string[];
 }
 
-const { title, description, series, storyNumber, totalStories } = Astro.props;
+const {
+  title,
+  description,
+  series,
+  storyNumber,
+  totalStories,
+  relatedWorld = [],
+  relatedLanguage = [],
+  relatedArtefacts = [],
+} = Astro.props;
+
+const labelForLink = (href: string) => {
+  const labels = new Map([
+    ['/world/', 'Explore the world'],
+    ['/world/the-rim/', 'The Rim'],
+    ['/world/rimaeri/', 'The Rimaeri'],
+    ['/world/warm-remembering/', 'The Warm Remembering'],
+    ['/language/', 'Learn the language'],
+    ['/language/lexicon/', 'Open the lexicon'],
+    ['/language/reference/', 'Language reference'],
+    ['/artefacts/', 'Discover artefacts'],
+    ['/artefacts/symbols/', 'Symbols'],
+    ['/artefacts/maps/', 'Maps'],
+    ['/artefacts/chant-cards/', 'Chant cards'],
+    ['/artefacts/story-objects/', 'Story objects'],
+    ['/artefacts/printables/', 'Printables'],
+  ]);
+
+  return labels.get(href) ?? href;
+};
+
+const relatedLinks = [
+  ...relatedWorld.map((href) => ({ href, group: 'World' })),
+  ...relatedLanguage.map((href) => ({ href, group: 'Language' })),
+  ...relatedArtefacts.map((href) => ({ href, group: 'Artefacts' })),
+];
 ---
 <BaseLayout title={title} description={description}>
   <article class="story-page">
@@ -22,5 +60,16 @@ const { title, description, series, storyNumber, totalStories } = Astro.props;
     <div class="story-content">
       <slot />
     </div>
+    {relatedLinks.length > 0 && (
+      <footer class="story-related">
+        <h2>After the story</h2>
+        <p>Follow one thread from this story into the wider world.</p>
+        <div class="link-list">
+          {relatedLinks.map((link) => (
+            <a href={link.href}>{link.group}: {labelForLink(link.href)}</a>
+          ))}
+        </div>
+      </footer>
+    )}
   </article>
 </BaseLayout>
