@@ -2,167 +2,33 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 const doorwayWords = [
-  {
-    word: 'aelok',
-    vaelinya_form: 'aelok',
-    meaning: 'home-place',
-    pronunciation: 'AY-lok',
-    pronunciation_ipa: '/ˈeɪ.lɒk/',
-    what: 'A place where someone can settle without guarding themselves.',
-    richer: 'It is more than shelter. It is a place where the body and mind can stop bracing.',
-    use: 'Use it for a room, home, corner, settlement, or gathering-place that lets someone feel inwardly safe.',
-    not_for: 'Do not use it for ordinary buildings, legal property, ownership, or belonging in general.',
-    example: 'In her small painted kitchen, he found aelok before he found the courage to speak.',
-    plain_english: 'In her kitchen, he found a true home-place before he found words.',
-  },
-  {
-    word: 'meras',
-    vaelinya_form: 'meras',
-    meaning: 'belonging',
-    pronunciation: 'MEH-ras',
-    pronunciation_ipa: '/ˈmɛ.ræs/',
-    what: 'The felt condition of being rightly placed among others.',
-    richer: 'It is belonging as something lived in the body and in relationship, not just membership on paper.',
-    use: 'Use it for social belonging, safe recognition, and the feeling of being rightly placed among people.',
-    not_for: 'Do not use it for official membership, bureaucratic inclusion, or simply being present somewhere.',
-    example: 'She felt meras only when her own name could be spoken there without caution.',
-    plain_english: 'She felt true belonging only when she could be herself there.',
-  },
-  {
-    word: 'naerith',
-    vaelinya_form: 'naerith',
-    meaning: 'lived memory-trace',
-    pronunciation: 'NAIR-ith',
-    pronunciation_ipa: '/ˈneə.rɪθ/',
-    what: 'A lived or felt trace of what has been experienced.',
-    richer: 'It is memory that still moves through a person, place, body, or atmosphere.',
-    use: 'Use it for a song, voice, loss, joy, meeting, room, or place that still carries what happened there.',
-    not_for: 'Do not use it for factual recall alone, records, technical memory, or ordinary skill-memory.',
-    example: 'The hall still held a naerith of their singing after the candles had gone out.',
-    plain_english: 'The hall still carried a living trace of their singing after the candles were out.',
-  },
-  {
-    word: 'orivai',
-    vaelinya_form: 'orivai',
-    meaning: 'meaningful return',
-    pronunciation: 'OR-ih-vye',
-    pronunciation_ipa: '/ˈɒr.ɪ.vaɪ/',
-    what: 'A return that restores place, relation, or selfhood.',
-    richer: 'It is coming back in a way that matters, especially after absence.',
-    use: 'Use it for homecoming, restored relation, returning to a person, or coming back to a truer state of self.',
-    not_for: 'Do not use it for routine travel, object routing, simple repetition, or neutral movement back.',
-    example: 'At the old gate, her orivai felt less like arrival than being received again by her own life.',
-    plain_english: 'At the old gate, her return felt like being welcomed back into her life.',
-  },
-  {
-    word: 'eirav',
-    vaelinya_form: 'eirav',
-    meaning: 'meaningful arrival',
-    pronunciation: 'EYE-rav',
-    pronunciation_ipa: '/ˈaɪ.ræv/',
-    what: 'An arrival that changes the emotional or social field because the one arriving matters.',
-    richer: 'It is arrival with weight. The room changes because this person has entered it.',
-    use: 'Use it for a first entrance or arrival that alters attention, feeling, atmosphere, or relation.',
-    not_for: 'Do not use it for transport timing, packages, neutral scheduling, or return after absence.',
-    example: 'Her eirav changed the whole table before she had said a word.',
-    plain_english: 'Her arrival changed the whole mood of the table before she spoke.',
-  },
+  { word: 'aelok', vaelinya_form: 'aelok', meaning: 'home-place', pronunciation: 'AY-lok', pronunciation_ipa: '/ˈeɪ.lɒk/', what: 'A place where someone can settle without guarding themselves.', richer: 'It is more than shelter. It is a place where the body and mind can stop bracing.', use: 'Use it for a room, home, corner, settlement, or gathering-place that lets someone feel inwardly safe.', example: 'In her small painted kitchen, he found aelok before he found the courage to speak.', plain_english: 'In her kitchen, he found a true home-place before he found words.' },
+  { word: 'meras', vaelinya_form: 'meras', meaning: 'belonging', pronunciation: 'MEH-ras', pronunciation_ipa: '/ˈmɛ.ræs/', what: 'The felt condition of being rightly placed among others.', richer: 'It is belonging as something lived in the body and in relationship, not just membership on paper.', use: 'Use it for social belonging, safe recognition, and the feeling of being rightly placed among people.', example: 'She felt meras only when her own name could be spoken there without caution.', plain_english: 'She felt true belonging only when she could be herself there.' },
+  { word: 'naerith', vaelinya_form: 'naerith', meaning: 'lived memory-trace', pronunciation: 'NAIR-ith', pronunciation_ipa: '/ˈneə.rɪθ/', what: 'A lived or felt trace of what has been experienced.', richer: 'It is memory that still moves through a person, place, body, or atmosphere.', use: 'Use it for a song, voice, loss, joy, meeting, room, or place that still carries what happened there.', example: 'The hall still held a naerith of their singing after the candles had gone out.', plain_english: 'The hall still carried a living trace of their singing after the candles were out.' },
+  { word: 'orivai', vaelinya_form: 'orivai', meaning: 'meaningful return', pronunciation: 'OR-ih-vye', pronunciation_ipa: '/ˈɒr.ɪ.vaɪ/', what: 'A return that restores place, relation, or selfhood.', richer: 'It is coming back in a way that matters, especially after absence.', use: 'Use it for homecoming, restored relation, returning to a person, or coming back to a truer state of self.', example: 'At the old gate, her orivai felt less like arrival than being received again by her own life.', plain_english: 'At the old gate, her return felt like being welcomed back into her life.' },
+  { word: 'eirav', vaelinya_form: 'eirav', meaning: 'meaningful arrival', pronunciation: 'EYE-rav', pronunciation_ipa: '/ˈaɪ.ræv/', what: 'An arrival that changes the emotional or social field because the one arriving matters.', richer: 'It is arrival with weight. The room changes because this person has entered it.', use: 'Use it for a first entrance or arrival that alters attention, feeling, atmosphere, or relation.', example: 'Her eirav changed the whole table before she had said a word.', plain_english: 'Her arrival changed the whole mood of the table before she spoke.' },
 ];
 
 const recognitionWords = [
-  {
-    word: 'siral',
-    vaelinya_form: 'siral',
-    meaning: 'known person',
-    pronunciation: 'SEER-al',
-    pronunciation_ipa: '/ˈsɪə.ræl/',
-    what: 'A person who has become known through return, greeting, or remembered presence.',
-    richer: 'A siral is not necessarily a close friend. They are someone whose presence has begun to matter.',
-    use: 'Use it when someone has crossed from stranger into recognised presence: a neighbour, a returning traveller, a shopkeeper, or someone whose absence would now be noticed.',
-    example: 'By winter, the baker had become a siral, greeted before the bread was chosen.',
-    plain_english: 'By winter, the baker had become someone known.',
-  },
-  {
-    word: 'sarek',
-    vaelinya_form: 'sarek',
-    meaning: 'full-human recognition',
-    pronunciation: 'SAH-rek',
-    pronunciation_ipa: '/ˈsɑː.rɛk/',
-    what: 'A moment when another person becomes fully real in the mind.',
-    richer: 'In sarek, you understand that another person has their own thoughts, fears, memories, tiredness, hopes, and hidden life.',
-    use: 'Use it when the change is in how someone sees another person: from background figure to whole person.',
-    example: 'In the crowd, sarek came over him, and the faces stopped feeling like part of the wall.',
-    plain_english: 'In the crowd, he suddenly understood that the people around him were fully real.',
-  },
-  {
-    word: 'navak',
-    vaelinya_form: 'navak',
-    meaning: 'transforming recognition',
-    pronunciation: 'NAH-vak',
-    pronunciation_ipa: '/ˈnɑː.væk/',
-    what: 'A moment of accurate seeing that changes how something is understood.',
-    richer: 'Navak can happen with a person, place, object, mistake, memory, or hidden truth.',
-    use: 'Use it when something becomes clear, and that clarity changes how the observer relates to it.',
-    example: 'One look at the abandoned toys brought navak to her, and the house stopped seeming merely empty.',
-    plain_english: 'One look at the toys changed how she understood the house.',
-  },
+  { word: 'siral', vaelinya_form: 'siral', meaning: 'known person', pronunciation: 'SEER-al', pronunciation_ipa: '/ˈsɪə.ræl/', what: 'A person who has become known through return, greeting, or remembered presence.', richer: 'A siral is not necessarily a close friend. They are someone whose presence has begun to matter.', use: 'Use it when someone has crossed from stranger into recognised presence: a neighbour, a returning traveller, a shopkeeper, or someone whose absence would now be noticed.', example: 'By winter, the baker had become a siral, greeted before the bread was chosen.', plain_english: 'By winter, the baker had become someone known.' },
+  { word: 'sarek', vaelinya_form: 'sarek', meaning: 'full-human recognition', pronunciation: 'SAH-rek', pronunciation_ipa: '/ˈsɑː.rɛk/', what: 'A moment when another person becomes fully real in the mind.', richer: 'In sarek, you understand that another person has their own thoughts, fears, memories, tiredness, hopes, and hidden life.', use: 'Use it when the change is in how someone sees another person: from background figure to whole person.', example: 'In the crowd, sarek came over him, and the faces stopped feeling like part of the wall.', plain_english: 'In the crowd, he suddenly understood that the people around him were fully real.' },
+  { word: 'navak', vaelinya_form: 'navak', meaning: 'transforming recognition', pronunciation: 'NAH-vak', pronunciation_ipa: '/ˈnɑː.væk/', what: 'A moment of accurate seeing that changes how something is understood.', richer: 'Navak can happen with a person, place, object, mistake, memory, or hidden truth.', use: 'Use it when something becomes clear, and that clarity changes how the observer relates to it.', example: 'One look at the abandoned toys brought navak to her, and the house stopped seeming merely empty.', plain_english: 'One look at the toys changed how she understood the house.' },
 ];
 
 const shelterWords = [
-  {
-    word: 'noras',
-    vaelinya_form: 'noras',
-    meaning: 'shelter',
-    pronunciation: 'NOR-as',
-    pronunciation_ipa: '/ˈnɔː.ræs/',
-    what: 'Shelter; a held condition of temporary safety.',
-    richer: 'A noras is a refuge where a body, mind, or group can recover enough to continue. It is more active than cover, and less complete than home.',
-    use: 'Use it for physical, emotional, or social shelter, especially when someone needs warmth, pause, or protection before moving on.',
-    example: 'For three winter months the café served as noras for anyone who needed warmth more than questions.',
-    plain_english: 'For three winter months, the café was shelter for people who needed warmth and safety.',
-  },
-  {
-    word: 'ismak',
-    vaelinya_form: 'ismak',
-    meaning: 'recovered calm',
-    pronunciation: 'ISS-mak',
-    pronunciation_ipa: '/ˈɪs.mæk/',
-    what: 'A calm that returns after disturbance.',
-    richer: 'Ismak is inward steadiness regained after fear, noise, grief, or overload. It is calm that has come back, rather than calm that was always there.',
-    use: 'Use it when a person, room, group, or body settles again after pressure.',
-    example: 'After the doors were shut and the shouting ended, a small ismak returned to her hands.',
-    plain_english: 'After the shouting stopped, a small calm returned to her body.',
-  },
-  {
-    word: 'threnai',
-    vaelinya_form: 'threnai',
-    meaning: 'weighted silence',
-    pronunciation: 'THREN-eye',
-    pronunciation_ipa: '/ˈθrɛn.aɪ/',
-    what: 'Silence with emotional or social weight.',
-    richer: 'Threnai is the charged quiet where feeling gathers, truth nears, grief settles, or attention sharpens. It can be gentle, heavy, protective, or expectant.',
-    use: 'Use it when silence means something: before a name is spoken, after hard news, inside a room that holds memory, or when people know more than they can yet say.',
-    example: 'A deep threnai filled the hall before the first name was spoken.',
-    plain_english: 'A heavy silence filled the hall before the first name was spoken.',
-  },
+  { word: 'noras', vaelinya_form: 'noras', meaning: 'shelter', pronunciation: 'NOR-as', pronunciation_ipa: '/ˈnɔː.ræs/', what: 'Shelter; a held condition of temporary safety.', richer: 'A noras is a refuge where a body, mind, or group can recover enough to continue. It is more active than cover, and less complete than home.', use: 'Use it for physical, emotional, or social shelter, especially when someone needs warmth, pause, or protection before moving on.', example: 'For three winter months the café served as noras for anyone who needed warmth more than questions.', plain_english: 'For three winter months, the café was shelter for people who needed warmth and safety.' },
+  { word: 'ismak', vaelinya_form: 'ismak', meaning: 'recovered calm', pronunciation: 'ISS-mak', pronunciation_ipa: '/ˈɪs.mæk/', what: 'A calm that returns after disturbance.', richer: 'Ismak is inward steadiness regained after fear, noise, grief, or overload. It is calm that has come back, rather than calm that was always there.', use: 'Use it when a person, room, group, or body settles again after pressure.', example: 'After the doors were shut and the shouting ended, a small ismak returned to her hands.', plain_english: 'After the shouting stopped, a small calm returned to her body.' },
+  { word: 'threnai', vaelinya_form: 'threnai', meaning: 'weighted silence', pronunciation: 'THREN-eye', pronunciation_ipa: '/ˈθrɛn.aɪ/', what: 'Silence with emotional or social weight.', richer: 'Threnai is the charged quiet where feeling gathers, truth nears, grief settles, or attention sharpens. It can be gentle, heavy, protective, or expectant.', use: 'Use it when silence means something: before a name is spoken, after hard news, inside a room that holds memory, or when people know more than they can yet say.', example: 'A deep threnai filled the hall before the first name was spoken.', plain_english: 'A heavy silence filled the hall before the first name was spoken.' },
 ];
 
 const wordIndexSections = [
-  {
-    id: 'first-doorway-words',
-    label: 'First doorway words',
-    words: doorwayWords,
-  },
-  {
-    id: 'recognition-and-personhood-words',
-    label: 'Recognition and personhood words',
-    words: recognitionWords,
-  },
-  {
-    id: 'shelter-and-recovery-words',
-    label: 'Shelter and recovery words',
-    words: shelterWords,
-  },
+  { id: 'first-doorway-words', label: 'First doorway words', words: doorwayWords },
+  { id: 'recognition-and-personhood-words', label: 'Recognition and personhood words', words: recognitionWords },
+  { id: 'shelter-and-recovery-words', label: 'Shelter and recovery words', words: shelterWords },
+];
+
+const familyLinks = [
+  { href: '/language/lexicon/home-shelter-recovery/', title: 'Home, shelter, and recovery', text: 'Go deeper into aelok, noras, and ismak.' },
 ];
 ---
 <BaseLayout title="Lexicon" description="Eleven first Vaelinya words for home, belonging, memory, return, arrival, recognition, personhood, shelter, calm, and silence.">
@@ -171,6 +37,18 @@ const wordIndexSections = [
     <h1>Vaelinya words</h1>
     <p class="lede">Start with small words. Each one names something felt: home-place, belonging, memory, return, arrival, recognition, shelter, calm, or meaningful silence.</p>
     <p>These are public Vaelinya words, not the whole grammar. Learn them as doorway words first.</p>
+
+    <section class="lexicon-family-links" aria-labelledby="explore-by-family">
+      <h2 id="explore-by-family">Explore by family</h2>
+      <div class="link-list">
+        {familyLinks.map((link) => (
+          <a href={link.href}>
+            <strong>{link.title}</strong>
+            <span>{link.text}</span>
+          </a>
+        ))}
+      </div>
+    </section>
 
     <section class="lexicon-index" aria-labelledby="word-index">
       <div class="lexicon-index-header">
@@ -201,23 +79,13 @@ const wordIndexSections = [
         <h2 id="first-doorway-words">Home, belonging, memory, return, and arrival</h2>
         <p>These are the first five words. They help you feel the emotional ground of Vaelinya before learning anything more technical.</p>
       </div>
-
       <div class="lexicon-list">
         {doorwayWords.map((entry) => (
           <article id={`word-${entry.word}`} class="lexicon-entry">
-            <header class="lexicon-entry-header">
-              <h3>{entry.word}</h3>
-              <p>{entry.meaning}</p>
-            </header>
-
+            <header class="lexicon-entry-header"><h3>{entry.word}</h3><p>{entry.meaning}</p></header>
             <dl class="lexicon-fields">
-              <div><dt>Vaelinya form</dt><dd>{entry.vaelinya_form}</dd></div>
-              <div><dt>Pronunciation</dt><dd>{entry.pronunciation}</dd></div>
-              <div><dt>IPA</dt><dd>{entry.pronunciation_ipa}</dd></div>
-              <div class="wide-field"><dt>Meaning</dt><dd>{entry.what} {entry.richer}</dd></div>
-              <div class="wide-field"><dt>Use it when</dt><dd>{entry.use}</dd></div>
-              <div class="wide-field"><dt>Example</dt><dd>{entry.example}</dd></div>
-              <div class="wide-field"><dt>Plain English</dt><dd>{entry.plain_english}</dd></div>
+              <div><dt>Vaelinya form</dt><dd>{entry.vaelinya_form}</dd></div><div><dt>Pronunciation</dt><dd>{entry.pronunciation}</dd></div><div><dt>IPA</dt><dd>{entry.pronunciation_ipa}</dd></div>
+              <div class="wide-field"><dt>Meaning</dt><dd>{entry.what} {entry.richer}</dd></div><div class="wide-field"><dt>Use it when</dt><dd>{entry.use}</dd></div><div class="wide-field"><dt>Example</dt><dd>{entry.example}</dd></div><div class="wide-field"><dt>Plain English</dt><dd>{entry.plain_english}</dd></div>
             </dl>
           </article>
         ))}
@@ -230,28 +98,17 @@ const wordIndexSections = [
         <h2 id="recognition-and-personhood-words">Becoming known and seeing clearly</h2>
         <p>These words are about becoming known, seeing another person clearly, and recognising something in a way that changes understanding.</p>
       </div>
-
       <div class="lexicon-list">
         {recognitionWords.map((entry) => (
           <article id={`word-${entry.word}`} class="lexicon-entry">
-            <header class="lexicon-entry-header">
-              <h3>{entry.word}</h3>
-              <p>{entry.meaning}</p>
-            </header>
-
+            <header class="lexicon-entry-header"><h3>{entry.word}</h3><p>{entry.meaning}</p></header>
             <dl class="lexicon-fields">
-              <div><dt>Vaelinya form</dt><dd>{entry.vaelinya_form}</dd></div>
-              <div><dt>Pronunciation</dt><dd>{entry.pronunciation}</dd></div>
-              <div><dt>IPA</dt><dd>{entry.pronunciation_ipa}</dd></div>
-              <div class="wide-field"><dt>Meaning</dt><dd>{entry.what} {entry.richer}</dd></div>
-              <div class="wide-field"><dt>Use it when</dt><dd>{entry.use}</dd></div>
-              <div class="wide-field"><dt>Example</dt><dd>{entry.example}</dd></div>
-              <div class="wide-field"><dt>Plain English</dt><dd>{entry.plain_english}</dd></div>
+              <div><dt>Vaelinya form</dt><dd>{entry.vaelinya_form}</dd></div><div><dt>Pronunciation</dt><dd>{entry.pronunciation}</dd></div><div><dt>IPA</dt><dd>{entry.pronunciation_ipa}</dd></div>
+              <div class="wide-field"><dt>Meaning</dt><dd>{entry.what} {entry.richer}</dd></div><div class="wide-field"><dt>Use it when</dt><dd>{entry.use}</dd></div><div class="wide-field"><dt>Example</dt><dd>{entry.example}</dd></div><div class="wide-field"><dt>Plain English</dt><dd>{entry.plain_english}</dd></div>
             </dl>
           </article>
         ))}
       </div>
-
       <aside class="lexicon-note" aria-label="Difference between sarek and navak">
         <h3>sarek and navak</h3>
         <p><strong>sarek</strong> is for recognising another person’s full inner life.</p>
@@ -265,28 +122,17 @@ const wordIndexSections = [
         <h2 id="shelter-and-recovery-words">Safety, calm, and meaningful silence</h2>
         <p>These words are about what helps after pressure: shelter, a returned calm, and a silence that carries feeling or truth.</p>
       </div>
-
       <div class="lexicon-list">
         {shelterWords.map((entry) => (
           <article id={`word-${entry.word}`} class="lexicon-entry">
-            <header class="lexicon-entry-header">
-              <h3>{entry.word}</h3>
-              <p>{entry.meaning}</p>
-            </header>
-
+            <header class="lexicon-entry-header"><h3>{entry.word}</h3><p>{entry.meaning}</p></header>
             <dl class="lexicon-fields">
-              <div><dt>Vaelinya form</dt><dd>{entry.vaelinya_form}</dd></div>
-              <div><dt>Pronunciation</dt><dd>{entry.pronunciation}</dd></div>
-              <div><dt>IPA</dt><dd>{entry.pronunciation_ipa}</dd></div>
-              <div class="wide-field"><dt>Meaning</dt><dd>{entry.what} {entry.richer}</dd></div>
-              <div class="wide-field"><dt>Use it when</dt><dd>{entry.use}</dd></div>
-              <div class="wide-field"><dt>Example</dt><dd>{entry.example}</dd></div>
-              <div class="wide-field"><dt>Plain English</dt><dd>{entry.plain_english}</dd></div>
+              <div><dt>Vaelinya form</dt><dd>{entry.vaelinya_form}</dd></div><div><dt>Pronunciation</dt><dd>{entry.pronunciation}</dd></div><div><dt>IPA</dt><dd>{entry.pronunciation_ipa}</dd></div>
+              <div class="wide-field"><dt>Meaning</dt><dd>{entry.what} {entry.richer}</dd></div><div class="wide-field"><dt>Use it when</dt><dd>{entry.use}</dd></div><div class="wide-field"><dt>Example</dt><dd>{entry.example}</dd></div><div class="wide-field"><dt>Plain English</dt><dd>{entry.plain_english}</dd></div>
             </dl>
           </article>
         ))}
       </div>
-
       <aside class="lexicon-note" aria-label="Difference between aelok, noras, and ismak">
         <h3>aelok, noras, and ismak</h3>
         <p><strong>aelok</strong> is a true home-place.</p>
@@ -298,129 +144,27 @@ const wordIndexSections = [
 </BaseLayout>
 
 <style>
-  .lexicon-index {
-    margin-top: 1.25rem;
-    padding: clamp(1rem, 3vw, 1.25rem);
-    background: rgba(255, 248, 232, 0.68);
-    border: 1px solid rgba(31, 23, 48, 0.14);
-    border-radius: 1.1rem;
-  }
-
-  .lexicon-index-header h2 {
-    margin: 0;
-    font-size: clamp(1.35rem, 4vw, 1.9rem);
-    line-height: 1.1;
-  }
-
-  .lexicon-index-header p {
-    margin: 0.35rem 0 0;
-  }
-
-  .lexicon-index-groups {
-    display: grid;
-    gap: 0.85rem;
-    margin-top: 1rem;
-  }
-
-  .lexicon-index-group h3 {
-    margin: 0 0 0.45rem;
-    font-size: 1rem;
-  }
-
-  .lexicon-index-group h3 a {
-    text-decoration: none;
-  }
-
-  .lexicon-index-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  .lexicon-chip {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 0.35rem;
-    max-width: 100%;
-    padding: 0.35rem 0.55rem;
-    border-radius: 999px;
-    background: rgba(255, 241, 199, 0.92);
-    border: 1px solid rgba(31, 23, 48, 0.12);
-    text-decoration: none;
-    line-height: 1.2;
-  }
-
-  .lexicon-chip strong,
-  .lexicon-chip span {
-    overflow-wrap: anywhere;
-  }
-
-  .lexicon-chip span {
-    font-size: 0.82rem;
-    opacity: 0.78;
-  }
-
-  .lexicon-section {
-    margin-top: clamp(1.5rem, 4vw, 2.5rem);
-    scroll-margin-top: 1rem;
-  }
-
-  .recognition-section,
-  .shelter-section {
-    padding-top: clamp(1.25rem, 4vw, 2rem);
-    border-top: 1px solid rgba(31, 23, 48, 0.16);
-  }
-
-  .lexicon-section-intro {
-    max-width: 50rem;
-    margin-bottom: 1rem;
-  }
-
-  .lexicon-section-intro h2 {
-    margin: 0;
-    font-size: clamp(1.55rem, 5vw, 2.45rem);
-    line-height: 1.08;
-    letter-spacing: -0.035em;
-  }
-
-  .lexicon-section-intro p:last-child {
-    margin-bottom: 0;
-  }
-
-  .lexicon-entry {
-    scroll-margin-top: 1rem;
-  }
-
-  .lexicon-entry-header h3 {
-    margin: 0;
-    overflow-wrap: anywhere;
-    font-size: clamp(1.45rem, 5vw, 2.2rem);
-    line-height: 1.05;
-  }
-
-  .lexicon-note {
-    margin-top: 1rem;
-    padding: 1rem;
-    background: rgba(255, 248, 232, 0.72);
-    border: 1px solid rgba(31, 23, 48, 0.14);
-    border-radius: 1rem;
-  }
-
-  .lexicon-note h3 {
-    margin: 0 0 0.4rem;
-    font-size: 1.15rem;
-  }
-
-  .lexicon-note p {
-    margin: 0.35rem 0 0;
-  }
-
-  @media (max-width: 520px) {
-    .lexicon-chip {
-      align-items: flex-start;
-      flex-direction: column;
-      gap: 0.08rem;
-      border-radius: 0.75rem;
-    }
-  }
+  .lexicon-family-links, .lexicon-index { margin-top: 1.25rem; padding: clamp(1rem, 3vw, 1.25rem); background: rgba(255, 248, 232, 0.68); border: 1px solid rgba(31, 23, 48, 0.14); border-radius: 1.1rem; }
+  .lexicon-family-links h2, .lexicon-index-header h2 { margin: 0; font-size: clamp(1.35rem, 4vw, 1.9rem); line-height: 1.1; }
+  .lexicon-family-links .link-list a { display: grid; gap: 0.2rem; }
+  .lexicon-family-links .link-list span { font-weight: 600; }
+  .lexicon-index-header p { margin: 0.35rem 0 0; }
+  .lexicon-index-groups { display: grid; gap: 0.85rem; margin-top: 1rem; }
+  .lexicon-index-group h3 { margin: 0 0 0.45rem; font-size: 1rem; }
+  .lexicon-index-group h3 a { text-decoration: none; }
+  .lexicon-index-links { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .lexicon-chip { display: inline-flex; align-items: baseline; gap: 0.35rem; max-width: 100%; padding: 0.35rem 0.55rem; border-radius: 999px; background: rgba(255, 241, 199, 0.92); border: 1px solid rgba(31, 23, 48, 0.12); text-decoration: none; line-height: 1.2; }
+  .lexicon-chip strong, .lexicon-chip span { overflow-wrap: anywhere; }
+  .lexicon-chip span { font-size: 0.82rem; opacity: 0.78; }
+  .lexicon-section { margin-top: clamp(1.5rem, 4vw, 2.5rem); scroll-margin-top: 1rem; }
+  .recognition-section, .shelter-section { padding-top: clamp(1.25rem, 4vw, 2rem); border-top: 1px solid rgba(31, 23, 48, 0.16); }
+  .lexicon-section-intro { max-width: 50rem; margin-bottom: 1rem; }
+  .lexicon-section-intro h2 { margin: 0; font-size: clamp(1.55rem, 5vw, 2.45rem); line-height: 1.08; letter-spacing: -0.035em; }
+  .lexicon-section-intro p:last-child { margin-bottom: 0; }
+  .lexicon-entry { scroll-margin-top: 1rem; }
+  .lexicon-entry-header h3 { margin: 0; overflow-wrap: anywhere; font-size: clamp(1.45rem, 5vw, 2.2rem); line-height: 1.05; }
+  .lexicon-note { margin-top: 1rem; padding: 1rem; background: rgba(255, 248, 232, 0.72); border: 1px solid rgba(31, 23, 48, 0.14); border-radius: 1rem; }
+  .lexicon-note h3 { margin: 0 0 0.4rem; font-size: 1.15rem; }
+  .lexicon-note p { margin: 0.35rem 0 0; }
+  @media (max-width: 520px) { .lexicon-chip { align-items: flex-start; flex-direction: column; gap: 0.08rem; border-radius: 0.75rem; } }
 </style>
