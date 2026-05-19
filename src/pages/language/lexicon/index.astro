@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
-const words = [
+const doorwayWords = [
   {
     word: 'aelok',
     vaelinya_form: 'aelok',
@@ -68,33 +68,166 @@ const words = [
     plain_english: 'Her arrival changed the whole mood of the table before she spoke.',
   },
 ];
+
+const recognitionWords = [
+  {
+    word: 'siral',
+    vaelinya_form: 'siral',
+    meaning: 'known person',
+    pronunciation: 'SEER-al',
+    pronunciation_ipa: '/ˈsɪə.ræl/',
+    what: 'A person who has become known through return, greeting, or remembered presence.',
+    richer: 'A siral is not necessarily a close friend. They are someone whose presence has begun to matter.',
+    use: 'Use it when someone has crossed from stranger into recognised presence: a neighbour, a returning traveller, a shopkeeper, or someone whose absence would now be noticed.',
+    example: 'By winter, the baker had become a siral, greeted before the bread was chosen.',
+    plain_english: 'By winter, the baker had become someone known.',
+  },
+  {
+    word: 'sarek',
+    vaelinya_form: 'sarek',
+    meaning: 'full-human recognition',
+    pronunciation: 'SAH-rek',
+    pronunciation_ipa: '/ˈsɑː.rɛk/',
+    what: 'A moment when another person becomes fully real in the mind.',
+    richer: 'In sarek, you understand that another person has their own thoughts, fears, memories, tiredness, hopes, and hidden life.',
+    use: 'Use it when the change is in how someone sees another person: from background figure to whole person.',
+    example: 'In the crowd, sarek came over him, and the faces stopped feeling like part of the wall.',
+    plain_english: 'In the crowd, he suddenly understood that the people around him were fully real.',
+  },
+  {
+    word: 'navak',
+    vaelinya_form: 'navak',
+    meaning: 'transforming recognition',
+    pronunciation: 'NAH-vak',
+    pronunciation_ipa: '/ˈnɑː.væk/',
+    what: 'A moment of accurate seeing that changes how something is understood.',
+    richer: 'Navak can happen with a person, place, object, mistake, memory, or hidden truth.',
+    use: 'Use it when something becomes clear, and that clarity changes how the observer relates to it.',
+    example: 'One look at the abandoned toys brought navak to her, and the house stopped seeming merely empty.',
+    plain_english: 'One look at the toys changed how she understood the house.',
+  },
+];
 ---
-<BaseLayout title="Lexicon" description="Five first Vaelinya words for home, belonging, memory, return, and arrival.">
+<BaseLayout title="Lexicon" description="Eight first Vaelinya words for home, belonging, memory, return, arrival, recognition, and personhood.">
   <section class="page-section lexicon-page">
     <p class="eyebrow">Language</p>
     <h1>Vaelinya words</h1>
-    <p class="lede">Start with five small words. Each one names something felt: home-place, belonging, memory, return, or arrival.</p>
+    <p class="lede">Start with small words. Each one names something felt: home-place, belonging, memory, return, arrival, recognition, or personhood.</p>
     <p>These are public Vaelinya words, not the whole grammar. Learn them as doorway words first.</p>
 
-    <div class="lexicon-list">
-      {words.map((entry) => (
-        <article class="lexicon-entry">
-          <header class="lexicon-entry-header">
-            <h2>{entry.word}</h2>
-            <p>{entry.meaning}</p>
-          </header>
+    <section class="lexicon-section" aria-labelledby="first-doorway-words">
+      <div class="lexicon-section-intro">
+        <p class="eyebrow">First doorway words</p>
+        <h2 id="first-doorway-words">Home, belonging, memory, return, and arrival</h2>
+        <p>These are the first five words. They help you feel the emotional ground of Vaelinya before learning anything more technical.</p>
+      </div>
 
-          <dl class="lexicon-fields">
-            <div><dt>Vaelinya form</dt><dd>{entry.vaelinya_form}</dd></div>
-            <div><dt>Pronunciation</dt><dd>{entry.pronunciation}</dd></div>
-            <div><dt>IPA</dt><dd>{entry.pronunciation_ipa}</dd></div>
-            <div class="wide-field"><dt>Meaning</dt><dd>{entry.what} {entry.richer}</dd></div>
-            <div class="wide-field"><dt>Use it when</dt><dd>{entry.use}</dd></div>
-            <div class="wide-field"><dt>Example</dt><dd>{entry.example}</dd></div>
-            <div class="wide-field"><dt>Plain English</dt><dd>{entry.plain_english}</dd></div>
-          </dl>
-        </article>
-      ))}
-    </div>
+      <div class="lexicon-list">
+        {doorwayWords.map((entry) => (
+          <article class="lexicon-entry">
+            <header class="lexicon-entry-header">
+              <h3>{entry.word}</h3>
+              <p>{entry.meaning}</p>
+            </header>
+
+            <dl class="lexicon-fields">
+              <div><dt>Vaelinya form</dt><dd>{entry.vaelinya_form}</dd></div>
+              <div><dt>Pronunciation</dt><dd>{entry.pronunciation}</dd></div>
+              <div><dt>IPA</dt><dd>{entry.pronunciation_ipa}</dd></div>
+              <div class="wide-field"><dt>Meaning</dt><dd>{entry.what} {entry.richer}</dd></div>
+              <div class="wide-field"><dt>Use it when</dt><dd>{entry.use}</dd></div>
+              <div class="wide-field"><dt>Example</dt><dd>{entry.example}</dd></div>
+              <div class="wide-field"><dt>Plain English</dt><dd>{entry.plain_english}</dd></div>
+            </dl>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="lexicon-section recognition-section" aria-labelledby="recognition-and-personhood-words">
+      <div class="lexicon-section-intro">
+        <p class="eyebrow">Recognition and personhood words</p>
+        <h2 id="recognition-and-personhood-words">Becoming known and seeing clearly</h2>
+        <p>These words are about becoming known, seeing another person clearly, and recognising something in a way that changes understanding.</p>
+      </div>
+
+      <div class="lexicon-list">
+        {recognitionWords.map((entry) => (
+          <article class="lexicon-entry">
+            <header class="lexicon-entry-header">
+              <h3>{entry.word}</h3>
+              <p>{entry.meaning}</p>
+            </header>
+
+            <dl class="lexicon-fields">
+              <div><dt>Vaelinya form</dt><dd>{entry.vaelinya_form}</dd></div>
+              <div><dt>Pronunciation</dt><dd>{entry.pronunciation}</dd></div>
+              <div><dt>IPA</dt><dd>{entry.pronunciation_ipa}</dd></div>
+              <div class="wide-field"><dt>Meaning</dt><dd>{entry.what} {entry.richer}</dd></div>
+              <div class="wide-field"><dt>Use it when</dt><dd>{entry.use}</dd></div>
+              <div class="wide-field"><dt>Example</dt><dd>{entry.example}</dd></div>
+              <div class="wide-field"><dt>Plain English</dt><dd>{entry.plain_english}</dd></div>
+            </dl>
+          </article>
+        ))}
+      </div>
+
+      <aside class="lexicon-note" aria-label="Difference between sarek and navak">
+        <h3>sarek and navak</h3>
+        <p><strong>sarek</strong> is for recognising another person’s full inner life.</p>
+        <p><strong>navak</strong> is wider. It means something is seen clearly, and that changes understanding.</p>
+      </aside>
+    </section>
   </section>
 </BaseLayout>
+
+<style>
+  .lexicon-section {
+    margin-top: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .recognition-section {
+    padding-top: clamp(1.25rem, 4vw, 2rem);
+    border-top: 1px solid rgba(31, 23, 48, 0.16);
+  }
+
+  .lexicon-section-intro {
+    max-width: 50rem;
+    margin-bottom: 1rem;
+  }
+
+  .lexicon-section-intro h2 {
+    margin: 0;
+    font-size: clamp(1.55rem, 5vw, 2.45rem);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+  }
+
+  .lexicon-section-intro p:last-child {
+    margin-bottom: 0;
+  }
+
+  .lexicon-entry-header h3 {
+    margin: 0;
+    overflow-wrap: anywhere;
+    font-size: clamp(1.45rem, 5vw, 2.2rem);
+    line-height: 1.05;
+  }
+
+  .lexicon-note {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(255, 248, 232, 0.72);
+    border: 1px solid rgba(31, 23, 48, 0.14);
+    border-radius: 1rem;
+  }
+
+  .lexicon-note h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.15rem;
+  }
+
+  .lexicon-note p {
+    margin: 0.35rem 0 0;
+  }
+</style>
