@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const words = [
+  {
+    word: 'aelok',
+    vaelinya_form: 'aelok',
+    meaning: 'home-place',
+    pronunciation: 'AY-lok',
+    pronunciation_ipa: '/ˈeɪ.lɒk/',
+    what: 'A place where someone can settle without guarding themselves.',
+    richer: 'It is more than shelter. It is a place where the body and mind can stop bracing.',
+    use: 'Use it when a room, home, corner, settlement, or gathering-place lets someone feel inwardly safe.',
+    example: 'In her small painted kitchen, he found aelok before he found the courage to speak.',
+    plain_english: 'In her kitchen, he found a true home-place before he found words.',
+  },
+  {
+    word: 'noras',
+    vaelinya_form: 'noras',
+    meaning: 'shelter',
+    pronunciation: 'NOR-as',
+    pronunciation_ipa: '/ˈnɔː.ræs/',
+    what: 'Shelter; a held condition of temporary safety.',
+    richer: 'A noras is a refuge where a body, mind, or group can recover enough to continue. It is more active than cover, and less complete than home.',
+    use: 'Use it for physical, emotional, or social shelter, especially when someone needs warmth, pause, or protection before moving on.',
+    example: 'For three winter months the café served as noras for anyone who needed warmth more than questions.',
+    plain_english: 'For three winter months, the café was shelter for people who needed warmth and safety.',
+  },
+  {
+    word: 'ismak',
+    vaelinya_form: 'ismak',
+    meaning: 'recovered calm',
+    pronunciation: 'ISS-mak',
+    pronunciation_ipa: '/ˈɪs.mæk/',
+    what: 'A calm that returns after disturbance.',
+    richer: 'Ismak is inward steadiness regained after fear, noise, grief, or overload. It is calm that has come back, rather than calm that was always there.',
+    use: 'Use it when a person, room, group, or body settles again after pressure.',
+    example: 'After the doors were shut and the shouting ended, a small ismak returned to her hands.',
+    plain_english: 'After the shouting stopped, a small calm returned to her body.',
+  },
+];
+---
+<BaseLayout title="Home, shelter, and recovery words" description="Vaelinya words for home-place, shelter, and recovered calm.">
+  <section class="page-section lexicon-page">
+    <p class="eyebrow">Language</p>
+    <h1>Home, shelter, and recovery words</h1>
+    <p class="lede">These words are about the places, pauses, and returned calm that help someone become safe enough to continue.</p>
+    <p>Start with the short meanings. Then read the examples. These words sit close together, but each one does a different job.</p>
+
+    <section class="lexicon-family-summary" aria-labelledby="family-summary">
+      <h2 id="family-summary">What this family means</h2>
+      <p>This family is about safety after pressure.</p>
+      <p>A person may need a true home-place, a temporary shelter, or the calm that comes back after fear, grief, noise, or overload.</p>
+      <p>In Vaelinya, safety is not only a building. It can be a room, a pause, a group of people, a kind voice, or a place where the body stops bracing.</p>
+    </section>
+
+    <nav class="lexicon-index family-word-index" aria-label="Words on this page">
+      <div class="lexicon-index-header">
+        <h2>Words on this page</h2>
+      </div>
+      <div class="lexicon-index-links">
+        {words.map((entry) => (
+          <a class="lexicon-chip" href={`#word-${entry.word}`}>
+            <strong>{entry.word}</strong>
+            <span>{entry.meaning}</span>
+          </a>
+        ))}
+      </div>
+    </nav>
+
+    <div class="lexicon-list">
+      {words.map((entry) => (
+        <article id={`word-${entry.word}`} class="lexicon-entry">
+          <header class="lexicon-entry-header">
+            <h2>{entry.word}</h2>
+            <p>{entry.meaning}</p>
+          </header>
+
+          <dl class="lexicon-fields">
+            <div><dt>Vaelinya form</dt><dd>{entry.vaelinya_form}</dd></div>
+            <div><dt>Pronunciation</dt><dd>{entry.pronunciation}</dd></div>
+            <div><dt>IPA</dt><dd>{entry.pronunciation_ipa}</dd></div>
+            <div class="wide-field"><dt>Meaning</dt><dd>{entry.what} {entry.richer}</dd></div>
+            <div class="wide-field"><dt>Use it when</dt><dd>{entry.use}</dd></div>
+            <div class="wide-field"><dt>Example</dt><dd>{entry.example}</dd></div>
+            <div class="wide-field"><dt>Plain English</dt><dd>{entry.plain_english}</dd></div>
+          </dl>
+        </article>
+      ))}
+    </div>
+
+    <aside class="lexicon-note" aria-label="Difference between aelok, noras, and ismak">
+      <h2>aelok, noras, and ismak</h2>
+      <p><strong>aelok</strong> is a true home-place.</p>
+      <p><strong>noras</strong> is shelter: a protected place or condition that helps someone recover enough to continue.</p>
+      <p><strong>ismak</strong> is the calm that can return once shelter or safety becomes possible.</p>
+    </aside>
+
+    <p><a class="button secondary" href="/language/lexicon/">Back to Vaelinya words</a></p>
+  </section>
+</BaseLayout>
+
+<style>
+  .lexicon-family-summary {
+    margin-top: 1.25rem;
+    padding: clamp(1rem, 3vw, 1.25rem);
+    background: rgba(255, 248, 232, 0.68);
+    border: 1px solid rgba(31, 23, 48, 0.14);
+    border-radius: 1.1rem;
+  }
+
+  .lexicon-family-summary h2 {
+    margin: 0;
+    font-size: clamp(1.35rem, 4vw, 1.9rem);
+    line-height: 1.1;
+  }
+
+  .lexicon-family-summary p:last-child {
+    margin-bottom: 0;
+  }
+
+  .family-word-index {
+    margin-top: 1.25rem;
+  }
+
+  .lexicon-index-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .lexicon-chip {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    max-width: 100%;
+    padding: 0.35rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(255, 241, 199, 0.92);
+    border: 1px solid rgba(31, 23, 48, 0.12);
+    text-decoration: none;
+    line-height: 1.2;
+  }
+
+  .lexicon-chip strong,
+  .lexicon-chip span {
+    overflow-wrap: anywhere;
+  }
+
+  .lexicon-chip span {
+    font-size: 0.82rem;
+    opacity: 0.78;
+  }
+
+  .lexicon-entry {
+    scroll-margin-top: 1rem;
+  }
+
+  .lexicon-note {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(255, 248, 232, 0.72);
+    border: 1px solid rgba(31, 23, 48, 0.14);
+    border-radius: 1rem;
+  }
+
+  .lexicon-note h2 {
+    margin: 0 0 0.4rem;
+    font-size: 1.2rem;
+  }
+
+  .lexicon-note p {
+    margin: 0.35rem 0 0;
+  }
+
+  @media (max-width: 520px) {
+    .lexicon-chip {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.08rem;
+      border-radius: 0.75rem;
+    }
+  }
+</style>
