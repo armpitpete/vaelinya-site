@@ -63,12 +63,13 @@ const relatedLinks = [
     {relatedLinks.length > 0 && (
       <footer class="story-related">
         <h2>After the story</h2>
-        <p>Follow one thread from this story into the wider world.</p>
+        <p>Follow one thread from this story into the wider world, language, or artefacts.</p>
         <div class="link-list">
           {relatedLinks.map((link) => (
             <a href={link.href}>{link.group}: {labelForLink(link.href)}</a>
           ))}
         </div>
+        <p><a class="button secondary" href="/read/lina/">Return to Lina’s stories</a></p>
       </footer>
     )}
   </article>
