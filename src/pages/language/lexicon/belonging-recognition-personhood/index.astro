@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const words = [
+  {
+    word: 'meras',
+    vaelinya_form: 'meras',
+    meaning: 'belonging',
+    pronunciation: 'MEH-ras',
+    pronunciation_ipa: '/ˈmɛ.ræs/',
+    what: 'The felt condition of being rightly placed among others.',
+    richer: 'It is belonging as something lived in the body and in relationship, not just membership on paper.',
+    use: 'Use it for social belonging, safe recognition, and the feeling of being rightly placed among people.',
+    example: 'She felt meras only when her own name could be spoken there without caution.',
+    plain_english: 'She felt true belonging only when she could be herself there.',
+  },
+  {
+    word: 'siral',
+    vaelinya_form: 'siral',
+    meaning: 'known person',
+    pronunciation: 'SEER-al',
+    pronunciation_ipa: '/ˈsɪə.ræl/',
+    what: 'A person who has become known through return, greeting, or remembered presence.',
+    richer: 'A siral is not necessarily a close friend. They are someone whose presence has begun to matter.',
+    use: 'Use it when someone has crossed from stranger into recognised presence: a neighbour, a returning traveller, a shopkeeper, or someone whose absence would now be noticed.',
+    example: 'By winter, the baker had become a siral, greeted before the bread was chosen.',
+    plain_english: 'By winter, the baker had become someone known.',
+  },
+  {
+    word: 'sarek',
+    vaelinya_form: 'sarek',
+    meaning: 'full-human recognition',
+    pronunciation: 'SAH-rek',
+    pronunciation_ipa: '/ˈsɑː.rɛk/',
+    what: 'A moment when another person becomes fully real in the mind.',
+    richer: 'In sarek, you understand that another person has their own thoughts, fears, memories, tiredness, hopes, and hidden life.',
+    use: 'Use it when the change is in how someone sees another person: from background figure to whole person.',
+    example: 'In the crowd, sarek came over him, and the faces stopped feeling like part of the wall.',
+    plain_english: 'In the crowd, he suddenly understood that the people around him were fully real.',
+  },
+  {
+    word: 'navak',
+    vaelinya_form: 'navak',
+    meaning: 'transforming recognition',
+    pronunciation: 'NAH-vak',
+    pronunciation_ipa: '/ˈnɑː.væk/',
+    what: 'A moment of accurate seeing that changes how something is understood.',
+    richer: 'Navak can happen with a person, place, object, mistake, memory, or hidden truth.',
+    use: 'Use it when something becomes clear, and that clarity changes how the observer relates to it.',
+    example: 'One look at the abandoned toys brought navak to her, and the house stopped seeming merely empty.',
+    plain_english: 'One look at the toys changed how she understood the house.',
+  },
+];
+---
+<BaseLayout title="Belonging, recognition, and personhood words" description="Vaelinya words for belonging, becoming known, and seeing people clearly.">
+  <section class="page-section lexicon-page">
+    <p class="eyebrow">Language</p>
+    <h1>Belonging, recognition, and personhood words</h1>
+    <p class="lede">These words are about how people become known, welcomed, and seen as fully real.</p>
+    <p>Start with belonging, then move toward recognition. These words are close to one another, but each one names a different kind of seeing or being seen.</p>
+
+    <section class="lexicon-family-summary" aria-labelledby="family-summary">
+      <h2 id="family-summary">What this family means</h2>
+      <p>This family is about social safety and clear seeing.</p>
+      <p>A person may belong somewhere, become known through repeated presence, be recognised as fully human, or understand something clearly enough that the understanding changes them.</p>
+      <p>In Vaelinya, seeing someone properly is an act of care. It means noticing that a person has an inner life, not just a role, face, task, or label.</p>
+    </section>
+
+    <nav class="lexicon-index family-word-index" aria-label="Words on this page">
+      <div class="lexicon-index-header">
+        <h2>Words on this page</h2>
+      </div>
+      <div class="lexicon-index-links">
+        {words.map((entry) => (
+          <a class="lexicon-chip" href={`#word-${entry.word}`}>
+            <strong>{entry.word}</strong>
+            <span>{entry.meaning}</span>
+          </a>
+        ))}
+      </div>
+    </nav>
+
+    <div class="lexicon-list">
+      {words.map((entry) => (
+        <article id={`word-${entry.word}`} class="lexicon-entry">
+          <header class="lexicon-entry-header">
+            <h2>{entry.word}</h2>
+            <p>{entry.meaning}</p>
+          </header>
+
+          <dl class="lexicon-fields">
+            <div><dt>Vaelinya form</dt><dd>{entry.vaelinya_form}</dd></div>
+            <div><dt>Pronunciation</dt><dd>{entry.pronunciation}</dd></div>
+            <div><dt>IPA</dt><dd>{entry.pronunciation_ipa}</dd></div>
+            <div class="wide-field"><dt>Meaning</dt><dd>{entry.what} {entry.richer}</dd></div>
+            <div class="wide-field"><dt>Use it when</dt><dd>{entry.use}</dd></div>
+            <div class="wide-field"><dt>Example</dt><dd>{entry.example}</dd></div>
+            <div class="wide-field"><dt>Plain English</dt><dd>{entry.plain_english}</dd></div>
+          </dl>
+        </article>
+      ))}
+    </div>
+
+    <aside class="lexicon-note" aria-label="Difference between meras, siral, sarek, and navak">
+      <h2>meras, siral, sarek, and navak</h2>
+      <p><strong>meras</strong> is belonging: the felt sense of being rightly placed among others.</p>
+      <p><strong>siral</strong> is a known person: someone whose presence has started to matter.</p>
+      <p><strong>sarek</strong> is full-human recognition: seeing another person as fully real inside.</p>
+      <p><strong>navak</strong> is transforming recognition: seeing something clearly enough that understanding changes.</p>
+    </aside>
+
+    <p><a class="button secondary" href="/language/lexicon/">Back to Vaelinya words</a></p>
+  </section>
+</BaseLayout>
+
+<style>
+  .lexicon-family-summary {
+    margin-top: 1.25rem;
+    padding: clamp(1rem, 3vw, 1.25rem);
+    background: rgba(255, 248, 232, 0.68);
+    border: 1px solid rgba(31, 23, 48, 0.14);
+    border-radius: 1.1rem;
+  }
+
+  .lexicon-family-summary h2 {
+    margin: 0;
+    font-size: clamp(1.35rem, 4vw, 1.9rem);
+    line-height: 1.1;
+  }
+
+  .lexicon-family-summary p:last-child {
+    margin-bottom: 0;
+  }
+
+  .family-word-index {
+    margin-top: 1.25rem;
+  }
+
+  .lexicon-index-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .lexicon-chip {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    max-width: 100%;
+    padding: 0.35rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(255, 241, 199, 0.92);
+    border: 1px solid rgba(31, 23, 48, 0.12);
+    text-decoration: none;
+    line-height: 1.2;
+  }
+
+  .lexicon-chip strong,
+  .lexicon-chip span {
+    overflow-wrap: anywhere;
+  }
+
+  .lexicon-chip span {
+    font-size: 0.82rem;
+    opacity: 0.78;
+  }
+
+  .lexicon-entry {
+    scroll-margin-top: 1rem;
+  }
+
+  .lexicon-note {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(255, 248, 232, 0.72);
+    border: 1px solid rgba(31, 23, 48, 0.14);
+    border-radius: 1rem;
+  }
+
+  .lexicon-note h2 {
+    margin: 0 0 0.4rem;
+    font-size: 1.2rem;
+  }
+
+  .lexicon-note p {
+    margin: 0.35rem 0 0;
+  }
+
+  @media (max-width: 520px) {
+    .lexicon-chip {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.08rem;
+      border-radius: 0.75rem;
+    }
+  }
+</style>
