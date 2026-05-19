@@ -62,6 +62,8 @@ The Astro site URL is set in `astro.config.mjs` as:
 https://vaelinya.uk
 ```
 
+Latest deploy trigger note: homepage/mobile-navigation fix pushed on 2026-05-19.
+
 ## Content rules
 
 This repo is the **public website implementation**, not the whole private worldbuilding vault.
