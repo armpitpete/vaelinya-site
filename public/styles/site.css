@@ -484,6 +484,21 @@ a { color: inherit; }
   margin: 0;
 }
 
+.story-hero-image {
+  margin: 1rem 0 0;
+  max-width: 46rem;
+}
+
+.story-hero-image img {
+  display: block;
+  width: 100%;
+  max-height: 34rem;
+  object-fit: cover;
+  border-radius: 1.1rem;
+  border: 1px solid rgba(31, 23, 48, 0.16);
+  box-shadow: 0 0.85rem 2rem rgba(9, 5, 18, 0.16);
+}
+
 .story-content {
   max-width: 46rem;
   margin-top: 1rem;
@@ -618,6 +633,11 @@ a { color: inherit; }
 
   .door-card, .story-card {
     min-height: 8.75rem;
+  }
+
+  .story-hero-image img {
+    max-height: 22rem;
+    border-radius: 0.9rem;
   }
 
   .visual-callout {
