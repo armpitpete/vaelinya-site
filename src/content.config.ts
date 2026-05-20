@@ -16,6 +16,7 @@ const stories = defineCollection({
     public_url: z.string(),
     old_url: z.string().optional(),
     hero_image: z.string().optional(),
+    hero_image_alt: z.string().optional(),
     symbol: z.string().optional(),
     symbol_alt: z.string().optional(),
     related_world: z.array(z.string()).default([]),
