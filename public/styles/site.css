@@ -328,6 +328,69 @@ a { color: inherit; }
   text-decoration: none;
 }
 
+.visual-callout {
+  display: grid;
+  grid-template-columns: minmax(6rem, 0.35fr) minmax(0, 1fr);
+  gap: clamp(0.85rem, 2vw, 1.35rem);
+  align-items: center;
+  margin: 1rem 0;
+  padding: clamp(1rem, 2.2vw, 1.45rem);
+  border: 1px solid rgba(31, 23, 48, 0.14);
+  border-radius: 1.2rem;
+  background:
+    radial-gradient(circle at 12% 20%, rgba(255, 255, 255, 0.42), transparent 8rem),
+    rgba(255, 241, 199, 0.82);
+  box-shadow: 0 0.85rem 2rem rgba(9, 5, 18, 0.16);
+}
+
+.visual-callout-mark {
+  min-height: 8rem;
+  border-radius: 1rem;
+  display: grid;
+  place-items: center;
+  color: white;
+  background: linear-gradient(145deg, var(--language), var(--read));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28);
+}
+
+.visual-callout-mark span {
+  width: 4.4rem;
+  height: 4.4rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 2.25rem;
+  line-height: 1;
+}
+
+.visual-callout-copy h2 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.6vw, 2rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.visual-callout-copy p:not(.eyebrow) {
+  margin: 0.55rem 0 0;
+  max-width: 46rem;
+}
+
+.visual-callout-link {
+  display: inline-flex;
+  margin-top: 0.8rem;
+  font-weight: 900;
+  text-decoration: none;
+  border-bottom: 2px solid currentColor;
+}
+
+.visual-callout-read .visual-callout-mark { background: linear-gradient(145deg, #ed74a8, var(--read)); }
+.visual-callout-world .visual-callout-mark { background: linear-gradient(145deg, #77d6bd, var(--world)); }
+.visual-callout-language .visual-callout-mark { background: linear-gradient(145deg, #8a94ee, var(--language)); }
+.visual-callout-artefacts .visual-callout-mark { background: linear-gradient(145deg, #f2b35f, var(--artefacts)); }
+.visual-callout-memory .visual-callout-mark { background: linear-gradient(145deg, #6c56d9, #c1447a); }
+
 .lexicon-list {
   display: grid;
   gap: 1.15rem;
@@ -456,6 +519,16 @@ a { color: inherit; }
   .site-footer { flex-direction: column; }
 }
 
+@media (max-width: 700px) {
+  .visual-callout {
+    grid-template-columns: 1fr;
+  }
+
+  .visual-callout-mark {
+    min-height: 6.5rem;
+  }
+}
+
 @media (max-width: 520px) {
   .site-main {
     padding: 1rem 0.7rem 2.5rem;
@@ -515,6 +588,22 @@ a { color: inherit; }
 
   .door-card, .story-card {
     min-height: 8.75rem;
+  }
+
+  .visual-callout {
+    padding: 0.9rem;
+    border-radius: 1rem;
+  }
+
+  .visual-callout-mark {
+    min-height: 5.75rem;
+    border-radius: 0.85rem;
+  }
+
+  .visual-callout-mark span {
+    width: 3.6rem;
+    height: 3.6rem;
+    font-size: 1.9rem;
   }
 
   .lexicon-fields,
