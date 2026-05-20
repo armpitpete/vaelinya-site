@@ -1,0 +1,32 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  text: string;
+  href?: string;
+  linkText?: string;
+  symbol?: string;
+  tone?: 'read' | 'world' | 'language' | 'artefacts' | 'memory';
+}
+
+const {
+  eyebrow = 'Artefact',
+  title,
+  text,
+  href,
+  linkText = 'Open this thread',
+  symbol = '✦',
+  tone = 'memory',
+} = Astro.props;
+---
+<aside class={`visual-callout visual-callout-${tone}`}>
+  <div class="visual-callout-mark" aria-hidden="true">
+    <span>{symbol}</span>
+  </div>
+  <div class="visual-callout-copy">
+    <p class="eyebrow">{eyebrow}</p>
+    <h2>{title}</h2>
+    <p>{text}</p>
+    {href && <a class="visual-callout-link" href={href}>{linkText}</a>}
+  </div>
+</aside>
