@@ -7,6 +7,8 @@ interface Props {
   series: string;
   storyNumber: number;
   totalStories: number;
+  heroImage?: string;
+  heroImageAlt?: string;
   relatedWorld?: string[];
   relatedLanguage?: string[];
   relatedArtefacts?: string[];
@@ -18,6 +20,8 @@ const {
   series,
   storyNumber,
   totalStories,
+  heroImage,
+  heroImageAlt,
   relatedWorld = [],
   relatedLanguage = [],
   relatedArtefacts = [],
@@ -56,6 +60,11 @@ const relatedLinks = [
     <header class="story-header story-header-compact" aria-label={`${series}, story ${storyNumber} of ${totalStories}`}>
       <p class="eyebrow">{series}</p>
       <p class="story-count">Story {storyNumber} of {totalStories}</p>
+      {heroImage && (
+        <figure class="story-hero-image">
+          <img src={heroImage} alt={heroImageAlt ?? description} loading="eager" decoding="async" />
+        </figure>
+      )}
     </header>
     <div class="story-content">
       <slot />
