@@ -2,12 +2,13 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import VisualCallout from '../components/VisualCallout.astro';
 ---
-<BaseLayout title="Vaelinya is your next adventure" description="A colourful story world of remembrance, weather, borders, childhood, ritual, language, song, care, and brave attention.">
-  <section class="hero hero-illustrated">
+<BaseLayout title="Vaelinya is your next adventure" description="A colourful, illustrated, learnable story world where readers can begin with stories, then explore world, language, and artefacts.">
+  <section class="hero hero-illustrated threshold-hero">
     <div class="hero-copy">
       <p class="eyebrow">A story world</p>
       <h1>Welcome to Vaelinya.</h1>
-      <p>A colourful story world of remembrance, weather, borders, childhood, ritual, language, song, care, and brave attention.</p>
+      <p>A colourful, illustrated, learnable story world of brave children, living words, strange places, meaningful things, and careful remembering.</p>
+      <p class="threshold-line">Choose a door. Begin.</p>
     </div>
     <div class="hero-art" aria-label="Illustrated symbol of a glowing bridge, mist, stars, and paths into Vaelinya">
       <div class="sun-orb"></div>
@@ -22,6 +23,85 @@ import VisualCallout from '../components/VisualCallout.astro';
     </div>
   </section>
 
+  <section class="door-intro" aria-labelledby="door-intro-title">
+    <p class="eyebrow">Four doors</p>
+    <h2 id="door-intro-title">Choose how you want to enter.</h2>
+    <p>Start with a story, step into the world, learn a word, or look closely at an artefact. You do not need to understand everything before you begin.</p>
+  </section>
+
+  <section class="door-grid" aria-label="Four doorways into Vaelinya">
+    <article class="door-card door-card--read">
+      <div class="door-card__visual" aria-hidden="true">
+        <div class="door-card__shape"><span>✦</span></div>
+      </div>
+      <div class="door-card__content">
+        <p class="door-card__label">Read</p>
+        <h3>Read the stories</h3>
+        <p>Start with stories and meet the children of Vaelinya.</p>
+        <div class="door-card__actions">
+          <a class="button" href="/read/">Read a story</a>
+          <a class="quiet-link" href="/read/lina/">Meet Lina</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="door-card door-card--world">
+      <div class="door-card__visual" aria-hidden="true">
+        <div class="door-card__shape"><span>◎</span></div>
+      </div>
+      <div class="door-card__content">
+        <p class="door-card__label">World</p>
+        <h3>Explore the world</h3>
+        <p>Explore places, people, customs, and the living shape of the world.</p>
+        <div class="door-card__actions">
+          <a class="button" href="/world/">Explore the world</a>
+          <a class="quiet-link" href="/world/the-rim/">Start with the Rim</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="door-card door-card--language">
+      <div class="door-card__visual" aria-hidden="true">
+        <div class="door-card__shape"><span>⌁</span></div>
+      </div>
+      <div class="door-card__content">
+        <p class="door-card__label">Language</p>
+        <h3>Learn the language</h3>
+        <p>Learn Vaelinya words one small family at a time.</p>
+        <div class="door-card__actions">
+          <a class="button" href="/language/">Learn words</a>
+          <a class="quiet-link" href="/language/lexicon/">Open the lexicon</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="door-card door-card--artefacts">
+      <div class="door-card__visual" aria-hidden="true">
+        <div class="door-card__shape"><span>◇</span></div>
+      </div>
+      <div class="door-card__content">
+        <p class="door-card__label">Artefacts</p>
+        <h3>Discover artefacts</h3>
+        <p>See symbols, objects, marks, and things made inside the world.</p>
+        <div class="door-card__actions">
+          <a class="button" href="/artefacts/">See artefacts</a>
+          <a class="quiet-link" href="/artefacts/symbols/">Start with symbols</a>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="panel lina-greeting-panel" aria-labelledby="lina-greeting-title">
+    <div class="lina-greeting-mark" aria-hidden="true"><span>✦</span></div>
+    <div>
+      <p class="eyebrow">Lina greeting</p>
+      <h2 id="lina-greeting-title">Lina says hello</h2>
+      <p>Lina says hello. Her Vaelinya greeting will be added when the word is ready.</p>
+      <p class="audio-policy-note">Audio policy: press-to-play only. No autoplay, no hover sound, no default click sound.</p>
+      <p><a class="button secondary" href="/read/lina/">Meet Lina</a></p>
+    </div>
+  </section>
+
   <VisualCallout
     eyebrow="First path"
     title="Begin with one story, then follow what shines."
@@ -31,33 +111,6 @@ import VisualCallout from '../components/VisualCallout.astro';
     symbol="✦"
     tone="read"
   />
-
-  <section class="door-grid" aria-label="Four doorways into Vaelinya">
-    <a class="door-card read" href="/read/">
-      <span class="symbol-circle">✦</span>
-      <span>Read</span>
-      <strong>Read the stories</strong>
-      <p>Begin with Lina’s eight stories, then meet the other children.</p>
-    </a>
-    <a class="door-card world" href="/world/">
-      <span class="symbol-circle">◎</span>
-      <span>World</span>
-      <strong>Explore the world</strong>
-      <p>Find the Rim, the Rimaeri, the Warm Remembering, and strange places.</p>
-    </a>
-    <a class="door-card language" href="/language/">
-      <span class="symbol-circle">⌁</span>
-      <span>Language</span>
-      <strong>Learn the language</strong>
-      <p>Start with small words, sounds, names, and gentle practice.</p>
-    </a>
-    <a class="door-card artefacts" href="/artefacts/">
-      <span class="symbol-circle">◇</span>
-      <span>Artefacts</span>
-      <strong>Discover artefacts</strong>
-      <p>Maps, symbols, chant cards, story objects, and printables.</p>
-    </a>
-  </section>
 
   <section class="panel next-step-panel">
     <h2>Choose your first path</h2>
