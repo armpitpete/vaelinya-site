@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Lina under the low crying cloud</title>
+  <desc id="desc">Lina sits in wet meadow grass beneath a small low grey-blue cloud with warm rain falling around her.</desc>
+  <rect width="1200" height="675" fill="#36507a"/>
+  <path d="M0 460 C220 420 420 500 610 450 C820 398 960 450 1200 420 L1200 675 L0 675 Z" fill="#2f8f83"/>
+  <g opacity="0.86">
+    <ellipse cx="585" cy="205" rx="170" ry="72" fill="#b9c8db"/>
+    <ellipse cx="465" cy="220" rx="110" ry="58" fill="#c8d4e3"/>
+    <ellipse cx="705" cy="228" rx="120" ry="60" fill="#a8bbd2"/>
+  </g>
+  <g stroke="#ffe6a6" stroke-width="8" stroke-linecap="round" opacity="0.78">
+    <path d="M430 285 L405 385"/><path d="M500 292 L472 420"/><path d="M575 292 L550 405"/><path d="M655 292 L625 430"/><path d="M735 292 L705 395"/>
+  </g>
+  <g transform="translate(580 455)">
+    <circle cx="0" cy="-70" r="25" fill="#1f1730"/>
+    <path d="M0 -45 L0 35" stroke="#1f1730" stroke-width="22" stroke-linecap="round"/>
+    <path d="M-42 -12 L42 -12" stroke="#1f1730" stroke-width="14" stroke-linecap="round"/>
+  </g>
+  <g fill="#d7e3ff" opacity="0.9">
+    <circle cx="240" cy="535" r="9"/><circle cx="910" cy="520" r="10"/><circle cx="1010" cy="555" r="8"/>
+  </g>
+</svg>
