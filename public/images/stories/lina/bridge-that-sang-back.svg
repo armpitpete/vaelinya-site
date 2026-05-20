@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Lina on the singing bridge</title>
+  <desc id="desc">A luminous bridge crosses silver mist above a canyon while a small child stands with a recorder.</desc>
+  <rect width="1200" height="675" fill="#1d122e"/>
+  <circle cx="980" cy="115" r="70" fill="#ffe577" opacity="0.95"/>
+  <path d="M0 475 C210 390 380 560 600 455 C820 350 980 500 1200 430 L1200 675 L0 675 Z" fill="#6c56d9" opacity="0.45"/>
+  <path d="M65 405 C315 215 785 215 1135 405" fill="none" stroke="#fff8e8" stroke-width="34" stroke-linecap="round" opacity="0.88"/>
+  <path d="M85 415 C335 245 790 245 1115 415" fill="none" stroke="#45c6b3" stroke-width="12" stroke-linecap="round" opacity="0.8"/>
+  <g opacity="0.55">
+    <ellipse cx="360" cy="520" rx="260" ry="42" fill="#fff8e8"/>
+    <ellipse cx="760" cy="545" rx="340" ry="48" fill="#fff8e8"/>
+  </g>
+  <g transform="translate(555 320)">
+    <circle cx="0" cy="0" r="25" fill="#1f1730"/>
+    <path d="M0 28 L0 105" stroke="#1f1730" stroke-width="22" stroke-linecap="round"/>
+    <path d="M-35 62 L35 62" stroke="#1f1730" stroke-width="14" stroke-linecap="round"/>
+    <path d="M38 48 L95 20" stroke="#8b5a2b" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <path d="M820 430 C870 390 930 385 985 410" fill="none" stroke="#9ee8be" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="975" cy="398" r="8" fill="#fff8e8"/>
+</svg>
