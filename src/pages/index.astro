@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import VisualCallout from '../components/VisualCallout.astro';
 ---
 <BaseLayout title="Vaelinya is your next adventure" description="A colourful story world of remembrance, weather, borders, childhood, ritual, language, song, care, and brave attention.">
   <section class="hero hero-illustrated">
@@ -20,6 +21,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p>begin the journey</p>
     </div>
   </section>
+
+  <VisualCallout
+    eyebrow="First path"
+    title="Begin with one story, then follow what shines."
+    text="Vaelinya is easiest to enter through a small choice: read a story, notice a symbol, learn a word, or step onto the Rim. You do not need the whole world before you start."
+    href="/read/lina/"
+    linkText="Open Lina’s stories"
+    symbol="✦"
+    tone="read"
+  />
 
   <section class="door-grid" aria-label="Four doorways into Vaelinya">
     <a class="door-card read" href="/read/">
