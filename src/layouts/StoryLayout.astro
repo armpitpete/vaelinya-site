@@ -28,13 +28,15 @@ const labelForLink = (href: string) => {
     ['/world/', 'Explore the world'],
     ['/world/the-rim/', 'The Rim'],
     ['/world/rimaeri/', 'The Rimaeri'],
-    ['/world/warm-remembering/', 'The Warm Remembering'],
+    ['/world/the-warm-remembering/', 'The Warm Remembering'],
     ['/language/', 'Learn the language'],
     ['/language/lexicon/', 'Open the lexicon'],
     ['/language/reference/', 'Language reference'],
     ['/artefacts/', 'Discover artefacts'],
     ['/artefacts/symbols/', 'Symbols'],
+    ['/artefacts/symbols/navan/', 'NAVAN symbol'],
     ['/artefacts/maps/', 'Maps'],
+    ['/artefacts/maps/reader-orientation/', 'Reader orientation map'],
     ['/artefacts/chant-cards/', 'Chant cards'],
     ['/artefacts/story-objects/', 'Story objects'],
     ['/artefacts/printables/', 'Printables'],
@@ -51,11 +53,9 @@ const relatedLinks = [
 ---
 <BaseLayout title={title} description={description}>
   <article class="story-page">
-    <header class="story-header">
+    <header class="story-header story-header-compact" aria-label={`${series}, story ${storyNumber} of ${totalStories}`}>
       <p class="eyebrow">{series}</p>
-      <h1>{title}</h1>
       <p class="story-count">Story {storyNumber} of {totalStories}</p>
-      <p class="lede">{description}</p>
     </header>
     <div class="story-content">
       <slot />
