@@ -1,14 +1,39 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Language" description="Learn the language of Vaelinya in small steps.">
+<BaseLayout title="Language" description="Learn the language of Vaelinya in small, clear steps.">
   <section class="page-section">
     <p class="eyebrow">Language</p>
-    <h1>Learn the language.</h1>
-    <p class="lede">Learn slowly and clearly. Start with words, sounds, names, and meaning. Vaelinya language should feel like discovery, not homework.</p>
-    <div class="link-list">
-      <a href="/language/lexicon/">Open the lexicon</a>
-      <a href="/language/reference/">Language reference</a>
+    <h1>Learn the language of Vaelinya.</h1>
+    <p class="lede">Start with a few living words. The language of Vaelinya should feel like discovery, not homework.</p>
+    <p>Use this section when you want to understand names, meanings, sounds, and the small word-families that run underneath the stories.</p>
+
+    <article class="visual-callout visual-callout-language">
+      <div class="visual-callout-mark" aria-hidden="true"><span>Va</span></div>
+      <div class="visual-callout-copy">
+        <p class="eyebrow">First route</p>
+        <h2>Open the public lexicon</h2>
+        <p>The lexicon gives each public word slowly: word, pronunciation, IPA, plain meaning, story use, and example sentence.</p>
+        <a class="visual-callout-link" href="/language/lexicon/">Open the lexicon</a>
+      </div>
+    </article>
+
+    <div class="link-list" aria-label="Language routes">
+      <a href="/language/lexicon/">Lexicon</a>
+      <a href="/language/lexicon/home-shelter-recovery/">Word family: home, shelter, and recovery</a>
+      <a href="/language/lexicon/belonging-recognition-personhood/">Word family: belonging, recognition, and personhood</a>
+      <a href="/read/lina/">Words inside Lina’s stories</a>
     </div>
+
+    <article class="panel">
+      <p class="eyebrow">Coming next</p>
+      <h2>Reference pages will come after the words are stable</h2>
+      <p>These pages are planned, but they should not outrun the public lexicon.</p>
+      <ul>
+        <li><strong>Pronunciation</strong> — coming soon.</li>
+        <li><strong>Grammar</strong> — coming soon.</li>
+        <li><strong>Writing system</strong> — coming soon.</li>
+      </ul>
+    </article>
   </section>
 </BaseLayout>
