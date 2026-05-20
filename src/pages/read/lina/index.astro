@@ -49,10 +49,11 @@ const linaStorySymbols = new Map([
     </article>
 
     <div class="link-list">
-      <a href="/read/lina/01-the-bridge-that-sang-back/">Begin with Story 01</a>
+      <a href="/read/lina/01-the-bridge-that-sang-back/">Begin with Story 01: The Bridge That Sang Back</a>
       <a href="/world/the-rim/">See the Rim</a>
     </div>
-    <div class="story-grid">
+
+    <ol class="story-grid story-list" aria-label="Lina stories in reading order">
       {linaStoryPlan.map((plannedStory) => {
         const story = storyByNumber.get(plannedStory.number);
         const fallbackSymbol = linaStorySymbols.get(plannedStory.number);
@@ -61,24 +62,29 @@ const linaStorySymbols = new Map([
 
         if (story) {
           return (
-            <a class="story-card" href={story.data.public_url}>
-              {symbolSrc && <img class="story-card-symbol" src={symbolSrc} alt={symbolAlt} loading="lazy" />}
-              <span>Story {story.data.story_number}</span>
-              <strong>{story.data.title}</strong>
-              <p>{story.data.description}</p>
-            </a>
+            <li>
+              <a class="story-card" href={story.data.public_url} aria-label={`Read Story ${story.data.story_number}: ${story.data.title}`}>
+                {symbolSrc && <img class="story-card-symbol" src={symbolSrc} alt={symbolAlt} loading="lazy" />}
+                <span>Story {story.data.story_number}</span>
+                <strong>{story.data.title}</strong>
+                <p>{story.data.description}</p>
+                <span class="story-card-action" aria-hidden="true">Read this story</span>
+              </a>
+            </li>
           );
         }
 
         return (
-          <article class="story-card story-card-pending" aria-label={`${plannedStory.title} is coming after repair`}>
-            {symbolSrc && <img class="story-card-symbol" src={symbolSrc} alt={symbolAlt} loading="lazy" />}
-            <span>Story {plannedStory.number}</span>
-            <strong>{plannedStory.title}</strong>
-            <p>Coming after repair.</p>
-          </article>
+          <li>
+            <article class="story-card story-card-pending" aria-label={`${plannedStory.title} is coming after repair`}>
+              {symbolSrc && <img class="story-card-symbol" src={symbolSrc} alt={symbolAlt} loading="lazy" />}
+              <span>Story {plannedStory.number}</span>
+              <strong>{plannedStory.title}</strong>
+              <p>Coming after repair.</p>
+            </article>
+          </li>
         );
       })}
-    </div>
+    </ol>
   </section>
 </BaseLayout>
