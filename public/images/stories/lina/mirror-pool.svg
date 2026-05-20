@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Lina beside the mirror pool</title>
+  <desc id="desc">A dark still pool sits among silver reeds while Lina looks toward its reflected light.</desc>
+  <rect width="1200" height="675" fill="#1d122e"/>
+  <rect y="425" width="1200" height="250" fill="#315e56"/>
+  <ellipse cx="610" cy="440" rx="330" ry="115" fill="#111827"/>
+  <ellipse cx="610" cy="425" rx="300" ry="88" fill="#36507a" opacity="0.9"/>
+  <ellipse cx="610" cy="405" rx="210" ry="48" fill="#fff8e8" opacity="0.22"/>
+  <g stroke="#d8e5ef" stroke-width="9" stroke-linecap="round" opacity="0.85">
+    <path d="M300 485 L280 350"/><path d="M365 492 L370 335"/><path d="M855 488 L880 345"/><path d="M920 480 L945 360"/>
+  </g>
+  <g transform="translate(430 430)">
+    <circle cx="0" cy="-65" r="24" fill="#1f1730"/>
+    <path d="M0 -40 L0 40" stroke="#1f1730" stroke-width="21" stroke-linecap="round"/>
+    <path d="M-34 -6 L34 -6" stroke="#1f1730" stroke-width="13" stroke-linecap="round"/>
+  </g>
+  <path d="M600 395 C640 375 690 376 735 400" fill="none" stroke="#ffe577" stroke-width="8" opacity="0.8"/>
+  <circle cx="620" cy="395" r="9" fill="#ffe577"/>
+</svg>
