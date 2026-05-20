@@ -27,6 +27,25 @@ const {
   relatedArtefacts = [],
 } = Astro.props;
 
+const storyHeroAlt = new Map([
+  [1, 'Lina standing on a luminous bridge over silver mist, holding a small wooden recorder.'],
+  [2, 'Lina sitting in a wet meadow beneath a small low grey-blue cloud with warm rain falling around her.'],
+  [3, 'Lina standing at the entrance of a living maze made of silver stones, dark green vines, and softly glowing leaves.'],
+  [4, 'Lina beside a dark still mirror pool ringed with silver reeds and smooth black stones.'],
+  [5, 'Lina standing before a pale sleeping tree in a green grove, with a small glowing bud near its roots.'],
+  [6, 'Lina standing beside pale reeds and shallow water while glowing music lines move through the air.'],
+  [7, 'Lina on a high grass hill beneath twilight, near a small star and a line of glowing path-stones.'],
+  [8, 'Lina at the mouth of a mossy cave, with tiny lights and listening-stones leading into the dark.'],
+]);
+
+const resolveHeroImage = (src?: string) => {
+  if (!src) return undefined;
+  return src.replace(/\.webp$/, '.svg');
+};
+
+const resolvedHeroImage = resolveHeroImage(heroImage);
+const resolvedHeroAlt = heroImageAlt ?? storyHeroAlt.get(storyNumber) ?? description;
+
 const labelForLink = (href: string) => {
   const labels = new Map([
     ['/world/', 'Explore the world'],
@@ -60,9 +79,9 @@ const relatedLinks = [
     <header class="story-header story-header-compact" aria-label={`${series}, story ${storyNumber} of ${totalStories}`}>
       <p class="eyebrow">{series}</p>
       <p class="story-count">Story {storyNumber} of {totalStories}</p>
-      {heroImage && (
+      {resolvedHeroImage && (
         <figure class="story-hero-image">
-          <img src={heroImage} alt={heroImageAlt ?? description} loading="eager" decoding="async" />
+          <img src={resolvedHeroImage} alt={resolvedHeroAlt} loading="eager" decoding="async" />
         </figure>
       )}
     </header>
