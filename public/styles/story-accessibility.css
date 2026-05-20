@@ -1,0 +1,8 @@
+/* Story accessibility and public-cleanup rules.
+   Internal art-direction notes may remain in source Markdown, but should not appear on public story pages. */
+
+.story-content h2#illustration-slot,
+.story-content h2#illustration-slot + p,
+.story-content h2#illustration-slot + p + p {
+  display: none;
+}
