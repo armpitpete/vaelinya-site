@@ -60,7 +60,7 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
             height="1024"
           />
         </picture>
-        <figcaption>Transparent cutout asset. Page text explains the important colour, sound, movement, and role.</figcaption>
+        <figcaption>A Mosskeep Frog carrying a living garden of moss, flowers, seed pods, and dew-orbs.</figcaption>
       </figure>
     </article>
   </section>
@@ -136,24 +136,21 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
       margin: 0;
       padding: clamp(0.5rem, 1.6vw, 0.85rem);
       border-radius: 1.4rem;
-      background:
-        radial-gradient(circle at 72% 18%, rgba(255, 228, 132, 0.55), transparent 34%),
-        radial-gradient(circle at 18% 80%, rgba(65, 210, 190, 0.25), transparent 36%),
-        linear-gradient(145deg, rgba(255, 246, 218, 0.44), rgba(157, 232, 207, 0.2));
-      border: 1px solid rgba(255, 255, 255, 0.5);
+      background: transparent;
+      border: 0;
     }
 
     .animal-sheet-art img {
       display: block;
-      width: min(100%, 360px);
+      width: min(100%, 320px);
       height: auto;
       margin-inline: auto;
       filter: drop-shadow(0 18px 28px rgba(22, 14, 39, 0.2));
     }
 
     .animal-sheet-art figcaption {
-      max-width: 36ch;
-      margin: 0.55rem auto 0;
+      max-width: 34ch;
+      margin: 0.4rem auto 0;
       color: var(--muted, #574d68);
       font-size: 0.86rem;
       line-height: 1.45;
@@ -170,7 +167,7 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
       }
 
       .animal-sheet-art img {
-        width: min(100%, 320px);
+        width: min(100%, 280px);
       }
     }
   </style>
