@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Lina at the remembering maze</title>
+  <desc id="desc">Silver maze walls and dark green vines rise from a field while Lina stands at the entrance.</desc>
+  <rect width="1200" height="675" fill="#203547"/>
+  <rect y="455" width="1200" height="220" fill="#2f8f83"/>
+  <g fill="none" stroke="#d8e5ef" stroke-width="34" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M220 530 L220 300 L470 300 L470 425 L350 425"/>
+    <path d="M590 530 L590 245 L875 245 L875 390 L760 390 L760 510"/>
+    <path d="M340 540 L340 210 L655 210 L655 330"/>
+    <path d="M745 530 L1010 530 L1010 315"/>
+  </g>
+  <g fill="none" stroke="#7cd36f" stroke-width="10" opacity="0.75">
+    <path d="M225 290 C285 250 360 330 465 290"/>
+    <path d="M595 250 C680 210 760 280 870 240"/>
+    <path d="M340 220 C430 190 535 250 655 210"/>
+  </g>
+  <g transform="translate(160 500)">
+    <circle cx="0" cy="-64" r="23" fill="#1f1730"/>
+    <path d="M0 -40 L0 38" stroke="#1f1730" stroke-width="20" stroke-linecap="round"/>
+    <path d="M-32 -6 L32 -6" stroke="#1f1730" stroke-width="13" stroke-linecap="round"/>
+  </g>
+  <circle cx="1020" cy="190" r="72" fill="#ffe577" opacity="0.82"/>
+</svg>
