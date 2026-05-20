@@ -93,7 +93,7 @@ a { color: inherit; }
   background: rgba(255, 255, 255, 0.84);
   border: 1px solid rgba(255, 248, 232, 0.44);
   border-radius: 1.5rem;
-  padding: clamp(1.25rem, 4vw, 3rem);
+  padding: clamp(1.25rem, 3vw, 2.5rem);
   box-shadow: 0 1rem 3rem rgba(9, 5, 18, 0.28);
 }
 
@@ -106,13 +106,13 @@ a { color: inherit; }
 
 .hero h1, .page-section h1, .story-header h1 {
   margin: 0;
-  font-size: clamp(2.25rem, 8vw, 5rem);
-  line-height: 0.98;
-  letter-spacing: -0.05em;
+  font-size: clamp(2rem, 4.2vw, 3.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
 }
 
 .hero p, .lede {
-  font-size: clamp(1.1rem, 3vw, 1.45rem);
+  font-size: clamp(1.05rem, 1.7vw, 1.3rem);
   max-width: 48rem;
 }
 
@@ -345,8 +345,8 @@ a { color: inherit; }
 .lexicon-entry-header h2 {
   margin: 0;
   overflow-wrap: anywhere;
-  font-size: clamp(1.45rem, 5vw, 2.2rem);
-  line-height: 1.05;
+  font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+  line-height: 1.08;
 }
 
 .lexicon-entry-header p {
@@ -394,7 +394,7 @@ a { color: inherit; }
 }
 
 .story-content p, .story-content li { font-size: 1.07rem; }
-.story-content h2 { margin-top: 2.5rem; font-size: 1.8rem; }
+.story-content h2 { margin-top: 2.5rem; font-size: clamp(1.45rem, 2.2vw, 1.8rem); }
 .story-count { font-weight: 800; color: #6d3b91; }
 
 .site-footer {
@@ -467,7 +467,7 @@ a { color: inherit; }
   }
 
   .hero h1, .page-section h1, .story-header h1 {
-    font-size: clamp(2.2rem, 16vw, 3.7rem);
+    font-size: clamp(2rem, 12vw, 3rem);
   }
 
   .hero-art {
