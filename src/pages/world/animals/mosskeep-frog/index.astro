@@ -104,9 +104,14 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
       gap: clamp(1.25rem, 3vw, 2.25rem);
       align-items: start;
       padding: clamp(1.25rem, 3vw, 2.25rem);
-      background: rgba(248, 246, 250, 0.88);
-      border: 1px solid rgba(255, 255, 255, 0.62);
-      backdrop-filter: blur(2px);
+      background:
+        linear-gradient(rgba(248, 246, 250, 0.74), rgba(248, 246, 250, 0.8)),
+        url('/assets/images/vaelinya/animals/mosskeep-frog-habitat-v01.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      border: 1px solid rgba(255, 255, 255, 0.66);
+      backdrop-filter: blur(1px);
     }
 
     .animal-sheet .lede {
@@ -122,7 +127,7 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 
     .animal-facts div {
       padding-block: 0.65rem;
-      border-top: 1px solid color-mix(in srgb, var(--ink, #211a33) 12%, transparent);
+      border-top: 1px solid color-mix(in srgb, var(--ink, #211a33) 14%, transparent);
     }
 
     .animal-facts dt {
@@ -139,7 +144,7 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
     .access-note {
       margin: 1rem 0 0;
       padding: 0.75rem 0;
-      border-top: 1px solid color-mix(in srgb, var(--ink, #211a33) 12%, transparent);
+      border-top: 1px solid color-mix(in srgb, var(--ink, #211a33) 14%, transparent);
       font-size: 0.95rem;
     }
 
@@ -213,8 +218,13 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 
       .animal-sheet {
         grid-template-columns: 1fr;
-        background: rgba(248, 246, 250, 0.92);
-        backdrop-filter: blur(2px);
+        background:
+          linear-gradient(rgba(248, 246, 250, 0.84), rgba(248, 246, 250, 0.88)),
+          url('/assets/images/vaelinya/animals/mosskeep-frog-habitat-v01.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        backdrop-filter: blur(1px);
       }
 
       .animal-sheet-art {
