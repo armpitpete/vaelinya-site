@@ -125,7 +125,7 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
       width: min(100%, 1120px);
       margin-inline: auto;
       display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+      grid-template-columns: minmax(0, 1.1fr) minmax(380px, 0.9fr);
       gap: clamp(1.25rem, 3vw, 2.25rem);
       align-items: start;
       padding: clamp(1.25rem, 3vw, 2.25rem);
@@ -210,17 +210,17 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 
     .animal-sheet-art img {
       display: block;
-      width: min(100%, 390px);
+      width: min(100%, 500px);
       height: auto;
       margin-inline: auto;
       filter:
-        drop-shadow(0 0 20px rgba(255, 176, 72, 0.22))
-        drop-shadow(0 20px 30px rgba(22, 14, 39, 0.22));
+        drop-shadow(0 0 22px rgba(255, 176, 72, 0.24))
+        drop-shadow(0 22px 34px rgba(22, 14, 39, 0.24));
     }
 
     .animal-sheet-art figcaption {
-      max-width: 36ch;
-      margin: 0.4rem auto 0;
+      max-width: 42ch;
+      margin: 0.45rem auto 0;
       color: var(--muted, #574d68);
       font-size: 0.86rem;
       line-height: 1.45;
@@ -240,6 +240,20 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 
       .animal-facts div:nth-child(5) {
         grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .animal-sheet {
+        grid-template-columns: 1fr;
+      }
+
+      .animal-sheet-art {
+        order: -1;
+      }
+
+      .animal-sheet-art img {
+        width: min(100%, 440px);
       }
     }
 
@@ -264,7 +278,6 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
       }
 
       .animal-sheet {
-        grid-template-columns: 1fr;
         background: linear-gradient(
           180deg,
           rgba(248, 246, 250, 0.94),
@@ -272,10 +285,6 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
         );
         backdrop-filter: blur(6px) saturate(1.03);
         -webkit-backdrop-filter: blur(6px) saturate(1.03);
-      }
-
-      .animal-sheet-art {
-        order: -1;
       }
 
       .animal-sheet-art img {
