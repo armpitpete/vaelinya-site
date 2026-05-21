@@ -2,48 +2,289 @@
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="Amethyst Orblight" description="A violet glowing insect linked to Hearthcrest Callers.">
-  <section class="page-section">
-    <p class="eyebrow">World · Animals</p>
-    <h1>Amethyst Orblight</h1>
-    <p class="lede">A violet glowing insect whose soft hum gathers around Hearthcrest Callers during feeding windows.</p>
+  <section class="page-section animal-sheet-page">
+    <article class="panel animal-sheet">
+      <div class="animal-sheet-copy">
+        <p class="eyebrow">World · Animals</p>
+        <h1>Amethyst Orblight</h1>
+        <p class="lede">A tiny violet-amethyst insect whose glow and hum gather around warmth, flowers, and elder-animal resting paths.</p>
 
-    <article class="visual-callout visual-callout-language">
-      <div class="visual-callout-mark" aria-hidden="true"><span>●</span></div>
-      <div class="visual-callout-copy">
-        <p class="eyebrow">Insect symbiosis</p>
-        <h2>Not decorative lights</h2>
-        <p>Amethyst Orblights are small luminous insects linked to the Hearthcrest Caller’s feeding and breeding cycle. Their glow and hum are part of the ecology.</p>
+        <dl class="animal-facts">
+          <div>
+            <dt>What it is</dt>
+            <dd>A small luminous insect with a dark centre, soft orb abdomen, translucent wings, and glowing antenna tips.</dd>
+          </div>
+          <div>
+            <dt>Where it lives</dt>
+            <dd>Moonlit meadows, warm grassland paths, purple flower beds, dark moss, dew-orbs, and calm resting grounds used by elder fauna.</dd>
+          </div>
+          <div>
+            <dt>How to recognise it</dt>
+            <dd>Look for violet-amethyst glow, a readable insect body, glassy veined wings, tiny curved legs, and antennae that pulse like small lanterns.</dd>
+          </div>
+          <div>
+            <dt>Sound and movement</dt>
+            <dd>It makes a low glassy hum with a soft pulsing buzz. Groups drift in slow circles, then gather into loose spirals near warmth.</dd>
+          </div>
+          <div>
+            <dt>What it does</dt>
+            <dd>It helps connect flower-light, warmth, feeding windows, dung nursery sites, and grassland renewal around Hearthcrest Callers.</dd>
+          </div>
+        </dl>
+
+        <p class="access-note"><strong>Accessibility note:</strong> Amethyst Orblights are tiny violet glowing insects with dark centres, translucent wings, glowing antenna tips, and a soft glassy hum.</p>
+
+        <nav class="animal-links" aria-label="Related animal pages">
+          <a href="/world/animals/hearthcrest-caller/">Hearthcrest Caller</a>
+          <a href="/world/animals/mosskeep-frog/">Mosskeep Frog</a>
+          <a href="/world/animals/">Animals of Vaelinya</a>
+        </nav>
       </div>
-    </article>
 
-    <article class="panel">
-      <h2>How to recognise it</h2>
-      <p>An Amethyst Orblight appears as a small violet or amethyst glow with a darker centre, a soft orb-like body, a gentle pulsing edge, and slow group spirals near warmth.</p>
-    </article>
-
-    <article class="panel">
-      <h2>Sound and movement</h2>
-      <p>Amethyst Orblights make a low glassy hum with a soft pulsing buzz. The hum becomes steadier near a Hearthcrest Caller during feeding windows.</p>
-      <p>They float in slow circles, then gather into loose spirals around crest warmth, mouth-light, warm feeding windows, dung nursery sites, and calm large-animal resting grounds.</p>
-    </article>
-
-    <article class="panel">
-      <h2>What it does in the world</h2>
-      <p>Amethyst Orblights are part of a cycle involving Hearthcrest Caller crest warmth, mouth-light feeding windows, eggs, larvae, warm dung nurseries, and grassland renewal.</p>
-    </article>
-
-    <article class="panel">
-      <h2>Related animals</h2>
-      <div class="link-list">
-        <a href="/world/animals/hearthcrest-caller/">Hearthcrest Caller</a>
-        <a href="/world/animals/mosskeep-frog/">Mosskeep Frog</a>
-        <a href="/world/animals/">Animals of Vaelinya</a>
-      </div>
-    </article>
-
-    <article class="panel">
-      <p class="eyebrow">Accessibility note</p>
-      <p>Amethyst Orblights are violet glowing insects whose soft hum gathers around Hearthcrest Callers during feeding windows.</p>
+      <figure class="animal-sheet-art">
+        <picture>
+          <source
+            media="(max-width: 560px)"
+            srcset="/assets/images/vaelinya/animals/amethyst-orblight-v01-512-q.png"
+          />
+          <source
+            media="(max-width: 900px)"
+            srcset="/assets/images/vaelinya/animals/amethyst-orblight-v01-768-q.png"
+          />
+          <img
+            src="/assets/images/vaelinya/animals/amethyst-orblight-v01-1024-q.png"
+            alt="Amethyst Orblight, a small glowing violet-amethyst insect with a dark centre, soft orb abdomen, translucent veined wings, tiny curved legs, and glowing antenna tips."
+            loading="eager"
+            decoding="async"
+            width="1024"
+            height="1024"
+          />
+        </picture>
+        <figcaption>An Amethyst Orblight with glowing antenna tips, veined wings, and a soft orb abdomen.</figcaption>
+      </figure>
     </article>
   </section>
+
+  <style>
+    :global(.site-main) {
+      max-width: none;
+      padding: 0;
+    }
+
+    .animal-sheet-page {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: clamp(1.2rem, 3vw, 2.6rem) 1rem;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .animal-sheet-page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background-image:
+        radial-gradient(circle at 52% 22%, rgba(244, 221, 255, 0.22), transparent 32%),
+        linear-gradient(rgba(18, 8, 44, 0.2), rgba(18, 8, 44, 0.5)),
+        url('/assets/images/vaelinya/animals/amethyst-orblight-habitat-v01-1920.jpg');
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-size: cover;
+      pointer-events: none;
+    }
+
+    .animal-sheet-page::after {
+      content: "";
+      position: absolute;
+      top: clamp(0.75rem, 2vw, 1.35rem);
+      bottom: clamp(0.75rem, 2vw, 1.35rem);
+      left: 50%;
+      width: min(calc(100% - 2rem), 1180px);
+      transform: translateX(-50%);
+      z-index: -1;
+      border-radius: 1.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.66);
+      background: rgba(248, 246, 250, 0.12);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.44),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+        0 22px 54px rgba(8, 5, 20, 0.34);
+      pointer-events: none;
+    }
+
+    .animal-sheet {
+      position: relative;
+      overflow: hidden;
+      width: min(100%, 1120px);
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(240px, 0.65fr);
+      gap: clamp(1.25rem, 3vw, 2.25rem);
+      align-items: start;
+      padding: clamp(1.25rem, 3vw, 2.25rem);
+      background: linear-gradient(
+        180deg,
+        rgba(248, 246, 250, 0.92),
+        rgba(248, 246, 250, 0.9)
+      );
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.54),
+        0 16px 42px rgba(8, 5, 20, 0.28);
+      backdrop-filter: blur(6px) saturate(1.03);
+      -webkit-backdrop-filter: blur(6px) saturate(1.03);
+    }
+
+    .animal-sheet-copy,
+    .animal-sheet-art {
+      position: relative;
+      z-index: 1;
+    }
+
+    .animal-sheet .lede {
+      max-width: 56ch;
+      margin-bottom: 1rem;
+    }
+
+    .animal-facts {
+      display: grid;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+
+    .animal-facts div {
+      padding-block: 0.65rem;
+      border-top: 1px solid color-mix(in srgb, var(--ink, #211a33) 14%, transparent);
+    }
+
+    .animal-facts dt {
+      margin-bottom: 0.18rem;
+      font-weight: 800;
+      color: var(--ink, #211a33);
+    }
+
+    .animal-facts dd {
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    .access-note {
+      margin: 1rem 0 0;
+      padding: 0.75rem 0;
+      border-top: 1px solid color-mix(in srgb, var(--ink, #211a33) 14%, transparent);
+      font-size: 0.95rem;
+    }
+
+    .animal-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 0.85rem;
+    }
+
+    .animal-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 0.55rem 0.85rem;
+      border-radius: 999px;
+      background: color-mix(in srgb, #fff4be 82%, white);
+      border: 1px solid color-mix(in srgb, var(--ink, #211a33) 14%, transparent);
+      font-weight: 750;
+      text-decoration: none;
+    }
+
+    .animal-sheet-art {
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      border: 0;
+    }
+
+    .animal-sheet-art img {
+      display: block;
+      width: min(100%, 310px);
+      height: auto;
+      margin-inline: auto;
+      filter:
+        drop-shadow(0 0 18px rgba(184, 87, 255, 0.32))
+        drop-shadow(0 18px 28px rgba(22, 14, 39, 0.2));
+    }
+
+    .animal-sheet-art figcaption {
+      max-width: 34ch;
+      margin: 0.4rem auto 0;
+      color: var(--muted, #574d68);
+      font-size: 0.86rem;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    @media (min-width: 1060px) {
+      .animal-facts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 1.25rem;
+        row-gap: 0.4rem;
+      }
+
+      .animal-facts div {
+        padding-block: 0.55rem;
+      }
+
+      .animal-facts div:nth-child(5) {
+        grid-column: 1 / -1;
+      }
+
+      .animal-sheet-art img {
+        width: min(100%, 300px);
+      }
+    }
+
+    @media (max-width: 820px) {
+      .animal-sheet-page {
+        padding: clamp(0.75rem, 3.5vw, 1.2rem) 0.75rem;
+      }
+
+      .animal-sheet-page::before {
+        background-image:
+          radial-gradient(circle at 52% 22%, rgba(244, 221, 255, 0.2), transparent 32%),
+          linear-gradient(rgba(18, 8, 44, 0.22), rgba(18, 8, 44, 0.54)),
+          url('/assets/images/vaelinya/animals/amethyst-orblight-habitat-v01-1280.jpg');
+        background-position: center top;
+      }
+
+      .animal-sheet-page::after {
+        width: min(calc(100% - 1.5rem), 1120px);
+        border-radius: 1.35rem;
+        border-color: rgba(255, 255, 255, 0.72);
+        background: rgba(248, 246, 250, 0.16);
+      }
+
+      .animal-sheet {
+        grid-template-columns: 1fr;
+        background: linear-gradient(
+          180deg,
+          rgba(248, 246, 250, 0.94),
+          rgba(248, 246, 250, 0.92)
+        );
+        backdrop-filter: blur(6px) saturate(1.03);
+        -webkit-backdrop-filter: blur(6px) saturate(1.03);
+      }
+
+      .animal-sheet-art {
+        order: -1;
+      }
+
+      .animal-sheet-art img {
+        width: min(100%, 280px);
+      }
+    }
+  </style>
 </BaseLayout>
