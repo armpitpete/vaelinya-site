@@ -1,0 +1,63 @@
+---
+import AnimalPage from '../../../../components/AnimalPage.astro';
+
+const facts = [
+  {
+    term: 'What it is',
+    detail: 'A huge slow ground animal with stone-brown hide, root-dark folds, moss growth, mineral glints, and a body shaped for careful movement through old paths.',
+  },
+  {
+    term: 'Where it lives',
+    detail: 'Ancient stone paths, root-laced ground, cracked warm-brown stones, heavy moss, old tree routes, and places where the ground remembers long pressure.',
+  },
+  {
+    term: 'How to recognise it',
+    detail: 'Look for a broad low body, heavy careful feet like worn stones, root-like tendrils along the shoulders, calm ancient eyes, and silver-green mineral glints.',
+  },
+  {
+    term: 'Sound and movement',
+    detail: 'It moves slowly enough for moss to tremble before each step. Its feet make a dull stone-thud that travels through paths, roots, and buried rock.',
+  },
+  {
+    term: 'What it does',
+    detail: 'It presses old paths firm, carries moss and mineral dust between stone places, opens root gaps, and keeps slow ground-routes usable across long years.',
+  },
+];
+
+const links = [
+  { href: '/world/animals/navan-hart/', label: 'Navan Hart' },
+  { href: '/world/animals/hearthcrest-caller/', label: 'Hearthcrest Caller' },
+  { href: '/world/animals/', label: 'Animals of Vaelinya' },
+];
+---
+<AnimalPage
+  title="Stoneroot Treader"
+  description="A huge slow grounded creature of stone paths and root-laced ground."
+  lede="A huge slow grounded creature whose heavy careful feet keep old stone paths open across long years."
+  facts={facts}
+  accessNote="Stoneroot Treaders are huge slow ground creatures with stone-brown hide, moss in their folds, root-like shoulder tendrils, heavy worn-stone feet, and calm ancient eyes."
+  links={links}
+  image={{
+    src: '/assets/images/vaelinya/animals/stoneroot-treader-v01-1024-q.png',
+    src768: '/assets/images/vaelinya/animals/stoneroot-treader-v01-768-q.png',
+    src512: '/assets/images/vaelinya/animals/stoneroot-treader-v01-512-q.png',
+    alt: 'Stoneroot Treader, a huge slow grounded creature with a broad low stone-brown body, root-dark hide, moss in the folds, heavy careful feet like worn stones, root-like tendrils along the shoulders, calm ancient eyes, and subtle silver-green mineral glints.',
+    width: 1024,
+    height: 1024,
+  }}
+  caption="A Stoneroot Treader with worn-stone feet, root-dark folds, moss growth, and calm ancient eyes."
+  background={{
+    large: '/assets/images/vaelinya/animals/stoneroot-treader-habitat-v01-1920.jpg',
+    small: '/assets/images/vaelinya/animals/stoneroot-treader-habitat-v01-1280.jpg',
+  }}
+  variant="wide"
+  grid="minmax(0, 1.08fr) minmax(390px, 0.92fr)"
+  artWidth="520px"
+  artDesktopWidth="520px"
+  artTabletWidth="500px"
+  artMobileWidth="430px"
+  artGlow="drop-shadow(0 0 18px rgba(132, 169, 126, 0.16)) drop-shadow(0 24px 34px rgba(12, 11, 8, 0.28))"
+  bgAccent="radial-gradient(circle at 55% 18%, rgba(216, 231, 207, 0.16), transparent 34%)"
+  bgOverlayLarge="linear-gradient(rgba(17, 20, 16, 0.12), rgba(17, 20, 16, 0.5))"
+  bgOverlaySmall="linear-gradient(rgba(17, 20, 16, 0.14), rgba(17, 20, 16, 0.54))"
+/>
