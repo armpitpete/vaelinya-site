@@ -72,35 +72,11 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
     }
 
     .animal-sheet {
-      position: relative;
-      isolation: isolate;
-      overflow: hidden;
       display: grid;
       grid-template-columns: minmax(0, 1.35fr) minmax(240px, 0.65fr);
       gap: clamp(1.25rem, 3vw, 2.25rem);
       align-items: start;
       padding: clamp(1.25rem, 3vw, 2.25rem);
-    }
-
-    .animal-sheet::before {
-      content: "";
-      position: absolute;
-      inset: auto -3rem -5rem auto;
-      width: min(58vw, 620px);
-      aspect-ratio: 1;
-      background-image: url('/assets/images/vaelinya/animals/mosskeep-frog-v01-1024-q.png');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-      opacity: 0.055;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .animal-sheet-copy,
-    .animal-sheet-art {
-      position: relative;
-      z-index: 1;
     }
 
     .animal-sheet .lede {
@@ -203,12 +179,6 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
     @media (max-width: 820px) {
       .animal-sheet {
         grid-template-columns: 1fr;
-      }
-
-      .animal-sheet::before {
-        inset: auto -4rem -4rem auto;
-        width: min(92vw, 520px);
-        opacity: 0.04;
       }
 
       .animal-sheet-art {
