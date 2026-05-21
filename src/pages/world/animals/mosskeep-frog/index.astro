@@ -66,14 +66,18 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
   </section>
 
   <style>
+    :global(.site-main) {
+      max-width: none;
+      padding: 0;
+    }
+
     .animal-sheet-page {
       position: relative;
       isolation: isolate;
       overflow: hidden;
-      width: 100vw;
+      width: 100%;
       max-width: none;
-      margin-left: calc(50% - 50vw);
-      margin-right: calc(50% - 50vw);
+      margin: 0;
       padding: clamp(1.2rem, 3vw, 2.6rem) 1rem;
       border: 0;
       border-radius: 0;
