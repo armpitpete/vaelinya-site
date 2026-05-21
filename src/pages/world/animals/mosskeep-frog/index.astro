@@ -1,284 +1,57 @@
 ---
-import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import AnimalPage from '../../../../components/AnimalPage.astro';
+
+const facts = [
+  {
+    term: 'What it is',
+    detail: 'A small wetland creature of moss, shade, stone, and quiet water.',
+  },
+  {
+    term: 'Where it lives',
+    detail: 'Wet bridge stones, shaded pools, old walls, moss beds, tree roots, cave mouths, and damp path edges.',
+  },
+  {
+    term: 'How to recognise it',
+    detail: 'Golden eyes, damp stone-coloured feet, blue-green-gold skin, violet flowers, seed capsules, dew-orbs, and fern fronds in the moss on its back.',
+  },
+  {
+    term: 'Sound and movement',
+    detail: 'A low wet chirrup, like one drop of water landing in moss. It moves in short careful hops from stone to root to moss patch.',
+  },
+  {
+    term: 'What it does',
+    detail: 'It carries moisture, moss spores, fern-specks, wetland seed-life, and small insects between damp places.',
+  },
+];
+
+const links = [
+  { href: '/world/animals/amethyst-orblight/', label: 'Amethyst Orblight' },
+  { href: '/world/animals/hearthcrest-caller/', label: 'Hearthcrest Caller' },
+  { href: '/world/animals/', label: 'Animals of Vaelinya' },
+];
 ---
-<BaseLayout title="Mosskeep Frog" description="A colourful moss-backed frog of Vaelinya.">
-  <section class="page-section animal-sheet-page">
-    <article class="panel animal-sheet">
-      <div class="animal-sheet-copy">
-        <p class="eyebrow">World · Animals</p>
-        <h1>Mosskeep Frog</h1>
-        <p class="lede">A colourful blue-green-gold frog with a living moss garden growing across its back.</p>
-
-        <dl class="animal-facts">
-          <div>
-            <dt>What it is</dt>
-            <dd>A small wetland creature of moss, shade, stone, and quiet water.</dd>
-          </div>
-          <div>
-            <dt>Where it lives</dt>
-            <dd>Wet bridge stones, shaded pools, old walls, moss beds, tree roots, cave mouths, and damp path edges.</dd>
-          </div>
-          <div>
-            <dt>How to recognise it</dt>
-            <dd>Golden eyes, damp stone-coloured feet, blue-green-gold skin, violet flowers, seed capsules, dew-orbs, and fern fronds in the moss on its back.</dd>
-          </div>
-          <div>
-            <dt>Sound and movement</dt>
-            <dd>A low wet chirrup, like one drop of water landing in moss. It moves in short careful hops from stone to root to moss patch.</dd>
-          </div>
-          <div>
-            <dt>What it does</dt>
-            <dd>It carries moisture, moss spores, fern-specks, wetland seed-life, and small insects between damp places.</dd>
-          </div>
-        </dl>
-
-        <p class="access-note"><strong>Accessibility note:</strong> Mosskeep Frogs are colourful blue-green-gold frogs with golden eyes and living moss gardens on their backs.</p>
-
-        <nav class="animal-links" aria-label="Related animal pages">
-          <a href="/world/animals/amethyst-orblight/">Amethyst Orblight</a>
-          <a href="/world/animals/hearthcrest-caller/">Hearthcrest Caller</a>
-          <a href="/world/animals/">Animals of Vaelinya</a>
-        </nav>
-      </div>
-
-      <figure class="animal-sheet-art">
-        <picture>
-          <source
-            media="(max-width: 560px)"
-            srcset="/assets/images/vaelinya/animals/mosskeep-frog-v01-512-q.png"
-          />
-          <source
-            media="(max-width: 900px)"
-            srcset="/assets/images/vaelinya/animals/mosskeep-frog-v01-768-q.png"
-          />
-          <img
-            src="/assets/images/vaelinya/animals/mosskeep-frog-v01-1024-q.png"
-            alt="Mosskeep Frog, a colourful blue-green-gold frog with golden eyes and a living moss garden of tiny flowers, seed pods, and dew-orbs growing across its back."
-            loading="eager"
-            decoding="async"
-            width="1024"
-            height="1024"
-          />
-        </picture>
-        <figcaption>A Mosskeep Frog carrying a living garden of moss, flowers, seed pods, and dew-orbs.</figcaption>
-      </figure>
-    </article>
-  </section>
-
-  <style>
-    :global(.site-main) {
-      max-width: none;
-      padding: 0;
-    }
-
-    .animal-sheet-page {
-      position: relative;
-      isolation: isolate;
-      overflow: hidden;
-      width: 100%;
-      max-width: none;
-      margin: 0;
-      padding: clamp(1.2rem, 3vw, 2.6rem) 1rem;
-      border: 0;
-      border-radius: 0;
-      background: transparent;
-      box-shadow: none;
-    }
-
-    .animal-sheet-page::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      background-image:
-        radial-gradient(circle at 50% 24%, rgba(255, 246, 218, 0.18), transparent 34%),
-        linear-gradient(rgba(18, 12, 36, 0.18), rgba(18, 12, 36, 0.44)),
-        url('/assets/images/vaelinya/animals/mosskeep-frog-habitat-v01.png');
-      background-repeat: no-repeat;
-      background-position: center top;
-      background-size: cover;
-      pointer-events: none;
-    }
-
-    .animal-sheet-page::after {
-      content: "";
-      position: absolute;
-      top: clamp(0.75rem, 2vw, 1.35rem);
-      bottom: clamp(0.75rem, 2vw, 1.35rem);
-      left: 50%;
-      width: min(calc(100% - 2rem), 1180px);
-      transform: translateX(-50%);
-      z-index: -1;
-      border-radius: 1.9rem;
-      border: 1px solid rgba(255, 255, 255, 0.66);
-      background: rgba(248, 246, 250, 0.12);
-      box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.44),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.18),
-        0 22px 54px rgba(8, 5, 20, 0.34);
-      pointer-events: none;
-    }
-
-    .animal-sheet {
-      position: relative;
-      overflow: hidden;
-      width: min(100%, 1120px);
-      margin-inline: auto;
-      display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(240px, 0.65fr);
-      gap: clamp(1.25rem, 3vw, 2.25rem);
-      align-items: start;
-      padding: clamp(1.25rem, 3vw, 2.25rem);
-      background: linear-gradient(
-        180deg,
-        rgba(248, 246, 250, 0.92),
-        rgba(248, 246, 250, 0.9)
-      );
-      border: 1px solid rgba(255, 255, 255, 0.62);
-      box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.54),
-        0 16px 42px rgba(8, 5, 20, 0.28);
-      backdrop-filter: blur(6px) saturate(1.03);
-      -webkit-backdrop-filter: blur(6px) saturate(1.03);
-    }
-
-    .animal-sheet-copy,
-    .animal-sheet-art {
-      position: relative;
-      z-index: 1;
-    }
-
-    .animal-sheet .lede {
-      max-width: 52ch;
-      margin-bottom: 1rem;
-    }
-
-    .animal-facts {
-      display: grid;
-      gap: 0.75rem;
-      margin: 1rem 0;
-    }
-
-    .animal-facts div {
-      padding-block: 0.65rem;
-      border-top: 1px solid color-mix(in srgb, var(--ink, #211a33) 14%, transparent);
-    }
-
-    .animal-facts dt {
-      margin-bottom: 0.18rem;
-      font-weight: 800;
-      color: var(--ink, #211a33);
-    }
-
-    .animal-facts dd {
-      margin: 0;
-      line-height: 1.55;
-    }
-
-    .access-note {
-      margin: 1rem 0 0;
-      padding: 0.75rem 0;
-      border-top: 1px solid color-mix(in srgb, var(--ink, #211a33) 14%, transparent);
-      font-size: 0.95rem;
-    }
-
-    .animal-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-      margin-top: 0.85rem;
-    }
-
-    .animal-links a {
-      display: inline-flex;
-      align-items: center;
-      min-height: 40px;
-      padding: 0.55rem 0.85rem;
-      border-radius: 999px;
-      background: color-mix(in srgb, #fff4be 82%, white);
-      border: 1px solid color-mix(in srgb, var(--ink, #211a33) 14%, transparent);
-      font-weight: 750;
-      text-decoration: none;
-    }
-
-    .animal-sheet-art {
-      margin: 0;
-      padding: 0;
-      background: transparent;
-      border: 0;
-    }
-
-    .animal-sheet-art img {
-      display: block;
-      width: min(100%, 320px);
-      height: auto;
-      margin-inline: auto;
-      filter: drop-shadow(0 18px 28px rgba(22, 14, 39, 0.2));
-    }
-
-    .animal-sheet-art figcaption {
-      max-width: 34ch;
-      margin: 0.4rem auto 0;
-      color: var(--muted, #574d68);
-      font-size: 0.86rem;
-      line-height: 1.45;
-      text-align: center;
-    }
-
-    @media (min-width: 1060px) {
-      .animal-facts {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        column-gap: 1.25rem;
-        row-gap: 0.4rem;
-      }
-
-      .animal-facts div {
-        padding-block: 0.55rem;
-      }
-
-      .animal-facts div:nth-child(5) {
-        grid-column: 1 / -1;
-      }
-
-      .animal-sheet-art img {
-        width: min(100%, 300px);
-      }
-    }
-
-    @media (max-width: 820px) {
-      .animal-sheet-page {
-        padding: clamp(0.75rem, 3.5vw, 1.2rem) 0.75rem;
-      }
-
-      .animal-sheet-page::before {
-        background-position: center top;
-      }
-
-      .animal-sheet-page::after {
-        width: min(calc(100% - 1.5rem), 1120px);
-        border-radius: 1.35rem;
-        border-color: rgba(255, 255, 255, 0.72);
-        background: rgba(248, 246, 250, 0.16);
-      }
-
-      .animal-sheet {
-        grid-template-columns: 1fr;
-        background: linear-gradient(
-          180deg,
-          rgba(248, 246, 250, 0.94),
-          rgba(248, 246, 250, 0.92)
-        );
-        backdrop-filter: blur(6px) saturate(1.03);
-        -webkit-backdrop-filter: blur(6px) saturate(1.03);
-      }
-
-      .animal-sheet-art {
-        order: -1;
-      }
-
-      .animal-sheet-art img {
-        width: min(100%, 280px);
-      }
-    }
-  </style>
-</BaseLayout>
+<AnimalPage
+  title="Mosskeep Frog"
+  description="A colourful moss-backed frog of Vaelinya."
+  lede="A colourful blue-green-gold frog with a living moss garden growing across its back."
+  facts={facts}
+  accessNote="Mosskeep Frogs are colourful blue-green-gold frogs with golden eyes and living moss gardens on their backs."
+  links={links}
+  image={{
+    src: '/assets/images/vaelinya/animals/mosskeep-frog-v01-1024-q.png',
+    src768: '/assets/images/vaelinya/animals/mosskeep-frog-v01-768-q.png',
+    src512: '/assets/images/vaelinya/animals/mosskeep-frog-v01-512-q.png',
+    alt: 'Mosskeep Frog, a colourful blue-green-gold frog with golden eyes and a living moss garden of tiny flowers, seed pods, and dew-orbs growing across its back.',
+    width: 1024,
+    height: 1024,
+  }}
+  caption="A Mosskeep Frog carrying a living garden of moss, flowers, seed pods, and dew-orbs."
+  background={{
+    large: '/assets/images/vaelinya/animals/mosskeep-frog-habitat-v01.png',
+    small: '/assets/images/vaelinya/animals/mosskeep-frog-habitat-v01.png',
+  }}
+  artWidth="320px"
+  artDesktopWidth="300px"
+  artTabletWidth="280px"
+  artMobileWidth="280px"
+/>
