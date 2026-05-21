@@ -122,13 +122,17 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
       padding: clamp(1.25rem, 3vw, 2.25rem);
       background: linear-gradient(
         180deg,
-        rgba(248, 246, 250, 0.91),
-        rgba(248, 246, 250, 0.88)
+        rgba(248, 246, 250, 0.92),
+        rgba(248, 246, 250, 0.89)
       );
-      border: 1px solid rgba(255, 255, 255, 0.38);
+      border: 2px solid rgba(255, 255, 255, 0.72);
+      outline: 1px solid rgba(255, 255, 255, 0.38);
+      outline-offset: -7px;
       box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.18) inset,
-        0 14px 38px rgba(18, 12, 36, 0.18);
+        inset 0 1px 0 rgba(255, 255, 255, 0.76),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.22),
+        inset 0 0 34px rgba(255, 255, 255, 0.18),
+        0 18px 48px rgba(8, 5, 20, 0.34);
       backdrop-filter: blur(8px) saturate(1.04);
       -webkit-backdrop-filter: blur(8px) saturate(1.04);
     }
@@ -139,9 +143,18 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
       inset: 0;
       pointer-events: none;
       border-radius: inherit;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.34), transparent 28%),
+        linear-gradient(315deg, rgba(255, 255, 255, 0.16), transparent 34%);
       box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.34),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+        inset 0 0 0 8px rgba(255, 255, 255, 0.055);
+    }
+
+    .animal-sheet-copy,
+    .animal-sheet-art {
+      position: relative;
+      z-index: 1;
     }
 
     .animal-sheet .lede {
