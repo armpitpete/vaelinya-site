@@ -1,8 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import VisualCallout from '../components/VisualCallout.astro';
+
+const description = 'A colourful, illustrated, learnable story world where readers can begin with stories, then explore world, language, and artefacts.';
+const site = Astro.site ?? new URL('https://vaelinya.uk');
+
+const webSiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Vaelinya',
+  description,
+  url: new URL('/', site).toString(),
+  inLanguage: 'en',
+};
 ---
-<BaseLayout title="Vaelinya is your next adventure" description="A colourful, illustrated, learnable story world where readers can begin with stories, then explore world, language, and artefacts.">
+<BaseLayout title="Vaelinya is your next adventure" description={description} jsonLd={webSiteJsonLd}>
   <section class="hero hero-illustrated threshold-hero">
     <div class="hero-copy">
       <p class="eyebrow">A story world</p>
