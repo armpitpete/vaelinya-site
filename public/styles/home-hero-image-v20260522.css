@@ -54,25 +54,25 @@
 .door-card--read .door-card__visual {
   background-image:
     linear-gradient(180deg, rgba(29, 18, 46, 0.02), rgba(29, 18, 46, 0.12)),
-    url('/images/door-read.webp?v=2026-05-22-tight-02');
+    url('/images/door-read.webp?v=2026-05-22-cropped-03');
 }
 
 .door-card--world .door-card__visual {
   background-image:
     linear-gradient(180deg, rgba(29, 18, 46, 0.02), rgba(29, 18, 46, 0.12)),
-    url('/images/door-world.webp?v=2026-05-22-tight-02');
+    url('/images/door-world.webp?v=2026-05-22-cropped-03');
 }
 
 .door-card--language .door-card__visual {
   background-image:
     linear-gradient(180deg, rgba(29, 18, 46, 0.02), rgba(29, 18, 46, 0.12)),
-    url('/images/door-language.webp?v=2026-05-22-tight-02');
+    url('/images/door-language.webp?v=2026-05-22-cropped-03');
 }
 
 .door-card--artefacts .door-card__visual {
   background-image:
     linear-gradient(180deg, rgba(29, 18, 46, 0.02), rgba(29, 18, 46, 0.12)),
-    url('/images/door-artefacts.webp?v=2026-05-22-tight-02');
+    url('/images/door-artefacts.webp?v=2026-05-22-cropped-03');
 }
 
 @media (min-width: 901px) {
