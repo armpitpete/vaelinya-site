@@ -28,8 +28,29 @@ const linaStorySymbols = new Map([
   [7, { src: '/images/stories/lina/symbols/lina-symbol-07-sky-seed.svg', alt: 'A small sky-seed symbol for The Star That Forgot to Shine.' }],
   [8, { src: '/images/stories/lina/symbols/lina-symbol-08-listening-stone.svg', alt: 'A listening-stone with eight tiny lights for The Whispering Cave.' }],
 ]);
+
+const description = 'Lina’s first eight stories in Vaelinya.';
+const site = Astro.site ?? new URL('https://vaelinya.uk');
+const pageUrl = new URL('/read/lina/', site).toString();
+
+const linaItemListJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Lina’s eight stories',
+  description,
+  url: pageUrl,
+  numberOfItems: activeStories.length,
+  itemListOrder: 'https://schema.org/ItemListOrderAscending',
+  itemListElement: activeStories.map((story) => ({
+    '@type': 'ListItem',
+    position: story.data.story_number,
+    url: new URL(story.data.public_url, site).toString(),
+    name: story.data.title,
+    description: story.data.description,
+  })),
+};
 ---
-<BaseLayout title="Lina" description="Lina’s first eight stories in Vaelinya.">
+<BaseLayout title="Lina" description={description} jsonLd={linaItemListJsonLd}>
   <section class="page-section">
     <p class="eyebrow">Lina of Vaelinya</p>
     <h1>Lina’s eight stories</h1>
