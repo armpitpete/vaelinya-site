@@ -1,0 +1,99 @@
+.hero-art-image {
+  margin: 0;
+  min-height: auto;
+  aspect-ratio: 4 / 3;
+  background: #1d122e;
+  display: block;
+}
+
+.hero-art-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.door-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.door-card__visual {
+  min-height: 8.8rem;
+  display: block;
+  background-size: 100% 100%, cover;
+  background-position: center, center;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(255, 248, 232, 0.54);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.28),
+    0 0.75rem 1.8rem rgba(9, 5, 18, 0.16);
+}
+
+.door-card__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.door-card__content > p:not(.door-card__label) {
+  margin-bottom: 0.65rem;
+}
+
+.door-card__actions {
+  margin-top: auto;
+}
+
+.door-card__visual::before,
+.door-card__visual::after,
+.door-card__shape {
+  display: none;
+}
+
+.door-card--read .door-card__visual {
+  background-image:
+    linear-gradient(180deg, rgba(29, 18, 46, 0.02), rgba(29, 18, 46, 0.12)),
+    url('/images/door-read.webp?v=2026-05-22-tight-02');
+}
+
+.door-card--world .door-card__visual {
+  background-image:
+    linear-gradient(180deg, rgba(29, 18, 46, 0.02), rgba(29, 18, 46, 0.12)),
+    url('/images/door-world.webp?v=2026-05-22-tight-02');
+}
+
+.door-card--language .door-card__visual {
+  background-image:
+    linear-gradient(180deg, rgba(29, 18, 46, 0.02), rgba(29, 18, 46, 0.12)),
+    url('/images/door-language.webp?v=2026-05-22-tight-02');
+}
+
+.door-card--artefacts .door-card__visual {
+  background-image:
+    linear-gradient(180deg, rgba(29, 18, 46, 0.02), rgba(29, 18, 46, 0.12)),
+    url('/images/door-artefacts.webp?v=2026-05-22-tight-02');
+}
+
+@media (min-width: 901px) {
+  .hero-illustrated {
+    grid-template-columns: minmax(0, 0.95fr) minmax(22rem, 0.85fr);
+    align-items: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-art-image {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-art-image {
+    aspect-ratio: 4 / 3;
+  }
+
+  .door-card__visual {
+    min-height: 7.8rem;
+  }
+}
