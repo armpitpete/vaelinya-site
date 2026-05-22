@@ -1,0 +1,34 @@
+.hero-art-image {
+  margin: 0;
+  min-height: auto;
+  aspect-ratio: 4 / 3;
+  background: #1d122e;
+  display: block;
+}
+
+.hero-art-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (min-width: 901px) {
+  .hero-illustrated {
+    grid-template-columns: minmax(0, 0.95fr) minmax(22rem, 0.85fr);
+    align-items: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-art-image {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-art-image {
+    aspect-ratio: 4 / 3;
+  }
+}
