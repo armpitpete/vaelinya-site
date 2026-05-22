@@ -111,15 +111,10 @@
   min-height: 9.2rem;
   border-radius: 1rem;
   background-image:
-    url('/images/stories/lina/symbols/lina-symbol-01-bridge-light.svg'),
-    url('/images/stories/lina/symbols/lina-symbol-07-sky-seed.svg'),
-    url('/images/stories/lina/symbols/lina-symbol-08-listening-stone.svg'),
-    radial-gradient(circle at 50% 46%, rgba(255, 229, 119, 0.72), transparent 4.8rem),
-    radial-gradient(circle at 20% 22%, rgba(255, 224, 239, 0.78), transparent 5.8rem),
-    radial-gradient(circle at 84% 76%, rgba(228, 232, 255, 0.72), transparent 5.2rem),
-    linear-gradient(145deg, #ffe0ef, #fff8e8 42%, #e4e8ff);
-  background-size: 6.8rem 6.8rem, 3.15rem 3.15rem, 3rem 3rem, auto, auto, auto, auto;
-  background-position: center, 18% 24%, 82% 74%, center, center, center, center;
+    linear-gradient(180deg, rgba(29, 18, 46, 0.02), rgba(29, 18, 46, 0.12)),
+    url('/images/lina-first-path.svg?v=2026-05-22-01');
+  background-size: 100% 100%, cover;
+  background-position: center, center;
   background-repeat: no-repeat;
   border: 1px solid rgba(255, 248, 232, 0.62);
   box-shadow:
@@ -177,7 +172,6 @@
 
   .first-path-image {
     min-height: 7.8rem;
-    background-size: 5.8rem 5.8rem, 2.6rem 2.6rem, 2.5rem 2.5rem, auto, auto, auto, auto;
   }
 
   .first-path-link {
