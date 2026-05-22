@@ -20,10 +20,10 @@
 }
 
 .door-card__visual {
-  min-height: 8.8rem;
+  min-height: 9.35rem;
   display: block;
-  background-size: cover;
-  background-position: center;
+  background-size: 100% 100%, 116% auto;
+  background-position: center, center;
   background-repeat: no-repeat;
   border: 1px solid rgba(255, 248, 232, 0.54);
   box-shadow:
@@ -53,26 +53,30 @@
 
 .door-card--read .door-card__visual {
   background-image:
-    linear-gradient(180deg, rgba(29, 18, 46, 0.04), rgba(29, 18, 46, 0.16)),
+    linear-gradient(180deg, rgba(29, 18, 46, 0.02), rgba(29, 18, 46, 0.12)),
     url('/images/door-read.webp');
+  background-position: center, 52% 50%;
 }
 
 .door-card--world .door-card__visual {
   background-image:
-    linear-gradient(180deg, rgba(29, 18, 46, 0.04), rgba(29, 18, 46, 0.16)),
+    linear-gradient(180deg, rgba(29, 18, 46, 0.02), rgba(29, 18, 46, 0.12)),
     url('/images/door-world.webp');
+  background-position: center, 50% 50%;
 }
 
 .door-card--language .door-card__visual {
   background-image:
-    linear-gradient(180deg, rgba(29, 18, 46, 0.04), rgba(29, 18, 46, 0.16)),
+    linear-gradient(180deg, rgba(29, 18, 46, 0.02), rgba(29, 18, 46, 0.12)),
     url('/images/door-language.webp');
+  background-position: center, 48% 48%;
 }
 
 .door-card--artefacts .door-card__visual {
   background-image:
-    linear-gradient(180deg, rgba(29, 18, 46, 0.04), rgba(29, 18, 46, 0.16)),
+    linear-gradient(180deg, rgba(29, 18, 46, 0.02), rgba(29, 18, 46, 0.12)),
     url('/images/door-artefacts.webp');
+  background-position: center, 54% 50%;
 }
 
 @media (min-width: 901px) {
@@ -95,5 +99,6 @@
 
   .door-card__visual {
     min-height: 7.8rem;
+    background-size: 100% 100%, 126% auto;
   }
 }
