@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import VisualCallout from '../components/VisualCallout.astro';
 
 const description = 'A colourful, illustrated, learnable story world where readers can begin with stories, then explore world, language, and artefacts.';
 const site = Astro.site ?? new URL('https://vaelinya.uk');
@@ -98,13 +97,13 @@ const webSiteJsonLd = {
     </div>
   </section>
 
-  <VisualCallout
-    eyebrow="First path"
-    title="Begin with one story, then follow what shines."
-    text="Vaelinya is easiest to enter through a small choice: read a story, notice a symbol, learn a word, or step onto the Rim. You do not need the whole world before you start."
-    href="/read/lina/"
-    linkText="Open Lina’s stories"
-    symbol="✦"
-    tone="read"
-  />
+  <section class="first-path-panel" aria-labelledby="first-path-title">
+    <div class="first-path-image" aria-hidden="true"></div>
+    <div class="first-path-copy">
+      <p class="eyebrow">First path</p>
+      <h2 id="first-path-title">Start with Lina.</h2>
+      <p>Read one story first. Then follow any place, word, symbol, or object that catches your attention.</p>
+      <a class="button first-path-link" href="/read/lina/">Open Lina’s stories</a>
+    </div>
+  </section>
 </BaseLayout>
