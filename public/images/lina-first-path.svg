@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" role="img" aria-labelledby="title desc">
+  <title id="title">Lina first path</title>
+  <desc id="desc">A gentle Vaelinya image for Lina: a small figure on a glowing bridge path under soft stars, with listening-stone and bridge-light symbols nearby.</desc>
+  <defs>
+    <radialGradient id="skyGlow" cx="50%" cy="44%" r="62%">
+      <stop offset="0%" stop-color="#fff1b7"/>
+      <stop offset="42%" stop-color="#ffe0ef"/>
+      <stop offset="100%" stop-color="#e4e8ff"/>
+    </radialGradient>
+    <linearGradient id="path" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff8e8"/>
+      <stop offset="48%" stop-color="#ffe577"/>
+      <stop offset="100%" stop-color="#c1447a"/>
+    </linearGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#1f1730" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="440" rx="28" fill="url(#skyGlow)"/>
+  <circle cx="522" cy="118" r="38" fill="#fff8e8" opacity="0.72"/>
+  <circle cx="260" cy="96" r="16" fill="#fff8e8" opacity="0.9"/>
+  <circle cx="608" cy="204" r="10" fill="#fff8e8" opacity="0.75"/>
+  <circle cx="188" cy="250" r="8" fill="#fff8e8" opacity="0.7"/>
+
+  <path d="M68 333 C184 270 280 238 400 238 C520 238 616 270 732 333" fill="none" stroke="#7b4ecb" stroke-width="24" stroke-linecap="round" opacity="0.72"/>
+  <path d="M130 336 C230 292 314 274 400 274 C486 274 570 292 670 336" fill="none" stroke="#f3b43f" stroke-width="20" stroke-linecap="round" opacity="0.86"/>
+  <path d="M218 350 H582" fill="none" stroke="#fff8e8" stroke-width="10" stroke-linecap="round" opacity="0.86"/>
+
+  <g filter="url(#softShadow)">
+    <circle cx="400" cy="260" r="66" fill="#fff8e8" opacity="0.88"/>
+    <path d="M332 262 C354 208 382 184 400 184 C418 184 446 208 468 262" fill="none" stroke="#7b4ecb" stroke-width="16" stroke-linecap="round"/>
+    <path d="M350 266 H450" fill="none" stroke="#f3b43f" stroke-width="13" stroke-linecap="round"/>
+    <circle cx="400" cy="288" r="18" fill="#ffe577"/>
+    <path d="M400 246 V288" stroke="#ffe577" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="400" cy="288" r="42" fill="none" stroke="#ffe577" stroke-opacity="0.35" stroke-width="10"/>
+  </g>
+
+  <g opacity="0.92">
+    <circle cx="232" cy="156" r="42" fill="#fff8e8"/>
+    <path d="M232 126 L242 148 L266 151 L248 167 L253 191 L232 179 L211 191 L216 167 L198 151 L222 148 Z" fill="#4b63c7"/>
+    <path d="M232 138 L239 153 L255 155 L243 166 L246 182 L232 174 L218 182 L221 166 L209 155 L225 153 Z" fill="#ffe577"/>
+  </g>
+
+  <g opacity="0.92">
+    <circle cx="568" cy="292" r="42" fill="#fff8e8"/>
+    <circle cx="568" cy="292" r="25" fill="#1f1730" opacity="0.9"/>
+    <circle cx="550" cy="280" r="5" fill="#ffe577"/>
+    <circle cx="570" cy="270" r="5" fill="#77d6bd"/>
+    <circle cx="588" cy="286" r="5" fill="#ffe577"/>
+    <circle cx="584" cy="308" r="5" fill="#e4e8ff"/>
+    <circle cx="560" cy="314" r="5" fill="#c1447a"/>
+  </g>
+
+  <g aria-hidden="true">
+    <circle cx="400" cy="182" r="13" fill="#1f1730"/>
+    <path d="M382 222 C386 199 393 188 400 188 C407 188 414 199 418 222" fill="#1f1730"/>
+    <path d="M386 222 C392 234 408 234 414 222" fill="#1f1730"/>
+  </g>
+</svg>
