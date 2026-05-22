@@ -27,6 +27,9 @@ const {
   relatedArtefacts = [],
 } = Astro.props;
 
+const site = Astro.site ?? new URL('https://vaelinya.uk');
+const canonicalUrl = new URL(Astro.url.pathname, site).toString();
+
 const storyHeroAlt = new Map([
   [1, 'Lina standing on a luminous bridge over silver mist, holding a small wooden recorder.'],
   [2, 'Lina sitting in a wet meadow beneath a small low grey-blue cloud with warm rain falling around her.'],
@@ -45,6 +48,7 @@ const resolveHeroImage = (src?: string) => {
 
 const resolvedHeroImage = resolveHeroImage(heroImage);
 const resolvedHeroAlt = heroImageAlt ?? storyHeroAlt.get(storyNumber) ?? description;
+const storyImageUrl = resolvedHeroImage ? new URL(resolvedHeroImage, site).toString() : undefined;
 
 const labelForLink = (href: string) => {
   const labels = new Map([
@@ -73,8 +77,24 @@ const relatedLinks = [
   ...relatedLanguage.map((href) => ({ href, group: 'Language' })),
   ...relatedArtefacts.map((href) => ({ href, group: 'Artefacts' })),
 ];
+
+const storyJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ShortStory',
+  name: title,
+  description,
+  url: canonicalUrl,
+  isPartOf: {
+    '@type': 'CreativeWorkSeries',
+    name: series,
+    url: new URL('/read/lina/', site).toString(),
+  },
+  position: storyNumber,
+  inLanguage: 'en',
+  ...(storyImageUrl ? { image: storyImageUrl } : {}),
+};
 ---
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} image={resolvedHeroImage} jsonLd={storyJsonLd}>
   <article class="story-page">
     <header class="story-header story-header-compact" aria-label={`${series}, story ${storyNumber} of ${totalStories}`}>
       <p class="eyebrow">{series}</p>
