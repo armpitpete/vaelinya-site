@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const description = 'About Vaelinya: a colourful, illustrated story world by Merrin W. Dream, with stories, world, language, and artefacts for readers to explore.';
+const description = 'About Vaelinya: a colourful story world by Merrin W. Dream, where readers can begin with stories and then explore places, language, symbols, maps, and artefacts.';
 const site = Astro.site ?? new URL('https://vaelinya.uk');
 const pageUrl = new URL('/about/', site).toString();
 const homepageUrl = new URL('/', site).toString();
@@ -22,7 +22,7 @@ const aboutJsonLd = [
     about: {
       '@type': 'CreativeWorkSeries',
       name: 'Vaelinya',
-      description: 'A colourful, illustrated, learnable story world where readers can begin with stories, then explore world, language, and artefacts.',
+      description: 'A colourful story world where readers can begin with stories and then explore places, language, symbols, maps, and artefacts.',
       url: homepageUrl,
       inLanguage: 'en',
       creator: {
@@ -44,14 +44,15 @@ const aboutJsonLd = [
   <section class="page-section">
     <p class="eyebrow">About</p>
     <h1>About Vaelinya</h1>
-    <p class="lede">Vaelinya is a colourful, illustrated, learnable story world created by Merrin W. Dream.</p>
-    <p>It is built as a public adventure doorway. Readers can begin with stories, then follow the world, language, and artefacts as they open.</p>
-    <p>Vaelinya is not a game, a wiki, or a random fantasy glossary. It is a story world first. The reference pages exist to make the stories richer, clearer, and easier to enter.</p>
+    <p class="lede">Vaelinya is a colourful story world created by Merrin W. Dream.</p>
+    <p>It begins with stories. From there, you can follow the places, words, symbols, maps, and objects that belong to the world.</p>
+    <p>You can start reading straight away. The extra pages are here when you want to understand something more clearly.</p>
 
     <article class="panel" aria-labelledby="where-to-start-title">
-      <p class="eyebrow">Where to start</p>
-      <h2 id="where-to-start-title">Begin with one clear path</h2>
-      <p>The easiest first step is Lina’s story path. Lina is the first bridge child: a listener, a witness, and a quiet connector. Her stories introduce Vaelinya through feeling, place, courage, and small acts of attention.</p>
+      <p class="eyebrow">Start here</p>
+      <h2 id="where-to-start-title">Read Lina first</h2>
+      <p>Lina’s stories are the clearest first path into Vaelinya. She listens carefully, notices what others miss, and helps the world open gently around the reader.</p>
+      <p>Read one story first. Then follow any place, word, symbol, or object that catches your attention.</p>
       <div class="link-list">
         <a href="/read/lina/">Start with Lina’s eight stories</a>
         <a href="/read/lina/01-the-bridge-that-sang-back/">Read Story 01: The Bridge That Sang Back</a>
@@ -59,13 +60,13 @@ const aboutJsonLd = [
     </article>
 
     <article class="panel" aria-labelledby="sections-title">
-      <p class="eyebrow">How the site works</p>
-      <h2 id="sections-title">Four public doors</h2>
+      <p class="eyebrow">How to use the site</p>
+      <h2 id="sections-title">Four ways in</h2>
       <ul>
-        <li><strong>Read</strong> is the story doorway. Start here when you want the world to arrive through characters and events.</li>
-        <li><strong>World</strong> explains places, people, customs, animals, and the wider shape of Vaelinya.</li>
-        <li><strong>Language</strong> teaches words, sounds, meanings, and word-families in small clear steps.</li>
-        <li><strong>Artefacts</strong> holds symbols, maps, objects, chant cards, and printable things from inside the world.</li>
+        <li><strong>Read</strong> gives you the stories.</li>
+        <li><strong>World</strong> explains the places, people, customs, animals, and shared life of Vaelinya.</li>
+        <li><strong>Language</strong> gathers words, meanings, pronunciations, and word-families.</li>
+        <li><strong>Artefacts</strong> collects symbols, maps, objects, chant cards, and printable things from the world.</li>
       </ul>
       <div class="link-list">
         <a href="/read/">Read</a>
@@ -79,14 +80,14 @@ const aboutJsonLd = [
       <p class="eyebrow">Creator</p>
       <h2 id="merrin-title">Merrin W. Dream</h2>
       <p>Merrin W. Dream is a writer, artist, musician, worldbuilder, and synth maker based in York.</p>
-      <p>Merrin writes fiction, builds story worlds, makes songs, designs instruments, and teaches neurodivergent-friendly storytelling. The work returns to hidden lives, difficult perception, longing, care, and the way some people are made almost ghostlike by a world that does not know how to see them clearly.</p>
+      <p>Merrin writes fiction, builds story worlds, makes songs, designs instruments, and teaches neurodivergent-friendly storytelling. The work often returns to hidden lives, difficult perception, longing, care, and the need to be seen clearly.</p>
     </article>
 
-    <article class="panel" aria-labelledby="public-canon-title">
+    <article class="panel" aria-labelledby="public-site-title">
       <p class="eyebrow">Public site</p>
-      <h2 id="public-canon-title">What belongs here</h2>
-      <p>This site holds the public-facing version of Vaelinya: readable stories, useful orientation pages, clear language material, and artefacts that help the world feel real.</p>
-      <p>The deeper working canon remains in the private project files. The public site gives readers enough to begin without exposing every planning document behind the world.</p>
+      <h2 id="public-site-title">What this site gives you</h2>
+      <p>This is the public doorway into Vaelinya. It gives readers enough to enter the world, follow the stories, and understand the most useful parts of the setting.</p>
+      <p>There is more behind the scenes, but this site keeps the first experience clear: story first, then world, language, and artefacts when they are useful.</p>
     </article>
   </section>
 </BaseLayout>
