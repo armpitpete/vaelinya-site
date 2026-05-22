@@ -14,6 +14,49 @@
   object-position: center;
 }
 
+.door-card__visual {
+  min-height: 8.8rem;
+  display: block;
+  background-image:
+    linear-gradient(180deg, rgba(29, 18, 46, 0.04), rgba(29, 18, 46, 0.16)),
+    url('/images/begin-the-journey.webp');
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(255, 248, 232, 0.54);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.28),
+    0 0.75rem 1.8rem rgba(9, 5, 18, 0.16);
+}
+
+.door-card__visual::before,
+.door-card__visual::after,
+.door-card__shape {
+  display: none;
+}
+
+.door-card--read .door-card__visual {
+  background-position: 18% 58%;
+}
+
+.door-card--world .door-card__visual {
+  background-position: 50% 50%;
+}
+
+.door-card--language .door-card__visual {
+  background-position: 68% 44%;
+}
+
+.door-card--artefacts .door-card__visual {
+  background-position: 84% 60%;
+}
+
+.door-card--read .door-card__visual::before,
+.door-card--world .door-card__visual::before,
+.door-card--language .door-card__visual::before,
+.door-card--artefacts .door-card__visual::before {
+  content: none;
+}
+
 @media (min-width: 901px) {
   .hero-illustrated {
     grid-template-columns: minmax(0, 0.95fr) minmax(22rem, 0.85fr);
@@ -30,5 +73,9 @@
 @media (max-width: 520px) {
   .hero-art-image {
     aspect-ratio: 4 / 3;
+  }
+
+  .door-card__visual {
+    min-height: 7.8rem;
   }
 }
