@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import JourneyThread from '../../components/storybook/JourneyThread.astro';
+import StorybookPanel from '../../components/storybook/StorybookPanel.astro';
+import GuideSpeech from '../../components/storybook/GuideSpeech.astro';
+---
+<BaseLayout
+  title="Chapter One: The First Walk"
+  description="Lina opens the Storybook of Vaelinya and shows how the journey works."
+>
+  <link rel="stylesheet" href="/styles/storybook.css?v=2026-05-24-01" />
+  <script src="/scripts/storybook-chapter-one.js?v=2026-05-24-01" defer></script>
+
+  <article class="storybook-page" data-storybook-chapter="one">
+    <header class="storybook-cover">
+      <p class="eyebrow">A Storybook of Vaelinya</p>
+      <h1>Chapter One: The First Walk</h1>
+      <p class="lede">Lina opens the Storybook and shows how the journey works: pictures, sound, marks, movement, and guide handovers.</p>
+      <GuideSpeech guide="Lina">
+        <p>“We start on this path. Later, other guides will take you further.”</p>
+      </GuideSpeech>
+      <a class="button" href="#open-storybook">Open the Storybook</a>
+    </header>
+
+    <JourneyThread currentChapter={1} currentStop={1} />
+
+    <StorybookPanel id="open-storybook" eyebrow="Stop One" title="Open the Storybook" variant="cover">
+      <div class="storybook-spread">
+        <div>
+          <p>The Storybook is a guided walk through Vaelinya. Each chapter teaches by movement through one part of the world.</p>
+          <p>Chapter One is the first test page. It shows how the Storybook works before the journey moves to Nearside.</p>
+          <button class="storybook-action" type="button" data-storybook-stop="2">Step onto the path</button>
+        </div>
+        <div class="storybook-illustration storybook-illustration--book" aria-hidden="true">
+          <span>open book</span>
+        </div>
+      </div>
+    </StorybookPanel>
+
+    <StorybookPanel eyebrow="Stop Two" title="Step onto the first path" variant="path">
+      <GuideSpeech guide="Lina">
+        <p>“The thread shows the route. It is not a score.”</p>
+      </GuideSpeech>
+      <div class="path-stones" aria-label="First path stones">
+        <button type="button" data-storybook-stop="3">Path</button>
+        <button type="button" data-storybook-stop="3">Sound</button>
+        <button type="button" data-storybook-stop="3">Mark</button>
+      </div>
+    </StorybookPanel>
+
+    <StorybookPanel eyebrow="Stop Three" title="Try one sound" variant="sound">
+      <p>Vaelinya is a world of sound. Sound can shape how people feel and how some places seem around them.</p>
+      <p>Sound is optional. Nothing plays by itself.</p>
+      <button class="storybook-action" type="button" data-enable-story-sounds>Enable story sounds</button>
+      <button class="storybook-action secondary" type="button" data-play-story-sound data-storybook-stop="4">Play the first sound</button>
+    </StorybookPanel>
+
+    <StorybookPanel eyebrow="Stop Four" title="Watch what changes" variant="change">
+      <div class="image-change-activity" data-image-change>
+        <div class="image-change-activity__scene" aria-hidden="true">
+          <div class="scene-before">Before sound</div>
+          <div class="scene-after">After sound</div>
+        </div>
+        <div>
+          <p>Play the sound. Then look at the scene.</p>
+          <p>What changed?</p>
+          <button type="button" data-change-answer="water">The water grew brighter</button>
+          <button type="button" data-change-answer="mark">A mark appeared on the stone</button>
+          <button type="button" data-change-answer="path">The path darkened</button>
+          <p class="storybook-feedback" data-change-feedback hidden>Lina points to the stone. “A mark appeared after the sound.”</p>
+        </div>
+      </div>
+    </StorybookPanel>
+
+    <StorybookPanel eyebrow="Stop Five" title="Notice the first mark" variant="mark">
+      <GuideSpeech guide="Lina">
+        <p>“This mark means remembered place.”</p>
+      </GuideSpeech>
+      <div class="mark-puzzle" data-mark-puzzle>
+        <button type="button" data-mark-choice="route"><span class="organic-mark organic-mark--one"></span><span>Route mark</span></button>
+        <button type="button" data-mark-choice="remembered"><span class="organic-mark organic-mark--two"></span><span>Remembered place</span></button>
+        <button type="button" data-mark-choice="weather"><span class="organic-mark organic-mark--three"></span><span>Weather mark</span></button>
+      </div>
+      <p class="storybook-feedback" data-mark-feedback hidden>Lina points to the middle mark. “That is the one used for a remembered place.”</p>
+    </StorybookPanel>
+
+    <StorybookPanel eyebrow="Stop Six" title="Meet the next guide" variant="handover">
+      <div class="storybook-spread">
+        <div>
+          <p>Lina starts the journey, but she does not explain every part of Vaelinya.</p>
+          <p>In later chapters, guides from those places take over.</p>
+          <GuideSpeech guide="Lina">
+            <p>“Next, I’ll show you where I live.”</p>
+          </GuideSpeech>
+        </div>
+        <div class="storybook-illustration storybook-illustration--handover" aria-hidden="true">
+          <span>thread handover</span>
+        </div>
+      </div>
+    </StorybookPanel>
+
+    <StorybookPanel id="planned-chapters" eyebrow="Next" title="Chapter Two: Nearside" variant="next">
+      <p>The First Walk points toward Nearside, where Lina lives.</p>
+      <p>Chapter Two is planned as the first full world-area chapter.</p>
+      <a class="button" href="/start/">Return to the Storybook hub</a>
+    </StorybookPanel>
+  </article>
+</BaseLayout>
