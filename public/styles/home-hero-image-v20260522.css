@@ -17,37 +17,39 @@
 .home-page {
   position: relative;
   isolation: isolate;
+  border-radius: 1.5rem;
+  overflow: hidden;
 }
 
 .home-page::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -2;
+  z-index: 0;
   pointer-events: none;
-  background-image: url('/images/vaelinya-homepage-background.svg?v=2026-05-24-01');
+  background-image: url('/images/vaelinya-homepage-background.png?v=2026-05-24-02');
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
-  opacity: 0.34;
+  opacity: 0.52;
 }
 
 .home-page::after {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(250, 245, 236, 0.28) 0%, rgba(250, 245, 236, 0.18) 18%, rgba(250, 245, 236, 0.28) 100%),
-    radial-gradient(circle at top center, rgba(255, 250, 235, 0.46), transparent 34%),
-    radial-gradient(circle at bottom center, rgba(40, 28, 58, 0.12), transparent 30%);
+    linear-gradient(180deg, rgba(250, 245, 236, 0.22) 0%, rgba(250, 245, 236, 0.12) 22%, rgba(250, 245, 236, 0.22) 100%),
+    radial-gradient(circle at top center, rgba(255, 250, 235, 0.34), transparent 34%),
+    radial-gradient(circle at bottom center, rgba(40, 28, 58, 0.12), transparent 34%);
 }
 
 .home-page > section,
 .home-page > .panel {
   position: relative;
-  z-index: 0;
+  z-index: 1;
 }
 
 .threshold-hero,
@@ -55,7 +57,7 @@
 .door-grid,
 .lina-greeting-panel,
 .first-path-panel {
-  background: rgba(250, 245, 236, 0.58);
+  background: rgba(250, 245, 236, 0.62);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 1.35rem;
@@ -87,7 +89,7 @@
   color: var(--ink);
   text-decoration: none;
   cursor: pointer;
-  background: rgba(255, 250, 242, 0.68);
+  background: rgba(255, 250, 242, 0.72);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
 }
@@ -168,13 +170,13 @@
   border: 1px solid rgba(255, 248, 232, 0.52);
   border-radius: 1.35rem;
   background:
-    radial-gradient(circle at 12% 20%, rgba(255, 255, 255, 0.45), transparent 10rem),
-    rgba(255, 241, 199, 0.66);
+    radial-gradient(circle at 12% 20%, rgba(255, 255, 255, 0.38), transparent 10rem),
+    rgba(255, 241, 199, 0.68);
   box-shadow: 0 1rem 2.6rem rgba(9, 5, 18, 0.2);
 }
 
 .lina-greeting-panel {
-  background: rgba(250, 245, 236, 0.62);
+  background: rgba(250, 245, 236, 0.64);
 }
 
 .first-path-image {
@@ -227,7 +229,7 @@
 
   .home-page::before {
     background-position: center top;
-    opacity: 0.28;
+    opacity: 0.42;
   }
 }
 
@@ -251,6 +253,10 @@
 
   .first-path-link {
     width: 100%;
+  }
+
+  .home-page {
+    border-radius: 1rem;
   }
 
   .threshold-hero,
