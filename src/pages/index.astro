@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const description = 'A colourful, illustrated, learnable story world where readers can begin with stories, then explore world, language, and artefacts.';
+const description = 'A colourful, illustrated, learnable story world where readers can begin with a simple doorway, then follow stories, world, and language.';
 const site = Astro.site ?? new URL('https://vaelinya.uk');
 
 const webSiteJsonLd = {
@@ -37,18 +37,29 @@ const webSiteJsonLd = {
   <section class="door-intro" aria-labelledby="door-intro-title">
     <p class="eyebrow">Four doors</p>
     <h2 id="door-intro-title">Choose how you want to enter.</h2>
-    <p>Start with a story, step into the world, learn a word, or look closely at an artefact. You do not need to understand everything before you begin.</p>
+    <p>Begin gently, read a story, step into the world, or learn a word. You do not need to understand everything before you begin.</p>
   </section>
 
   <section class="door-grid" aria-label="Four doorways into Vaelinya">
+    <a class="door-card door-card--start" href="/start/" aria-label="Enter Vaelinya">
+      <div class="door-card__visual" aria-hidden="true">
+        <div class="door-card__shape"><span>✦</span></div>
+      </div>
+      <div class="door-card__content">
+        <p class="door-card__label">Start here</p>
+        <h3>Enter Vaelinya</h3>
+        <p>A gentle first path for new readers.</p>
+      </div>
+    </a>
+
     <a class="door-card door-card--read" href="/read/" aria-label="Read the stories">
       <div class="door-card__visual" aria-hidden="true">
         <div class="door-card__shape"><span>✦</span></div>
       </div>
       <div class="door-card__content">
-        <p class="door-card__label">Read</p>
+        <p class="door-card__label">Stories</p>
         <h3>Read the stories</h3>
-        <p>Start with stories and meet the children of Vaelinya.</p>
+        <p>Meet the children of Vaelinya one story at a time.</p>
       </div>
     </a>
 
@@ -59,7 +70,7 @@ const webSiteJsonLd = {
       <div class="door-card__content">
         <p class="door-card__label">World</p>
         <h3>Explore the world</h3>
-        <p>Explore places, people, customs, and the living shape of the world.</p>
+        <p>Browse places, people, customs, objects, and symbols.</p>
       </div>
     </a>
 
@@ -71,17 +82,6 @@ const webSiteJsonLd = {
         <p class="door-card__label">Language</p>
         <h3>Learn the language</h3>
         <p>Learn Vaelinya words one small family at a time.</p>
-      </div>
-    </a>
-
-    <a class="door-card door-card--artefacts" href="/artefacts/" aria-label="Discover artefacts">
-      <div class="door-card__visual" aria-hidden="true">
-        <div class="door-card__shape"><span>◇</span></div>
-      </div>
-      <div class="door-card__content">
-        <p class="door-card__label">Artefacts</p>
-        <h3>Discover artefacts</h3>
-        <p>See symbols, objects, marks, and things made inside the world.</p>
       </div>
     </a>
   </section>
