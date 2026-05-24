@@ -212,20 +212,17 @@
   align-items: center;
 }
 
-.storybook-spread--reverse {
-  grid-template-columns: minmax(14rem, 0.85fr) minmax(0, 1fr);
-}
-
 .storybook-illustration,
-.image-change-activity__scene {
+.image-change-activity__scene,
+.guide-handover-card {
   min-height: 14rem;
   display: grid;
   place-items: center;
   border-radius: 1.1rem;
   overflow: hidden;
   background:
-    radial-gradient(circle at 35% 24%, rgba(255, 229, 119, 0.72), transparent 7rem),
-    linear-gradient(145deg, rgba(75, 99, 199, 0.9), rgba(47, 143, 131, 0.86));
+    radial-gradient(circle at 35% 24%, rgba(255, 229, 119, 0.62), transparent 7rem),
+    linear-gradient(145deg, rgba(75, 99, 199, 0.88), rgba(47, 143, 131, 0.82));
   color: white;
   font-weight: 900;
   text-transform: uppercase;
@@ -239,12 +236,6 @@
   min-height: 14rem;
   display: block;
   object-fit: cover;
-}
-
-.storybook-illustration--handover {
-  background:
-    radial-gradient(circle at 70% 35%, rgba(255, 229, 119, 0.72), transparent 7rem),
-    linear-gradient(145deg, rgba(193, 68, 122, 0.88), rgba(109, 59, 145, 0.86));
 }
 
 .storybook-action,
@@ -288,9 +279,7 @@
   border-radius: 42% 58% 46% 54%;
   display: block;
   background: #6d3b91;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.34),
-    0 0.45rem 0.9rem rgba(31, 23, 48, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.34), 0 0.45rem 0.9rem rgba(31, 23, 48, 0.14);
 }
 
 .organic-mark--one {
@@ -330,17 +319,16 @@
 }
 
 .scene-before {
-  background-image:
-    linear-gradient(180deg, rgba(29, 18, 46, 0.12), rgba(29, 18, 46, 0.38)),
-    url('/images/begin-the-journey.webp');
+  background:
+    radial-gradient(circle at 25% 28%, rgba(255, 248, 232, 0.2), transparent 7rem),
+    linear-gradient(145deg, #405d62, #1d122e);
 }
 
 .scene-after {
   opacity: 0;
-  background-image:
+  background:
     radial-gradient(circle at 46% 42%, rgba(255, 229, 119, 0.58), transparent 8rem),
-    linear-gradient(180deg, rgba(29, 18, 46, 0.02), rgba(29, 18, 46, 0.16)),
-    url('/images/lina-first-path.webp');
+    linear-gradient(145deg, #2f8f83, #4b63c7);
 }
 
 .scene-before span,
@@ -352,6 +340,34 @@
 
 .image-change-activity.is-changed .scene-after {
   opacity: 1;
+}
+
+.guide-handover-card {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 72% 30%, rgba(255, 229, 119, 0.72), transparent 7rem),
+    linear-gradient(145deg, rgba(193, 68, 122, 0.88), rgba(109, 59, 145, 0.86));
+}
+
+.guide-handover-card__thread {
+  width: min(82%, 22rem);
+  height: 0.5rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #fff1c7, #d4ad6a, #fff1c7);
+  box-shadow: 0 0 1.5rem rgba(255, 229, 119, 0.74);
+  transform: rotate(-8deg);
+}
+
+.guide-handover-card__label {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  text-align: center;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.95rem;
 }
 
 .storybook-feedback {
@@ -368,7 +384,6 @@
   }
 
   .storybook-spread,
-  .storybook-spread--reverse,
   .image-change-activity {
     grid-template-columns: 1fr;
   }
