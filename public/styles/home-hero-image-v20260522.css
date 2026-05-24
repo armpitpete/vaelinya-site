@@ -14,36 +14,41 @@
   object-position: center;
 }
 
+body:has(.home-page) {
+  background-color: var(--night);
+  background-image:
+    linear-gradient(180deg, rgba(29, 18, 46, 0.24) 0%, rgba(29, 18, 46, 0.08) 28%, rgba(29, 18, 46, 0.36) 100%),
+    radial-gradient(circle at 8% 10%, rgba(255, 213, 94, 0.20), transparent 18rem),
+    radial-gradient(circle at 92% 8%, rgba(113, 218, 203, 0.18), transparent 20rem),
+    radial-gradient(circle at 50% 92%, rgba(193, 68, 122, 0.16), transparent 24rem),
+    url('/images/vaelinya-homepage-background.png?v=2026-05-24-04'),
+    radial-gradient(circle, rgba(255, 248, 232, 0.08) 1px, transparent 1px);
+  background-position:
+    center top,
+    center top,
+    center top,
+    center bottom,
+    center top,
+    center top;
+  background-repeat:
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    repeat;
+  background-size:
+    cover,
+    auto,
+    auto,
+    auto,
+    cover,
+    28px 28px;
+}
+
 .site-main:has(> .home-page) {
   position: relative;
   isolation: isolate;
-}
-
-.site-main:has(> .home-page)::before {
-  content: "";
-  position: absolute;
-  inset: 1.55rem 1rem 3rem;
-  z-index: 0;
-  pointer-events: none;
-  background-image: url('/images/vaelinya-homepage-background.png?v=2026-05-24-03');
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 0.52;
-  border-radius: 1.5rem;
-}
-
-.site-main:has(> .home-page)::after {
-  content: "";
-  position: absolute;
-  inset: 1.55rem 1rem 3rem;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(250, 245, 236, 0.22) 0%, rgba(250, 245, 236, 0.12) 22%, rgba(250, 245, 236, 0.22) 100%),
-    radial-gradient(circle at top center, rgba(255, 250, 235, 0.34), transparent 34%),
-    radial-gradient(circle at bottom center, rgba(40, 28, 58, 0.12), transparent 34%);
-  border-radius: 1.5rem;
 }
 
 .home-page {
@@ -56,7 +61,7 @@
 .door-grid,
 .lina-greeting-panel,
 .first-path-panel {
-  background: rgba(250, 245, 236, 0.62);
+  background: rgba(250, 245, 236, 0.56);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 1.35rem;
@@ -88,7 +93,7 @@
   color: var(--ink);
   text-decoration: none;
   cursor: pointer;
-  background: rgba(255, 250, 242, 0.72);
+  background: rgba(255, 250, 242, 0.68);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
 }
@@ -169,13 +174,13 @@
   border: 1px solid rgba(255, 248, 232, 0.52);
   border-radius: 1.35rem;
   background:
-    radial-gradient(circle at 12% 20%, rgba(255, 255, 255, 0.38), transparent 10rem),
-    rgba(255, 241, 199, 0.68);
+    radial-gradient(circle at 12% 20%, rgba(255, 255, 255, 0.32), transparent 10rem),
+    rgba(255, 241, 199, 0.62);
   box-shadow: 0 1rem 2.6rem rgba(9, 5, 18, 0.2);
 }
 
 .lina-greeting-panel {
-  background: rgba(250, 245, 236, 0.64);
+  background: rgba(250, 245, 236, 0.58);
 }
 
 .first-path-image {
@@ -226,9 +231,21 @@
     grid-template-columns: 1fr;
   }
 
-  .site-main:has(> .home-page)::before {
-    background-position: center top;
-    opacity: 0.42;
+  body:has(.home-page) {
+    background-position:
+      center top,
+      center top,
+      center top,
+      center bottom,
+      center top,
+      center top;
+    background-size:
+      auto,
+      auto,
+      auto,
+      auto,
+      auto 100%,
+      28px 28px;
   }
 }
 
@@ -252,11 +269,6 @@
 
   .first-path-link {
     width: 100%;
-  }
-
-  .site-main:has(> .home-page)::before,
-  .site-main:has(> .home-page)::after {
-    border-radius: 1rem;
   }
 
   .threshold-hero,
