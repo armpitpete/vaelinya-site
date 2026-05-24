@@ -14,7 +14,70 @@
   object-position: center;
 }
 
+.home-page {
+  position: relative;
+  isolation: isolate;
+}
+
+.home-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image: url('/images/vaelinya-homepage-background.svg?v=2026-05-24-01');
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.34;
+}
+
+.home-page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(250, 245, 236, 0.28) 0%, rgba(250, 245, 236, 0.18) 18%, rgba(250, 245, 236, 0.28) 100%),
+    radial-gradient(circle at top center, rgba(255, 250, 235, 0.46), transparent 34%),
+    radial-gradient(circle at bottom center, rgba(40, 28, 58, 0.12), transparent 30%);
+}
+
+.home-page > section,
+.home-page > .panel {
+  position: relative;
+  z-index: 0;
+}
+
+.threshold-hero,
+.door-intro,
+.door-grid,
+.lina-greeting-panel,
+.first-path-panel {
+  background: rgba(250, 245, 236, 0.58);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 1.35rem;
+}
+
+.threshold-hero {
+  padding: clamp(1rem, 2vw, 1.25rem);
+}
+
+.door-intro,
+.door-grid,
+.lina-greeting-panel,
+.first-path-panel {
+  box-shadow: 0 1rem 2.6rem rgba(9, 5, 18, 0.12);
+}
+
+.door-intro {
+  padding: clamp(1rem, 2vw, 1.25rem);
+}
+
 .door-grid {
+  padding: clamp(0.8rem, 1.8vw, 1rem);
   align-items: stretch;
 }
 
@@ -24,6 +87,9 @@
   color: var(--ink);
   text-decoration: none;
   cursor: pointer;
+  background: rgba(255, 250, 242, 0.68);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .door-card:hover,
@@ -103,8 +169,12 @@
   border-radius: 1.35rem;
   background:
     radial-gradient(circle at 12% 20%, rgba(255, 255, 255, 0.45), transparent 10rem),
-    rgba(255, 241, 199, 0.88);
+    rgba(255, 241, 199, 0.66);
   box-shadow: 0 1rem 2.6rem rgba(9, 5, 18, 0.2);
+}
+
+.lina-greeting-panel {
+  background: rgba(250, 245, 236, 0.62);
 }
 
 .first-path-image {
@@ -154,6 +224,11 @@
   .first-path-panel {
     grid-template-columns: 1fr;
   }
+
+  .home-page::before {
+    background-position: center top;
+    opacity: 0.28;
+  }
 }
 
 @media (max-width: 520px) {
@@ -176,5 +251,13 @@
 
   .first-path-link {
     width: 100%;
+  }
+
+  .threshold-hero,
+  .door-intro,
+  .door-grid,
+  .lina-greeting-panel,
+  .first-path-panel {
+    border-radius: 1rem;
   }
 }
