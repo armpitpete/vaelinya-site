@@ -1,0 +1,15 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  id?: string;
+  variant?: string;
+}
+
+const { eyebrow, title, id, variant = 'default' } = Astro.props;
+---
+<section id={id} class={`storybook-panel storybook-panel--${variant}`}>
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <h2>{title}</h2>
+  <slot />
+</section>
