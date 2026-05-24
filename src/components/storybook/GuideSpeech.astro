@@ -1,0 +1,14 @@
+---
+interface Props {
+  guide: string;
+}
+
+const { guide } = Astro.props;
+---
+<aside class="guide-speech">
+  <div class="guide-speech__portrait" aria-hidden="true">{guide.slice(0, 1)}</div>
+  <div class="guide-speech__copy">
+    <p class="guide-speech__guide">{guide}</p>
+    <slot />
+  </div>
+</aside>
