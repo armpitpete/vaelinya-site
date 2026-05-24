@@ -8,7 +8,7 @@ import GuideSpeech from '../../components/storybook/GuideSpeech.astro';
   title="Chapter One: The First Walk"
   description="Lina opens the Storybook of Vaelinya and shows how the journey works."
 >
-  <link rel="stylesheet" href="/styles/storybook.css?v=2026-05-24-02" />
+  <link rel="stylesheet" href="/styles/storybook.css?v=2026-05-24-03" />
   <script src="/scripts/storybook-chapter-one.js?v=2026-05-24-02" defer></script>
 
   <article class="storybook-page" data-storybook-chapter="one">
@@ -40,20 +40,14 @@ import GuideSpeech from '../../components/storybook/GuideSpeech.astro';
     </StorybookPanel>
 
     <StorybookPanel eyebrow="Stop Two" title="Step onto the first path" variant="path">
-      <div class="storybook-spread storybook-spread--reverse">
-        <figure class="storybook-illustration storybook-illustration--path">
-          <img src="/images/lina-first-path.webp" alt="Lina's first path through Vaelinya." loading="lazy" />
-        </figure>
-        <div>
-          <GuideSpeech guide="Lina">
-            <p>“The thread shows the route. It is not a score.”</p>
-          </GuideSpeech>
-          <div class="path-stones" aria-label="First path stones">
-            <button type="button" data-storybook-stop="3">Path</button>
-            <button type="button" data-storybook-stop="3">Sound</button>
-            <button type="button" data-storybook-stop="3">Mark</button>
-          </div>
-        </div>
+      <GuideSpeech guide="Lina">
+        <p>“The thread shows the route. It is not a score.”</p>
+      </GuideSpeech>
+      <p>Choose one part of the first path. Each one shows a different kind of Storybook activity.</p>
+      <div class="path-stones" aria-label="First path stones">
+        <button type="button" data-storybook-stop="3">Path</button>
+        <button type="button" data-storybook-stop="3">Sound</button>
+        <button type="button" data-storybook-stop="3">Mark</button>
       </div>
     </StorybookPanel>
 
@@ -102,9 +96,10 @@ import GuideSpeech from '../../components/storybook/GuideSpeech.astro';
             <p>“Next, I’ll show you where I live.”</p>
           </GuideSpeech>
         </div>
-        <figure class="storybook-illustration storybook-illustration--handover">
-          <img src="/images/lina-first-path.webp" alt="The path turns toward Nearside, where Lina lives." loading="lazy" />
-        </figure>
+        <div class="guide-handover-card" aria-hidden="true">
+          <span class="guide-handover-card__thread"></span>
+          <span class="guide-handover-card__label">The thread turns toward Nearside</span>
+        </div>
       </div>
     </StorybookPanel>
 
