@@ -142,8 +142,8 @@ body:has(.home-page) {
 
 .door-card--start .door-card__visual {
   background-image:
-    linear-gradient(180deg, rgba(29, 18, 46, 0.02), rgba(29, 18, 46, 0.12)),
-    url('/images/door-artefacts.webp?v=2026-05-22-cropped-03');
+    linear-gradient(180deg, rgba(29, 18, 46, 0.02), rgba(29, 18, 46, 0.18)),
+    url('/images/lina-first-path.webp?v=2026-05-24-target-start-01');
 }
 
 .door-card--read .door-card__visual {
