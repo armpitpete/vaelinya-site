@@ -14,40 +14,39 @@
   object-position: center;
 }
 
-.home-page {
+.site-main:has(> .home-page) {
   position: relative;
   isolation: isolate;
-  border-radius: 1.5rem;
-  overflow: hidden;
 }
 
-.home-page::before {
+.site-main:has(> .home-page)::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: 1.55rem 1rem 3rem;
   z-index: 0;
   pointer-events: none;
-  background-image: url('/images/vaelinya-homepage-background.png?v=2026-05-24-02');
+  background-image: url('/images/vaelinya-homepage-background.png?v=2026-05-24-03');
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.52;
+  border-radius: 1.5rem;
 }
 
-.home-page::after {
+.site-main:has(> .home-page)::after {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: 1.55rem 1rem 3rem;
   z-index: 0;
   pointer-events: none;
   background:
     linear-gradient(180deg, rgba(250, 245, 236, 0.22) 0%, rgba(250, 245, 236, 0.12) 22%, rgba(250, 245, 236, 0.22) 100%),
     radial-gradient(circle at top center, rgba(255, 250, 235, 0.34), transparent 34%),
     radial-gradient(circle at bottom center, rgba(40, 28, 58, 0.12), transparent 34%);
+  border-radius: 1.5rem;
 }
 
-.home-page > section,
-.home-page > .panel {
+.home-page {
   position: relative;
   z-index: 1;
 }
@@ -227,7 +226,7 @@
     grid-template-columns: 1fr;
   }
 
-  .home-page::before {
+  .site-main:has(> .home-page)::before {
     background-position: center top;
     opacity: 0.42;
   }
@@ -255,7 +254,8 @@
     width: 100%;
   }
 
-  .home-page {
+  .site-main:has(> .home-page)::before,
+  .site-main:has(> .home-page)::after {
     border-radius: 1rem;
   }
 
