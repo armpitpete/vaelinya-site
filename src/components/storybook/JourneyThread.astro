@@ -1,0 +1,44 @@
+---
+import { storybookChapters } from '../../data/storybookChapters';
+
+interface Props {
+  currentChapter?: number;
+  currentStop?: number;
+}
+
+const { currentChapter = 1, currentStop = 1 } = Astro.props;
+const stops = ['Open', 'Path', 'Sound', 'Change', 'Mark', 'Thread', 'Handover'];
+---
+<nav class="journey-thread" aria-label="Storybook journey thread">
+  <div class="journey-thread__chapters" aria-label="Storybook chapters">
+    {storybookChapters.map((chapter) => (
+      <a
+        class:list={[
+          'journey-thread__chapter',
+          chapter.number === currentChapter && 'is-current',
+          chapter.status === 'planned' && 'is-planned',
+        ]}
+        href={chapter.status === 'active' ? chapter.route : '#planned-chapters'}
+        aria-current={chapter.number === currentChapter ? 'step' : undefined}
+      >
+        <span class="journey-thread__number">{chapter.number}</span>
+        <span>{chapter.title}</span>
+      </a>
+    ))}
+  </div>
+
+  <div class="journey-thread__rope" data-current-stop={currentStop} aria-label="Chapter One stops">
+    <div class="journey-thread__lina" aria-hidden="true">Lina</div>
+    {stops.map((stop, index) => (
+      <button
+        class:list={['journey-thread__stop', index + 1 === currentStop && 'is-current']}
+        type="button"
+        data-stop-target={index + 1}
+        aria-label={`Move to ${stop}`}
+      >
+        <span class="journey-thread__knot" aria-hidden="true"></span>
+        <span class="journey-thread__label">{stop}</span>
+      </button>
+    ))}
+  </div>
+</nav>
