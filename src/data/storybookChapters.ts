@@ -1,0 +1,58 @@
+export const storybookChapters = [
+  {
+    number: 1,
+    title: 'The First Walk',
+    route: '/start/chapter-one/',
+    guide: 'Lina',
+    status: 'active',
+  },
+  {
+    number: 2,
+    title: 'Nearside',
+    route: '/start/chapter-two/',
+    guide: 'Lina and Nearside guides',
+    status: 'planned',
+  },
+  {
+    number: 3,
+    title: 'The Forest',
+    route: '/start/chapter-three/',
+    guide: 'Forest guide',
+    status: 'planned',
+  },
+  {
+    number: 4,
+    title: 'The Rim and the Rimaeri',
+    route: '/start/chapter-four/',
+    guide: 'Rimaeri guide',
+    status: 'planned',
+  },
+  {
+    number: 5,
+    title: 'The Central River',
+    route: '/start/chapter-five/',
+    guide: 'River guide',
+    status: 'planned',
+  },
+  {
+    number: 6,
+    title: 'Farside',
+    route: '/start/chapter-six/',
+    guide: 'Farside guide',
+    status: 'planned',
+  },
+  {
+    number: 7,
+    title: 'The Cliff Caves',
+    route: '/start/chapter-seven/',
+    guide: 'Cave guide',
+    status: 'planned',
+  },
+  {
+    number: 8,
+    title: 'The End of the World',
+    route: '/start/chapter-eight/',
+    guide: 'Final guide',
+    status: 'planned',
+  },
+] as const;
