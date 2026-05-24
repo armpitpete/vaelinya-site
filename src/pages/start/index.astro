@@ -1,17 +1,25 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { storybookChapters } from '../../data/storybookChapters';
 ---
-<BaseLayout title="Start" description="Begin your first path into Vaelinya.">
+<BaseLayout title="A Storybook of Vaelinya" description="Begin the guided Storybook journey through Vaelinya.">
   <section class="page-section">
     <p class="eyebrow">Start</p>
-    <h1>Begin your first path into Vaelinya.</h1>
-    <p class="lede">Vaelinya is a colourful story world. Begin with the stories if you want the gentlest route in, then follow the world, language, and artefacts as they become useful.</p>
-    <p>You do not need to learn the whole world first. Choose one door and start there.</p>
+    <h1>A Storybook of Vaelinya.</h1>
+    <p class="lede">Explore Vaelinya through illustrated chapters, sounds, small choices, guide handovers, and gentle puzzles.</p>
+    <p>The reader learns Vaelinya by moving through it. Chapter One opens the format, then Chapter Two moves to Nearside, where Lina lives.</p>
+    <p><a class="button" href="/start/chapter-one/">Open Chapter One: The First Walk</a></p>
+  </section>
+
+  <section class="page-section">
+    <p class="eyebrow">Eight chapters</p>
+    <h2>Journey order</h2>
     <div class="link-list">
-      <a href="/read/">Read a story</a>
-      <a href="/world/">Explore the world</a>
-      <a href="/language/">Learn a word</a>
-      <a href="/artefacts/">Find an artefact</a>
+      {storybookChapters.map((chapter) => (
+        <a href={chapter.status === 'active' ? chapter.route : '#'}>
+          Chapter {chapter.number}: {chapter.title}
+        </a>
+      ))}
     </div>
   </section>
 </BaseLayout>
