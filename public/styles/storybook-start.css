@@ -112,6 +112,7 @@ body:has(.storybook-start-page) {
   line-height: 1.25;
 }
 
+/* Chapter One: done — Lina's first path. */
 .storybook-chapter-card--1 .storybook-chapter-card__image {
   background-image:
     linear-gradient(180deg, rgba(29, 18, 46, 0.05), rgba(29, 18, 46, 0.2)),
@@ -120,134 +121,246 @@ body:has(.storybook-start-page) {
   background-position: center;
 }
 
+/* Chapter Two: Nearside — constant good seasons, evening rain, lush land, glowing moss/insects, harmonious birds. */
 .storybook-chapter-card--2 .storybook-chapter-card__image {
   background:
-    radial-gradient(circle at 26% 74%, rgba(255, 241, 199, 0.75), transparent 4rem),
-    linear-gradient(145deg, #7a8f53, #d4ad6a);
+    radial-gradient(circle at 74% 28%, rgba(255, 241, 199, 0.72), transparent 3.8rem),
+    radial-gradient(circle at 22% 76%, rgba(174, 255, 153, 0.52), transparent 4.5rem),
+    linear-gradient(145deg, #7fb66a 0%, #b7d777 48%, #71dacb 100%);
 }
 
 .storybook-chapter-card--2 .storybook-chapter-card__image::before {
-  left: 14%;
-  right: 14%;
-  bottom: 1.25rem;
-  height: 0.55rem;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background:
+    repeating-linear-gradient(105deg, rgba(255, 248, 232, 0.0) 0 0.62rem, rgba(255, 248, 232, 0.36) 0.65rem 0.72rem),
+    radial-gradient(circle at 18% 78%, rgba(255, 255, 190, 0.95) 0 0.18rem, transparent 0.22rem),
+    radial-gradient(circle at 33% 68%, rgba(255, 255, 190, 0.85) 0 0.14rem, transparent 0.18rem),
+    radial-gradient(circle at 58% 80%, rgba(255, 255, 190, 0.9) 0 0.16rem, transparent 0.2rem),
+    radial-gradient(circle at 82% 64%, rgba(255, 255, 190, 0.8) 0 0.14rem, transparent 0.18rem);
+  opacity: 0.78;
+}
+
+.storybook-chapter-card--2 .storybook-chapter-card__image::after {
+  left: 12%;
+  right: 12%;
+  bottom: 1.4rem;
+  height: 0.62rem;
   border-radius: 999px;
-  background: rgba(255, 248, 232, 0.78);
+  background: rgba(105, 196, 111, 0.9);
+  box-shadow:
+    0 0 1.1rem rgba(174, 255, 153, 0.76),
+    4.5rem -3.9rem 0 -0.18rem rgba(255, 248, 232, 0.84),
+    5.3rem -4.05rem 0 -0.2rem rgba(255, 248, 232, 0.84),
+    6.1rem -3.9rem 0 -0.18rem rgba(255, 248, 232, 0.84);
 }
 
-.storybook-chapter-card--2 .storybook-chapter-card__mark {
-  right: 18%;
-  top: 1.6rem;
-  width: 3.7rem;
-  height: 5.5rem;
-  border-radius: 48% 48% 8% 8%;
-  background: rgba(255, 248, 232, 0.32);
-  border: 2px solid rgba(255, 248, 232, 0.42);
-}
-
+/* Chapter Three: Forest — dense, happy, fearless, glowing moss, moving branches, swaying streams. */
 .storybook-chapter-card--3 .storybook-chapter-card__image {
   background:
-    radial-gradient(circle at 70% 24%, rgba(255, 229, 119, 0.35), transparent 4rem),
-    linear-gradient(145deg, #203b34, #58724a);
+    radial-gradient(circle at 68% 24%, rgba(255, 229, 119, 0.34), transparent 4rem),
+    radial-gradient(circle at 28% 82%, rgba(113, 218, 203, 0.34), transparent 4.4rem),
+    linear-gradient(145deg, #16362e 0%, #305c40 52%, #688b4d 100%);
 }
 
 .storybook-chapter-card--3 .storybook-chapter-card__image::before,
 .storybook-chapter-card--3 .storybook-chapter-card__image::after {
   bottom: 0;
-  width: 4rem;
-  height: 7rem;
+  width: 4.2rem;
+  height: 7.3rem;
   border-radius: 4rem 4rem 0 0;
-  background: rgba(10, 42, 32, 0.74);
+  background: rgba(10, 42, 32, 0.78);
+  box-shadow:
+    inset 0 1.5rem 0 rgba(82, 129, 75, 0.36),
+    3.8rem -0.2rem 0 -0.7rem rgba(13, 62, 43, 0.78);
 }
 
-.storybook-chapter-card--3 .storybook-chapter-card__image::before { left: 16%; }
-.storybook-chapter-card--3 .storybook-chapter-card__image::after { right: 18%; height: 6rem; }
+.storybook-chapter-card--3 .storybook-chapter-card__image::before { left: 9%; transform: rotate(-5deg); }
+.storybook-chapter-card--3 .storybook-chapter-card__image::after { right: 12%; height: 6.7rem; transform: rotate(4deg); }
 
+.storybook-chapter-card--3 .storybook-chapter-card__mark {
+  left: 12%;
+  right: 12%;
+  bottom: 1rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: rgba(113, 218, 203, 0.82);
+  box-shadow:
+    0 0 1.1rem rgba(113, 218, 203, 0.78),
+    3rem -1.3rem 0 -0.16rem rgba(255, 244, 158, 0.86),
+    5.8rem -2.1rem 0 -0.18rem rgba(255, 244, 158, 0.78),
+    8.2rem -1.1rem 0 -0.17rem rgba(255, 244, 158, 0.86);
+}
+
+/* Chapter Four: Rim and Rimaeri — central wide river, far side barely visible, harsh winters and hot summers, tough crossing people. */
 .storybook-chapter-card--4 .storybook-chapter-card__image {
   background:
-    linear-gradient(90deg, rgba(47, 143, 131, 0.88) 0 48%, rgba(193, 68, 122, 0.88) 52% 100%),
+    linear-gradient(90deg, rgba(211, 238, 255, 0.82) 0 16%, rgba(31, 86, 112, 0.96) 22% 78%, rgba(241, 151, 76, 0.86) 84% 100%),
     linear-gradient(145deg, #2f8f83, #c1447a);
 }
 
 .storybook-chapter-card--4 .storybook-chapter-card__image::before {
-  left: calc(50% - 0.2rem);
-  top: 0.8rem;
-  bottom: 0.8rem;
-  width: 0.4rem;
+  left: 7%;
+  right: 7%;
+  top: 46%;
+  height: 2.2rem;
   border-radius: 999px;
-  background: rgba(255, 248, 232, 0.72);
+  background: rgba(255, 248, 232, 0.32);
+  box-shadow:
+    inset 0 0 1.2rem rgba(29, 18, 46, 0.22),
+    0 -2.6rem 0 -1rem rgba(255, 248, 232, 0.22),
+    0 2.3rem 0 -1rem rgba(255, 248, 232, 0.16);
 }
 
 .storybook-chapter-card--4 .storybook-chapter-card__mark {
   left: 50%;
-  top: 50%;
-  width: 4.2rem;
-  height: 4.2rem;
+  top: 48%;
+  width: 4.4rem;
+  height: 1.1rem;
   border-radius: 999px;
-  transform: translate(-50%, -50%);
-  border: 0.35rem solid rgba(255, 248, 232, 0.72);
+  transform: translate(-50%, -50%) rotate(-10deg);
+  background: #1f1730;
+  box-shadow: 0 0.45rem 0.9rem rgba(9, 5, 18, 0.34);
 }
 
+/* Chapter Five: Central River — treacherous fish and monsters beneath the surface and ice. */
 .storybook-chapter-card--5 .storybook-chapter-card__image {
   background:
     radial-gradient(circle at 72% 30%, rgba(255, 248, 232, 0.48), transparent 4rem),
-    linear-gradient(145deg, #20566a, #71dacb);
+    linear-gradient(145deg, #103044 0%, #20566a 48%, #71dacb 100%);
 }
 
 .storybook-chapter-card--5 .storybook-chapter-card__image::before {
-  left: -10%;
-  right: -10%;
-  bottom: 2.2rem;
-  height: 2rem;
+  left: -12%;
+  right: -12%;
+  top: 35%;
+  height: 2.3rem;
   border-radius: 50%;
-  background: rgba(255, 248, 232, 0.42);
-  transform: rotate(-6deg);
+  background: rgba(255, 248, 232, 0.46);
+  transform: rotate(-5deg);
+  box-shadow:
+    0 1.6rem 0 -0.42rem rgba(255, 248, 232, 0.2),
+    0 -1.4rem 0 -0.55rem rgba(255, 248, 232, 0.3);
 }
 
+.storybook-chapter-card--5 .storybook-chapter-card__mark {
+  left: 41%;
+  bottom: 0.72rem;
+  width: 5rem;
+  height: 3.6rem;
+  border-radius: 70% 30% 55% 45%;
+  background: rgba(9, 5, 18, 0.72);
+  box-shadow:
+    inset -0.85rem 0.4rem 0 rgba(193, 68, 122, 0.28),
+    2.8rem -2.1rem 0 -1.1rem rgba(9, 5, 18, 0.72),
+    3.3rem -2.6rem 0 -1.35rem rgba(255, 248, 232, 0.82);
+}
+
+/* Chapter Six: Farside — opposite pressure to Nearside; kept abstract until Farside notes are pulled in. */
 .storybook-chapter-card--6 .storybook-chapter-card__image {
   background:
-    radial-gradient(circle at 70% 20%, rgba(255, 229, 119, 0.48), transparent 4.4rem),
-    linear-gradient(145deg, #86583e, #c1447a);
+    radial-gradient(circle at 75% 22%, rgba(255, 229, 119, 0.5), transparent 4.1rem),
+    radial-gradient(circle at 20% 78%, rgba(211, 238, 255, 0.38), transparent 4rem),
+    linear-gradient(145deg, #30465c 0%, #86583e 48%, #c1447a 100%);
 }
 
 .storybook-chapter-card--6 .storybook-chapter-card__image::before {
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: linear-gradient(180deg, rgba(211, 238, 255, 0.36), rgba(29, 18, 46, 0.15));
+}
+
+.storybook-chapter-card--6 .storybook-chapter-card__image::after {
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: linear-gradient(180deg, rgba(255, 179, 92, 0.35), rgba(29, 18, 46, 0.08));
+}
+
+.storybook-chapter-card--6 .storybook-chapter-card__mark {
   left: 20%;
   bottom: 0;
   width: 62%;
   height: 58%;
   clip-path: polygon(50% 0, 100% 100%, 0 100%);
-  background: rgba(255, 248, 232, 0.28);
+  background: rgba(255, 248, 232, 0.25);
 }
 
+/* Chapter Seven: Cliff Caves — glowing living caves, colour-shifting moods, bare eaten entrances, unknowable cliff heights. */
 .storybook-chapter-card--7 .storybook-chapter-card__image {
   background:
-    radial-gradient(circle at 52% 70%, rgba(113, 218, 203, 0.38), transparent 4rem),
-    linear-gradient(145deg, #1f1730, #405d62);
+    radial-gradient(circle at 52% 70%, rgba(113, 218, 203, 0.42), transparent 4rem),
+    radial-gradient(circle at 30% 30%, rgba(193, 68, 122, 0.34), transparent 3.5rem),
+    linear-gradient(145deg, #16101f 0%, #405d62 55%, #1f1730 100%);
 }
 
 .storybook-chapter-card--7 .storybook-chapter-card__image::before {
-  left: 18%;
-  top: 18%;
-  width: 64%;
-  height: 78%;
+  left: 14%;
+  top: 8%;
+  width: 72%;
+  height: 94%;
   border-radius: 50% 50% 0 0;
-  background: rgba(9, 5, 18, 0.72);
-  box-shadow: inset 0 0 2.2rem rgba(113, 218, 203, 0.3);
+  background: rgba(9, 5, 18, 0.76);
+  box-shadow:
+    inset 0 0 2.2rem rgba(113, 218, 203, 0.36),
+    inset 1.2rem -0.8rem 1.8rem rgba(193, 68, 122, 0.28);
 }
 
+.storybook-chapter-card--7 .storybook-chapter-card__image::after {
+  left: 8%;
+  right: 8%;
+  bottom: 0.62rem;
+  height: 0.46rem;
+  border-radius: 999px;
+  background: rgba(50, 36, 32, 0.86);
+  box-shadow:
+    2.5rem -0.1rem 0 -0.05rem rgba(50, 36, 32, 0.86),
+    5.4rem -0.02rem 0 -0.1rem rgba(50, 36, 32, 0.86);
+}
+
+/* Chapter Eight: End of the World — top of the cliffs, fierce, frightening, outer edge. */
 .storybook-chapter-card--8 .storybook-chapter-card__image {
   background:
-    radial-gradient(circle at 50% 44%, rgba(255, 248, 232, 0.58), transparent 4.5rem),
-    linear-gradient(145deg, #12101f, #4b63c7);
+    radial-gradient(circle at 50% 38%, rgba(255, 248, 232, 0.52), transparent 4.5rem),
+    linear-gradient(145deg, #05050c 0%, #12101f 42%, #4b63c7 100%);
 }
 
 .storybook-chapter-card--8 .storybook-chapter-card__image::before {
-  left: 10%;
-  right: 10%;
+  left: 8%;
+  right: 8%;
   top: 52%;
-  height: 0.22rem;
-  background: rgba(255, 248, 232, 0.68);
-  box-shadow: 0 0 1.3rem rgba(255, 248, 232, 0.8);
+  height: 0.25rem;
+  background: rgba(255, 248, 232, 0.72);
+  box-shadow:
+    0 0 1.3rem rgba(255, 248, 232, 0.8),
+    0 2.6rem 0 1.7rem rgba(9, 5, 18, 0.58);
+}
+
+.storybook-chapter-card--8 .storybook-chapter-card__image::after {
+  left: 34%;
+  bottom: 0;
+  width: 34%;
+  height: 58%;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  background: rgba(9, 5, 18, 0.84);
+}
+
+.storybook-chapter-card--8 .storybook-chapter-card__mark {
+  left: 12%;
+  top: 18%;
+  width: 76%;
+  height: 0.35rem;
+  border-radius: 999px;
+  background: rgba(255, 248, 232, 0.42);
+  transform: rotate(-12deg);
+  box-shadow:
+    0.5rem 1.2rem 0 -0.06rem rgba(255, 248, 232, 0.32),
+    -0.4rem 2.5rem 0 -0.1rem rgba(255, 248, 232, 0.24);
 }
 
 @media (max-width: 1000px) {
