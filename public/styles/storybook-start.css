@@ -1,0 +1,68 @@
+body:has(.storybook-start-page) {
+  background-color: var(--night);
+  background-image:
+    linear-gradient(180deg, rgba(29, 18, 46, 0.58) 0%, rgba(29, 18, 46, 0.22) 38%, rgba(29, 18, 46, 0.72) 100%),
+    radial-gradient(circle at 12% 12%, rgba(255, 229, 119, 0.18), transparent 19rem),
+    radial-gradient(circle at 86% 18%, rgba(113, 218, 203, 0.16), transparent 22rem),
+    radial-gradient(circle at 50% 84%, rgba(193, 68, 122, 0.15), transparent 24rem),
+    url('/images/lina-first-path.webp?v=2026-05-24-start-bg-01'),
+    radial-gradient(circle, rgba(255, 248, 232, 0.08) 1px, transparent 1px);
+  background-position:
+    center top,
+    center top,
+    center top,
+    center bottom,
+    center top,
+    center top;
+  background-repeat:
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    repeat;
+  background-size:
+    cover,
+    auto,
+    auto,
+    auto,
+    cover,
+    28px 28px;
+  background-attachment: fixed, scroll, scroll, scroll, fixed, scroll;
+}
+
+.storybook-start-page {
+  display: grid;
+  gap: 1rem;
+}
+
+.storybook-start-page .page-section {
+  background: rgba(250, 245, 236, 0.68);
+  border: 1px solid rgba(255, 248, 232, 0.54);
+  border-radius: 1.35rem;
+  box-shadow: 0 1rem 2.6rem rgba(9, 5, 18, 0.18);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.storybook-start-page .link-list a {
+  background: rgba(255, 250, 242, 0.76);
+  border: 1px solid rgba(31, 23, 48, 0.1);
+}
+
+@media (max-width: 700px) {
+  body:has(.storybook-start-page) {
+    background-attachment: scroll;
+    background-size:
+      cover,
+      auto,
+      auto,
+      auto,
+      auto 100%,
+      28px 28px;
+  }
+
+  .storybook-start-page .page-section {
+    border-radius: 1rem;
+  }
+}
