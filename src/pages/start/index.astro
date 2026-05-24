@@ -3,9 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { storybookChapters } from '../../data/storybookChapters';
 ---
 <BaseLayout title="A Storybook of Vaelinya" description="Begin the guided Storybook journey through Vaelinya.">
-  <link rel="stylesheet" href="/styles/storybook-start.css?v=2026-05-24-01" />
+  <link rel="stylesheet" href="/styles/storybook-start.css?v=2026-05-24-02" />
   <div class="storybook-start-page">
-    <section class="page-section">
+    <section class="page-section storybook-start-hero">
       <p class="eyebrow">Start</p>
       <h1>A Storybook of Vaelinya.</h1>
       <p class="lede">Explore Vaelinya through illustrated chapters, sounds, small choices, guide handovers, and gentle puzzles.</p>
@@ -16,10 +16,20 @@ import { storybookChapters } from '../../data/storybookChapters';
     <section class="page-section">
       <p class="eyebrow">Eight chapters</p>
       <h2>Journey order</h2>
-      <div class="link-list">
+      <div class="storybook-chapter-grid" aria-label="Storybook chapter order">
         {storybookChapters.map((chapter) => (
-          <a href={chapter.status === 'active' ? chapter.route : '#'}>
-            Chapter {chapter.number}: {chapter.title}
+          <a
+            class={`storybook-chapter-card storybook-chapter-card--${chapter.number}`}
+            href={chapter.status === 'active' ? chapter.route : '#'}
+            aria-label={`Chapter ${chapter.number}: ${chapter.title}`}
+          >
+            <span class="storybook-chapter-card__image" aria-hidden="true">
+              <span class="storybook-chapter-card__mark"></span>
+            </span>
+            <span class="storybook-chapter-card__copy">
+              <span class="storybook-chapter-card__number">Chapter {chapter.number}</span>
+              <strong>{chapter.title}</strong>
+            </span>
           </a>
         ))}
       </div>
