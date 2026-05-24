@@ -68,6 +68,12 @@
   display: none;
 }
 
+.door-card--start .door-card__visual {
+  background-image:
+    linear-gradient(180deg, rgba(29, 18, 46, 0.02), rgba(29, 18, 46, 0.12)),
+    url('/images/door-artefacts.webp?v=2026-05-22-cropped-03');
+}
+
 .door-card--read .door-card__visual {
   background-image:
     linear-gradient(180deg, rgba(29, 18, 46, 0.02), rgba(29, 18, 46, 0.12)),
@@ -84,12 +90,6 @@
   background-image:
     linear-gradient(180deg, rgba(29, 18, 46, 0.02), rgba(29, 18, 46, 0.12)),
     url('/images/door-language.webp?v=2026-05-22-cropped-03');
-}
-
-.door-card--artefacts .door-card__visual {
-  background-image:
-    linear-gradient(180deg, rgba(29, 18, 46, 0.02), rgba(29, 18, 46, 0.12)),
-    url('/images/door-artefacts.webp?v=2026-05-22-cropped-03');
 }
 
 .first-path-panel {
