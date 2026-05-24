@@ -15,6 +15,35 @@
   -webkit-backdrop-filter: blur(5px);
 }
 
+.storybook-cover {
+  min-height: clamp(24rem, 46vw, 34rem);
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  position: relative;
+}
+
+.storybook-cover--chapter-one {
+  background:
+    linear-gradient(90deg, rgba(255, 248, 232, 0.92) 0%, rgba(255, 248, 232, 0.72) 42%, rgba(31, 23, 48, 0.12) 100%),
+    url('/images/lina-first-path.webp') center / cover no-repeat;
+}
+
+.storybook-cover__copy {
+  max-width: 42rem;
+  position: relative;
+  z-index: 1;
+}
+
+.storybook-cover::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 34%;
+  pointer-events: none;
+  background: linear-gradient(0deg, rgba(31, 23, 48, 0.18), transparent);
+}
+
 .storybook-cover h1,
 .storybook-panel h2 {
   margin: 0;
@@ -183,12 +212,17 @@
   align-items: center;
 }
 
+.storybook-spread--reverse {
+  grid-template-columns: minmax(14rem, 0.85fr) minmax(0, 1fr);
+}
+
 .storybook-illustration,
 .image-change-activity__scene {
   min-height: 14rem;
   display: grid;
   place-items: center;
   border-radius: 1.1rem;
+  overflow: hidden;
   background:
     radial-gradient(circle at 35% 24%, rgba(255, 229, 119, 0.72), transparent 7rem),
     linear-gradient(145deg, rgba(75, 99, 199, 0.9), rgba(47, 143, 131, 0.86));
@@ -197,6 +231,14 @@
   text-transform: uppercase;
   letter-spacing: 0.12em;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28);
+}
+
+.storybook-illustration img {
+  width: 100%;
+  height: 100%;
+  min-height: 14rem;
+  display: block;
+  object-fit: cover;
 }
 
 .storybook-illustration--handover {
@@ -246,25 +288,34 @@
   border-radius: 42% 58% 46% 54%;
   display: block;
   background: #6d3b91;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.34),
+    0 0.45rem 0.9rem rgba(31, 23, 48, 0.14);
 }
 
 .organic-mark--one {
   border-radius: 62% 38% 57% 43%;
-  background: radial-gradient(circle at 45% 45%, #fff1c7 0 18%, #c1447a 20% 100%);
+  background:
+    radial-gradient(circle at 55% 45%, transparent 0 22%, #fff1c7 23% 29%, transparent 30%),
+    radial-gradient(circle at 45% 45%, #fff1c7 0 18%, #c1447a 20% 100%);
 }
 
 .organic-mark--two {
-  background: radial-gradient(circle at 50% 50%, #fff1c7 0 12%, #2f8f83 14% 38%, #1f1730 40% 100%);
+  background:
+    radial-gradient(circle at 50% 50%, #fff1c7 0 12%, transparent 13% 20%, #2f8f83 21% 38%, #1f1730 40% 100%);
 }
 
 .organic-mark--three {
   border-radius: 50% 35% 60% 38%;
-  background: linear-gradient(145deg, #4b63c7, #71dacb);
+  background:
+    repeating-linear-gradient(135deg, rgba(255, 248, 232, 0.58) 0 0.18rem, transparent 0.18rem 0.55rem),
+    linear-gradient(145deg, #4b63c7, #71dacb);
 }
 
 .image-change-activity__scene {
   position: relative;
   overflow: hidden;
+  min-height: 18rem;
 }
 
 .scene-before,
@@ -274,15 +325,29 @@
   display: grid;
   place-items: center;
   transition: opacity 520ms ease;
+  background-size: cover;
+  background-position: center;
 }
 
 .scene-before {
-  background: linear-gradient(145deg, #405d62, #1d122e);
+  background-image:
+    linear-gradient(180deg, rgba(29, 18, 46, 0.12), rgba(29, 18, 46, 0.38)),
+    url('/images/begin-the-journey.webp');
 }
 
 .scene-after {
   opacity: 0;
-  background: radial-gradient(circle at 45% 45%, #ffe577, transparent 7rem), linear-gradient(145deg, #2f8f83, #4b63c7);
+  background-image:
+    radial-gradient(circle at 46% 42%, rgba(255, 229, 119, 0.58), transparent 8rem),
+    linear-gradient(180deg, rgba(29, 18, 46, 0.02), rgba(29, 18, 46, 0.16)),
+    url('/images/lina-first-path.webp');
+}
+
+.scene-before span,
+.scene-after span {
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(31, 23, 48, 0.62);
 }
 
 .image-change-activity.is-changed .scene-after {
@@ -303,6 +368,7 @@
   }
 
   .storybook-spread,
+  .storybook-spread--reverse,
   .image-change-activity {
     grid-template-columns: 1fr;
   }
