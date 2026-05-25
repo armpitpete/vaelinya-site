@@ -70,6 +70,80 @@ body:has(.about-page) {
   gap: 1rem;
 }
 
+.creator-card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.82fr);
+  gap: 0;
+  min-height: clamp(24rem, 34vw, 31rem);
+  padding: 0;
+  background: rgba(255, 248, 232, 0.92);
+}
+
+.creator-card__copy {
+  position: relative;
+  z-index: 1;
+  padding: clamp(1.45rem, 3.2vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 44rem;
+}
+
+.creator-card__copy h2 {
+  margin: 0 0 1rem;
+  color: #1f1730;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.35rem, 5vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.creator-card__copy p:not(.eyebrow) {
+  max-width: 41rem;
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+}
+
+.creator-card__link {
+  align-self: flex-start;
+  margin-top: 0.75rem;
+  color: #6d3b91;
+  font-weight: 900;
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.22em;
+}
+
+.creator-card__link:hover,
+.creator-card__link:focus-visible {
+  color: #4d2372;
+  text-decoration-thickness: 0.16em;
+}
+
+.creator-card__art {
+  min-height: 100%;
+  background-image:
+    linear-gradient(90deg, rgba(255, 248, 232, 0.92) 0%, rgba(255, 248, 232, 0.34) 20%, rgba(255, 248, 232, 0.02) 44%),
+    url('/images/about/merrin-creator-portrait-vaelinya.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 920px) {
+  .creator-card {
+    grid-template-columns: 1fr;
+  }
+
+  .creator-card__art {
+    min-height: 20rem;
+    order: -1;
+    background-image:
+      linear-gradient(0deg, rgba(255, 248, 232, 0.92) 0%, rgba(255, 248, 232, 0.08) 46%),
+      url('/images/about/merrin-creator-portrait-vaelinya.webp');
+    background-position: center top;
+  }
+}
+
 @media (max-width: 720px) {
   body:has(.about-page) {
     background-attachment: scroll;
@@ -85,5 +159,13 @@ body:has(.about-page) {
       linear-gradient(0deg, rgba(255, 248, 232, 0.9), rgba(255, 248, 232, 0.35)),
       url('/images/about/magical_riverside_at_dusk.webp');
     background-position: center bottom;
+  }
+
+  .creator-card__copy {
+    padding: 1.35rem;
+  }
+
+  .creator-card__art {
+    min-height: 17rem;
   }
 }
