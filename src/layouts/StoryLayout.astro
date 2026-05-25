@@ -122,3 +122,45 @@ const storyJsonLd = {
     )}
   </article>
 </BaseLayout>
+
+<style>
+  .story-page {
+    width: min(100% - 2rem, 860px);
+    margin-inline: auto;
+  }
+
+  .story-header-compact,
+  .story-content,
+  .story-related {
+    width: min(100%, 680px);
+    margin-inline: auto;
+  }
+
+  .story-hero-image {
+    width: min(100%, 680px);
+    max-width: 680px;
+    margin: 1rem auto 0;
+  }
+
+  .story-hero-image img {
+    width: 100%;
+  }
+
+  .story-content {
+    margin-top: 1rem;
+  }
+
+  .story-related {
+    margin-top: 2.25rem;
+  }
+
+  .story-related .link-list {
+    width: 100%;
+  }
+
+  @media (max-width: 520px) {
+    .story-page {
+      width: 100%;
+    }
+  }
+</style>
