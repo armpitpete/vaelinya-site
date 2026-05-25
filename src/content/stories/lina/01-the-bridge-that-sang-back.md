@@ -268,26 +268,3 @@ Just one.
 Clear and high and gentle.
 
 The bridge had gone. The listening had stayed.
-
-Lina closed her eyes.
-
-In her dream, the canyon was full of mist, the path was full of flowers, and somewhere far away, something lonely had learned how to sing back.
-
----
-
-## What this story opens
-
-- **World:** [The Rim](/world/the-rim/)
-- **Language:** [Learn the language](/language/)
-- **Artefacts:** [Artefacts](/artefacts/)
-
-## Illustration slot
-
-**Main image:** Lina standing on a luminous bridge over silver mist, holding a small wooden recorder. The bridge glows in panels of soft colour as if each note lights one step. Below, the mist has faint fish-like shapes moving through it. The far side is beginning to bloom with glowing moss and moon-white flowers.
-
-**Optional secondary image:** Lina at home under a woven blanket, the wooden recorder beside her, one tiny bead of bridge-light glowing on her sleeve.
-
----
-
-[Back to Lina](/read/lina/)  
-[Next story: The Cloud That Cries](/read/lina/02-the-cloud-that-cries/)
