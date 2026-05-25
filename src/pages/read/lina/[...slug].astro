@@ -2,6 +2,28 @@
 import { getCollection, render } from 'astro:content';
 import StoryLayout from '../../../layouts/StoryLayout.astro';
 
+const linaHeroImages = {
+  1: '/images/read/lina/lina-01-the-bridge-that-sang-back.webp',
+  2: '/images/read/lina/lina-02-the-cloud-that-cries.webp',
+  3: '/images/read/lina/lina-03-the-maze-that-remembers.webp',
+  4: '/images/read/lina/lina-04-the-mirror-pool.webp',
+  5: '/images/read/lina/lina-05-the-sleeping-tree.webp',
+  6: '/images/read/lina/lina-06-the-song-that-found-its-voice.webp',
+  7: '/images/read/lina/lina-07-the-star-that-forgot-to-shine.webp',
+  8: '/images/read/lina/lina-08-the-whispering-cave.webp',
+};
+
+const linaHeroImageAlts = {
+  1: 'Lina stands on an old stone bridge above dark water while soft bridge-light glows in the river below.',
+  2: 'Lina stands near a wide river valley while a heavy dark cloud releases soft rain beneath the sky.',
+  3: 'Lina stands before a living maze of stone walls, vines, and warm glowing paths at sunset.',
+  4: 'Lina kneels beside a still mirror pool in a shadowed forest while soft light ripples across the water.',
+  5: 'Lina sits beside a vast sleeping tree whose old face rests in the bark under golden evening light.',
+  6: 'Lina reaches toward a golden path-song glowing across the twilight sky above the valley.',
+  7: 'Lina sits above a sleeping village and looks up at a small star glowing in the night sky.',
+  8: 'Lina stands inside a whispering cave with a lantern while blue-gold marks glow on the stone walls.',
+};
+
 export async function getStaticPaths() {
   const stories = await getCollection('stories', ({ data }) => data.arc === 'Lina');
 
@@ -13,6 +35,9 @@ export async function getStaticPaths() {
 
 const { story } = Astro.props;
 const { Content } = await render(story);
+const storyNumber = story.data.story_number;
+const heroImage = linaHeroImages[storyNumber] ?? story.data.hero_image;
+const heroImageAlt = story.data.hero_image_alt ?? linaHeroImageAlts[storyNumber];
 ---
 <StoryLayout
   title={story.data.title}
@@ -20,8 +45,8 @@ const { Content } = await render(story);
   series={story.data.series}
   storyNumber={story.data.story_number}
   totalStories={story.data.total_stories}
-  heroImage={story.data.hero_image}
-  heroImageAlt={story.data.hero_image_alt}
+  heroImage={heroImage}
+  heroImageAlt={heroImageAlt}
   relatedWorld={story.data.related_world}
   relatedLanguage={story.data.related_language}
   relatedArtefacts={story.data.related_artefacts}
