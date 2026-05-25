@@ -3,7 +3,7 @@ interface Props {
   size?: number;
 }
 
-const { size = 30 } = Astro.props;
+const { size = 32 } = Astro.props;
 ---
 
 <svg
@@ -11,19 +11,51 @@ const { size = 30 } = Astro.props;
   viewBox="0 0 64 64"
   width={size}
   height={size}
+  xmlns="http://www.w3.org/2000/svg"
   style="display:block; overflow:visible;"
 >
-  <rect x="7" y="13" width="50" height="38" rx="5" fill="#efe3c6" stroke="#b7842b" stroke-width="2.2" />
-  <path d="M10 18 L32 34 L54 18" fill="none" stroke="#c9973a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
-  <path d="M10 48 L24 33" fill="none" stroke="#c9973a" stroke-width="1.8" stroke-linecap="round" />
-  <path d="M54 48 L40 33" fill="none" stroke="#c9973a" stroke-width="1.8" stroke-linecap="round" />
-  <path d="M16 16 C18 13, 22 13, 24 16" fill="none" stroke="#d4a34b" stroke-width="1.2" stroke-linecap="round" />
-  <path d="M40 16 C42 13, 46 13, 48 16" fill="none" stroke="#d4a34b" stroke-width="1.2" stroke-linecap="round" />
-  <circle cx="32" cy="33" r="10.5" fill="#7f0b0a" stroke="#4f0505" stroke-width="2" />
-  <circle cx="32" cy="33" r="8.2" fill="#a71310" opacity="0.38" />
-  <path d="M32 24.8 L34.1 30.8 L40.2 33 L34.1 35.2 L32 41.2 L29.9 35.2 L23.8 33 L29.9 30.8 Z" fill="#f6d27a" stroke="#c9973a" stroke-width="1" stroke-linejoin="round" />
-  <path d="M31.5 11.5 L32 8.2 L32.5 11.5 L35.8 12 L32.5 12.5 L32 15.8 L31.5 12.5 L28.2 12 Z" fill="#e1b659" />
-  <path d="M42 44.5 C46 41.6, 47.5 37.8, 44.2 36.2" fill="none" stroke="#efd97a" stroke-width="1.6" stroke-linecap="round" />
-  <circle cx="22.5" cy="41.5" r="1.2" fill="#efd97a" />
-  <circle cx="25.8" cy="46" r="1" fill="#efd97a" />
+  <g transform="translate(32 32) rotate(-7)">
+    <path
+      d="M0 -20.5C5.9 -21.7 11 -18.4 15.4 -14.4C20.6 -9.7 21.2 -3.4 20.1 2.9C18.8 10.3 14.2 15.5 7.5 18.6C1.4 21.4 -4.6 20.7 -10.1 17.1C-16.6 12.8 -20.7 7.4 -21.1 0.1C-21.5 -6.8 -18.5 -13.2 -12.7 -17C-8.7 -19.6 -4.7 -19.6 0 -20.5Z"
+      fill="#72100f"
+      stroke="#4b0808"
+      stroke-width="2.4"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M-11.5 -13.2C-6.4 -17.2 2.6 -18.6 10.1 -13.4C16.9 -8.6 18.5 1.5 14.3 8.6C10.4 15.2 1.8 18.5 -6 15.5C-13.4 12.7 -18.2 5.1 -16.4 -3C-15.5 -6.8 -14.1 -10.9 -11.5 -13.2Z"
+      fill="#9b1715"
+      opacity="0.42"
+    />
+    <path
+      d="M0 -14L3.15 -4.1L13.2 -0.8L3.1 2.4L0 13.2L-3.1 2.4L-13.2 -0.8L-3.15 -4.1Z"
+      fill="#f3d27a"
+      stroke="#c69236"
+      stroke-width="1.25"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M0 -8.4L1.55 -2.2L7.7 -0.7L1.55 0.9L0 7.7L-1.55 0.9L-7.7 -0.7L-1.55 -2.2Z"
+      fill="#fff0a8"
+      opacity="0.72"
+    />
+    <path
+      d="M-18.2 8.8C-15.6 13.8 -11.4 17.4 -6.2 19"
+      fill="none"
+      stroke="#f1d792"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      opacity="0.55"
+    />
+    <path
+      d="M11.9 -16.1C14.8 -13.7 17.1 -10.6 18.4 -7"
+      fill="none"
+      stroke="#f1d792"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      opacity="0.45"
+    />
+    <circle cx="-15.5" cy="-9.5" r="1.35" fill="#f0d181" opacity="0.75" />
+    <circle cx="16.7" cy="7.2" r="1" fill="#f0d181" opacity="0.6" />
+  </g>
 </svg>
