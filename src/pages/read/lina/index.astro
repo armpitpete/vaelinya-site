@@ -84,7 +84,7 @@ const linaItemListJsonLd = {
         if (story) {
           return (
             <li>
-              <a class="story-card" href={story.data.public_url} aria-label={`Read Story ${story.data.story_number}: ${story.data.title}`}>
+              <a class={`story-card lina-story-card lina-story-card-${story.data.story_number}`} href={story.data.public_url} aria-label={`Read Story ${story.data.story_number}: ${story.data.title}`}>
                 {symbolSrc && <img class="story-card-symbol" src={symbolSrc} alt={symbolAlt} loading="lazy" />}
                 <span>Story {story.data.story_number}</span>
                 <strong>{story.data.title}</strong>
@@ -109,3 +109,53 @@ const linaItemListJsonLd = {
     </ol>
   </section>
 </BaseLayout>
+
+<style>
+  .lina-story-card {
+    min-height: 15.8rem;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    color: #fff8e8;
+    background-color: #1d122e;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid rgba(255, 248, 232, 0.38);
+    text-shadow: 0 0.12rem 0.5rem rgba(0, 0, 0, 0.75);
+  }
+
+  .lina-story-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, rgba(10, 7, 18, 0.22), rgba(10, 7, 18, 0.62) 46%, rgba(10, 7, 18, 0.9));
+  }
+
+  .lina-story-card-1 { background-image: url('/images/read/lina/lina-01-the-bridge-that-sang-back.webp'); }
+  .lina-story-card-2 { background-image: url('/images/read/lina/lina-02-the-cloud-that-cries.webp'); }
+  .lina-story-card-3 { background-image: url('/images/read/lina/lina-03-the-maze-that-remembers.webp'); }
+  .lina-story-card-4 { background-image: url('/images/read/lina/lina-04-the-mirror-pool.webp'); }
+  .lina-story-card-5 { background-image: url('/images/read/lina/lina-05-the-sleeping-tree.webp'); }
+  .lina-story-card-6 { background-image: url('/images/read/lina/lina-06-the-song-that-found-its-voice.webp'); }
+  .lina-story-card-7 { background-image: url('/images/read/lina/lina-07-the-star-that-forgot-to-shine.webp'); }
+  .lina-story-card-8 { background-image: url('/images/read/lina/lina-08-the-whispering-cave.webp'); }
+
+  .lina-story-card .story-card-symbol {
+    background: rgba(255, 248, 232, 0.86);
+    box-shadow: 0 0.45rem 1.2rem rgba(0, 0, 0, 0.28);
+  }
+
+  .lina-story-card strong,
+  .lina-story-card p {
+    max-width: 16rem;
+  }
+
+  .lina-story-card p {
+    color: rgba(255, 248, 232, 0.94);
+  }
+
+  @media (max-width: 860px) {
+    .lina-story-card { min-height: 13.5rem; }
+  }
+</style>
