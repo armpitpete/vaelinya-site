@@ -14,7 +14,7 @@ const webSiteJsonLd = {
 };
 ---
 <BaseLayout title="Vaelinya is your next adventure" description={description} jsonLd={webSiteJsonLd}>
-  <link rel="stylesheet" href="/styles/home-hero-image-v20260522.css?v=2026-05-24-home-background-04" />
+  <link rel="stylesheet" href="/styles/home-hero-image-v20260522.css?v=2026-05-25-lina-greeting-01" />
   <link rel="stylesheet" href="/styles/home-door-hover-v20260525.css?v=2026-05-25-door-intro-centre-01" />
   <div class="home-page">
     <section class="hero hero-illustrated threshold-hero">
@@ -92,8 +92,17 @@ const webSiteJsonLd = {
     </section>
 
     <section class="panel lina-greeting-panel" aria-labelledby="lina-greeting-title">
-      <div class="lina-greeting-mark" aria-hidden="true"><span>✦</span></div>
-      <div>
+      <figure class="lina-greeting-image">
+        <img
+          src="/images/lina-says-hello.svg?v=2026-05-25-hello-01"
+          alt="Lina smiles and raises one hand in greeting."
+          width="1600"
+          height="900"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+      <div class="lina-greeting-copy">
         <p class="eyebrow">Lina greeting</p>
         <h2 id="lina-greeting-title">Lina says hello</h2>
         <p>Lina says hello. Her Vaelinya greeting will be added when the word is ready.</p>
