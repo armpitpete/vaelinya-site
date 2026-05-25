@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import EmailSealIcon from '../../components/EmailSealIcon.astro';
 
 const description = 'About Vaelinya: a colourful story world by Merrin W. Dream, where readers can begin with stories and explore the world, language, symbols, maps, and artefacts as they go.';
 const site = Astro.site ?? new URL('https://vaelinya.uk');
@@ -42,7 +41,7 @@ const aboutJsonLd = [
 ];
 ---
 <BaseLayout title="About Vaelinya" description={description} image="/images/about/magical_riverside_at_dusk.webp" jsonLd={aboutJsonLd}>
-  <link rel="stylesheet" href="/styles/about-page.css?v=2026-05-25-bg-02" />
+  <link rel="stylesheet" href="/styles/about-page.css?v=2026-05-25-creator-01" />
 
   <section class="about-page">
     <div class="about-hero">
@@ -85,22 +84,15 @@ const aboutJsonLd = [
         </div>
       </article>
 
-      <article class="panel" aria-labelledby="merrin-title">
-        <p class="eyebrow">Creator</p>
-        <h2 id="merrin-title">Merrin W. Dream</h2>
-        <p>Merrin W. Dream is a writer, artist, musician, worldbuilder, and synth maker based in York.</p>
-        <p>Merrin makes stories, songs, images, instruments, and practical tools for storytelling. Much of the work is about noticing what has been overlooked, giving shape to hidden lives, and making strange worlds clear enough to enter.</p>
-        <p>
-          <a
-            href="mailto:merrin@merrinworld.uk"
-            aria-label="Write to Merrin"
-            title="Write to Merrin"
-            style="display:inline-flex; align-items:center; gap:0.65rem; margin-top:0.5rem; text-decoration:none; font-weight:700; color:inherit;"
-          >
-            <EmailSealIcon size={46} />
-            <span>Write to Merrin</span>
-          </a>
-        </p>
+      <article class="panel creator-card" aria-labelledby="merrin-title">
+        <div class="creator-card__copy">
+          <p class="eyebrow">Creator</p>
+          <h2 id="merrin-title">Merrin W. Dream</h2>
+          <p>Merrin W. Dream is a writer, artist, musician, worldbuilder, and synth maker based in York.</p>
+          <p>Merrin makes stories, songs, images, instruments, and practical tools for storytelling. Much of the work is about noticing what has been overlooked, giving shape to hidden lives, and making strange worlds clear enough to enter.</p>
+          <a class="creator-card__link" href="mailto:merrin@merrinworld.uk" aria-label="Write to Merrin" title="Write to Merrin">Write to Merrin</a>
+        </div>
+        <div class="creator-card__art" aria-hidden="true"></div>
       </article>
 
       <article class="panel" aria-labelledby="public-site-title">
