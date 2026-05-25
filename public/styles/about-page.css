@@ -109,7 +109,7 @@ body:has(.about-page) {
   position: relative;
   z-index: 1;
   min-height: clamp(24rem, 34vw, 31rem);
-  width: min(58%, 46rem);
+  width: min(64%, 52rem);
   padding: clamp(1.45rem, 3.2vw, 3rem);
   display: flex;
   flex-direction: column;
@@ -120,9 +120,10 @@ body:has(.about-page) {
   margin: 0 0 1rem;
   color: #1f1730;
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(2.35rem, 5vw, 5rem);
+  font-size: clamp(2.6rem, 4.25vw, 4.45rem);
   line-height: 0.95;
   letter-spacing: -0.045em;
+  white-space: nowrap;
 }
 
 .creator-card__copy p:not(.eyebrow) {
@@ -167,6 +168,10 @@ body:has(.about-page) {
     min-height: auto;
     padding-top: clamp(17rem, 48vw, 25rem);
   }
+
+  .creator-card__copy h2 {
+    font-size: clamp(2.25rem, 8.4vw, 4rem);
+  }
 }
 
 @media (max-width: 720px) {
@@ -188,5 +193,9 @@ body:has(.about-page) {
 
   .creator-card__copy {
     padding: 16rem 1.35rem 1.35rem;
+  }
+
+  .creator-card__copy h2 {
+    font-size: clamp(2rem, 10.4vw, 3.2rem);
   }
 }
