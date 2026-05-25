@@ -78,6 +78,20 @@ const relatedLinks = [
   ...relatedArtefacts.map((href) => ({ href, group: 'Artefacts' })),
 ];
 
+const linaStories = new Map([
+  [1, { title: 'The Bridge That Sang Back', url: '/read/lina/01-the-bridge-that-sang-back/' }],
+  [2, { title: 'The Cloud That Cries', url: '/read/lina/02-the-cloud-that-cries/' }],
+  [3, { title: 'The Maze That Remembers', url: '/read/lina/03-the-maze-that-remembers/' }],
+  [4, { title: 'The Mirror Pool', url: '/read/lina/04-the-mirror-pool/' }],
+  [5, { title: 'The Sleeping Tree', url: '/read/lina/05-the-sleeping-tree/' }],
+  [6, { title: 'The Song That Found Its Voice', url: '/read/lina/06-the-song-that-found-its-voice/' }],
+  [7, { title: 'The Star That Forgot to Shine', url: '/read/lina/07-the-star-that-forgot-to-shine/' }],
+  [8, { title: 'The Whispering Cave', url: '/read/lina/08-the-whispering-cave/' }],
+]);
+
+const previousStory = linaStories.get(storyNumber - 1);
+const nextStory = linaStories.get(storyNumber + 1);
+
 const storyJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ShortStory',
@@ -117,10 +131,34 @@ const storyJsonLd = {
             <a href={link.href}>{link.group}: {labelForLink(link.href)}</a>
           ))}
         </div>
-        <p><a class="button secondary" href="/read/lina/">Return to Lina’s stories</a></p>
+        <nav class="story-page-nav" aria-label="Story navigation">
+          {previousStory && <a class="button secondary" href={previousStory.url}>Previous: {previousStory.title}</a>}
+          <a class="button secondary" href="/read/lina/">Return to Lina’s stories</a>
+          {nextStory && <a class="button secondary" href={nextStory.url}>Next: {nextStory.title}</a>}
+        </nav>
       </footer>
     )}
   </article>
+  <script is:inline>
+    const storyContent = document.querySelector('.story-content');
+    if (storyContent) {
+      const removeSection = (headingText, stopAtNextHeading = true) => {
+        const heading = Array.from(storyContent.querySelectorAll('h2')).find((item) => item.textContent?.trim() === headingText);
+        if (!heading) return;
+
+        let current = heading;
+        while (current) {
+          const next = current.nextElementSibling;
+          current.remove();
+          if (stopAtNextHeading && next?.tagName === 'H2') break;
+          current = next;
+        }
+      };
+
+      removeSection('What this story opens', true);
+      removeSection('Illustration slot', false);
+    }
+  </script>
 </BaseLayout>
 
 <style>
@@ -156,6 +194,13 @@ const storyJsonLd = {
 
   .story-related .link-list {
     width: 100%;
+  }
+
+  .story-page-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 1rem;
   }
 
   @media (max-width: 520px) {
