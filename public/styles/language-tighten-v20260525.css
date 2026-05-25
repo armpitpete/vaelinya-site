@@ -7,8 +7,8 @@
   background:
     linear-gradient(
       180deg,
-      rgba(247, 242, 233, 0.76),
-      rgba(244, 238, 228, 0.84)
+      rgba(247, 242, 233, 0.54),
+      rgba(244, 238, 228, 0.68)
     ),
     url("/images/language/vaelinya-language-background.webp") center center / cover no-repeat;
 }
@@ -18,7 +18,7 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0) 54%);
+  background: radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 54%);
   pointer-events: none;
 }
 
@@ -30,8 +30,10 @@
 .language-page .visual-callout,
 .language-page .panel,
 .language-route-cards a {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(2px);
+  background: rgba(255, 255, 255, 0.66);
+  border-color: rgba(255, 248, 232, 0.46);
+  box-shadow: 0 0.75rem 2.4rem rgba(9, 5, 18, 0.20);
+  backdrop-filter: blur(1.5px);
 }
 
 .language-page .visual-callout-link {
@@ -66,9 +68,9 @@
 .language-word-card {
   padding: 1rem;
   border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.76);
+  background: rgba(255, 255, 255, 0.62);
   border: 1px solid rgba(56, 49, 43, 0.12);
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(1.5px);
 }
 
 .language-word-card strong {
@@ -126,6 +128,20 @@
 @media (max-width: 860px) {
   .language-page {
     border-radius: 1rem;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(247, 242, 233, 0.66),
+        rgba(244, 238, 228, 0.78)
+      ),
+      url("/images/language/vaelinya-language-background.webp") center center / cover no-repeat;
+  }
+
+  .language-page .visual-callout,
+  .language-page .panel,
+  .language-route-cards a,
+  .language-word-card {
+    background: rgba(255, 255, 255, 0.76);
   }
 
   .language-word-grid,
