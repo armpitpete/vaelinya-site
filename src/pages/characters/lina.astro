@@ -89,6 +89,19 @@ const unsettle = [
   'Being told something “doesn’t matter” when she knows it does',
 ];
 
+const linaPhrases = [
+  'Hello. You can begin slowly.',
+  'Please say it plainly.',
+  'I need a moment.',
+  'That word changed.',
+  'You said it differently before.',
+  'The beads sound wrong today.',
+  'I remember where this was tied.',
+  'That is not the old rule.',
+  'Can we go slowly?',
+  'I do not know yet, but I noticed something.',
+];
+
 const storyLinks = [
   ['Chapter One: The First Walk', '/start/chapter-one/', 'Start Lina’s story.'],
   ['The Rim and the Rimaeri', '/start/chapter-four-the-rim-and-the-rimaeri/', 'Learn about the crossing lands.'],
@@ -111,7 +124,7 @@ const characterJsonLd = {
 };
 ---
 <BaseLayout title={title} description={description} image="/images/characters/lina/lina-portrait.webp" jsonLd={characterJsonLd}>
-  <link rel="stylesheet" href="/styles/character-page.css?v=2026-05-25-lina-v01" />
+  <link rel="stylesheet" href="/styles/character-page.css?v=2026-05-25-lina-v02" />
 
   <article class="character-page lina-character-page">
     <section class="character-hero" aria-labelledby="lina-title">
@@ -171,7 +184,7 @@ const characterJsonLd = {
           <p class="eyebrow">Look closely</p>
           <h2 id="gallery-title">Close-up gallery</h2>
         </div>
-        <p class="section-note">Open any image for the full 4K reference sheet after the files are uploaded.</p>
+        <p class="section-note">Open any image for the full 4K reference sheet.</p>
       </div>
       <div class="character-gallery">
         {gallery.map((item) => (
@@ -264,8 +277,8 @@ const characterJsonLd = {
       <p class="eyebrow">Greeting</p>
       <h2 id="hello-title">Lina says hello</h2>
       <p>In Vaelinya, greeting someone is not only about speaking. It is about making space for them to arrive.</p>
-      <blockquote>“Hello. You can begin slowly.”</blockquote>
-      <p class="section-note">Lina’s Vaelinya greeting can be added when the language line is ready.</p>
+      <blockquote id="lina-random-phrase">“Hello. You can begin slowly.”</blockquote>
+      <p class="section-note">Lina’s line changes when the page opens.</p>
     </section>
 
     <details class="character-section reference-details">
@@ -276,14 +289,13 @@ const characterJsonLd = {
         ))}
       </ul>
     </details>
-
-    <details class="character-section reference-details">
-      <summary>Artist / reference notes</summary>
-      <div class="reference-copy">
-        <p>Lina’s design should feel practical, handmade, and travelled-in. Nothing should look like a costume shop outfit.</p>
-        <p>Her clothes are repaired, layered, and personal. Her jewellery should feel meaningful rather than rich. Her hair should look cared for, but not over-styled. Her objects should feel used, touched, and remembered.</p>
-        <p>Show Lina as capable, sensitive, observant, and real. Do not frame her as broken. Do not over-explain her. Let readers recognise her through details.</p>
-      </div>
-    </details>
   </article>
+
+  <script define:vars={{ linaPhrases }}>
+    const phraseTarget = document.getElementById('lina-random-phrase');
+    if (phraseTarget && Array.isArray(linaPhrases) && linaPhrases.length > 0) {
+      const randomPhrase = linaPhrases[Math.floor(Math.random() * linaPhrases.length)];
+      phraseTarget.textContent = `“${randomPhrase}”`;
+    }
+  </script>
 </BaseLayout>
