@@ -164,6 +164,58 @@ body:has(.home-page) {
     url('/images/door-language.webp?v=2026-05-22-cropped-03');
 }
 
+.lina-greeting-panel {
+  margin: 1rem 0;
+  padding: clamp(1rem, 2.3vw, 1.55rem);
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.42fr) minmax(0, 1fr);
+  gap: clamp(1rem, 2.4vw, 1.7rem);
+  align-items: center;
+  border: 1px solid rgba(255, 248, 232, 0.52);
+  background:
+    radial-gradient(circle at 12% 20%, rgba(255, 255, 255, 0.34), transparent 10rem),
+    rgba(250, 245, 236, 0.58);
+}
+
+.lina-greeting-image {
+  margin: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 248, 232, 0.62);
+  background: linear-gradient(145deg, #f6d5ef, #e8e4ff);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.42),
+    0 0.75rem 1.8rem rgba(9, 5, 18, 0.16);
+}
+
+.lina-greeting-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lina-greeting-copy h2 {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.8vw, 2.15rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.lina-greeting-copy p:not(.eyebrow) {
+  margin: 0.55rem 0 0;
+  max-width: 44rem;
+}
+
+.audio-policy-note {
+  padding: 0.75rem 0.9rem;
+  border-left: 0.2rem solid #4b63c7;
+  border-radius: 0.7rem;
+  background: rgba(232, 231, 252, 0.76);
+  font-weight: 800;
+}
+
 .first-path-panel {
   margin: 1rem 0;
   padding: clamp(1rem, 2.3vw, 1.55rem);
@@ -177,10 +229,6 @@ body:has(.home-page) {
     radial-gradient(circle at 12% 20%, rgba(255, 255, 255, 0.32), transparent 10rem),
     rgba(255, 241, 199, 0.62);
   box-shadow: 0 1rem 2.6rem rgba(9, 5, 18, 0.2);
-}
-
-.lina-greeting-panel {
-  background: rgba(250, 245, 236, 0.58);
 }
 
 .first-path-image {
@@ -227,6 +275,7 @@ body:has(.home-page) {
     aspect-ratio: 16 / 10;
   }
 
+  .lina-greeting-panel,
   .first-path-panel {
     grid-template-columns: 1fr;
   }
@@ -258,9 +307,14 @@ body:has(.home-page) {
     min-height: 7.8rem;
   }
 
+  .lina-greeting-panel,
   .first-path-panel {
     border-radius: 1rem;
     padding: 1rem;
+  }
+
+  .lina-greeting-image {
+    aspect-ratio: 4 / 3;
   }
 
   .first-path-image {
