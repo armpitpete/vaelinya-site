@@ -1,0 +1,53 @@
+.language-page > p:not(.eyebrow),
+.language-page .lede {
+  max-width: 42rem;
+}
+
+.language-page .visual-callout-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.95rem;
+  padding: 0.62rem 0.95rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: white;
+  border-bottom: 0;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.language-route-cards {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.language-route-cards a {
+  min-height: 7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.35rem;
+}
+
+.language-route-cards strong {
+  display: block;
+  line-height: 1.18;
+}
+
+.language-route-cards span {
+  display: block;
+  font-weight: 600;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  opacity: 0.82;
+}
+
+.language-page .panel {
+  margin-top: 1rem;
+}
+
+@media (max-width: 860px) {
+  .language-route-cards {
+    grid-template-columns: 1fr;
+  }
+}
