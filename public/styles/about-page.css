@@ -1,0 +1,70 @@
+.about-page {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.about-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(24rem, 48vw, 38rem);
+  display: grid;
+  align-items: end;
+  border-radius: 1.45rem;
+  border: 1px solid rgba(255, 248, 232, 0.42);
+  box-shadow: 0 1rem 3rem rgba(9, 5, 18, 0.28);
+  background: #fff8e8;
+}
+
+.about-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(255, 248, 232, 0.88) 0%, rgba(255, 248, 232, 0.7) 35%, rgba(255, 248, 232, 0.3) 68%, rgba(29, 18, 46, 0.2) 100%),
+    linear-gradient(0deg, rgba(29, 18, 46, 0.2), rgba(255, 248, 232, 0.04)),
+    url('/images/about/magical_riverside_at_dusk.webp');
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.01);
+}
+
+.about-hero__copy {
+  position: relative;
+  max-width: 42rem;
+  padding: clamp(1.2rem, 3vw, 2.4rem);
+}
+
+.about-hero h1 {
+  margin: 0;
+  color: #20262c;
+  font-size: clamp(2.2rem, 5vw, 4.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+}
+
+.about-hero .lede {
+  color: rgba(31, 23, 48, 0.86);
+  font-weight: 800;
+}
+
+.about-page .panel {
+  margin-top: 0;
+}
+
+.about-panel-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (max-width: 720px) {
+  .about-hero {
+    min-height: 30rem;
+  }
+
+  .about-hero::before {
+    background-image:
+      linear-gradient(0deg, rgba(255, 248, 232, 0.9), rgba(255, 248, 232, 0.35)),
+      url('/images/about/magical_riverside_at_dusk.webp');
+    background-position: center bottom;
+  }
+}
