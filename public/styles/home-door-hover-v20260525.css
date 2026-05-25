@@ -17,13 +17,15 @@
 
 .door-intro p,
 .door-intro-copy {
-  max-width: 62rem;
+  max-width: 46rem;
   line-height: 1.45;
   text-wrap: balance;
 }
 
 .door-intro-copy span {
-  display: inline;
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 
 .door-card {
@@ -68,9 +70,5 @@
   .door-intro p,
   .door-intro-copy {
     max-width: 34ch;
-  }
-
-  .door-intro-copy span {
-    display: block;
   }
 }
