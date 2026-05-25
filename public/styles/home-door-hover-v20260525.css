@@ -4,6 +4,7 @@
 
 .door-intro .eyebrow,
 .door-intro h2,
+.door-intro p,
 .door-intro-copy {
   text-align: center;
   margin-left: auto;
@@ -14,6 +15,7 @@
   text-wrap: balance;
 }
 
+.door-intro p,
 .door-intro-copy {
   max-width: 62rem;
   line-height: 1.45;
@@ -63,6 +65,7 @@
 }
 
 @media (max-width: 700px) {
+  .door-intro p,
   .door-intro-copy {
     max-width: 34ch;
   }
