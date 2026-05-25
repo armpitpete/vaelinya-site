@@ -1,0 +1,37 @@
+.door-card {
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.door-card:hover,
+.door-card:focus-visible {
+  transform: translateY(-0.28rem);
+  background: rgba(255, 252, 246, 0.82);
+  box-shadow: 0 1.2rem 2.85rem rgba(9, 5, 18, 0.26);
+}
+
+.door-card__visual {
+  transition: filter 180ms ease, box-shadow 180ms ease;
+}
+
+.door-card:hover .door-card__visual,
+.door-card:focus-visible .door-card__visual {
+  filter: brightness(1.08) contrast(1.05) saturate(1.04);
+  box-shadow: 0 0 1.6rem rgba(255, 213, 94, 0.22);
+}
+
+.door-card__content h3,
+.door-card__content > p:not(.door-card__label) {
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.door-card__content > p:not(.door-card__label) {
+  opacity: 0.74;
+}
+
+.door-card:hover .door-card__content h3,
+.door-card:focus-visible .door-card__content h3,
+.door-card:hover .door-card__content > p:not(.door-card__label),
+.door-card:focus-visible .door-card__content > p:not(.door-card__label) {
+  opacity: 1;
+  transform: translateX(0.08rem);
+}
