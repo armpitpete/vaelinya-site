@@ -121,28 +121,47 @@ const linaItemListJsonLd = {
     background-size: cover;
     background-position: center;
     border: 1px solid rgba(255, 248, 232, 0.38);
-    text-shadow: 0 0.12rem 0.5rem rgba(0, 0, 0, 0.75);
+    text-shadow: 0 0.12rem 0.5rem rgba(0, 0, 0, 0.78);
+  }
+
+  .lina-story-card > * {
+    position: relative;
+    z-index: 2;
   }
 
   .lina-story-card::before {
     content: '';
     position: absolute;
     inset: 0;
-    z-index: -1;
-    background: linear-gradient(180deg, rgba(10, 7, 18, 0.22), rgba(10, 7, 18, 0.62) 46%, rgba(10, 7, 18, 0.9));
+    z-index: 0;
+    background-image: inherit;
+    background-size: inherit;
+    background-position: inherit;
+    filter: brightness(1.18) saturate(1.08);
+    transform: scale(1.02);
   }
 
-  .lina-story-card-1 { background-image: url('/images/read/lina/lina-01-the-bridge-that-sang-back.webp'); }
-  .lina-story-card-2 { background-image: url('/images/read/lina/lina-02-the-cloud-that-cries.webp'); }
-  .lina-story-card-3 { background-image: url('/images/read/lina/lina-03-the-maze-that-remembers.webp'); }
-  .lina-story-card-4 { background-image: url('/images/read/lina/lina-04-the-mirror-pool.webp'); }
-  .lina-story-card-5 { background-image: url('/images/read/lina/lina-05-the-sleeping-tree.webp'); }
-  .lina-story-card-6 { background-image: url('/images/read/lina/lina-06-the-song-that-found-its-voice.webp'); }
-  .lina-story-card-7 { background-image: url('/images/read/lina/lina-07-the-star-that-forgot-to-shine.webp'); }
-  .lina-story-card-8 { background-image: url('/images/read/lina/lina-08-the-whispering-cave.webp'); }
+  .lina-story-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(10, 7, 18, 0.08), rgba(10, 7, 18, 0.34) 42%, rgba(10, 7, 18, 0.82)),
+      linear-gradient(90deg, rgba(10, 7, 18, 0.46), rgba(10, 7, 18, 0.08) 62%);
+  }
+
+  .lina-story-card-1 { background-image: url('/images/read/lina/lina-01-the-bridge-that-sang-back.webp'); background-position: center 42%; }
+  .lina-story-card-2 { background-image: url('/images/read/lina/lina-02-the-cloud-that-cries.webp'); background-position: center 38%; }
+  .lina-story-card-3 { background-image: url('/images/read/lina/lina-03-the-maze-that-remembers.webp'); background-position: center 44%; }
+  .lina-story-card-4 { background-image: url('/images/read/lina/lina-04-the-mirror-pool.webp'); background-position: center 46%; }
+  .lina-story-card-5 { background-image: url('/images/read/lina/lina-05-the-sleeping-tree.webp'); background-position: center 42%; }
+  .lina-story-card-6 { background-image: url('/images/read/lina/lina-06-the-song-that-found-its-voice.webp'); background-position: center 42%; }
+  .lina-story-card-7 { background-image: url('/images/read/lina/lina-07-the-star-that-forgot-to-shine.webp'); background-position: center 36%; }
+  .lina-story-card-8 { background-image: url('/images/read/lina/lina-08-the-whispering-cave.webp'); background-position: center 50%; }
 
   .lina-story-card .story-card-symbol {
-    background: rgba(255, 248, 232, 0.86);
+    background: rgba(255, 248, 232, 0.9);
     box-shadow: 0 0.45rem 1.2rem rgba(0, 0, 0, 0.28);
   }
 
@@ -152,7 +171,7 @@ const linaItemListJsonLd = {
   }
 
   .lina-story-card p {
-    color: rgba(255, 248, 232, 0.94);
+    color: rgba(255, 248, 232, 0.96);
   }
 
   @media (max-width: 860px) {
