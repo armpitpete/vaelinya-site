@@ -9,7 +9,8 @@ total_stories: 8
 status: "ready"
 public_url: "/read/lina/01-the-bridge-that-sang-back/"
 old_url: "/stories/canon/solo/child-01-lina/01-story/"
-hero_image: "/images/stories/lina/bridge-that-sang-back.webp"
+hero_image: "/images/read/lina/lina-01-the-bridge-that-sang-back.webp"
+hero_image_alt: "Lina stands on an old stone bridge above dark water while soft bridge-light glows in the river below."
 related_world:
   - "/world/the-rim/"
 related_language:
