@@ -24,11 +24,13 @@
 .language-page {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
-  border-radius: 1.5rem;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
   padding-inline: clamp(1rem, 3vw, 2rem);
-  background: rgba(247, 242, 233, 0.42);
-  backdrop-filter: blur(0.5px);
+  background: transparent;
+  backdrop-filter: none;
 }
 
 .language-page > p:not(.eyebrow),
@@ -147,8 +149,8 @@
   }
 
   .language-page {
-    border-radius: 1rem;
-    background: rgba(247, 242, 233, 0.58);
+    border-radius: 0;
+    background: transparent;
   }
 
   .language-page .visual-callout,
