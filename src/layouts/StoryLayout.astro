@@ -112,7 +112,6 @@ const storyJsonLd = {
   <article class="story-page">
     <header class="story-header story-header-compact" aria-label={`${series}, story ${storyNumber} of ${totalStories}`}>
       <p class="eyebrow">{series}</p>
-      <p class="story-count">Story {storyNumber} of {totalStories}</p>
       {resolvedHeroImage && (
         <figure class="story-hero-image">
           <img src={resolvedHeroImage} alt={resolvedHeroAlt} loading="eager" decoding="async" />
@@ -186,6 +185,18 @@ const storyJsonLd = {
 
   .story-content {
     margin-top: 1rem;
+  }
+
+  :global(.story-page .story-content > h1) {
+    font-size: clamp(1.7rem, 2.35vw, 2.35rem);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+  }
+
+  @media (min-width: 700px) {
+    :global(.story-page .story-content > h1) {
+      white-space: nowrap;
+    }
   }
 
   .story-related {
