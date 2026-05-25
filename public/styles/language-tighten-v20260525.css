@@ -17,6 +17,51 @@
   font-weight: 900;
 }
 
+.language-first-words {
+  margin-top: 1rem;
+}
+
+.language-soft-note {
+  max-width: 44rem;
+}
+
+.language-word-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.language-word-card {
+  padding: 1rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.66);
+  border: 1px solid rgba(56, 49, 43, 0.12);
+}
+
+.language-word-card strong {
+  display: block;
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.language-word-card span {
+  display: block;
+  margin-top: 0.35rem;
+  font-weight: 700;
+  opacity: 0.78;
+}
+
+.language-lina-greeting {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.language-lina-greeting span {
+  font-weight: 900;
+}
+
 .language-route-cards {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -47,6 +92,7 @@
 }
 
 @media (max-width: 860px) {
+  .language-word-grid,
   .language-route-cards {
     grid-template-columns: 1fr;
   }
