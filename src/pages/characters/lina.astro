@@ -1,0 +1,289 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Lina of Vaelinya';
+const description = 'Meet Lina of Vaelinya: a careful young traveller who notices patterns, remembers details, and begins the story gently.';
+const site = Astro.site ?? new URL('https://vaelinya.uk');
+const pageUrl = new URL('/characters/lina/', site).toString();
+
+const gallery = [
+  {
+    label: 'Portrait',
+    image: '/images/characters/lina/lina-portrait.webp',
+    full: '/images/characters/lina/full/lina-portrait-4k.webp',
+    alt: 'Portrait of Lina smiling softly, with dark braided hair, jewellery, and layered travelling clothes.',
+    caption: 'Lina’s face should feel open, careful, and watchful.',
+  },
+  {
+    label: 'Clothing',
+    image: '/images/characters/lina/lina-character-sheet-clean-base.webp',
+    full: '/images/characters/lina/full/lina-character-sheet-clean-base-4k.webp',
+    alt: 'Lina character sheet showing her layered travelling clothes from several angles.',
+    caption: 'Her clothes are layered, practical, mended, and built for movement.',
+  },
+  {
+    label: 'Jewellery',
+    image: '/images/characters/lina/lina-jewellery-sheet.webp',
+    full: '/images/characters/lina/full/lina-jewellery-sheet-4k.webp',
+    alt: 'Lina jewellery sheet showing pendants, beads, charms, rings, and worn close-up details.',
+    caption: 'Her jewellery is not decoration alone. Each piece carries memory, family, or road-life.',
+  },
+  {
+    label: 'Hair',
+    image: '/images/characters/lina/lina-hair-styles-sheet.webp',
+    full: '/images/characters/lina/full/lina-hair-styles-sheet-4k.webp',
+    alt: 'Lina hair styles sheet showing braids, beads, practical travel styles, and close details.',
+    caption: 'Her hair is practical for travel, but still personal. Beads and braids carry meaning.',
+  },
+  {
+    label: 'Leather wear',
+    image: '/images/characters/lina/lina-leather-wear-sheet.webp',
+    full: '/images/characters/lina/full/lina-leather-wear-sheet-4k.webp',
+    alt: 'Lina leather wear sheet showing worn leather clothing, belt, bag, boots, and close-up details.',
+    caption: 'Leather pieces should look worn, repaired, useful, and handmade.',
+  },
+];
+
+const quickFacts = [
+  ['Role', 'Traveller / learner / witness'],
+  ['Home', 'Nearside edge of the Rim'],
+  ['Known for', 'Listening carefully, remembering details, crossing thresholds'],
+  ['Carries', 'Pendant, beads, travel bag, small daily tools'],
+  ['First appears', 'Chapter One: The First Walk'],
+];
+
+const favourites = [
+  ['Colours she returns to', 'Moss green, river blue, warm brown, old gold'],
+  ['Place she likes', 'The edge of a crossing, where people pause before moving on'],
+  ['Sound that steadies her', 'Water against a boat; beads softly touching in braided hair'],
+  ['Weather she likes', 'Cool morning mist before the road gets busy'],
+  ['Road food she likes', 'Travel bread, berries, warm broth'],
+  ['Object she keeps close', 'Her pendant'],
+  ['Kind of story she remembers', 'Stories about names, journeys, promises, and people who remember'],
+  ['Words she trusts', 'Plain words, old names, true answers'],
+];
+
+const steady = [
+  'Clear words',
+  'Quiet pauses',
+  'Familiar objects',
+  'Known routes',
+  'Soft fabric',
+  'The sound of water',
+  'People who say what they mean',
+  'Time to think before answering',
+  'Objects with memory',
+  'Rules explained before they are used',
+];
+
+const unsettle = [
+  'Too many voices at once',
+  'Sudden changes',
+  'Being rushed',
+  'Mockery',
+  'Scratchy fabric',
+  'False politeness',
+  'Rules that change without warning',
+  'People demanding quick answers',
+  'Promises made too easily',
+  'Being told something “doesn’t matter” when she knows it does',
+];
+
+const storyLinks = [
+  ['Chapter One: The First Walk', '/start/chapter-one/', 'Start Lina’s story.'],
+  ['The Rim and the Rimaeri', '/start/chapter-four-the-rim-and-the-rimaeri/', 'Learn about the crossing lands.'],
+  ['The Central River', '/start/chapter-five-the-central-river/', 'Understand the river that shapes the Rim.'],
+  ['Language of Vaelinya', '/language/', 'Learn how words, names, and memory work.'],
+];
+
+const characterJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  name: title,
+  description,
+  url: pageUrl,
+  inLanguage: 'en',
+  about: {
+    '@type': 'Person',
+    name: 'Lina',
+    description: 'A young traveller in Vaelinya who notices patterns, remembers details, and crosses thresholds carefully.',
+  },
+};
+---
+<BaseLayout title={title} description={description} image="/images/characters/lina/lina-portrait.webp" jsonLd={characterJsonLd}>
+  <link rel="stylesheet" href="/styles/character-page.css?v=2026-05-25-lina-v01" />
+
+  <article class="character-page lina-character-page">
+    <section class="character-hero" aria-labelledby="lina-title">
+      <figure class="character-hero__image">
+        <img
+          src="/images/characters/lina/lina-portrait.webp"
+          alt="Lina smiles softly and raises one hand in greeting."
+          width="1448"
+          height="1086"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
+      <div class="character-hero__copy">
+        <p class="eyebrow">Character page</p>
+        <h1 id="lina-title">Lina of Vaelinya</h1>
+        <p class="character-subtitle">A young traveller learning how to cross the world without losing herself.</p>
+        <p>Lina notices what other people walk past. She watches crossings, listens to old sayings, and remembers the small things that tell a place who it is.</p>
+        <p>She is not a warrior. She is a witness, a learner, and a keeper of memory.</p>
+        <div class="character-actions" aria-label="Lina page actions">
+          <a class="button" href="/start/chapter-one/">Read Lina’s first story</a>
+          <a class="button secondary" href="#lina-gallery">View her details</a>
+          <a class="button secondary" href="/language/">Learn a Vaelinya word</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="character-section quick-card-section" aria-labelledby="quick-card-title">
+      <div>
+        <p class="eyebrow">At a glance</p>
+        <h2 id="quick-card-title">Quick character card</h2>
+      </div>
+      <dl class="quick-card">
+        {quickFacts.map(([term, detail]) => (
+          <div>
+            <dt>{term}</dt>
+            <dd>{detail}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    <section class="character-section noticing-section" aria-labelledby="noticing-title">
+      <p class="eyebrow">Lina’s way of seeing</p>
+      <h2 id="noticing-title">How Lina Notices the World</h2>
+      <div class="noticing-copy">
+        <p>Lina notices what other people walk past.</p>
+        <p>She hears when a room changes. She sees when a greeting is false. She remembers where a thread was tied, which name was avoided, and which rule everyone pretended not to know.</p>
+        <p>Too much noise, pressure, or sudden change can make the world feel sharp and crowded. Lina needs pauses, familiar objects, clear words, and time to understand what is really happening.</p>
+        <p><strong>Her careful attention is not a weakness. It is how she finds truth.</strong></p>
+      </div>
+    </section>
+
+    <section class="character-section gallery-section" id="lina-gallery" aria-labelledby="gallery-title">
+      <div class="section-heading-row">
+        <div>
+          <p class="eyebrow">Look closely</p>
+          <h2 id="gallery-title">Close-up gallery</h2>
+        </div>
+        <p class="section-note">Open any image for the full 4K reference sheet after the files are uploaded.</p>
+      </div>
+      <div class="character-gallery">
+        {gallery.map((item) => (
+          <article class="gallery-card">
+            <a href={item.full} aria-label={`Open full 4K image: ${item.label}`}>
+              <img src={item.image} alt={item.alt} loading="lazy" decoding="async" />
+            </a>
+            <div class="gallery-card__copy">
+              <h3>{item.label}</h3>
+              <p>{item.caption}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="character-section favourites-section" aria-labelledby="favourites-title">
+      <p class="eyebrow">Small truths</p>
+      <h2 id="favourites-title">Favourites & small truths</h2>
+      <dl class="favourites-grid">
+        {favourites.map(([term, detail]) => (
+          <div>
+            <dt>{term}</dt>
+            <dd>{detail}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    <section class="character-section look-closer-section" aria-labelledby="look-closer-title">
+      <p class="eyebrow">Details</p>
+      <h2 id="look-closer-title">Look closer</h2>
+      <div class="detail-grid">
+        <article>
+          <h3>Pendant</h3>
+          <p>Lina’s pendant is worn close to the heart. It is a memory object, not decoration alone.</p>
+        </article>
+        <article>
+          <h3>Hair beads</h3>
+          <p>Her beads mark journeys, gifts, and small acts of belonging.</p>
+        </article>
+        <article>
+          <h3>Layers</h3>
+          <p>Her clothing is layered for travel, weather, repair, and movement.</p>
+        </article>
+        <article>
+          <h3>Bag</h3>
+          <p>Her shoulder bag carries ordinary things: food, thread, notes, small keepsakes, and tools for the road.</p>
+        </article>
+        <article>
+          <h3>Boots</h3>
+          <p>Her boots should look used, not grand. They belong to someone who walks, waits, crosses, and returns.</p>
+        </article>
+        <article>
+          <h3>Thread and repair</h3>
+          <p>Mending matters in Vaelinya. A repaired thing is not spoiled. It has been kept.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="character-section story-links-section" aria-labelledby="story-links-title">
+      <p class="eyebrow">Begin with Lina</p>
+      <h2 id="story-links-title">Story links</h2>
+      <div class="story-link-grid">
+        {storyLinks.map(([label, href, note]) => (
+          <a class="story-link-card" href={href}>
+            <strong>{label}</strong>
+            <span>{note}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="character-section quiet-lists" aria-labelledby="steady-title">
+      <div class="quiet-list-card">
+        <h2 id="steady-title">Things that steady Lina</h2>
+        <ul>
+          {steady.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+      <details class="quiet-list-card quiet-list-card--muted">
+        <summary>Things that unsettle Lina</summary>
+        <ul>
+          {unsettle.map((item) => <li>{item}</li>)}
+        </ul>
+      </details>
+    </section>
+
+    <section class="character-section hello-section" aria-labelledby="hello-title">
+      <p class="eyebrow">Greeting</p>
+      <h2 id="hello-title">Lina says hello</h2>
+      <p>In Vaelinya, greeting someone is not only about speaking. It is about making space for them to arrive.</p>
+      <blockquote>“Hello. You can begin slowly.”</blockquote>
+      <p class="section-note">Lina’s Vaelinya greeting can be added when the language line is ready.</p>
+    </section>
+
+    <details class="character-section reference-details">
+      <summary>Full image sheets</summary>
+      <ul>
+        {gallery.map((item) => (
+          <li><a href={item.full}>{item.label} — open 4K file</a></li>
+        ))}
+      </ul>
+    </details>
+
+    <details class="character-section reference-details">
+      <summary>Artist / reference notes</summary>
+      <div class="reference-copy">
+        <p>Lina’s design should feel practical, handmade, and travelled-in. Nothing should look like a costume shop outfit.</p>
+        <p>Her clothes are repaired, layered, and personal. Her jewellery should feel meaningful rather than rich. Her hair should look cared for, but not over-styled. Her objects should feel used, touched, and remembered.</p>
+        <p>Show Lina as capable, sensitive, observant, and real. Do not frame her as broken. Do not over-explain her. Let readers recognise her through details.</p>
+      </div>
+    </details>
+  </article>
+</BaseLayout>
