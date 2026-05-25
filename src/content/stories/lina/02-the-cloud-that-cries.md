@@ -9,7 +9,8 @@ total_stories: 8
 status: "ready"
 public_url: "/read/lina/02-the-cloud-that-cries/"
 old_url: "/stories/canon/solo/child-01-lina/02-story/"
-hero_image: "/images/stories/lina/cloud-that-cries.webp"
+hero_image: "/images/read/lina/lina-02-the-cloud-that-cries.webp"
+hero_image_alt: "Lina stands near a wide river valley while a heavy dark cloud releases soft rain beneath the sky."
 related_world:
   - "/world/the-rim/"
   - "/world/the-warm-remembering/"
