@@ -40,54 +40,62 @@ const aboutJsonLd = [
   },
 ];
 ---
-<BaseLayout title="About Vaelinya" description={description} jsonLd={aboutJsonLd}>
-  <section class="page-section">
-    <p class="eyebrow">About</p>
-    <h1>About Vaelinya</h1>
-    <p class="lede">Vaelinya is a colourful story world created by Merrin W. Dream.</p>
-    <p>It begins with stories about brave children, living words, strange places, remembered things, and the quiet magic of paying attention.</p>
-    <p>Read first. Explore later. The world pages, language pages, maps, symbols, and artefacts are here when something in the story makes you curious.</p>
+<BaseLayout title="About Vaelinya" description={description} image="/images/about/magical_riverside_at_dusk.webp" jsonLd={aboutJsonLd}>
+  <link rel="stylesheet" href="/styles/about-page.css?v=2026-05-25-bg-01" />
 
-    <article class="panel" aria-labelledby="where-to-start-title">
-      <p class="eyebrow">Start here</p>
-      <h2 id="where-to-start-title">Begin with Lina</h2>
-      <p>Lina’s eight stories are the gentlest first path into Vaelinya. They introduce the world through bridges, songs, memory, stars, trees, caves, and small acts of courage.</p>
-      <p>Start with Story 01, then keep reading in order or follow whatever catches your attention.</p>
-      <div class="link-list">
-        <a href="/read/lina/">Open Lina’s eight stories</a>
-        <a href="/read/lina/01-the-bridge-that-sang-back/">Read Story 01: The Bridge That Sang Back</a>
+  <section class="about-page">
+    <div class="about-hero">
+      <div class="about-hero__copy">
+        <p class="eyebrow">About</p>
+        <h1>About Vaelinya</h1>
+        <p class="lede">Vaelinya is a colourful story world created by Merrin W. Dream.</p>
+        <p>It begins with stories about brave children, living words, strange places, remembered things, and the quiet magic of paying attention.</p>
+        <p>Read first. Explore later. The world pages, language pages, maps, symbols, and artefacts are here when something in the story makes you curious.</p>
       </div>
-    </article>
+    </div>
 
-    <article class="panel" aria-labelledby="sections-title">
-      <p class="eyebrow">How to use the site</p>
-      <h2 id="sections-title">Four ways in</h2>
-      <ul>
-        <li><strong>Read</strong> gives you the stories.</li>
-        <li><strong>World</strong> shows the places, people, customs, animals, and shared life of Vaelinya.</li>
-        <li><strong>Language</strong> explains words, meanings, pronunciations, and word-families.</li>
-        <li><strong>Artefacts</strong> collects symbols, maps, objects, chant cards, and printable things from the world.</li>
-      </ul>
-      <div class="link-list">
-        <a href="/read/">Read</a>
-        <a href="/world/">World</a>
-        <a href="/language/">Language</a>
-        <a href="/artefacts/">Artefacts</a>
-      </div>
-    </article>
+    <div class="about-panel-grid">
+      <article class="panel" aria-labelledby="where-to-start-title">
+        <p class="eyebrow">Start here</p>
+        <h2 id="where-to-start-title">Begin with Lina</h2>
+        <p>Lina’s eight stories are the gentlest first path into Vaelinya. They introduce the world through bridges, songs, memory, stars, trees, caves, and small acts of courage.</p>
+        <p>Start with Story 01, then keep reading in order or follow whatever catches your attention.</p>
+        <div class="link-list">
+          <a href="/read/lina/">Open Lina’s eight stories</a>
+          <a href="/read/lina/01-the-bridge-that-sang-back/">Read Story 01: The Bridge That Sang Back</a>
+        </div>
+      </article>
 
-    <article class="panel" aria-labelledby="merrin-title">
-      <p class="eyebrow">Creator</p>
-      <h2 id="merrin-title">Merrin W. Dream</h2>
-      <p>Merrin W. Dream is a writer, artist, musician, worldbuilder, and synth maker based in York.</p>
-      <p>Merrin makes stories, songs, images, instruments, and practical tools for storytelling. Much of the work is about noticing what has been overlooked, giving shape to hidden lives, and making strange worlds clear enough to enter.</p>
-    </article>
+      <article class="panel" aria-labelledby="sections-title">
+        <p class="eyebrow">How to use the site</p>
+        <h2 id="sections-title">Four ways in</h2>
+        <ul>
+          <li><strong>Read</strong> gives you the stories.</li>
+          <li><strong>World</strong> shows the places, people, customs, animals, and shared life of Vaelinya.</li>
+          <li><strong>Language</strong> explains words, meanings, pronunciations, and word-families.</li>
+          <li><strong>Artefacts</strong> collects symbols, maps, objects, chant cards, and printable things from the world.</li>
+        </ul>
+        <div class="link-list">
+          <a href="/read/">Read</a>
+          <a href="/world/">World</a>
+          <a href="/language/">Language</a>
+          <a href="/artefacts/">Artefacts</a>
+        </div>
+      </article>
 
-    <article class="panel" aria-labelledby="public-site-title">
-      <p class="eyebrow">Public site</p>
-      <h2 id="public-site-title">What this site gives you</h2>
-      <p>Vaelinya is larger than this website, but this is the easiest place to begin.</p>
-      <p>Here you will find the stories, world pages, language notes, maps, symbols, and artefacts that help the world open clearly, without burying you in background notes.</p>
-    </article>
+      <article class="panel" aria-labelledby="merrin-title">
+        <p class="eyebrow">Creator</p>
+        <h2 id="merrin-title">Merrin W. Dream</h2>
+        <p>Merrin W. Dream is a writer, artist, musician, worldbuilder, and synth maker based in York.</p>
+        <p>Merrin makes stories, songs, images, instruments, and practical tools for storytelling. Much of the work is about noticing what has been overlooked, giving shape to hidden lives, and making strange worlds clear enough to enter.</p>
+      </article>
+
+      <article class="panel" aria-labelledby="public-site-title">
+        <p class="eyebrow">Public site</p>
+        <h2 id="public-site-title">What this site gives you</h2>
+        <p>Vaelinya is larger than this website, but this is the easiest place to begin.</p>
+        <p>Here you will find the stories, world pages, language notes, maps, symbols, and artefacts that help the world open clearly, without burying you in background notes.</p>
+      </article>
+    </div>
   </section>
 </BaseLayout>
