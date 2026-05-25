@@ -1,14 +1,58 @@
+body:has(.lina-character-page) {
+  background-color: var(--night);
+  background-image:
+    linear-gradient(180deg, rgba(29, 18, 46, 0.22) 0%, rgba(29, 18, 46, 0.06) 30%, rgba(29, 18, 46, 0.38) 100%),
+    radial-gradient(circle at 8% 10%, rgba(255, 213, 94, 0.14), transparent 18rem),
+    radial-gradient(circle at 92% 8%, rgba(113, 218, 203, 0.14), transparent 20rem),
+    radial-gradient(circle at 50% 92%, rgba(193, 68, 122, 0.14), transparent 24rem),
+    url('/images/characters/lina/lina-character-background.webp'),
+    radial-gradient(circle, rgba(255, 248, 232, 0.08) 1px, transparent 1px);
+  background-position:
+    center top,
+    center top,
+    center top,
+    center bottom,
+    center top,
+    center top;
+  background-repeat:
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    repeat;
+  background-size:
+    cover,
+    auto,
+    auto,
+    auto,
+    cover,
+    28px 28px;
+}
+
+.site-main:has(> .lina-character-page) {
+  position: relative;
+  isolation: isolate;
+}
+
 .character-page {
   display: grid;
   gap: 1.15rem;
 }
 
+.lina-character-page {
+  position: relative;
+  z-index: 1;
+}
+
 .character-hero,
 .character-section {
-  background: rgba(255, 248, 232, 0.92);
-  border: 1px solid rgba(122, 91, 50, 0.18);
+  background: rgba(250, 245, 236, 0.66);
+  border: 1px solid rgba(255, 248, 232, 0.52);
   border-radius: 1.45rem;
-  box-shadow: 0 1rem 2.8rem rgba(9, 5, 18, 0.24);
+  box-shadow: 0 1rem 2.6rem rgba(9, 5, 18, 0.14);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .character-hero {
@@ -91,9 +135,11 @@
 .quiet-list-card,
 .gallery-card,
 .story-link-card {
-  background: rgba(255, 255, 255, 0.58);
+  background: rgba(255, 250, 242, 0.68);
   border: 1px solid rgba(122, 91, 50, 0.16);
   border-radius: 1rem;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .quick-card div,
@@ -117,8 +163,8 @@
 
 .noticing-section {
   background:
-    radial-gradient(circle at 18% 8%, rgba(180, 136, 61, 0.22), transparent 14rem),
-    rgba(255, 248, 232, 0.94);
+    radial-gradient(circle at 18% 8%, rgba(180, 136, 61, 0.18), transparent 14rem),
+    rgba(250, 245, 236, 0.68);
 }
 
 .noticing-copy {
@@ -192,7 +238,7 @@
 .story-link-card:focus-visible {
   transform: translateY(-2px);
   border-color: rgba(75, 99, 199, 0.42);
-  background: rgba(255, 255, 255, 0.76);
+  background: rgba(255, 250, 242, 0.82);
 }
 
 .quiet-list-card h2,
@@ -215,14 +261,14 @@
 }
 
 .quiet-list-card--muted {
-  background: rgba(255, 255, 255, 0.38);
+  background: rgba(255, 250, 242, 0.48);
 }
 
 .hello-section blockquote {
   margin: 1rem 0;
   padding: 0.85rem 1rem;
   border-left: 0.35rem solid rgba(75, 99, 199, 0.48);
-  background: rgba(255, 255, 255, 0.54);
+  background: rgba(255, 250, 242, 0.62);
   border-radius: 0.8rem;
   color: #20262c;
   font-size: clamp(1.15rem, 2.2vw, 1.55rem);
@@ -230,7 +276,7 @@
 }
 
 .reference-details {
-  background: rgba(255, 248, 232, 0.74);
+  background: rgba(250, 245, 236, 0.58);
 }
 
 .reference-details summary {
@@ -240,6 +286,25 @@
 .reference-copy {
   max-width: 58rem;
   margin-top: 0.8rem;
+}
+
+@media (max-width: 900px) {
+  body:has(.lina-character-page) {
+    background-position:
+      center top,
+      center top,
+      center top,
+      center bottom,
+      center top,
+      center top;
+    background-size:
+      auto,
+      auto,
+      auto,
+      auto,
+      auto 100%,
+      28px 28px;
+  }
 }
 
 @media (max-width: 820px) {
@@ -257,5 +322,16 @@
   .favourites-grid div {
     grid-template-columns: 1fr;
     gap: 0.25rem;
+  }
+
+  .character-hero,
+  .character-section,
+  .quick-card div,
+  .favourites-grid div,
+  .detail-grid article,
+  .quiet-list-card,
+  .gallery-card,
+  .story-link-card {
+    background: rgba(255, 250, 242, 0.78);
   }
 }
