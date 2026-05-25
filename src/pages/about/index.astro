@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import EmailSealIcon from '../../components/EmailSealIcon.astro';
 
 const description = 'About Vaelinya: a colourful story world by Merrin W. Dream, where readers can begin with stories and explore the world, language, symbols, maps, and artefacts as they go.';
 const site = Astro.site ?? new URL('https://vaelinya.uk');
@@ -86,7 +87,17 @@ const aboutJsonLd = [
 
       <article class="panel" aria-labelledby="merrin-title">
         <p class="eyebrow">Creator</p>
-        <h2 id="merrin-title">Merrin W. Dream</h2>
+        <h2 id="merrin-title" style="display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap;">
+          <span>Merrin W. Dream</span>
+          <a
+            href="mailto:merrin@merrinworld.uk"
+            aria-label="Email Merrin"
+            title="Email Merrin"
+            style="display:inline-flex; align-items:center; justify-content:center; width:3.4rem; height:3.4rem; text-decoration:none;"
+          >
+            <EmailSealIcon size={54} />
+          </a>
+        </h2>
         <p>Merrin W. Dream is a writer, artist, musician, worldbuilder, and synth maker based in York.</p>
         <p>Merrin makes stories, songs, images, instruments, and practical tools for storytelling. Much of the work is about noticing what has been overlooked, giving shape to hidden lives, and making strange worlds clear enough to enter.</p>
       </article>
