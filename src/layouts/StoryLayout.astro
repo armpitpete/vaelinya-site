@@ -43,7 +43,7 @@ const storyHeroAlt = new Map([
 
 const resolveHeroImage = (src?: string) => {
   if (!src) return undefined;
-  return src.replace(/\.webp$/, '.svg');
+  return src.trim();
 };
 
 const resolvedHeroImage = resolveHeroImage(heroImage);
