@@ -268,3 +268,90 @@ Just one.
 Clear and high and gentle.
 
 The bridge had gone. The listening had stayed.
+
+<div class="story-whisper-secret" aria-hidden="true">
+  <span class="story-whisper-star">
+    <span class="story-whisper-core"></span>
+    <span class="story-whisper-popup">
+      <span>Some things in Vaelinya only answer if you linger.</span>
+      <a href="/hidden-notes/" tabindex="-1">Follow the hidden stars.</a>
+    </span>
+  </span>
+</div>
+
+<style>
+  .story-whisper-secret {
+    display: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .story-whisper-secret {
+      display: flex;
+      justify-content: center;
+      margin: 2.5rem auto 0;
+    }
+
+    .story-whisper-star {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+
+    .story-whisper-core {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: #fff5c7;
+      box-shadow: 0 0 0.35rem #fff9d9, 0 0 1.2rem rgba(255, 214, 112, 0.72);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .story-whisper-star:hover .story-whisper-core {
+      transform: scale(1.38);
+      box-shadow: 0 0 0.45rem #ffffec, 0 0 1.9rem rgba(255, 218, 126, 0.96);
+    }
+
+    .story-whisper-popup {
+      position: absolute;
+      left: 50%;
+      bottom: 100%;
+      width: min(19rem, 70vw);
+      padding: 0.9rem 1rem;
+      border: 1px solid rgba(255, 231, 167, 0.42);
+      border-radius: 1rem;
+      background: rgba(41, 27, 54, 0.96);
+      color: #fff7df;
+      box-shadow: 0 1rem 2rem rgba(4, 4, 14, 0.42);
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 0.35rem);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      transition-delay: 0s;
+      text-align: center;
+    }
+
+    .story-whisper-star:hover .story-whisper-popup {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, 0);
+      transition-delay: 1.4s;
+    }
+
+    .story-whisper-popup span,
+    .story-whisper-popup a {
+      display: block;
+      color: #fff7df;
+      font-size: 0.95rem;
+      line-height: 1.45;
+      text-decoration: none;
+    }
+
+    .story-whisper-popup a {
+      margin-top: 0.45rem;
+      color: #ffe29a;
+      font-weight: 700;
+    }
+  }
+</style>
