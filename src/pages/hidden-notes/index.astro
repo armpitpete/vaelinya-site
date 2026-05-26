@@ -39,9 +39,9 @@ const description = 'A quiet star-map of things the stories do not say aloud.';
     </div>
 
     <article class="panel first-hidden-note" aria-labelledby="first-hidden-note-title">
-      <p class="eyebrow">First hidden note</p>
+      <p class="eyebrow">Bridge-light fragment</p>
       <h2 id="first-hidden-note-title">The Old Listening-Place</h2>
-      <p>The bridge is an old listening-place. It appears because Lina joins its hidden song, not because she solves a puzzle or casts a spell.</p>
+      <p>The bridge was never built. It was an old listening-place. Lina did not open it by solving. She joined the song it had been holding.</p>
     </article>
   </section>
 </BaseLayout>
@@ -248,5 +248,20 @@ const description = 'A quiet star-map of things the stories do not say aloud.';
 
   .first-hidden-note {
     margin-top: 1.4rem;
+    border-color: rgba(236, 215, 167, 0.34);
+    background:
+      radial-gradient(circle at 18% 18%, rgba(255, 226, 154, 0.2), transparent 18rem),
+      linear-gradient(135deg, rgba(254, 244, 213, 0.82), rgba(225, 214, 221, 0.7));
+    box-shadow: 0 1rem 3rem rgba(14, 10, 28, 0.22);
+    backdrop-filter: blur(6px);
+  }
+
+  .first-hidden-note .eyebrow {
+    color: #7a4aa2;
+  }
+
+  .first-hidden-note h2,
+  .first-hidden-note p {
+    color: #17122f;
   }
 </style>
