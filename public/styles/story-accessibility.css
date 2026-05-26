@@ -6,3 +6,55 @@
 .story-content h2#illustration-slot + p + p {
   display: none;
 }
+
+/* Whisper Stars polish.
+   The visible star should feel like a small leftover light from the story ending,
+   not like a centred site widget. */
+@media (hover: hover) and (pointer: fine) {
+  .story-content .story-whisper-secret {
+    width: min(42rem, 100%);
+    justify-content: flex-start;
+    margin: 0.45rem auto 2.6rem;
+    padding-left: clamp(9.5rem, 34%, 16rem);
+  }
+
+  .story-content .story-whisper-star {
+    width: 1.45rem;
+    height: 1.45rem;
+  }
+
+  .story-content .story-whisper-core {
+    width: 0.42rem;
+    height: 0.42rem;
+    opacity: 0.86;
+    box-shadow:
+      0 0 0.28rem rgba(255, 249, 217, 0.9),
+      0 0 0.95rem rgba(255, 214, 112, 0.62);
+  }
+
+  .story-content .story-whisper-star:hover .story-whisper-core {
+    transform: scale(1.3);
+    box-shadow:
+      0 0 0.38rem rgba(255, 255, 236, 0.98),
+      0 0 1.45rem rgba(255, 218, 126, 0.86);
+  }
+
+  .story-content .story-whisper-popup {
+    bottom: calc(100% + 0.55rem);
+    width: min(17rem, 64vw);
+    padding: 0.75rem 0.85rem;
+    border-color: rgba(255, 231, 167, 0.34);
+    background: rgba(33, 22, 47, 0.96);
+  }
+
+  .story-content .story-whisper-popup span,
+  .story-content .story-whisper-popup a {
+    font-size: 0.88rem;
+  }
+
+  .story-content .story-whisper-popup a {
+    margin-top: 0.35rem;
+    color: rgba(255, 226, 154, 0.92);
+    font-weight: 650;
+  }
+}
