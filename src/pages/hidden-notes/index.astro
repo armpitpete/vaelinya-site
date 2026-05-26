@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const description = 'A quiet star-map of things the stories do not say aloud.';
+---
+<BaseLayout title="Hidden Notes" description={description} noindex={true}>
+  <section class="hidden-notes-page" aria-labelledby="hidden-notes-title">
+    <div class="hidden-notes-hero">
+      <p class="eyebrow">Hidden Notes</p>
+      <h1 id="hidden-notes-title">The stars around Vaelinya</h1>
+      <p class="lede">A quiet star-map of things the stories do not say aloud.</p>
+
+      <div class="vaelinya-star-map" aria-label="A magical star-map around Vaelinya">
+        <div class="vaelinya-world" aria-hidden="true">Vaelinya</div>
+
+        <div class="whisper-star bridge-star" aria-hidden="true">
+          <span class="star-core"></span>
+          <div class="whisper-popup">
+            <p class="whisper-kicker">The Bridge That Sang Back</p>
+            <p>The bridge was not built from stone. It appeared because Lina joined the canyon’s hidden song.</p>
+          </div>
+        </div>
+
+        <span class="quiet-star s1" aria-hidden="true"></span>
+        <span class="quiet-star s2" aria-hidden="true"></span>
+        <span class="quiet-star s3" aria-hidden="true"></span>
+        <span class="quiet-star s4" aria-hidden="true"></span>
+        <span class="quiet-star s5" aria-hidden="true"></span>
+      </div>
+
+      <p class="desktop-whisper-note">On desktop, some stars answer when the mouse lingers.</p>
+    </div>
+
+    <article class="panel first-hidden-note" aria-labelledby="first-hidden-note-title">
+      <p class="eyebrow">First hidden note</p>
+      <h2 id="first-hidden-note-title">The Old Listening-Place</h2>
+      <p>The bridge is an old listening-place. It appears because Lina joins its hidden song, not because she solves a puzzle or casts a spell.</p>
+    </article>
+  </section>
+</BaseLayout>
+
+<style>
+  .hidden-notes-page {
+    width: min(1120px, calc(100vw - 2rem));
+    margin: 0 auto;
+  }
+
+  .hidden-notes-hero {
+    border: 1px solid rgba(236, 215, 167, 0.34);
+    border-radius: 2rem;
+    padding: clamp(1.4rem, 4vw, 3rem);
+    background: linear-gradient(135deg, #160e29, #080815);
+    color: #fff7df;
+  }
+
+  .hidden-notes-hero h1,
+  .first-hidden-note h2 {
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  .vaelinya-star-map {
+    position: relative;
+    min-height: clamp(22rem, 52vw, 34rem);
+    margin-top: 2rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 247, 223, 0.18);
+    background:
+      radial-gradient(circle at 18% 26%, #fff 0 1px, transparent 2px),
+      radial-gradient(circle at 76% 18%, #fff 0 1px, transparent 2px),
+      radial-gradient(circle at 88% 72%, #fff 0 1px, transparent 2px),
+      radial-gradient(circle at 34% 78%, #fff 0 1px, transparent 2px),
+      radial-gradient(circle at 56% 34%, #fff 0 1px, transparent 2px),
+      radial-gradient(circle at 50% 50%, rgba(255, 223, 142, 0.18), transparent 38%),
+      #09091d;
+    overflow: hidden;
+  }
+
+  .vaelinya-world {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: clamp(8rem, 22vw, 13rem);
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle at 35% 28%, #fff, #8fd2be 16%, #355774 58%, #1d1d3f);
+    color: #fff7df;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: 0 0 2rem rgba(142, 213, 214, 0.32);
+  }
+
+  .quiet-star {
+    position: absolute;
+    width: 0.34rem;
+    height: 0.34rem;
+    border-radius: 50%;
+    background: rgba(255, 243, 207, 0.78);
+    box-shadow: 0 0 0.8rem rgba(255, 228, 157, 0.68);
+  }
+
+  .s1 { left: 23%; top: 40%; }
+  .s2 { left: 31%; top: 64%; }
+  .s3 { left: 62%; top: 28%; }
+  .s4 { left: 71%; top: 62%; }
+  .s5 { left: 80%; top: 42%; }
+
+  .whisper-star {
+    display: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .whisper-star {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      width: 1.75rem;
+      height: 1.75rem;
+      z-index: 4;
+    }
+
+    .bridge-star {
+      left: 25%;
+      top: 46%;
+    }
+
+    .star-core {
+      width: 0.52rem;
+      height: 0.52rem;
+      border-radius: 50%;
+      background: #fff5c7;
+      box-shadow: 0 0 0.35rem #fff9d9, 0 0 1.2rem rgba(255, 214, 112, 0.72);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .whisper-star:hover .star-core {
+      transform: scale(1.38);
+      box-shadow: 0 0 0.45rem #ffffec, 0 0 1.9rem rgba(255, 218, 126, 0.96);
+    }
+
+    .whisper-popup {
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 0.7rem);
+      width: min(19rem, 42vw);
+      padding: 0.9rem 1rem;
+      border: 1px solid rgba(255, 231, 167, 0.42);
+      border-radius: 1rem;
+      background: rgba(41, 27, 54, 0.96);
+      color: #fff7df;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 0.35rem);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      transition-delay: 0s;
+    }
+
+    .whisper-star:hover .whisper-popup {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, 0);
+      transition-delay: 1.4s;
+    }
+
+    .whisper-popup p {
+      margin: 0;
+      color: rgba(255, 247, 223, 0.92);
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+
+    .whisper-popup .whisper-kicker {
+      margin-bottom: 0.35rem;
+      color: #ffe29a;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+  }
+
+  .desktop-whisper-note {
+    margin: 1rem 0 0;
+    color: rgba(255, 247, 223, 0.72);
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  .first-hidden-note {
+    margin-top: 1.4rem;
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    .desktop-whisper-note { display: none; }
+  }
+</style>
