@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const description = 'Private status page for the Lina of Vaelinya Twitch bot.';
+
+const rows = [
+  ['Protection', 'Cloudflare Access active'],
+  ['Bot status', 'Working'],
+  ['Permanent server setup', 'Complete'],
+  ['Server path', '/opt/lina-of-vaelinya-bot'],
+  ['systemd service', 'lina-of-vaelinya-bot'],
+  ['Bot user', 'lina-bot'],
+  ['Twitch account', 'lina_of_vaelinya'],
+  ['Channel', 'merrin_w_dream'],
+  ['Links', 'Working because lina_of_vaelinya is modded'],
+  ['Controls', 'Not enabled yet'],
+];
+---
+
+<BaseLayout title="Lina Command Centre" description={description} noindex={true}>
+  <section class="lina-command-centre" aria-labelledby="lina-command-centre-title">
+    <div class="command-panel">
+      <p class="eyebrow">Private</p>
+      <h1 id="lina-command-centre-title">Lina Command Centre</h1>
+      <p class="lede">Private status page for the Lina of Vaelinya Twitch bot.</p>
+
+      <div class="safety-note" role="note" aria-label="Security note">
+        This page must never display <code>.env</code>, OAuth tokens, client secrets, access tokens, refresh tokens, or Twitch API credentials.
+      </div>
+
+      <table aria-label="Lina bot status">
+        <tbody>
+          {rows.map(([label, value]) => (
+            <tr>
+              <th scope="row">{label}</th>
+              <td>{value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <p class="footer-note">Bot controls are deliberately disabled until a safe server-side control layer exists.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .lina-command-centre {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: clamp(1rem, 4vw, 3rem) 0;
+  }
+
+  .command-panel {
+    background:
+      radial-gradient(circle at top left, rgba(126, 87, 194, 0.14), transparent 28rem),
+      rgba(255, 250, 242, 0.98);
+    border: 1px solid #e2d5c4;
+    border-radius: 24px;
+    padding: clamp(1.25rem, 4vw, 2.5rem);
+    box-shadow: 0 18px 45px rgba(32, 38, 44, 0.1);
+  }
+
+  .eyebrow {
+    margin: 0 0 0.5rem;
+    color: #7d4c9e;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0 0 0.75rem;
+    color: #20262c;
+    font-size: clamp(2.25rem, 6vw, 4rem);
+    line-height: 1;
+  }
+
+  .lede {
+    margin: 0;
+    max-width: 65ch;
+    color: #4d4454;
+    font-size: 1.1rem;
+    line-height: 1.55;
+  }
+
+  .safety-note {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border-left: 5px solid #7d4c9e;
+    border-radius: 14px;
+    background: #f4edf8;
+    color: #2b3137;
+    line-height: 1.55;
+  }
+
+  code {
+    background: #eee3d5;
+    padding: 0.15rem 0.35rem;
+    border-radius: 6px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+  }
+
+  th,
+  td {
+    padding: 0.9rem 0.75rem;
+    border-bottom: 1px solid #eadfce;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    width: 34%;
+    color: #4d4454;
+    font-weight: 800;
+  }
+
+  td {
+    color: #20262c;
+  }
+
+  .footer-note {
+    margin: 1.5rem 0 0;
+    color: #5e5662;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 640px) {
+    th,
+    td {
+      display: block;
+      width: 100%;
+      padding: 0.7rem 0;
+    }
+
+    th {
+      border-bottom: 0;
+    }
+
+    td {
+      padding-top: 0;
+    }
+  }
+</style>
