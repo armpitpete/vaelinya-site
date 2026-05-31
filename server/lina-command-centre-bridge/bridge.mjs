@@ -33,14 +33,32 @@ function sendJson(res, statusCode, payload) {
   res.end(JSON.stringify(payload, null, 2));
 }
 
+function parseCookies(cookieHeader = '') {
+  const cookies = {};
+  for (const part of String(cookieHeader || '').split(';')) {
+    const trimmed = part.trim();
+    if (!trimmed) continue;
+    const index = trimmed.indexOf('=');
+    if (index === -1) continue;
+    cookies[trimmed.slice(0, index)] = decodeURIComponent(trimmed.slice(index + 1));
+  }
+  return cookies;
+}
+
 async function verifyAccess(req) {
   if (!TEAM_DOMAIN || !ACCESS_AUD || !jwks) {
     return { ok: false, status: 500, message: 'Bridge verification is not configured.' };
   }
 
-  const assertion = String(req.headers['cf-access-jwt-assertion'] || '').trim();
+  const cookies = parseCookies(req.headers.cookie || '');
+  const assertion = String(
+    req.headers['cf-access-jwt-assertion'] ||
+    cookies.CF_Authorization ||
+    ''
+  ).trim();
+
   if (!assertion) {
-    return { ok: false, status: 401, message: 'Missing Cloudflare Access assertion.' };
+    return { ok: false, status: 401, message: 'Missing Cloudflare Access assertion or cookie.' };
   }
 
   try {
