@@ -22,172 +22,143 @@ const quickLinks = [
 ---
 
 <BaseLayout title="Vaelinya Command Centre" description={description} noindex={true}>
-  <section class="vaelinya-command-centre" aria-labelledby="command-centre-title" data-command-centre>
-    <header class="centre-hero">
+  <section class="command-centre" aria-labelledby="command-centre-title" data-command-centre>
+    <header class="hero">
       <div>
         <p class="eyebrow">Private control room</p>
         <h1 id="command-centre-title">Vaelinya Command Centre</h1>
         <p class="lede">A clear, graphical dashboard for Lina, the Twitch bot, and the private operational side of Vaelinya.</p>
       </div>
 
-      <div class="bridge-status-card" aria-live="polite">
-        <span class="pulse-dot" data-bridge-dot></span>
+      <aside class="bridge-card" aria-live="polite">
+        <span class="pulse" data-bridge-dot></span>
         <div>
-          <strong data-bridge-label>Bridge not connected yet</strong>
-          <span data-bridge-detail>Stage A UI is live. Stage B server bridge is still needed for live controls.</span>
+          <strong data-bridge-label>Checking bridge…</strong>
+          <span data-bridge-detail>Testing the private API endpoint now.</span>
         </div>
-      </div>
+      </aside>
     </header>
 
-    <div class="dashboard-grid">
-      <section class="dashboard-card status-command-card" aria-labelledby="bot-status-title">
-        <div class="card-heading">
-          <p class="card-kicker">Bot state</p>
-          <h2 id="bot-status-title">Lina service</h2>
+    <div class="grid">
+      <section class="card state-card" aria-labelledby="bot-state-title">
+        <div class="card-head">
+          <p class="kicker">Bot state</p>
+          <h2 id="bot-state-title">Lina service</h2>
         </div>
 
-        <div class="status-orb status-orb--unknown" data-status-orb aria-hidden="true">
+        <div class="orb orb--unknown" data-status-orb aria-hidden="true">
           <span data-status-symbol>?</span>
         </div>
 
-        <div class="state-readout">
-          <strong data-service-state>Waiting for bridge</strong>
-          <span data-service-detail>Install the Stage B bridge to read live systemd status.</span>
+        <div class="readout">
+          <strong data-service-state>Unknown</strong>
+          <span data-service-detail>Waiting for the browser API test.</span>
         </div>
 
-        <div class="mini-metric-grid">
-          <div class="mini-metric">
-            <span>Service</span>
-            <strong>lina-of-vaelinya-bot</strong>
-          </div>
-          <div class="mini-metric">
-            <span>Mode</span>
-            <strong data-control-mode>Read-only UI</strong>
-          </div>
-          <div class="mini-metric">
-            <span>Last checked</span>
-            <strong data-last-checked>Not yet</strong>
-          </div>
+        <div class="metrics">
+          <div><span>Service</span><strong>lina-of-vaelinya-bot</strong></div>
+          <div><span>Mode</span><strong data-control-mode>Read-only UI</strong></div>
+          <div><span>Last checked</span><strong data-last-checked>Not yet</strong></div>
         </div>
       </section>
 
-      <section class="dashboard-card control-card" aria-labelledby="controls-title">
-        <div class="card-heading">
-          <p class="card-kicker">Large actions</p>
+      <section class="card controls-card" aria-labelledby="controls-title">
+        <div class="card-head">
+          <p class="kicker">Large actions</p>
           <h2 id="controls-title">Bot controls</h2>
-          <p>These buttons are wired for Stage B. They stay locked until the private server bridge responds.</p>
+          <p>Start, Stop, and Restart stay locked until the bridge returns valid JSON.</p>
         </div>
 
-        <div class="control-grid">
-          <button class="control-button control-button--start" type="button" data-action="start" disabled>
-            <span class="button-icon">▶</span>
-            <span>
-              <strong>Start</strong>
-              <small>Bring Lina online</small>
-            </span>
+        <div class="controls">
+          <button class="control control--start" type="button" data-action="start" disabled>
+            <span>▶</span><strong>Start</strong><small>Bring Lina online</small>
           </button>
-
-          <button class="control-button control-button--restart" type="button" data-action="restart" disabled>
-            <span class="button-icon">↻</span>
-            <span>
-              <strong>Restart</strong>
-              <small>Clean service reload</small>
-            </span>
+          <button class="control control--restart" type="button" data-action="restart" disabled>
+            <span>↻</span><strong>Restart</strong><small>Clean service reload</small>
           </button>
-
-          <button class="control-button control-button--stop" type="button" data-action="stop" disabled>
-            <span class="button-icon">■</span>
-            <span>
-              <strong>Stop</strong>
-              <small>Take Lina offline</small>
-            </span>
+          <button class="control control--stop" type="button" data-action="stop" disabled>
+            <span>■</span><strong>Stop</strong><small>Take Lina offline</small>
           </button>
-
-          <button class="control-button control-button--refresh" type="button" data-action="refresh">
-            <span class="button-icon">⟳</span>
-            <span>
-              <strong>Refresh</strong>
-              <small>Check status now</small>
-            </span>
+          <button class="control control--refresh" type="button" data-action="refresh">
+            <span>⟳</span><strong>Refresh</strong><small>Check now</small>
           </button>
         </div>
 
         <p class="action-message" data-action-message>No command has been sent.</p>
       </section>
 
-      <section class="dashboard-card map-card" aria-labelledby="system-map-title">
-        <div class="card-heading">
-          <p class="card-kicker">Route map</p>
-          <h2 id="system-map-title">How control will work</h2>
+      <section class="card diagnostic-card" aria-labelledby="diagnostic-title">
+        <div class="card-head row-head">
+          <div>
+            <p class="kicker">Loop breaker</p>
+            <h2 id="diagnostic-title">Bridge diagnostic</h2>
+          </div>
+          <button class="small-button" type="button" data-run-diagnostic>Run diagnostic</button>
         </div>
 
-        <div class="flow-map" aria-label="Cloudflare Access protects the page, the Astro page calls a private bridge, the bridge controls systemd, and systemd runs the Twitch bot.">
-          <div class="flow-node flow-node--shield">Cloudflare Access</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node flow-node--page">Astro page</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node flow-node--bridge">Server bridge</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node flow-node--bot">Lina bot</div>
+        <p class="diagnostic-summary" data-diagnostic-summary>Waiting for first diagnostic result.</p>
+        <pre class="diagnostic-box" data-diagnostic-box>Not run yet.</pre>
+      </section>
+
+      <section class="card map-card" aria-labelledby="map-title">
+        <div class="card-head">
+          <p class="kicker">Route map</p>
+          <h2 id="map-title">How control should work</h2>
+        </div>
+        <div class="flow" aria-label="Cloudflare Access protects the page, the Astro page calls a private bridge, the bridge controls systemd, and systemd runs the Twitch bot.">
+          <div>Cloudflare Access</div><span>→</span>
+          <div>Astro page</div><span>→</span>
+          <div>Server bridge</div><span>→</span>
+          <div>Lina bot</div>
         </div>
       </section>
 
-      <section class="dashboard-card locks-card" aria-labelledby="safety-locks-title">
-        <div class="card-heading">
-          <p class="card-kicker">Safety locks</p>
-          <h2 id="safety-locks-title">Never expose these</h2>
+      <section class="card locks-card" aria-labelledby="locks-title">
+        <div class="card-head">
+          <p class="kicker">Safety locks</p>
+          <h2 id="locks-title">Never expose these</h2>
         </div>
-
-        <div class="lock-grid">
-          <div class="lock-item">.env</div>
-          <div class="lock-item">OAuth tokens</div>
-          <div class="lock-item">Client secret</div>
-          <div class="lock-item">Access token</div>
-          <div class="lock-item">Refresh token</div>
-          <div class="lock-item">Twitch API credentials</div>
+        <div class="locks">
+          <div>.env</div>
+          <div>OAuth tokens</div>
+          <div>Client secret</div>
+          <div>Access token</div>
+          <div>Refresh token</div>
+          <div>Twitch API credentials</div>
         </div>
       </section>
 
-      <section class="dashboard-card facts-card" aria-labelledby="safe-facts-title">
-        <div class="card-heading">
-          <p class="card-kicker">Known safe facts</p>
-          <h2 id="safe-facts-title">Current setup</h2>
+      <section class="card facts-card" aria-labelledby="facts-title">
+        <div class="card-head">
+          <p class="kicker">Known safe facts</p>
+          <h2 id="facts-title">Current setup</h2>
         </div>
-
-        <dl class="fact-list">
+        <dl class="facts">
           {safeFacts.map(([label, value]) => (
-            <div>
-              <dt>{label}</dt>
-              <dd>{value}</dd>
-            </div>
+            <div><dt>{label}</dt><dd>{value}</dd></div>
           ))}
         </dl>
       </section>
 
-      <section class="dashboard-card links-card" aria-labelledby="quick-links-title">
-        <div class="card-heading">
-          <p class="card-kicker">Jump points</p>
-          <h2 id="quick-links-title">Useful links</h2>
+      <section class="card links-card" aria-labelledby="links-title">
+        <div class="card-head">
+          <p class="kicker">Jump points</p>
+          <h2 id="links-title">Useful links</h2>
         </div>
-
-        <div class="quick-link-grid">
-          {quickLinks.map(([label, href]) => (
-            <a href={href}>{label}</a>
-          ))}
+        <div class="links">
+          {quickLinks.map(([label, href]) => <a href={href}>{label}</a>)}
         </div>
       </section>
 
-      <section class="dashboard-card logs-card" aria-labelledby="logs-title">
-        <div class="card-heading card-heading--row">
+      <section class="card logs-card" aria-labelledby="logs-title">
+        <div class="card-head row-head">
           <div>
-            <p class="card-kicker">Read-only</p>
+            <p class="kicker">Read-only</p>
             <h2 id="logs-title">Recent bot logs</h2>
           </div>
           <button class="small-button" type="button" data-refresh-logs>Refresh logs</button>
         </div>
-
-        <pre class="log-box" data-log-box>Stage B bridge is not installed yet.
-When installed, this panel will show filtered journalctl output only.</pre>
+        <pre class="log-box" data-log-box>Waiting for bridge diagnostic.</pre>
       </section>
     </div>
   </section>
@@ -208,78 +179,148 @@ When installed, this panel will show filtered journalctl output only.</pre>
       const controlMode = root.querySelector('[data-control-mode]');
       const lastChecked = root.querySelector('[data-last-checked]');
       const actionMessage = root.querySelector('[data-action-message]');
+      const diagnosticSummary = root.querySelector('[data-diagnostic-summary]');
+      const diagnosticBox = root.querySelector('[data-diagnostic-box]');
       const logBox = root.querySelector('[data-log-box]');
       const commandButtons = [...root.querySelectorAll('[data-action="start"], [data-action="stop"], [data-action="restart"]')];
 
+      const nowStamp = () => new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+      const redact = (text) => String(text || '')
+        .replace(/(access[_-]?token|refresh[_-]?token|client[_-]?secret|oauth|authorization|bearer)([^\n]*)/gi, '$1 [redacted]')
+        .replace(/[A-Za-z0-9_\-.]{32,}/g, '[redacted-long-value]');
+
       const setBridge = (connected, detail) => {
-        bridgeDot.classList.toggle('pulse-dot--good', connected);
-        bridgeDot.classList.toggle('pulse-dot--bad', !connected);
+        bridgeDot.classList.toggle('pulse--good', connected);
+        bridgeDot.classList.toggle('pulse--bad', !connected);
         bridgeLabel.textContent = connected ? 'Bridge connected' : 'Bridge not connected yet';
         bridgeDetail.textContent = detail;
         controlMode.textContent = connected ? 'Live controls' : 'Read-only UI';
-        commandButtons.forEach((button) => {
-          button.disabled = !connected;
-        });
+        commandButtons.forEach((button) => { button.disabled = !connected; });
       };
 
       const setServiceState = (state, detail) => {
         const normalized = String(state || 'unknown').toLowerCase();
-        statusOrb.className = 'status-orb';
+        statusOrb.className = 'orb';
         if (normalized === 'active' || normalized === 'running') {
-          statusOrb.classList.add('status-orb--running');
+          statusOrb.classList.add('orb--running');
           statusSymbol.textContent = '✓';
           serviceState.textContent = 'Running';
         } else if (normalized === 'inactive' || normalized === 'stopped') {
-          statusOrb.classList.add('status-orb--stopped');
+          statusOrb.classList.add('orb--stopped');
           statusSymbol.textContent = '■';
           serviceState.textContent = 'Stopped';
         } else if (normalized === 'failed') {
-          statusOrb.classList.add('status-orb--failed');
+          statusOrb.classList.add('orb--failed');
           statusSymbol.textContent = '!';
           serviceState.textContent = 'Failed';
         } else {
-          statusOrb.classList.add('status-orb--unknown');
+          statusOrb.classList.add('orb--unknown');
           statusSymbol.textContent = '?';
           serviceState.textContent = 'Unknown';
         }
         serviceDetail.textContent = detail || 'No live status detail yet.';
-        lastChecked.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        lastChecked.textContent = nowStamp();
       };
 
-      const redact = (text) => String(text || '')
-        .replace(/(access[_-]?token|refresh[_-]?token|client[_-]?secret|oauth|authorization|bearer)([^\n]*)/gi, '$1 [redacted]')
-        .replace(/[A-Za-z0-9_\-]{32,}/g, '[redacted-long-value]');
-
-      const fetchJson = async (url, options = {}) => {
-        const response = await fetch(url, {
-          credentials: 'same-origin',
-          headers: { 'Accept': 'application/json' },
-          ...options,
-        });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        return response.json();
-      };
-
-      const refreshStatus = async () => {
+      const inspectFetch = async (path, options = {}) => {
+        const url = `${API_BASE}${path}${path.includes('?') ? '&' : '?'}_debug=${Date.now()}`;
+        const startedAt = nowStamp();
         try {
-          const data = await fetchJson(`${API_BASE}/status`);
-          setBridge(true, 'Private command bridge is responding.');
-          setServiceState(data.activeState || data.state, data.detail || data.subState || 'systemd status returned.');
-          actionMessage.textContent = 'Status refreshed.';
+          const response = await fetch(url, {
+            credentials: 'include',
+            cache: 'no-store',
+            redirect: 'follow',
+            headers: { 'Accept': 'application/json, text/plain, */*' },
+            ...options,
+          });
+
+          const contentType = response.headers.get('content-type') || '(none)';
+          const responseUrl = response.url || url;
+          const text = await response.text();
+          let json = null;
+          let jsonError = '';
+
+          try {
+            json = JSON.parse(text);
+          } catch (error) {
+            jsonError = error.message || 'JSON parse failed';
+          }
+
+          return {
+            ok: response.ok,
+            status: response.status,
+            statusText: response.statusText,
+            contentType,
+            responseUrl,
+            requestedUrl: url,
+            startedAt,
+            receivedAt: nowStamp(),
+            json,
+            jsonError,
+            textPreview: redact(text).slice(0, 700),
+          };
         } catch (error) {
-          setBridge(false, 'Stage B server bridge is still needed for live controls.');
-          setServiceState('unknown', 'The Astro page is live, but the control bridge is not installed yet.');
+          return {
+            ok: false,
+            status: 'FETCH_ERROR',
+            statusText: error.message || String(error),
+            contentType: '(none)',
+            responseUrl: url,
+            requestedUrl: url,
+            startedAt,
+            receivedAt: nowStamp(),
+            json: null,
+            jsonError: 'Network/fetch error',
+            textPreview: '',
+          };
         }
+      };
+
+      const showDiagnostic = (result) => {
+        const bodyType = result.json ? 'JSON' : 'not JSON';
+        diagnosticSummary.textContent = `HTTP ${result.status} ${result.statusText || ''} · ${result.contentType} · ${bodyType}`;
+        diagnosticBox.textContent = redact([
+          `Requested: ${result.requestedUrl}`,
+          `Response URL: ${result.responseUrl}`,
+          `Started: ${result.startedAt}`,
+          `Received: ${result.receivedAt}`,
+          `HTTP status: ${result.status}`,
+          `Content-Type: ${result.contentType}`,
+          `JSON parsed: ${result.json ? 'yes' : 'no'}`,
+          result.jsonError ? `JSON error: ${result.jsonError}` : '',
+          '',
+          'Returned body preview:',
+          result.json ? JSON.stringify(result.json, null, 2) : result.textPreview,
+        ].filter(Boolean).join('\n'));
+      };
+
+      const runStatus = async () => {
+        const result = await inspectFetch('/status');
+        showDiagnostic(result);
+
+        if (result.ok && result.json && result.json.ok !== false) {
+          setBridge(true, 'Private command bridge returned valid JSON.');
+          setServiceState(result.json.activeState || result.json.state, result.json.detail || result.json.subState || 'systemd status returned.');
+          actionMessage.textContent = 'Status refreshed.';
+          return result.json;
+        }
+
+        const reason = result.json?.message || result.jsonError || `HTTP ${result.status}`;
+        setBridge(false, reason);
+        setServiceState('unknown', `Diagnostic: ${reason}`);
+        actionMessage.textContent = `Bridge diagnostic failed: ${reason}`;
+        return null;
       };
 
       const refreshLogs = async () => {
-        try {
-          const data = await fetchJson(`${API_BASE}/logs`);
-          const lines = Array.isArray(data.lines) ? data.lines : [];
+        const result = await inspectFetch('/logs');
+        if (result.ok && result.json) {
+          const lines = Array.isArray(result.json.lines) ? result.json.lines : [];
           logBox.textContent = lines.length ? redact(lines.join('\n')) : 'No recent log lines returned.';
-        } catch (error) {
-          logBox.textContent = 'Stage B bridge is not installed yet.\nWhen installed, this panel will show filtered journalctl output only.';
+          return;
         }
+        logBox.textContent = `Logs unavailable. See Bridge diagnostic.\nHTTP ${result.status} · ${result.contentType}`;
       };
 
       const sendCommand = async (action) => {
@@ -287,14 +328,17 @@ When installed, this panel will show filtered journalctl output only.</pre>
         if (action === 'restart' && !confirm('Restart Lina now?')) return;
 
         actionMessage.textContent = `Sending ${action} command...`;
-        try {
-          const data = await fetchJson(`${API_BASE}/${action}`, { method: 'POST' });
-          actionMessage.textContent = data.message || `${action} command sent.`;
-          await refreshStatus();
+        const result = await inspectFetch(`/${action}`, { method: 'POST' });
+        showDiagnostic(result);
+
+        if (result.ok && result.json) {
+          actionMessage.textContent = result.json.message || `${action} command sent.`;
+          await runStatus();
           await refreshLogs();
-        } catch (error) {
-          actionMessage.textContent = 'Command bridge is not connected yet. Install Stage B before using live controls.';
+          return;
         }
+
+        actionMessage.textContent = `Command failed: HTTP ${result.status}. See diagnostic panel.`;
       };
 
       root.addEventListener('click', (event) => {
@@ -302,15 +346,16 @@ When installed, this panel will show filtered journalctl output only.</pre>
         if (!button) return;
         const action = button.getAttribute('data-action');
         if (action === 'refresh') {
-          refreshStatus();
+          runStatus();
           refreshLogs();
           return;
         }
         sendCommand(action);
       });
 
+      root.querySelector('[data-run-diagnostic]')?.addEventListener('click', runStatus);
       root.querySelector('[data-refresh-logs]')?.addEventListener('click', refreshLogs);
-      refreshStatus();
+      runStatus();
       refreshLogs();
     })();
   </script>
@@ -323,7 +368,7 @@ When installed, this panel will show filtered journalctl output only.</pre>
     padding: 0;
   }
 
-  .vaelinya-command-centre {
+  .command-centre {
     min-height: calc(100vh - 8rem);
     width: 100%;
     padding: clamp(1rem, 3vw, 3rem);
@@ -334,17 +379,22 @@ When installed, this panel will show filtered journalctl output only.</pre>
     color: #fffaf2;
   }
 
-  .centre-hero {
+  .hero,
+  .grid {
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+
+  .hero {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(18rem, 28rem);
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 30rem);
     gap: 1.25rem;
     align-items: end;
-    max-width: 1500px;
-    margin: 0 auto 1.25rem;
+    margin-bottom: 1.25rem;
   }
 
   .eyebrow,
-  .card-kicker {
+  .kicker {
     margin: 0 0 0.45rem;
     color: #d7b6ff;
     font-size: 0.82rem;
@@ -379,7 +429,7 @@ When installed, this panel will show filtered journalctl output only.</pre>
     line-height: 1.45;
   }
 
-  .bridge-status-card {
+  .bridge-card {
     display: flex;
     gap: 1rem;
     align-items: center;
@@ -392,50 +442,41 @@ When installed, this panel will show filtered journalctl output only.</pre>
     backdrop-filter: blur(14px);
   }
 
-  .bridge-status-card strong,
-  .bridge-status-card span:not(.pulse-dot) {
+  .bridge-card strong,
+  .bridge-card span:not(.pulse) {
     display: block;
   }
 
-  .bridge-status-card strong {
+  .bridge-card strong {
     color: #fffaf2;
     font-size: 1.2rem;
   }
 
-  .bridge-status-card span:not(.pulse-dot) {
+  .bridge-card span:not(.pulse) {
     margin-top: 0.25rem;
     color: #e9ddf4;
     line-height: 1.35;
   }
 
-  .pulse-dot {
+  .pulse {
     flex: 0 0 auto;
     width: 1.35rem;
     height: 1.35rem;
     border-radius: 999px;
     background: #d8cbdc;
-    box-shadow: 0 0 0 0 rgba(216, 203, 220, 0.5);
+    box-shadow: 0 0 0 0.5rem rgba(216, 203, 220, 0.14);
   }
 
-  .pulse-dot--good {
-    background: #90efb4;
-    box-shadow: 0 0 0 0.5rem rgba(144, 239, 180, 0.16);
-  }
+  .pulse--good { background: #90efb4; box-shadow: 0 0 0 0.5rem rgba(144, 239, 180, 0.16); }
+  .pulse--bad { background: #ffcc70; box-shadow: 0 0 0 0.5rem rgba(255, 204, 112, 0.16); }
 
-  .pulse-dot--bad {
-    background: #ffcc70;
-    box-shadow: 0 0 0 0.5rem rgba(255, 204, 112, 0.16);
-  }
-
-  .dashboard-grid {
+  .grid {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     gap: 1rem;
-    max-width: 1500px;
-    margin: 0 auto;
   }
 
-  .dashboard-card {
+  .card {
     min-height: 14rem;
     padding: clamp(1rem, 2vw, 1.5rem);
     border: 1px solid rgba(255, 250, 242, 0.72);
@@ -445,46 +486,20 @@ When installed, this panel will show filtered journalctl output only.</pre>
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
   }
 
-  .status-command-card {
-    grid-column: span 5;
-  }
-
-  .control-card {
-    grid-column: span 7;
-  }
-
+  .state-card { grid-column: span 5; }
+  .controls-card { grid-column: span 7; }
+  .diagnostic-card,
+  .logs-card { grid-column: 1 / -1; }
   .map-card,
-  .locks-card {
-    grid-column: span 6;
-  }
-
+  .locks-card,
   .facts-card,
-  .links-card {
-    grid-column: span 6;
-  }
+  .links-card { grid-column: span 6; }
 
-  .logs-card {
-    grid-column: 1 / -1;
-  }
+  .card-head { margin-bottom: 1rem; }
+  .card-head p:not(.kicker) { margin: 0.65rem 0 0; color: #5e5662; line-height: 1.45; }
+  .row-head { display: flex; gap: 1rem; align-items: center; justify-content: space-between; }
 
-  .card-heading {
-    margin-bottom: 1rem;
-  }
-
-  .card-heading--row {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .card-heading p:not(.card-kicker) {
-    margin: 0.65rem 0 0;
-    color: #5e5662;
-    line-height: 1.45;
-  }
-
-  .status-orb {
+  .orb {
     display: grid;
     place-items: center;
     width: clamp(8rem, 16vw, 13rem);
@@ -496,97 +511,42 @@ When installed, this panel will show filtered journalctl output only.</pre>
     color: #20262c;
   }
 
-  .status-orb--running {
-    background: radial-gradient(circle at 35% 25%, #ffffff, #90efb4 55%, #1d9150);
-    box-shadow: 0 0 0 0.75rem rgba(144, 239, 180, 0.22), 0 24px 45px rgba(29, 145, 80, 0.32);
-  }
+  .orb--running { background: radial-gradient(circle at 35% 25%, #fff, #90efb4 55%, #1d9150); box-shadow: 0 0 0 0.75rem rgba(144, 239, 180, 0.22), 0 24px 45px rgba(29, 145, 80, 0.32); }
+  .orb--stopped { background: radial-gradient(circle at 35% 25%, #fff, #ffcc70 55%, #c77618); box-shadow: 0 0 0 0.75rem rgba(255, 204, 112, 0.22), 0 24px 45px rgba(199, 118, 24, 0.28); }
+  .orb--failed { background: radial-gradient(circle at 35% 25%, #fff, #ff8f8f 55%, #b82929); box-shadow: 0 0 0 0.75rem rgba(255, 143, 143, 0.22), 0 24px 45px rgba(184, 41, 41, 0.28); }
+  .orb--unknown { background: radial-gradient(circle at 35% 25%, #fff, #d8cbdc 58%, #83748b); box-shadow: 0 0 0 0.75rem rgba(131, 116, 139, 0.15), 0 24px 45px rgba(32, 38, 44, 0.18); }
 
-  .status-orb--stopped {
-    background: radial-gradient(circle at 35% 25%, #ffffff, #ffcc70 55%, #c77618);
-    box-shadow: 0 0 0 0.75rem rgba(255, 204, 112, 0.22), 0 24px 45px rgba(199, 118, 24, 0.28);
-  }
+  .readout { text-align: center; }
+  .readout strong,
+  .readout span { display: block; }
+  .readout strong { font-size: 1.6rem; }
+  .readout span { margin-top: 0.35rem; color: #5e5662; }
 
-  .status-orb--failed {
-    background: radial-gradient(circle at 35% 25%, #ffffff, #ff8f8f 55%, #b82929);
-    box-shadow: 0 0 0 0.75rem rgba(255, 143, 143, 0.22), 0 24px 45px rgba(184, 41, 41, 0.28);
-  }
-
-  .status-orb--unknown {
-    background: radial-gradient(circle at 35% 25%, #ffffff, #d8cbdc 58%, #83748b);
-    box-shadow: 0 0 0 0.75rem rgba(131, 116, 139, 0.15), 0 24px 45px rgba(32, 38, 44, 0.18);
-  }
-
-  .state-readout {
-    text-align: center;
-  }
-
-  .state-readout strong,
-  .state-readout span {
-    display: block;
-  }
-
-  .state-readout strong {
-    font-size: 1.6rem;
-  }
-
-  .state-readout span {
-    margin-top: 0.35rem;
-    color: #5e5662;
-  }
-
-  .mini-metric-grid,
-  .lock-grid,
-  .quick-link-grid {
+  .metrics,
+  .locks,
+  .links,
+  .controls {
     display: grid;
     gap: 0.75rem;
   }
 
-  .mini-metric-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin-top: 1.25rem;
-  }
+  .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 1.25rem; }
+  .metrics div,
+  .locks div,
+  .links a { border: 1px solid #eadfce; border-radius: 18px; background: #fffaf2; }
+  .metrics div { padding: 0.85rem; }
+  .metrics span,
+  .metrics strong { display: block; }
+  .metrics span { color: #6d6171; font-size: 0.78rem; font-weight: 800; text-transform: uppercase; }
+  .metrics strong { margin-top: 0.35rem; overflow-wrap: anywhere; }
 
-  .mini-metric,
-  .lock-item,
-  .quick-link-grid a {
-    border: 1px solid #eadfce;
-    border-radius: 18px;
-    background: #fffaf2;
-  }
-
-  .mini-metric {
-    padding: 0.85rem;
-  }
-
-  .mini-metric span,
-  .mini-metric strong {
-    display: block;
-  }
-
-  .mini-metric span {
-    color: #6d6171;
-    font-size: 0.78rem;
-    font-weight: 800;
-    text-transform: uppercase;
-  }
-
-  .mini-metric strong {
-    margin-top: 0.35rem;
-    overflow-wrap: anywhere;
-  }
-
-  .control-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0.85rem;
-  }
-
-  .control-button {
+  .controls { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .control {
     display: flex;
     min-height: 8.5rem;
     flex-direction: column;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 0.5rem;
     padding: 1rem;
     border: 0;
     border-radius: 24px;
@@ -595,170 +555,26 @@ When installed, this panel will show filtered journalctl output only.</pre>
     cursor: pointer;
     box-shadow: 0 14px 28px rgba(32, 38, 44, 0.12);
   }
+  .control:disabled { cursor: not-allowed; filter: grayscale(0.65); opacity: 0.58; }
+  .control--start { background: linear-gradient(135deg, #b9ffd1, #7ee9a1); }
+  .control--restart { background: linear-gradient(135deg, #d9c6ff, #b995ff); }
+  .control--stop { background: linear-gradient(135deg, #ffd4d4, #ff9797); }
+  .control--refresh { background: linear-gradient(135deg, #d8efff, #9dd8ff); }
+  .control span { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: 999px; background: rgba(255, 255, 255, 0.62); font-size: 1.3rem; font-weight: 900; }
+  .control strong,
+  .control small { display: block; }
+  .control strong { font-size: 1.2rem; }
+  .control small { color: rgba(32, 38, 44, 0.72); }
 
-  .control-button:disabled {
-    cursor: not-allowed;
-    filter: grayscale(0.65);
-    opacity: 0.58;
-  }
+  .action-message,
+  .diagnostic-summary { color: #5e5662; font-weight: 800; }
+  .action-message { margin: 1rem 0 0; }
+  .diagnostic-summary { margin: 0 0 1rem; }
 
-  .control-button--start {
-    background: linear-gradient(135deg, #b9ffd1, #7ee9a1);
-  }
-
-  .control-button--restart {
-    background: linear-gradient(135deg, #d9c6ff, #b995ff);
-  }
-
-  .control-button--stop {
-    background: linear-gradient(135deg, #ffd4d4, #ff9797);
-  }
-
-  .control-button--refresh {
-    background: linear-gradient(135deg, #d8efff, #9dd8ff);
-  }
-
-  .button-icon {
-    display: grid;
-    place-items: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.62);
-    font-size: 1.3rem;
-    font-weight: 900;
-  }
-
-  .control-button strong,
-  .control-button small {
-    display: block;
-  }
-
-  .control-button strong {
-    font-size: 1.2rem;
-  }
-
-  .control-button small {
-    margin-top: 0.25rem;
-    color: rgba(32, 38, 44, 0.72);
-  }
-
-  .action-message {
-    margin: 1rem 0 0;
-    color: #5e5662;
-    font-weight: 700;
-  }
-
-  .flow-map {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
-    gap: 0.7rem;
-    align-items: center;
-    margin-top: 1.25rem;
-  }
-
-  .flow-node {
-    min-height: 6rem;
-    display: grid;
-    place-items: center;
-    padding: 1rem;
-    border-radius: 22px;
-    color: #20262c;
-    font-weight: 900;
-    text-align: center;
-  }
-
-  .flow-node--shield {
-    background: #d8efff;
-  }
-
-  .flow-node--page {
-    background: #fff0bd;
-  }
-
-  .flow-node--bridge {
-    background: #d9c6ff;
-  }
-
-  .flow-node--bot {
-    background: #b9ffd1;
-  }
-
-  .flow-arrow {
-    color: #7d4c9e;
-    font-size: 2rem;
-    font-weight: 900;
-  }
-
-  .lock-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin-top: 1rem;
-  }
-
-  .lock-item {
-    padding: 1rem;
-    color: #5a334a;
-    font-weight: 900;
-    text-align: center;
-  }
-
-  .fact-list {
-    display: grid;
-    gap: 0.7rem;
-    margin: 1rem 0 0;
-  }
-
-  .fact-list div {
-    display: grid;
-    grid-template-columns: minmax(8rem, 0.42fr) minmax(0, 1fr);
-    gap: 1rem;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid #eadfce;
-  }
-
-  .fact-list dt {
-    color: #4d4454;
-    font-weight: 900;
-  }
-
-  .fact-list dd {
-    margin: 0;
-    overflow-wrap: anywhere;
-  }
-
-  .quick-link-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-top: 1rem;
-  }
-
-  .quick-link-grid a {
-    padding: 1rem;
-    color: #20262c;
-    font-weight: 900;
-    text-decoration: none;
-  }
-
-  .quick-link-grid a:hover,
-  .quick-link-grid a:focus-visible {
-    outline: 3px solid rgba(126, 87, 194, 0.45);
-    outline-offset: 2px;
-  }
-
-  .small-button {
-    padding: 0.75rem 1rem;
-    border: 0;
-    border-radius: 999px;
-    background: #20262c;
-    color: #fffaf2;
-    font-weight: 900;
-    cursor: pointer;
-  }
-
+  .diagnostic-box,
   .log-box {
-    min-height: 18rem;
-    max-height: 34rem;
     overflow: auto;
-    margin: 1rem 0 0;
+    margin: 0;
     padding: 1rem;
     border-radius: 20px;
     background: #15121b;
@@ -768,57 +584,56 @@ When installed, this panel will show filtered journalctl output only.</pre>
     white-space: pre-wrap;
   }
 
-  @media (max-width: 1100px) {
-    .centre-hero,
-    .dashboard-grid {
-      grid-template-columns: 1fr;
-    }
+  .diagnostic-box { min-height: 14rem; max-height: 28rem; }
+  .log-box { min-height: 18rem; max-height: 34rem; }
 
-    .dashboard-card,
-    .status-command-card,
-    .control-card,
+  .flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; gap: 0.7rem; align-items: center; margin-top: 1.25rem; }
+  .flow div { min-height: 6rem; display: grid; place-items: center; padding: 1rem; border-radius: 22px; color: #20262c; font-weight: 900; text-align: center; }
+  .flow div:nth-of-type(1) { background: #d8efff; }
+  .flow div:nth-of-type(2) { background: #fff0bd; }
+  .flow div:nth-of-type(3) { background: #d9c6ff; }
+  .flow div:nth-of-type(4) { background: #b9ffd1; }
+  .flow span { color: #7d4c9e; font-size: 2rem; font-weight: 900; }
+
+  .locks { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 1rem; }
+  .locks div { padding: 1rem; color: #5a334a; font-weight: 900; text-align: center; }
+
+  .facts { display: grid; gap: 0.7rem; margin: 1rem 0 0; }
+  .facts div { display: grid; grid-template-columns: minmax(8rem, 0.42fr) minmax(0, 1fr); gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid #eadfce; }
+  .facts dt { color: #4d4454; font-weight: 900; }
+  .facts dd { margin: 0; overflow-wrap: anywhere; }
+
+  .links { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 1rem; }
+  .links a { padding: 1rem; color: #20262c; font-weight: 900; text-decoration: none; }
+  .links a:hover,
+  .links a:focus-visible { outline: 3px solid rgba(126, 87, 194, 0.45); outline-offset: 2px; }
+
+  .small-button { padding: 0.75rem 1rem; border: 0; border-radius: 999px; background: #20262c; color: #fffaf2; font-weight: 900; cursor: pointer; }
+
+  @media (max-width: 1100px) {
+    .hero,
+    .grid { grid-template-columns: 1fr; }
+    .card,
+    .state-card,
+    .controls-card,
+    .diagnostic-card,
     .map-card,
     .locks-card,
     .facts-card,
     .links-card,
-    .logs-card {
-      grid-column: 1 / -1;
-    }
-
-    .control-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .flow-map {
-      grid-template-columns: 1fr;
-    }
-
-    .flow-arrow {
-      transform: rotate(90deg);
-      text-align: center;
-    }
+    .logs-card { grid-column: 1 / -1; }
+    .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .flow { grid-template-columns: 1fr; }
+    .flow span { transform: rotate(90deg); text-align: center; }
   }
 
   @media (max-width: 680px) {
-    .vaelinya-command-centre {
-      padding: 0.85rem;
-    }
-
-    .control-grid,
-    .mini-metric-grid,
-    .lock-grid,
-    .quick-link-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .fact-list div {
-      grid-template-columns: 1fr;
-      gap: 0.25rem;
-    }
-
-    .card-heading--row {
-      align-items: flex-start;
-      flex-direction: column;
-    }
+    .command-centre { padding: 0.85rem; }
+    .controls,
+    .metrics,
+    .locks,
+    .links { grid-template-columns: 1fr; }
+    .facts div { grid-template-columns: 1fr; gap: 0.25rem; }
+    .row-head { align-items: flex-start; flex-direction: column; }
   }
 </style>
