@@ -1,0 +1,7 @@
+# Allow the Vaelinya Command Centre bridge to control only the Lina Twitch bot service.
+# Install with:
+#   sudo cp server/lina-command-centre-bridge/sudoers/lina-command-centre-bridge /etc/sudoers.d/lina-command-centre-bridge
+#   sudo chmod 440 /etc/sudoers.d/lina-command-centre-bridge
+#   sudo visudo -c
+
+lina-bridge ALL=(root) NOPASSWD: /usr/bin/systemctl start lina-of-vaelinya-bot, /usr/bin/systemctl stop lina-of-vaelinya-bot, /usr/bin/systemctl restart lina-of-vaelinya-bot
