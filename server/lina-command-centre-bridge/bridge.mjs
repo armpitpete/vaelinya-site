@@ -146,7 +146,7 @@ async function runAction(action) {
     return { ok: false, status: 404, message: 'Unknown command.' };
   }
 
-  const result = await runFile(SUDO, [SYSTEMCTL, action, SERVICE_NAME], 20000);
+  const result = await runFile(SUDO, ['-n', SYSTEMCTL, action, SERVICE_NAME], 20000);
   const status = await getStatus();
 
   return {
