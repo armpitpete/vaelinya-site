@@ -11,5 +11,11 @@ export default defineConfig({
     '/stories/lina/': '/read/lina/',
     '/lexicon': '/language/lexicon/',
     '/lexicon/': '/language/lexicon/',
+    '/lexicon/entries/s': '/language/lexicon/',
+    '/lexicon/entries/s/': '/language/lexicon/',
+    '/encyclopedia': '/world/',
+    '/encyclopedia/': '/world/',
+    '/encyclopedia/world': '/world/',
+    '/encyclopedia/world/': '/world/',
   },
 });
