@@ -1,0 +1,13 @@
+{
+  "name": "lina-command-centre-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Private localhost bridge for the Vaelinya Command Centre.",
+  "scripts": {
+    "start": "node bridge.mjs"
+  },
+  "dependencies": {
+    "jose": "^5.10.0"
+  }
+}
