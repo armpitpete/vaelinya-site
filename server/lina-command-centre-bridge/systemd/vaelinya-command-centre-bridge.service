@@ -1,0 +1,22 @@
+[Unit]
+Description=Vaelinya Command Centre Bridge
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=lina-bridge
+Group=lina-bridge
+WorkingDirectory=/opt/vaelinya-command-centre-bridge
+EnvironmentFile=/etc/vaelinya-command-centre-bridge.env
+ExecStart=/usr/bin/node /opt/vaelinya-command-centre-bridge/bridge.mjs
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/tmp
+
+[Install]
+WantedBy=multi-user.target
