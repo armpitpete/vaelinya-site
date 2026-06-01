@@ -14,10 +14,9 @@ const webSiteJsonLd = {
 };
 ---
 <BaseLayout title="Vaelinya is your next adventure" description={description} jsonLd={webSiteJsonLd}>
-  <link rel="stylesheet" href="/styles/home-hero-image-v20260522.css?v=2026-05-25-lina-greeting-01" />
+  <link rel="stylesheet" href="/styles/home-hero-image-v20260522.css?v=2026-05-22-tight-02" />
   <link rel="stylesheet" href="/styles/home-door-hover-v20260525.css?v=2026-05-25-door-intro-centre-03" />
   <div class="home-page">
-    <a class="owner-star" href="https://command.vaelinya.uk/private/vaelinya-command-centre/" target="_blank" rel="noopener noreferrer" aria-label="Open Vaelinya Command Centre in a new tab">✦</a>
     <section class="hero hero-illustrated threshold-hero">
       <div class="hero-copy">
         <p class="eyebrow">A story world</p>
@@ -41,20 +40,20 @@ const webSiteJsonLd = {
       <p class="eyebrow" style="text-align: center; margin-left: auto; margin-right: auto;">Four doors</p>
       <h2 id="door-intro-title" style="text-align: center; margin-left: auto; margin-right: auto;">Choose how you want to enter.</h2>
       <p class="door-intro-copy" style="max-width: 46rem; width: 100%; margin-left: auto; margin-right: auto; text-align: center; line-height: 1.45;">
-        <span style="display: block; width: 100%; text-align: center;">Begin gently, read a story, step into the world, or learn a word.</span>
+        <span style="display: block; width: 100%; text-align: center;">Begin with Lina’s first story, then read on, step into the world, or learn a word.</span>
         <span style="display: block; width: 100%; text-align: center;">You do not need to understand everything before you begin.</span>
       </p>
     </section>
 
     <section class="door-grid" aria-label="Four doorways into Vaelinya">
-      <a class="door-card door-card--start" href="/start/" aria-label="Enter Vaelinya">
+      <a class="door-card door-card--start" href="/read/lina/01-the-bridge-that-sang-back/" aria-label="Read Story 1: The Bridge That Sang Back">
         <div class="door-card__visual" aria-hidden="true">
           <div class="door-card__shape"><span>✦</span></div>
         </div>
         <div class="door-card__content">
           <p class="door-card__label">Start here</p>
-          <h3>Enter Vaelinya</h3>
-          <p>A gentle first path for new readers.</p>
+          <h3>Read Story 1</h3>
+          <p>Begin with Lina and The Bridge That Sang Back.</p>
         </div>
       </a>
 
@@ -123,29 +122,3 @@ const webSiteJsonLd = {
     </section>
   </div>
 </BaseLayout>
-
-<style>
-  .home-page { position: relative; }
-  .owner-star {
-    position: fixed;
-    right: 1rem;
-    bottom: 1rem;
-    z-index: 40;
-    display: grid;
-    place-items: center;
-    width: 2.75rem;
-    height: 2.75rem;
-    border-radius: 999px;
-    background: rgba(32, 38, 44, 0.82);
-    color: #fffaf2;
-    box-shadow: 0 12px 30px rgba(32, 38, 44, 0.22);
-    text-decoration: none;
-    font-weight: 900;
-    backdrop-filter: blur(12px);
-  }
-  .owner-star:hover,
-  .owner-star:focus-visible {
-    outline: 3px solid rgba(215, 182, 255, 0.72);
-    outline-offset: 3px;
-  }
-</style>
