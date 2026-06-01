@@ -12,9 +12,9 @@ const hiddenStorySections = new Set([
 
 export default function removePublicStoryScaffolding() {
   return (tree, file) => {
-    const path = file?.history?.[0] ?? '';
+    const path = String(file?.history?.[0] ?? '').replace(/\\/g, '/');
 
-    if (!path.includes('/src/content/stories/')) {
+    if (!path.includes('src/content/stories/')) {
       return;
     }
 
