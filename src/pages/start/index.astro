@@ -2,19 +2,19 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { storybookChapters } from '../../data/storybookChapters';
 ---
-<BaseLayout title="A Storybook of Vaelinya" description="Begin the guided Storybook journey through Vaelinya.">
+<BaseLayout title="A Storybook of Vaelinya" description="A quiet optional guided route through Vaelinya.">
   <link rel="stylesheet" href="/styles/storybook-start.css?v=2026-05-24-02" />
   <div class="storybook-start-page">
     <section class="page-section storybook-start-hero">
       <p class="eyebrow">Start</p>
       <h1>A Storybook of Vaelinya.</h1>
-      <p class="lede">Explore Vaelinya through illustrated chapters, sounds, small choices, guide handovers, and gentle puzzles.</p>
-      <p>The reader learns Vaelinya by moving through it. Chapter One opens the format, then Chapter Two moves to Nearside, where Lina lives.</p>
+      <p class="lede">A quiet optional guided route through Vaelinya, led first by Lina.</p>
+      <p>You can begin here, or go straight to Lina’s first story. The Storybook path is for readers who want a slower guided way in.</p>
       <p><a class="button" href="/start/chapter-one/">Open Chapter One: The First Walk</a></p>
     </section>
 
     <section class="page-section">
-      <p class="eyebrow">Eight chapters</p>
+      <p class="eyebrow">Storybook path</p>
       <h2>Journey order</h2>
       <div class="storybook-chapter-grid" aria-label="Storybook chapter order">
         {storybookChapters.map((chapter) => (
