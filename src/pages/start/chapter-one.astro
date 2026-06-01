@@ -30,7 +30,7 @@ import GuideSpeech from '../../components/storybook/GuideSpeech.astro';
       <div class="storybook-spread">
         <div>
           <p>The Storybook is a guided walk through Vaelinya. Each chapter teaches by movement through one part of the world.</p>
-          <p>Chapter One is the first test page. It shows how the Storybook works before the journey moves to Nearside.</p>
+          <p>Chapter One shows how the Storybook path works before the journey turns toward Nearside, where Lina lives.</p>
           <button class="storybook-action" type="button" data-storybook-stop="2">Step onto the path</button>
         </div>
         <div class="storybook-illustration storybook-illustration--book-card" aria-hidden="true">
@@ -91,7 +91,7 @@ import GuideSpeech from '../../components/storybook/GuideSpeech.astro';
       <div class="storybook-spread">
         <div>
           <p>Lina starts the journey, but she does not explain every part of Vaelinya.</p>
-          <p>In later chapters, guides from those places take over.</p>
+          <p>When the path opens further, guides from those places take over.</p>
           <GuideSpeech guide="Lina">
             <p>“Next, I’ll show you where I live.”</p>
           </GuideSpeech>
@@ -103,10 +103,11 @@ import GuideSpeech from '../../components/storybook/GuideSpeech.astro';
       </div>
     </StorybookPanel>
 
-    <StorybookPanel id="planned-chapters" eyebrow="Next" title="Chapter Two: Nearside" variant="next">
+    <StorybookPanel eyebrow="Next" title="The path turns toward Nearside" variant="next">
       <p>The First Walk points toward Nearside, where Lina lives.</p>
-      <p>Chapter Two is planned as the first full world-area chapter.</p>
+      <p>The Storybook path opens slowly. You can return to the story hub or begin with Lina’s first story.</p>
       <a class="button" href="/start/">Return to the Storybook hub</a>
+      <a class="button secondary" href="/read/lina/01-the-bridge-that-sang-back/">Read Story 1</a>
     </StorybookPanel>
   </article>
 </BaseLayout>
