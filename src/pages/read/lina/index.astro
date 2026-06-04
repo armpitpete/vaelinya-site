@@ -96,11 +96,11 @@ const linaItemListJsonLd = {
 
         return (
           <li>
-            <article class="story-card story-card-pending" aria-label={`${plannedStory.title} is coming after repair`}>
+            <article class="story-card story-card-pending" aria-label={`${plannedStory.title} is not open yet`}>
               {symbolSrc && <img class="story-card-symbol" src={symbolSrc} alt={symbolAlt} loading="lazy" />}
               <span>Story {plannedStory.number}</span>
               <strong>{plannedStory.title}</strong>
-              <p>Coming after repair.</p>
+              <p>This story path is not open yet.</p>
             </article>
           </li>
         );
