@@ -5,42 +5,56 @@ const children = [
   {
     name: 'Fina',
     story: 'Fina and the Smallest Bell',
+    href: '/read/children/fina-and-the-smallest-bell/',
+    status: 'Read now',
     feel: 'small, precise, quiet, and bell-like',
     description: 'Fina notices the warning that almost everyone else misses because it is very small.',
   },
   {
     name: 'Nira',
     story: 'Nira and the Lake That Listened',
+    href: null,
+    status: 'Coming next',
     feel: 'still, reflective, and emotionally accurate',
     description: 'Nira listens for the quieter feeling underneath anger, fear, and tangled words.',
   },
   {
     name: 'Liana',
     story: 'Liana and the Room That Held Its Breath',
+    href: null,
+    status: 'Not open yet',
     feel: 'warm, gentle, room-based, and repair-focused',
     description: 'Liana notices when a room is tidy on the outside but still holding hurt inside it.',
   },
   {
     name: 'Valen',
     story: 'Valen and the Broken Promise Stone',
+    href: null,
+    status: 'Not open yet',
     feel: 'steady, fair, and morally clear',
     description: 'Valen helps the truth become whole when a broken promise is too easy to blame on one person.',
   },
   {
     name: 'Reo',
     story: 'Reo and the Song That Went the Wrong Way',
+    href: null,
+    status: 'Not open yet',
     feel: 'playful, comic, physical, and curious',
     description: 'Reo follows a wrong note and finds that a mistake may be pointing towards a real problem.',
   },
   {
     name: 'Kaelen',
     story: 'Kaelen and the Door in the Wind',
+    href: null,
+    status: 'Not open yet',
     feel: 'fast, windy, bodily, and action-led',
     description: 'Kaelen learns that courage is not only running quickly; it is also reading the moment properly.',
   },
   {
     name: 'Elara',
     story: 'Elara and the Star-Path Under the Hill',
+    href: null,
+    status: 'Not open yet',
     feel: 'luminous, careful, mythic, and wondrous',
     description: 'Elara follows a faint path of remembered light when the obvious way has vanished.',
   },
@@ -62,12 +76,23 @@ const children = [
     <ol class="story-grid story-list" aria-label="Seven starter stories after Lina">
       {children.map((child) => (
         <li>
-          <article class="story-card">
-            <span>{child.name}</span>
-            <strong>{child.story}</strong>
-            <p>{child.description}</p>
-            <p><em>{child.feel}</em></p>
-          </article>
+          {child.href ? (
+            <a class="story-card" href={child.href} aria-label={`Read ${child.story}`}>
+              <span>{child.name}</span>
+              <strong>{child.story}</strong>
+              <p>{child.description}</p>
+              <p><em>{child.feel}</em></p>
+              <span class="story-card-action" aria-hidden="true">{child.status}</span>
+            </a>
+          ) : (
+            <article class="story-card story-card-pending" aria-label={`${child.story} is not open yet`}>
+              <span>{child.name}</span>
+              <strong>{child.story}</strong>
+              <p>{child.description}</p>
+              <p><em>{child.feel}</em></p>
+              <span class="story-card-action" aria-hidden="true">{child.status}</span>
+            </article>
+          )}
         </li>
       ))}
     </ol>
