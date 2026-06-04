@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const children = [
+  {
+    name: 'Fina',
+    story: 'Fina and the Smallest Bell',
+    feel: 'small, precise, quiet, and bell-like',
+    description: 'Fina notices the warning that almost everyone else misses because it is very small.',
+  },
+  {
+    name: 'Nira',
+    story: 'Nira and the Lake That Listened',
+    feel: 'still, reflective, and emotionally accurate',
+    description: 'Nira listens for the quieter feeling underneath anger, fear, and tangled words.',
+  },
+  {
+    name: 'Liana',
+    story: 'Liana and the Room That Held Its Breath',
+    feel: 'warm, gentle, room-based, and repair-focused',
+    description: 'Liana notices when a room is tidy on the outside but still holding hurt inside it.',
+  },
+  {
+    name: 'Valen',
+    story: 'Valen and the Broken Promise Stone',
+    feel: 'steady, fair, and morally clear',
+    description: 'Valen helps the truth become whole when a broken promise is too easy to blame on one person.',
+  },
+  {
+    name: 'Reo',
+    story: 'Reo and the Song That Went the Wrong Way',
+    feel: 'playful, comic, physical, and curious',
+    description: 'Reo follows a wrong note and finds that a mistake may be pointing towards a real problem.',
+  },
+  {
+    name: 'Kaelen',
+    story: 'Kaelen and the Door in the Wind',
+    feel: 'fast, windy, bodily, and action-led',
+    description: 'Kaelen learns that courage is not only running quickly; it is also reading the moment properly.',
+  },
+  {
+    name: 'Elara',
+    story: 'Elara and the Star-Path Under the Hill',
+    feel: 'luminous, careful, mythic, and wondrous',
+    description: 'Elara follows a faint path of remembered light when the obvious way has vanished.',
+  },
+];
+---
+<BaseLayout title="The children of Vaelinya" description="Seven starter stories after Lina.">
+  <section class="page-section">
+    <p class="eyebrow">Read</p>
+    <h1>The children of Vaelinya</h1>
+    <p class="lede">After Lina’s first story path, seven more children open different ways into Vaelinya.</p>
+    <p>Each child notices a different kind of pressure in the world. Read them as a small starter collection: clear, gentle, strange, and connected without making every child the same.</p>
+
+    <article class="panel">
+      <p class="eyebrow">Starter collection</p>
+      <h2>Seven story doorways</h2>
+      <p>These are the seven non-Lina starter stories. They are shaped to help readers meet each child clearly before larger story cycles begin.</p>
+    </article>
+
+    <ol class="story-grid story-list" aria-label="Seven starter stories after Lina">
+      {children.map((child) => (
+        <li>
+          <article class="story-card">
+            <span>{child.name}</span>
+            <strong>{child.story}</strong>
+            <p>{child.description}</p>
+            <p><em>{child.feel}</em></p>
+          </article>
+        </li>
+      ))}
+    </ol>
+
+    <div class="link-list">
+      <a href="/read/lina/">Begin with Lina</a>
+      <a href="/read/lina/01-the-bridge-that-sang-back/">Read Story 1</a>
+      <a href="/world/the-rim/">Explore the Rim</a>
+      <a href="/language/lexicon/">Open the lexicon</a>
+    </div>
+  </section>
+</BaseLayout>
