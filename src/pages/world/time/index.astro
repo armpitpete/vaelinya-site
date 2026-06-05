@@ -127,6 +127,7 @@ const description = 'How Vaelinya reads time through light, water, moons, season
         <h2>The Listening Clock gathers the signs</h2>
         <p>Some places keep more elaborate instruments. The Listening Clock gathers light, bell marks, water signs, seasons, and the two moons into one visible pattern.</p>
         <p>It does not only show a time. It shows what the world is doing. Some Timekeepers say the oldest clocks also remember promises.</p>
+        <p><a class="inline-feature-link" href="/world/time/the-listening-clock/">Open the Listening Clock</a></p>
       </div>
     </article>
 
@@ -146,10 +147,10 @@ const description = 'How Vaelinya reads time through light, water, moons, season
           <h3>Local Counts</h3>
           <p>How Timekeepers read light, shadow, water, and local signs before the bells are rung.</p>
         </section>
-        <section class="time-card">
+        <a class="time-card time-card-link" href="/world/time/the-listening-clock/">
           <h3>The Listening Clock</h3>
           <p>A Vaelinyan time artefact that gathers the day, river, seasons, and moons into one pattern.</p>
-        </section>
+        </a>
       </div>
     </article>
 
@@ -269,6 +270,23 @@ const description = 'How Vaelinya reads time through light, water, moons, season
     margin-top: 1rem;
   }
 
+  .inline-feature-link {
+    background: rgba(255, 248, 220, 0.86);
+    border: 1px solid rgba(68, 44, 88, 0.16);
+    border-radius: 999px;
+    color: #2b3137;
+    display: inline-block;
+    font-weight: 900;
+    padding: 0.55rem 0.9rem;
+    text-decoration: none;
+  }
+
+  .inline-feature-link:hover,
+  .inline-feature-link:focus-visible {
+    background: #fff8dc;
+    transform: translateY(-1px);
+  }
+
   .soft-list {
     display: flex;
     flex-wrap: wrap;
@@ -299,6 +317,19 @@ const description = 'How Vaelinya reads time through light, water, moons, season
     border: 1px solid rgba(68, 44, 88, 0.14);
     border-radius: 1.1rem;
     padding: 1rem;
+  }
+
+  .time-card-link {
+    color: inherit;
+    display: block;
+    text-decoration: none;
+  }
+
+  .time-card-link:hover,
+  .time-card-link:focus-visible {
+    background: #fff8dc;
+    border-color: rgba(92, 64, 121, 0.34);
+    transform: translateY(-1px);
   }
 
   .arc-card h3,
