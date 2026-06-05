@@ -108,6 +108,76 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
       </div>
     </article>
 
+    <article class="panel name-guide-panel" aria-labelledby="name-guide-title">
+      <p class="eyebrow">Names used by the clock</p>
+      <h2 id="name-guide-title">Some names stay fixed. Some names change.</h2>
+      <p class="name-guide-intro">The clock uses several groups of Vaelinya names. The moon names stay the same. The day-part, month, arc, and river names change as the shared Vaelinya reading changes.</p>
+
+      <div class="name-guide-grid">
+        <section class="name-card">
+          <p class="name-card-label">Changes during the day</p>
+          <h3>Day-part names</h3>
+          <p>These tell the reader what part of the shared Vaelinya day it is.</p>
+          <ol class="name-list">
+            <li>Deep night</li>
+            <li>First light</li>
+            <li>Rising day</li>
+            <li>High day</li>
+            <li>Falling light</li>
+            <li>Lampkindle</li>
+            <li>Moonrise</li>
+          </ol>
+        </section>
+
+        <section class="name-card">
+          <p class="name-card-label">Changes through the year</p>
+          <h3>Arc names</h3>
+          <p>An arc is a large season-shape. Each arc contains three months.</p>
+          <ol class="name-list">
+            <li>Holding</li>
+            <li>Loosening</li>
+            <li>Opening</li>
+            <li>Returning</li>
+          </ol>
+        </section>
+
+        <section class="name-card name-card-wide">
+          <p class="name-card-label">Changes by month</p>
+          <h3>Month names</h3>
+          <p>The month name shows where the shared year is inside the four arcs.</p>
+          <div class="month-name-grid">
+            <div><strong>Holding</strong><span>Frosthold · White Edge · Deep Quiet</span></div>
+            <div><strong>Loosening</strong><span>First Run · Soft Bank · Floodwake</span></div>
+            <div><strong>Opening</strong><span>Reedrise · Long Light · Thin Water</span></div>
+            <div><strong>Returning</strong><span>Mistreturn · Dark Reed · Ash Frost</span></div>
+          </div>
+        </section>
+
+        <section class="name-card">
+          <p class="name-card-label">Changes with the moons</p>
+          <h3>River names</h3>
+          <p>These names describe how the water is behaving as the two moons pull at it.</p>
+          <ol class="name-list">
+            <li>Low-water showing</li>
+            <li>Moon-slack</li>
+            <li>First lift</li>
+            <li>Flood rise</li>
+            <li>Twin pull</li>
+          </ol>
+        </section>
+
+        <section class="name-card">
+          <p class="name-card-label">Names that do not change</p>
+          <h3>Moon names</h3>
+          <p>Aelun and Saelith are the two moons. Their positions change, but their names do not.</p>
+          <ol class="name-list">
+            <li>Aelun — the larger visible moon</li>
+            <li>Saelith — the smaller older-count moon</li>
+          </ol>
+        </section>
+      </div>
+    </article>
+
     <article class="visual-callout visual-callout-world story-callout">
       <div class="visual-callout-mark" aria-hidden="true"><span>◌</span></div>
       <div class="visual-callout-copy">
@@ -589,31 +659,95 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
     letter-spacing: 0.08em;
   }
 
-  .read-clock-panel {
+  .read-clock-panel,
+  .name-guide-panel {
     margin-top: 1rem;
   }
 
-  .reading-grid {
+  .reading-grid,
+  .name-guide-grid {
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
     margin-top: 1.25rem;
   }
 
-  .reading-grid section {
+  .reading-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .name-guide-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .reading-grid section,
+  .name-card {
     background: rgba(255, 255, 255, 0.68);
     border: 1px solid rgba(68, 44, 88, 0.14);
     border-radius: 1.1rem;
     padding: 1rem;
   }
 
-  .reading-grid h3 {
+  .reading-grid h3,
+  .name-card h3 {
     color: #2b3137;
     margin-top: 0;
   }
 
-  .reading-grid p {
+  .reading-grid p,
+  .name-card p {
     margin-bottom: 0;
+  }
+
+  .name-guide-intro {
+    max-width: 58rem;
+  }
+
+  .name-card-wide {
+    grid-column: 1 / -1;
+  }
+
+  .name-card-label {
+    color: rgba(43, 49, 55, 0.68);
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.4rem !important;
+    text-transform: uppercase;
+  }
+
+  .name-list {
+    display: grid;
+    gap: 0.35rem;
+    margin: 0.8rem 0 0;
+    padding-left: 1.25rem;
+  }
+
+  .name-list li {
+    line-height: 1.35;
+  }
+
+  .month-name-grid {
+    display: grid;
+    gap: 0.65rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 0.95rem;
+  }
+
+  .month-name-grid div {
+    background: rgba(255, 248, 220, 0.58);
+    border: 1px solid rgba(68, 44, 88, 0.1);
+    border-radius: 0.85rem;
+    display: grid;
+    gap: 0.25rem;
+    padding: 0.75rem;
+  }
+
+  .month-name-grid strong {
+    color: #2b3137;
+  }
+
+  .month-name-grid span {
+    line-height: 1.35;
   }
 
   .story-callout {
@@ -640,7 +774,8 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
       font-size: clamp(2.25rem, 12vw, 3.8rem);
     }
 
-    .reading-grid {
+    .reading-grid,
+    .name-guide-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
@@ -669,7 +804,9 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
       text-align: left;
     }
 
-    .reading-grid {
+    .reading-grid,
+    .name-guide-grid,
+    .month-name-grid {
       grid-template-columns: 1fr;
     }
   }
