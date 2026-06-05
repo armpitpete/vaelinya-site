@@ -185,31 +185,34 @@ const description = 'How Vaelinya reads time through light, water, moons, season
   }
 
   .river-time-hero {
-    background: transparent;
+    background:
+      radial-gradient(ellipse at center, rgba(55, 180, 210, 0.16), transparent 56%),
+      #1d122e;
     border: 0;
     box-shadow: none;
-    margin: 1.2rem -0.35rem 1rem;
-    overflow: visible;
+    margin: 1.3rem calc(clamp(1.2rem, 2.35vw, 2rem) * -1) 1rem;
+    overflow: hidden;
+    padding: 1.1rem clamp(0.8rem, 2vw, 1.4rem) 0.8rem;
   }
 
   .river-time-hero img {
     aspect-ratio: 21 / 9;
     display: block;
     height: auto;
+    margin-inline: auto;
     object-fit: cover;
     object-position: center center;
-    width: 100%;
-    -webkit-mask-image: radial-gradient(ellipse at center, #000 50%, rgba(0, 0, 0, 0.82) 63%, rgba(0, 0, 0, 0.34) 76%, transparent 92%);
-    mask-image: radial-gradient(ellipse at center, #000 50%, rgba(0, 0, 0, 0.82) 63%, rgba(0, 0, 0, 0.34) 76%, transparent 92%);
+    width: min(100%, 1220px);
   }
 
   .river-time-hero figcaption {
-    background: transparent;
-    color: #2b3137;
+    color: rgba(245, 237, 255, 0.9);
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 800;
     line-height: 1.45;
-    padding: 0.35rem 1.15rem 0.2rem;
+    margin-inline: auto;
+    max-width: 1220px;
+    padding: 0.55rem 1rem 0.1rem;
   }
 
   .time-jump-list {
@@ -303,11 +306,13 @@ const description = 'How Vaelinya reads time through light, water, moons, season
     }
 
     .river-time-hero {
-      margin-inline: 0;
+      margin-inline: calc(clamp(1.2rem, 2.35vw, 2rem) * -1);
+      padding-inline: 0;
     }
 
     .river-time-hero img {
       aspect-ratio: 4 / 3;
+      width: 100%;
     }
 
     .time-section-grid {
