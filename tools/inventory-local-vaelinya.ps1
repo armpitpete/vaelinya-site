@@ -17,6 +17,7 @@ $inventoryPath = Join-Path $OutputFolder "vaelinya-local-file-inventory-$timesta
 $summaryPath = Join-Path $OutputFolder "vaelinya-local-folder-summary-$timestamp.txt"
 
 $excludedFolderNames = @(
+  "90_GitHub_Repos",
   "node_modules",
   ".git",
   "dist",
@@ -101,6 +102,20 @@ $totalFiles = $files.Count
 $totalMB = [Math]::Round((($files | Measure-Object -Property SizeBytes -Sum).Sum / 1MB), 2)
 $byExtension = $files | Group-Object Extension | Sort-Object Count -Descending | Select-Object Count, Name
 $byCategory = $files | Group-Object CategoryGuess | Sort-Object Count -Descending | Select-Object Count, Name
+$byTopFolder = $files |
+  ForEach-Object {
+    $top = ($_.RelativePath -split "[\\/]")[0]
+    [PSCustomObject]@{ TopFolder = $top; SizeBytes = $_.SizeBytes }
+  } |
+  Group-Object TopFolder |
+  ForEach-Object {
+    [PSCustomObject]@{
+      Files = $_.Count
+      SizeMB = [Math]::Round((($_.Group | Measure-Object -Property SizeBytes -Sum).Sum / 1MB), 2)
+      TopFolder = $_.Name
+    }
+  } |
+  Sort-Object Files, SizeMB -Descending
 $largeFiles = $files | Sort-Object SizeBytes -Descending | Select-Object -First 30 RelativePath, SizeMB, CategoryGuess
 $possibleSecrets = $files | Where-Object { $_.PossibleSecretOrPrivate } | Select-Object RelativePath, CategoryGuess
 
@@ -108,11 +123,16 @@ $summary = @()
 $summary += "Vaelinya local folder inventory"
 $summary += "Generated: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
 $summary += "Root: $resolvedRoot"
+$summary += "Excluded folders: $($excludedFolderNames -join ', ')"
 $summary += ""
 $summary += "Totals"
 $summary += "------"
 $summary += "Files: $totalFiles"
 $summary += "Total size MB: $totalMB"
+$summary += ""
+$summary += "By top folder"
+$summary += "-------------"
+$summary += ($byTopFolder | Format-Table -AutoSize | Out-String)
 $summary += ""
 $summary += "By category"
 $summary += "-----------"
