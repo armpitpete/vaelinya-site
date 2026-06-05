@@ -46,25 +46,6 @@ const description = 'How Vaelinya reads time through light, water, moons, season
         <p>A bell is how one person’s reading becomes everyone’s shared moment.</p>
       </article>
 
-      <article class="panel" id="water">
-        <p class="eyebrow">Water-turns</p>
-        <h2>Water changes the count</h2>
-        <p>Water is one of Vaelinya’s strongest clocks.</p>
-        <p>Because Vaelinya has two moons, the water does not follow one simple tide. Aelun and Saelith pull at different rhythms, so river people watch many water-times in the same day and across the longer moon-turns.</p>
-        <p>When the two moons align, their pull can become dangerous. The river may rise hard, old channels may open, and sea creatures from the far water can be drawn inland through the great river.</p>
-        <p>Along the Rim and the broad river lands, people plan around mist, current, water height, and safe crossing times. A crossing may not be planned for a number on a clock. It may be planned for moon-slack, first lift, twin pull, or before the river begins to rise.</p>
-        <p>The year is not only warm or cold. It is also wet, loosening, rising, thinning, returning, and holding.</p>
-        <ul class="soft-list" aria-label="Water markers">
-          <li>moon-slack</li>
-          <li>first lift</li>
-          <li>flood rise</li>
-          <li>twin pull</li>
-          <li>old-channel opening</li>
-          <li>low-water showing</li>
-          <li>cool mist return</li>
-        </ul>
-      </article>
-
       <article class="panel" id="moons">
         <p class="eyebrow">Two moons</p>
         <h2>The moons keep longer turns</h2>
@@ -72,7 +53,34 @@ const description = 'How Vaelinya reads time through light, water, moons, season
         <p>Aelun is the larger visible moon, used in ordinary counting, travel, planting, and common moon-turns. Saelith is smaller or farther, and belongs more to older reckonings: long promises, rare alignments, hidden places, and deep records.</p>
         <p>People may plan by a bell, a day-part, a water-turn, or a moon-turn. The longer the plan, the more the moons matter.</p>
       </article>
+
+      <article class="panel" id="local">
+        <p class="eyebrow">Local count</p>
+        <h2>Time is local, but not random</h2>
+        <p>Time in Vaelinya is local, but it is not random.</p>
+        <p>Each place reads its own light, water, paths, and weather. But the moons, arcs, months, and water-turns give people a shared way to plan across distance.</p>
+        <p>A village bell may be local. A market day may be regional. A moon-turn belongs to everyone.</p>
+      </article>
     </div>
+
+    <article class="panel water-feature-panel" id="water">
+      <p class="eyebrow">Water-turns</p>
+      <h2>Water changes the count</h2>
+      <p>Water is one of Vaelinya’s strongest clocks.</p>
+      <p>Because Vaelinya has two moons, the water does not follow one simple tide. Aelun and Saelith pull at different rhythms, so river people watch many water-times in the same day and across the longer moon-turns.</p>
+      <p>When the two moons align, their pull can become dangerous. The river may rise hard, old channels may open, and sea creatures from the far water can be drawn inland through the great river.</p>
+      <p>Along the Rim and the broad river lands, people plan around mist, current, water height, and safe crossing times. A crossing may not be planned for a number on a clock. It may be planned for moon-slack, first lift, twin pull, or before the river begins to rise.</p>
+      <p>The year is not only warm or cold. It is also wet, loosening, rising, thinning, returning, and holding.</p>
+      <ul class="soft-list" aria-label="Water markers">
+        <li>moon-slack</li>
+        <li>first lift</li>
+        <li>flood rise</li>
+        <li>twin pull</li>
+        <li>old-channel opening</li>
+        <li>low-water showing</li>
+        <li>cool mist return</li>
+      </ul>
+    </article>
 
     <article class="panel calendar-panel" id="calendar">
       <p class="eyebrow">Shared year</p>
@@ -100,25 +108,15 @@ const description = 'How Vaelinya reads time through light, water, moons, season
       <p>The same month may feel different in different places. A river settlement may watch flood signs. An upland path may still be held by frost. A reedland may count by mist and hidden channels.</p>
     </article>
 
-    <div class="time-lower-grid">
-      <article class="panel" id="local">
-        <p class="eyebrow">Local count</p>
-        <h2>Time is local, but not random</h2>
-        <p>Time in Vaelinya is local, but it is not random.</p>
-        <p>Each place reads its own light, water, paths, and weather. But the moons, arcs, months, and water-turns give people a shared way to plan across distance.</p>
-        <p>A village bell may be local. A market day may be regional. A moon-turn belongs to everyone.</p>
-      </article>
-
-      <article class="visual-callout visual-callout-world" id="clock">
-        <div class="visual-callout-mark" aria-hidden="true"><span>◎</span></div>
-        <div class="visual-callout-copy">
-          <p class="eyebrow">Time artefact</p>
-          <h2>The Listening Clock gathers the signs</h2>
-          <p>Some places keep more elaborate instruments. The Listening Clock gathers light, bell marks, water signs, seasons, and the two moons into one visible pattern.</p>
-          <p>It does not only show a time. It shows what the world is doing. Some Timekeepers say the oldest clocks also remember promises.</p>
-        </div>
-      </article>
-    </div>
+    <article class="visual-callout visual-callout-world clock-feature-panel" id="clock">
+      <div class="visual-callout-mark" aria-hidden="true"><span>◎</span></div>
+      <div class="visual-callout-copy">
+        <p class="eyebrow">Time artefact</p>
+        <h2>The Listening Clock gathers the signs</h2>
+        <p>Some places keep more elaborate instruments. The Listening Clock gathers light, bell marks, water signs, seasons, and the two moons into one visible pattern.</p>
+        <p>It does not only show a time. It shows what the world is doing. Some Timekeepers say the oldest clocks also remember promises.</p>
+      </div>
+    </article>
 
     <article class="panel onward-panel" aria-labelledby="time-paths-title">
       <p class="eyebrow">Follow the paths</p>
@@ -197,22 +195,21 @@ const description = 'How Vaelinya reads time through light, water, moons, season
     border-color: rgba(92, 64, 121, 0.38);
   }
 
-  .time-section-grid,
-  .time-lower-grid {
+  .time-section-grid {
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     margin-block: 1rem;
   }
 
-  .time-section-grid > .panel,
-  .time-lower-grid > .panel,
-  .time-lower-grid > .visual-callout {
+  .time-section-grid > .panel {
     height: 100%;
     margin: 0;
   }
 
+  .water-feature-panel,
   .calendar-panel,
+  .clock-feature-panel,
   .onward-panel {
     margin-top: 1rem;
   }
@@ -265,8 +262,7 @@ const description = 'How Vaelinya reads time through light, water, moons, season
       max-width: min(100%, calc(100vw - 1rem));
     }
 
-    .time-section-grid,
-    .time-lower-grid {
+    .time-section-grid {
       grid-template-columns: 1fr;
     }
   }
