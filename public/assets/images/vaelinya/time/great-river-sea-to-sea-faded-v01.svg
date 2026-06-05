@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1916 821" role="img" aria-labelledby="title desc">
+  <title id="title">The Great River of Vaelinya</title>
+  <desc id="desc">A wide aerial view of Vaelinya’s great river running from one sea to another, with wetlands, crossings, settlements, and misted banks.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#284368"/>
+      <stop offset="0.42" stop-color="#547f82"/>
+      <stop offset="1" stop-color="#d8bd78"/>
+    </linearGradient>
+    <linearGradient id="land" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4e704d"/>
+      <stop offset="0.38" stop-color="#8b9452"/>
+      <stop offset="0.65" stop-color="#6f7f45"/>
+      <stop offset="1" stop-color="#384f47"/>
+    </linearGradient>
+    <linearGradient id="river" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7ed4e8"/>
+      <stop offset="0.25" stop-color="#4ea9ca"/>
+      <stop offset="0.52" stop-color="#9fe9f0"/>
+      <stop offset="0.78" stop-color="#3f8fb4"/>
+      <stop offset="1" stop-color="#78d0e8"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="47%" r="60%">
+      <stop offset="0" stop-color="#fff4b8" stop-opacity="0.42"/>
+      <stop offset="0.38" stop-color="#b3f3ff" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#1d122e" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soften" x="-8%" y="-8%" width="116%" height="116%">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="22" flood-color="#12081f" flood-opacity="0.28"/>
+    </filter>
+    <mask id="fade">
+      <rect width="1916" height="821" fill="white"/>
+      <linearGradient id="fadeLeft" x1="0" x2="1">
+        <stop offset="0" stop-color="black"/>
+        <stop offset="0.14" stop-color="white"/>
+      </linearGradient>
+      <linearGradient id="fadeRight" x1="1" x2="0">
+        <stop offset="0" stop-color="black"/>
+        <stop offset="0.14" stop-color="white"/>
+      </linearGradient>
+      <linearGradient id="fadeTop" y1="0" y2="1">
+        <stop offset="0" stop-color="black"/>
+        <stop offset="0.18" stop-color="white"/>
+      </linearGradient>
+      <linearGradient id="fadeBottom" y1="1" y2="0">
+        <stop offset="0" stop-color="black"/>
+        <stop offset="0.18" stop-color="white"/>
+      </linearGradient>
+      <rect width="260" height="821" fill="url(#fadeLeft)"/>
+      <rect x="1656" width="260" height="821" fill="url(#fadeRight)"/>
+      <rect width="1916" height="180" fill="url(#fadeTop)"/>
+      <rect y="641" width="1916" height="180" fill="url(#fadeBottom)"/>
+    </mask>
+  </defs>
+
+  <rect width="1916" height="821" fill="#1d122e"/>
+  <g mask="url(#fade)">
+    <rect width="1916" height="821" fill="url(#sky)"/>
+    <path d="M0 190 C230 90 365 80 560 160 C760 240 930 75 1160 130 C1360 180 1505 80 1916 150 L1916 821 L0 821 Z" fill="url(#land)"/>
+    <path d="M0 590 C240 690 430 630 610 675 C870 740 1130 590 1350 650 C1550 705 1715 660 1916 720 L1916 821 L0 821 Z" fill="#324641" opacity="0.72"/>
+
+    <path d="M0 374 C190 330 285 290 430 315 C600 343 700 407 835 374 C1020 328 1095 269 1260 296 C1434 324 1585 420 1916 351 L1916 514 C1640 585 1460 508 1285 468 C1120 431 1010 486 838 520 C680 552 565 486 400 463 C250 442 145 485 0 535 Z" fill="url(#river)" opacity="0.96" filter="url(#shadow)"/>
+    <path d="M0 432 C188 390 303 354 432 374 C585 399 708 463 846 431 C1015 392 1114 330 1266 357 C1430 386 1588 474 1916 410" fill="none" stroke="#d7fbff" stroke-width="16" stroke-linecap="round" opacity="0.42"/>
+    <path d="M90 460 C210 438 288 428 374 442 M720 490 C826 496 936 455 1030 420 M1280 405 C1395 424 1515 482 1690 468" fill="none" stroke="#fff7c6" stroke-width="5" stroke-linecap="round" opacity="0.38"/>
+
+    <g opacity="0.72" fill="none" stroke="#6fc0b7" stroke-width="8" stroke-linecap="round">
+      <path d="M245 255 C355 294 391 335 460 392"/>
+      <path d="M526 205 C570 278 625 330 710 383"/>
+      <path d="M1150 205 C1175 264 1215 313 1296 372"/>
+      <path d="M1540 238 C1490 300 1468 355 1498 431"/>
+      <path d="M300 618 C370 556 450 523 560 500"/>
+      <path d="M1200 650 C1266 570 1340 522 1450 498"/>
+    </g>
+
+    <g opacity="0.55" fill="#fff0bd">
+      <ellipse cx="210" cy="365" rx="48" ry="12" transform="rotate(-13 210 365)"/>
+      <ellipse cx="482" cy="408" rx="68" ry="15" transform="rotate(8 482 408)"/>
+      <ellipse cx="958" cy="438" rx="72" ry="16" transform="rotate(-12 958 438)"/>
+      <ellipse cx="1395" cy="442" rx="76" ry="18" transform="rotate(10 1395 442)"/>
+      <ellipse cx="1708" cy="446" rx="52" ry="13" transform="rotate(-9 1708 446)"/>
+    </g>
+
+    <g stroke="#efe7c9" stroke-width="9" stroke-linecap="round" opacity="0.8">
+      <path d="M520 355 L560 496"/>
+      <path d="M1048 342 L1068 500"/>
+      <path d="M1496 407 L1466 536"/>
+    </g>
+    <g stroke="#2a2531" stroke-width="3" stroke-linecap="round" opacity="0.42">
+      <path d="M520 355 L560 496"/>
+      <path d="M1048 342 L1068 500"/>
+      <path d="M1496 407 L1466 536"/>
+    </g>
+
+    <g fill="#f4e8c6" opacity="0.88">
+      <circle cx="428" cy="282" r="5"/><circle cx="444" cy="288" r="4"/><circle cx="456" cy="277" r="3"/>
+      <circle cx="760" cy="575" r="4"/><circle cx="778" cy="580" r="3"/><circle cx="790" cy="566" r="4"/>
+      <circle cx="1228" cy="248" r="5"/><circle cx="1247" cy="256" r="4"/><circle cx="1260" cy="242" r="3"/>
+      <circle cx="1578" cy="584" r="5"/><circle cx="1594" cy="592" r="4"/><circle cx="1612" cy="580" r="3"/>
+    </g>
+
+    <g fill="#ffffff" opacity="0.8">
+      <path d="M635 430 l10 -30 l12 30 z"/><path d="M908 468 l9 -25 l11 25 z"/><path d="M1348 380 l12 -34 l14 34 z"/><path d="M1622 452 l10 -28 l12 28 z"/>
+    </g>
+
+    <g fill="#243040" opacity="0.65">
+      <path d="M170 222 l70 -92 l74 108 z"/><path d="M238 232 l84 -122 l96 134 z"/><path d="M1380 218 l82 -126 l112 142 z"/><path d="M1510 234 l100 -144 l132 165 z"/>
+      <path d="M820 210 l82 -112 l96 130 z" opacity="0.45"/><path d="M980 208 l72 -96 l92 112 z" opacity="0.45"/>
+    </g>
+
+    <rect width="1916" height="821" fill="url(#glow)"/>
+    <g filter="url(#soften)" opacity="0.32" fill="#f7f1dc">
+      <ellipse cx="270" cy="180" rx="310" ry="58"/>
+      <ellipse cx="1580" cy="180" rx="360" ry="66"/>
+      <ellipse cx="960" cy="690" rx="540" ry="80"/>
+    </g>
+  </g>
+  <rect width="1916" height="821" fill="none"/>
+</svg>
