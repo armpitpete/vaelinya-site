@@ -1,0 +1,41 @@
+/* Listening Clock page overrides
+   Keeps the current reading board readable for Vaelinyan names. */
+
+.listening-clock-page .current-reading-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+}
+
+.listening-clock-page .current-reading-grid div {
+  background: rgba(255, 248, 220, 0.62);
+  border: 1px solid rgba(68, 44, 88, 0.12);
+  border-radius: 1rem;
+  display: grid;
+  gap: 0.35rem;
+  min-height: 5.2rem;
+  padding: 1rem;
+}
+
+.listening-clock-page .current-reading-grid dd {
+  color: #2b3137;
+  font-size: clamp(1.05rem, 2.2vw, 1.28rem);
+  font-weight: 950;
+  line-height: 1.22;
+}
+
+@media (max-width: 960px) {
+  .listening-clock-page .reading-grid,
+  .listening-clock-page .name-guide-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .listening-clock-page .current-reading-grid,
+  .listening-clock-page .reading-grid,
+  .listening-clock-page .name-guide-grid {
+    grid-template-columns: 1fr;
+  }
+}
