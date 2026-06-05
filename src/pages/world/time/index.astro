@@ -1,0 +1,228 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const description = 'How Vaelinya reads time through light, water, moons, seasons, bells, and local signs.';
+---
+<BaseLayout title="Time in Vaelinya" description={description}>
+  <section class="page-section time-hub">
+    <p class="eyebrow">World · Time</p>
+    <h1>Time in Vaelinya</h1>
+    <p class="lede">Vaelinya does not only count time by numbers. People read time from light, shadow, water, bells, seasons, and the two moons.</p>
+    <p>A village may know the day by the length of a shadow. A river crossing may depend on mist and water height. A longer journey may be planned by moon-turns, water-turns, and the shared calendar.</p>
+    <p class="quiet-rule">The calendar is shared, but time is lived locally.</p>
+
+    <nav class="time-jump-list" aria-label="Sections on this page">
+      <a href="#light">Light</a>
+      <a href="#bells">Bells</a>
+      <a href="#water">Water</a>
+      <a href="#moons">Moons</a>
+      <a href="#calendar">Calendar</a>
+      <a href="#local">Local time</a>
+      <a href="#clock">Listening Clock</a>
+    </nav>
+
+    <article class="panel" id="light">
+      <p class="eyebrow">Day reading</p>
+      <h2>The day is read from light</h2>
+      <p>Most people in Vaelinya do not begin by asking for a number. They ask what part of the day they are in.</p>
+      <p>A child might be told to come home by falling light. A gathering might begin after first light. A watcher may wait until high day, when shadows are shortest and paths are easiest to read.</p>
+      <ul class="soft-list" aria-label="Common day markers">
+        <li>first light</li>
+        <li>high day</li>
+        <li>falling light</li>
+        <li>lampkindle</li>
+        <li>moonrise</li>
+        <li>high moon</li>
+        <li>deep night</li>
+      </ul>
+    </article>
+
+    <article class="panel" id="bells">
+      <p class="eyebrow">Shared signal</p>
+      <h2>Bells carry the time</h2>
+      <p>The bells are public signals. They do not decide the time by themselves.</p>
+      <p>A Timekeeper reads the signs first: light, shadow, water, weather, season, and sometimes the moons. When the right moment arrives, the bell carries that time across the settlement.</p>
+      <p>A bell is how one person’s reading becomes everyone’s shared moment.</p>
+    </article>
+
+    <article class="panel" id="water">
+      <p class="eyebrow">Water-turns</p>
+      <h2>Water changes the count</h2>
+      <p>Water is one of Vaelinya’s strongest clocks.</p>
+      <p>Along the Rim and the broad river lands, people plan around mist, current, water height, and safe crossing times. A crossing may not be planned for a number on a clock. It may be planned for slack water, or before the river begins to rise.</p>
+      <p>The year is not only warm or cold. It is also wet, loosening, rising, thinning, returning, and holding.</p>
+      <ul class="soft-list" aria-label="Water markers">
+        <li>slack water</li>
+        <li>flood rise</li>
+        <li>low-water showing</li>
+        <li>cool mist return</li>
+      </ul>
+    </article>
+
+    <article class="panel" id="moons">
+      <p class="eyebrow">Two moons</p>
+      <h2>The moons keep longer turns</h2>
+      <p>Vaelinya has two moons.</p>
+      <p>Aelun is the larger visible moon, used in ordinary counting, travel, planting, and common moon-turns. Saelith is smaller or farther, and belongs more to older reckonings: long promises, rare alignments, hidden places, and deep records.</p>
+      <p>People may plan by a bell, a day-part, a water-turn, or a moon-turn. The longer the plan, the more the moons matter.</p>
+    </article>
+
+    <article class="panel" id="calendar">
+      <p class="eyebrow">Shared year</p>
+      <h2>The calendar has four arcs</h2>
+      <p>Vaelinya has a shared calendar of four arcs and twelve months.</p>
+      <p>The arcs are Holding, Loosening, Opening, and Returning. These are not just seasons in the Earth sense. They describe how the world holds, loosens, opens, and returns through water, light, cold, growth, mist, and river change.</p>
+      <div class="arc-grid" aria-label="Four arcs and twelve months">
+        <section class="arc-card">
+          <h3>Holding</h3>
+          <p>Frosthold · White Edge · Deep Quiet</p>
+        </section>
+        <section class="arc-card">
+          <h3>Loosening</h3>
+          <p>First Run · Soft Bank · Floodwake</p>
+        </section>
+        <section class="arc-card">
+          <h3>Opening</h3>
+          <p>Reedrise · Long Light · Thin Water</p>
+        </section>
+        <section class="arc-card">
+          <h3>Returning</h3>
+          <p>Mistreturn · Dark Reed · Ash Frost</p>
+        </section>
+      </div>
+      <p>The same month may feel different in different places. A river settlement may watch flood signs. An upland path may still be held by frost. A reedland may count by mist and hidden channels.</p>
+    </article>
+
+    <article class="panel" id="local">
+      <p class="eyebrow">Local count</p>
+      <h2>Time is local, but not random</h2>
+      <p>Time in Vaelinya is local, but it is not random.</p>
+      <p>Each place reads its own light, water, paths, and weather. But the moons, arcs, months, and water-turns give people a shared way to plan across distance.</p>
+      <p>A village bell may be local. A market day may be regional. A moon-turn belongs to everyone.</p>
+    </article>
+
+    <article class="visual-callout visual-callout-world" id="clock">
+      <div class="visual-callout-mark" aria-hidden="true"><span>◎</span></div>
+      <div class="visual-callout-copy">
+        <p class="eyebrow">Time artefact</p>
+        <h2>The Listening Clock gathers the signs</h2>
+        <p>Some places keep more elaborate instruments. The Listening Clock gathers light, bell marks, water signs, seasons, and the two moons into one visible pattern.</p>
+        <p>It does not only show a time. It shows what the world is doing. Some Timekeepers say the oldest clocks also remember promises.</p>
+      </div>
+    </article>
+
+    <article class="panel onward-panel" aria-labelledby="time-paths-title">
+      <p class="eyebrow">Follow the paths</p>
+      <h2 id="time-paths-title">More time paths will open from here</h2>
+      <div class="time-card-grid">
+        <section class="time-card">
+          <h3>Calendar</h3>
+          <p>The arcs, months, water-turns, and regional seasons of Vaelinya.</p>
+        </section>
+        <section class="time-card">
+          <h3>The Two Moons</h3>
+          <p>Aelun, Saelith, moon-turns, river pull, alignments, and older reckonings.</p>
+        </section>
+        <section class="time-card">
+          <h3>Local Counts</h3>
+          <p>How Timekeepers read light, shadow, water, and local signs before the bells are rung.</p>
+        </section>
+        <section class="time-card">
+          <h3>The Listening Clock</h3>
+          <p>A Vaelinyan time artefact that gathers the day, river, seasons, and moons into one pattern.</p>
+        </section>
+      </div>
+    </article>
+
+    <div class="link-list">
+      <a href="/world/">Back to World</a>
+      <a href="/world/the-rim/">The Rim</a>
+      <a href="/world/rimaeri/">The Rimaeri</a>
+      <a href="/language/lexicon/">Words of the world</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .time-hub {
+    max-width: 920px;
+  }
+
+  .quiet-rule {
+    border-left: 0.35rem solid rgba(92, 64, 121, 0.45);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 1.25rem 0 1.75rem;
+    padding: 0.25rem 0 0.25rem 1rem;
+  }
+
+  .time-jump-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin: 1.5rem 0 2rem;
+  }
+
+  .time-jump-list a {
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(68, 44, 88, 0.16);
+    border-radius: 999px;
+    color: #2b3137;
+    font-weight: 700;
+    padding: 0.45rem 0.85rem;
+    text-decoration: none;
+  }
+
+  .time-jump-list a:hover,
+  .time-jump-list a:focus-visible {
+    background: #fff8dc;
+    border-color: rgba(92, 64, 121, 0.38);
+  }
+
+  .soft-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+  }
+
+  .soft-list li {
+    background: rgba(255, 248, 220, 0.75);
+    border: 1px solid rgba(68, 44, 88, 0.13);
+    border-radius: 999px;
+    padding: 0.35rem 0.7rem;
+  }
+
+  .arc-grid,
+  .time-card-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    margin: 1.25rem 0;
+  }
+
+  .arc-card,
+  .time-card {
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(68, 44, 88, 0.14);
+    border-radius: 1.1rem;
+    padding: 1rem;
+  }
+
+  .arc-card h3,
+  .time-card h3 {
+    color: #2b3137;
+    margin-top: 0;
+  }
+
+  .arc-card p,
+  .time-card p {
+    margin-bottom: 0;
+  }
+
+  .onward-panel {
+    margin-top: 1.5rem;
+  }
+</style>
