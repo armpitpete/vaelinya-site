@@ -1,14 +1,14 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 
-const description = 'A clear guide to the Vaelinyan Listening Clock, a time artefact that shows one shared Vaelinya reading for every reader.';
+const description = 'A guide to the Vaelinyan Listening Clock, a time artefact that reads season, moons, river movement, and day-part together.';
 ---
 <BaseLayout title="The Listening Clock" description={description}>
   <section class="page-section listening-clock-page">
     <p class="eyebrow">World · Time · Artefact</p>
     <h1>The Listening Clock</h1>
-    <p class="lede">This is a fictional Vaelinya clock. It does not work like an Earth clock.</p>
-    <p>Instead of showing seconds and exact minutes first, it shows four signs at once: the season, the two moons, the river pull, and the part of the day. This version uses one shared Earth reference time, UTC, so readers in different countries see the same Vaelinya reading.</p>
+    <p class="lede">The Listening Clock is a Vaelinyan time artefact.</p>
+    <p>It reads the season, the two moons, the river’s movement, and the part of the day together. The web version uses a shared UTC reference, so readers in different places see the same Vaelinya reading.</p>
 
     <article class="clock-artefact" aria-labelledby="clock-title">
       <div class="clock-copy">
@@ -16,39 +16,27 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
         <h2 id="clock-title">Read the four signs</h2>
         <p>Look from the outside of the clock towards the centre.</p>
         <ol class="clock-start-list">
-          <li><strong>Outer ring:</strong> the seasonal arc.</li>
+          <li><strong>Outer ring:</strong> the current season.</li>
           <li><strong>Moon path:</strong> Aelun and Saelith.</li>
-          <li><strong>River path:</strong> how strongly the moons are pulling the water.</li>
+          <li><strong>River path:</strong> how the moons are lifting the water.</li>
           <li><strong>Inner path:</strong> the current part of the day.</li>
         </ol>
         <div class="clock-reading" aria-live="polite">
           <p class="clock-reading-title">Current Vaelinya reading</p>
           <dl class="clock-reading-grid">
-            <div class="clock-reading-row">
-              <dt>Day part</dt>
-              <dd id="clock-day-part">—</dd>
-            </div>
-            <div class="clock-reading-row">
-              <dt>Month</dt>
-              <dd id="clock-month">—</dd>
-            </div>
-            <div class="clock-reading-row">
-              <dt>Arc</dt>
-              <dd id="clock-arc">—</dd>
-            </div>
-            <div class="clock-reading-row">
-              <dt>River</dt>
-              <dd id="clock-river">—</dd>
-            </div>
+            <div><dt>Day part</dt><dd id="clock-day-part">—</dd></div>
+            <div><dt>Season</dt><dd id="clock-season">—</dd></div>
+            <div><dt>River</dt><dd id="clock-river">—</dd></div>
+            <div><dt>Moons</dt><dd>Aelun · Saelith</dd></div>
           </dl>
         </div>
       </div>
 
-      <div class="clock-shell" aria-label="A live Vaelinyan Listening Clock showing four visible movements: the seasonal arc, the two moons, the river, and the day.">
+      <div class="clock-shell" aria-label="A live Vaelinyan Listening Clock showing the season, two moons, river, and day.">
         <div class="clock-glow" aria-hidden="true"></div>
         <svg class="listening-clock" viewBox="0 0 360 360" role="img" aria-labelledby="clock-svg-title clock-svg-desc">
           <title id="clock-svg-title">The Listening Clock</title>
-          <desc id="clock-svg-desc">Four circular paths show the seasonal arc, the two moons, the river pull, and the shared Vaelinya day.</desc>
+          <desc id="clock-svg-desc">Four circular paths show the current season, the two moons, the river movement, and the shared Vaelinya day.</desc>
 
           <circle class="clock-plate" cx="180" cy="180" r="164" />
           <circle class="clock-rim" cx="180" cy="180" r="158" />
@@ -89,41 +77,28 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
       <p class="eyebrow">What the parts mean</p>
       <h2 id="read-clock-title">The clock is read from outside to inside</h2>
       <div class="reading-grid">
-        <section>
-          <h3>Season</h3>
-          <p>The outer ring shows where the year is in the four arcs: Holding, Loosening, Opening, and Returning.</p>
-        </section>
-        <section>
-          <h3>Moons</h3>
-          <p>The two dots on the moon path are Aelun and Saelith. When they move closer together, their pull on the water is stronger.</p>
-        </section>
-        <section>
-          <h3>River</h3>
-          <p>The river path shows the water pull. A stronger pull can mean flood rise, twin pull, or difficult crossing times.</p>
-        </section>
-        <section>
-          <h3>Day</h3>
-          <p>The inner path shows the shared Vaelinya day-part, such as first light, high day, falling light, lampkindle, or moonrise.</p>
-        </section>
+        <section><h3>Season</h3><p>The outer ring shows one of the four great seasons: Holding, Loosening, Opening, or Returning.</p></section>
+        <section><h3>Moons</h3><p>The two dots are Aelun and Saelith. Their changing positions help shape the river’s movement.</p></section>
+        <section><h3>River</h3><p>The river path shows how the water is lifted, calmed, opened, or joined by the moons.</p></section>
+        <section><h3>Day</h3><p>The inner path shows the shared Vaelinya day-part, such as deep rest, first light, high day, lampkindle, or moonrise.</p></section>
       </div>
     </article>
 
     <article class="panel name-guide-panel" aria-labelledby="name-guide-title">
       <p class="eyebrow">Names used by the clock</p>
-      <h2 id="name-guide-title">Some names stay fixed. Some names change.</h2>
-      <p class="name-guide-intro">The clock uses several groups of Vaelinya names. The moon names stay the same. The day-part, month, arc, and river names change as the shared Vaelinya reading changes.</p>
+      <h2 id="name-guide-title">Vaelinya names point towards care and return</h2>
+      <p class="name-guide-intro">The clock’s names describe rest, lifting, opening, joining, and returning. Vaelinya words try to show what a moment gives, not what it takes away.</p>
 
       <div class="name-guide-grid">
         <section class="name-card">
           <p class="name-card-label">Changes during the day</p>
           <h3>Day-part names</h3>
-          <p>These tell the reader what part of the shared Vaelinya day it is.</p>
           <ol class="name-list">
-            <li>Deep night</li>
+            <li>Deep rest</li>
             <li>First light</li>
             <li>Rising day</li>
             <li>High day</li>
-            <li>Falling light</li>
+            <li>Softfall light</li>
             <li>Lampkindle</li>
             <li>Moonrise</li>
           </ol>
@@ -131,45 +106,30 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
 
         <section class="name-card">
           <p class="name-card-label">Changes through the year</p>
-          <h3>Arc names</h3>
-          <p>An arc is a large season-shape. Each arc contains three months.</p>
+          <h3>Season names</h3>
           <ol class="name-list">
-            <li>Holding</li>
-            <li>Loosening</li>
-            <li>Opening</li>
-            <li>Returning</li>
+            <li><strong>Holding</strong> — warmth, memory, and strength are kept safe.</li>
+            <li><strong>Loosening</strong> — old tightness softens and water begins to move.</li>
+            <li><strong>Opening</strong> — paths, flowers, travel, and learning open outward.</li>
+            <li><strong>Returning</strong> — things come home, rest, change form, and give back.</li>
           </ol>
-        </section>
-
-        <section class="name-card name-card-wide">
-          <p class="name-card-label">Changes by month</p>
-          <h3>Month names</h3>
-          <p>The month name shows where the shared year is inside the four arcs.</p>
-          <div class="month-name-grid">
-            <div><strong>Holding</strong><span>Frosthold · White Edge · Deep Quiet</span></div>
-            <div><strong>Loosening</strong><span>First Run · Soft Bank · Floodwake</span></div>
-            <div><strong>Opening</strong><span>Reedrise · Long Light · Thin Water</span></div>
-            <div><strong>Returning</strong><span>Mistreturn · Dark Reed · Ash Frost</span></div>
-          </div>
         </section>
 
         <section class="name-card">
           <p class="name-card-label">Changes with the moons</p>
           <h3>River names</h3>
-          <p>These names describe how the water is behaving as the two moons pull at it.</p>
           <ol class="name-list">
-            <li>Low-water showing</li>
-            <li>Moon-slack</li>
+            <li>Clear-water showing</li>
+            <li>Moon calm</li>
             <li>First lift</li>
-            <li>Flood rise</li>
-            <li>Twin pull</li>
+            <li>Full river rise</li>
+            <li>Twin joining</li>
           </ol>
         </section>
 
         <section class="name-card">
-          <p class="name-card-label">Names that do not change</p>
+          <p class="name-card-label">Names that stay steady</p>
           <h3>Moon names</h3>
-          <p>Aelun and Saelith are the two moons. Their positions change, but their names do not.</p>
           <ol class="name-list">
             <li>Aelun — the larger visible moon</li>
             <li>Saelith — the smaller older-count moon</li>
@@ -199,44 +159,20 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
 <script>
   const TAU = Math.PI * 2;
   const CENTRE = 180;
-  const RADIUS = {
-    season: 142,
-    moons: 111,
-    water: 82,
-    day: 54,
-  };
-
-  const MONTHS = [
-    ['Frosthold', 'Holding'],
-    ['White Edge', 'Holding'],
-    ['Deep Quiet', 'Holding'],
-    ['First Run', 'Loosening'],
-    ['Soft Bank', 'Loosening'],
-    ['Floodwake', 'Loosening'],
-    ['Reedrise', 'Opening'],
-    ['Long Light', 'Opening'],
-    ['Thin Water', 'Opening'],
-    ['Mistreturn', 'Returning'],
-    ['Dark Reed', 'Returning'],
-    ['Ash Frost', 'Returning'],
-  ];
+  const RADIUS = { season: 142, moons: 111, water: 82, day: 54 };
+  const SEASONS = ['Holding', 'Loosening', 'Opening', 'Returning'];
 
   const rings = new Map(Array.from(document.querySelectorAll('[data-ring]')).map((node) => [node.dataset.ring, node]));
   const dots = new Map(Array.from(document.querySelectorAll('[data-dot]')).map((node) => [node.dataset.dot, node]));
   const centreWord = document.querySelector('#clock-centre-word');
   const waterThread = document.querySelector('#water-thread');
   const dayPartValue = document.querySelector('#clock-day-part');
-  const monthValue = document.querySelector('#clock-month');
-  const arcValue = document.querySelector('#clock-arc');
+  const seasonValue = document.querySelector('#clock-season');
   const riverValue = document.querySelector('#clock-river');
 
-  function clamp01(value) {
-    return Math.max(0, Math.min(1, value));
-  }
-
-  function fractionBetween(value, start, end) {
-    return clamp01((value - start) / (end - start));
-  }
+  function clamp01(value) { return Math.max(0, Math.min(1, value)); }
+  function fractionBetween(value, start, end) { return clamp01((value - start) / (end - start)); }
+  function titleCase(value) { return value.replace(/\b\w/g, (letter) => letter.toUpperCase()); }
 
   function cycleFraction(now, cycleDays, offsetDays = 0) {
     const epoch = Date.UTC(2026, 0, 1);
@@ -244,46 +180,36 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
     return ((elapsedDays + offsetDays) / cycleDays) % 1;
   }
 
-  function titleCase(value) {
-    return value.replace(/\b\w/g, (letter) => letter.toUpperCase());
-  }
-
   function setRing(name, progress) {
     const ring = rings.get(name);
-    const value = clamp01(progress);
-
-    if (ring) {
-      ring.style.strokeDashoffset = String(1 - value);
-    }
+    if (ring) ring.style.strokeDashoffset = String(1 - clamp01(progress));
   }
 
   function setDot(name, progress, radius) {
     const dot = dots.get(name);
+    if (!dot) return;
     const value = clamp01(progress);
-
-    if (dot) {
-      const angle = value * TAU - Math.PI / 2;
-      dot.setAttribute('cx', String(CENTRE + Math.cos(angle) * radius));
-      dot.setAttribute('cy', String(CENTRE + Math.sin(angle) * radius));
-    }
+    const angle = value * TAU - Math.PI / 2;
+    dot.setAttribute('cx', String(CENTRE + Math.cos(angle) * radius));
+    dot.setAttribute('cy', String(CENTRE + Math.sin(angle) * radius));
   }
 
   function getDayName(hour) {
-    if (hour < 5) return 'deep night';
+    if (hour < 5) return 'deep rest';
     if (hour < 8) return 'first light';
     if (hour < 12) return 'rising day';
     if (hour < 15) return 'high day';
-    if (hour < 18) return 'falling light';
+    if (hour < 18) return 'softfall light';
     if (hour < 21) return 'lampkindle';
     return 'moonrise';
   }
 
-  function getWaterName(value) {
-    if (value > 0.82) return 'twin pull';
-    if (value > 0.62) return 'flood rise';
+  function getRiverName(value) {
+    if (value > 0.82) return 'twin joining';
+    if (value > 0.62) return 'full river rise';
     if (value > 0.42) return 'first lift';
-    if (value > 0.22) return 'moon-slack';
-    return 'low-water showing';
+    if (value > 0.22) return 'moon calm';
+    return 'clear-water showing';
   }
 
   function tick() {
@@ -293,19 +219,19 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
     const utcMinute = now.getUTCMinutes();
     const startOfYear = Date.UTC(utcYear, 0, 1);
     const startOfNextYear = Date.UTC(utcYear + 1, 0, 1);
-    const season = fractionBetween(now.getTime(), startOfYear, startOfNextYear);
+    const seasonProgress = fractionBetween(now.getTime(), startOfYear, startOfNextYear);
     const day = (utcHour + utcMinute / 60) / 24;
     const aelun = cycleFraction(now, 29.5, 2);
     const saelith = cycleFraction(now, 71, 19);
     const water = (Math.sin(aelun * TAU) + Math.sin(saelith * TAU) + 2) / 4;
-    const [vaelinyaMonth, arc] = MONTHS[now.getUTCMonth()];
+    const seasonName = SEASONS[Math.min(3, Math.floor(seasonProgress * 4))];
     const dayName = getDayName(utcHour);
-    const waterName = getWaterName(water);
+    const riverName = getRiverName(water);
 
-    setRing('season', season);
+    setRing('season', seasonProgress);
     setRing('water', water);
     setRing('day', day);
-    setDot('season', season, RADIUS.season);
+    setDot('season', seasonProgress, RADIUS.season);
     setDot('aelun', aelun, RADIUS.moons);
     setDot('saelith', saelith, RADIUS.moons);
     setDot('water', water, RADIUS.water);
@@ -316,11 +242,10 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
       waterThread.setAttribute('d', `M 106 180 Q 132 ${180 - lift} 154 180 T 202 180 T 254 180`);
     }
 
-    if (centreWord) centreWord.textContent = arc;
+    if (centreWord) centreWord.textContent = seasonName;
     if (dayPartValue) dayPartValue.textContent = titleCase(dayName);
-    if (monthValue) monthValue.textContent = vaelinyaMonth;
-    if (arcValue) arcValue.textContent = arc;
-    if (riverValue) riverValue.textContent = titleCase(waterName);
+    if (seasonValue) seasonValue.textContent = seasonName;
+    if (riverValue) riverValue.textContent = titleCase(riverName);
   }
 
   tick();
@@ -328,24 +253,12 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
 </script>
 
 <style>
-  .listening-clock-page {
-    box-sizing: border-box;
-    margin-inline: auto;
-    max-width: min(1180px, calc(100vw - 2rem));
-    width: 100%;
-  }
-
-  .listening-clock-page > .lede,
-  .listening-clock-page > p:not(.eyebrow) {
-    max-width: 58rem;
-  }
+  .listening-clock-page { box-sizing: border-box; margin-inline: auto; max-width: min(1180px, calc(100vw - 2rem)); width: 100%; }
+  .listening-clock-page > .lede, .listening-clock-page > p:not(.eyebrow) { max-width: 58rem; }
 
   .clock-artefact {
     align-items: center;
-    background:
-      radial-gradient(circle at 78% 18%, rgba(255, 248, 220, 0.32), transparent 25%),
-      radial-gradient(circle at 12% 84%, rgba(83, 151, 139, 0.24), transparent 34%),
-      linear-gradient(145deg, rgba(42, 29, 55, 0.98), rgba(87, 67, 91, 0.94) 58%, rgba(49, 70, 69, 0.92));
+    background: radial-gradient(circle at 78% 18%, rgba(255, 248, 220, 0.32), transparent 25%), radial-gradient(circle at 12% 84%, rgba(83, 151, 139, 0.24), transparent 34%), linear-gradient(145deg, rgba(42, 29, 55, 0.98), rgba(87, 67, 91, 0.94) 58%, rgba(49, 70, 69, 0.92));
     border: 1px solid rgba(255, 248, 220, 0.28);
     border-radius: 2.2rem;
     box-shadow: 0 1.4rem 3.4rem rgba(36, 28, 48, 0.22);
@@ -359,466 +272,67 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
     position: relative;
   }
 
-  .clock-artefact::before {
-    background:
-      radial-gradient(circle at 50% 50%, transparent 0 36%, rgba(255, 248, 220, 0.05) 36.4% 37%, transparent 37.4%),
-      radial-gradient(circle at 50% 50%, transparent 0 55%, rgba(255, 248, 220, 0.035) 55.4% 56%, transparent 56.4%);
-    content: '';
-    inset: 0;
-    opacity: 0.85;
-    pointer-events: none;
-    position: absolute;
-  }
-
-  .clock-copy,
-  .clock-shell {
-    position: relative;
-    z-index: 1;
-  }
-
-  .clock-copy .eyebrow,
-  .story-callout .eyebrow {
-    color: rgba(255, 248, 220, 0.82);
-  }
-
-  .clock-copy h2 {
-    color: #fff8dc;
-    font-size: clamp(2rem, 4.3vw, 3.5rem);
-    letter-spacing: -0.04em;
-    line-height: 0.98;
-    margin-bottom: 1rem;
-  }
-
-  .clock-copy p {
-    color: rgba(255, 248, 220, 0.9);
-    font-size: 1.05rem;
-  }
-
-  .clock-start-list {
-    display: grid;
-    gap: 0.5rem;
-    margin: 1rem 0 0;
-    padding-left: 1.25rem;
-  }
-
-  .clock-start-list li {
-    color: rgba(255, 248, 220, 0.92);
-    line-height: 1.45;
-  }
-
-  .clock-start-list strong {
-    color: #fff8dc;
-  }
-
-  .clock-reading {
-    background: rgba(255, 248, 220, 0.14);
-    border: 1px solid rgba(255, 248, 220, 0.22);
-    border-radius: 1.15rem;
-    display: grid;
-    gap: 0.55rem;
-    margin-top: 1.25rem;
-    max-width: 24rem;
-    padding: 0.85rem 1rem;
-  }
-
-  .clock-reading-title {
-    color: #fff8dc !important;
-    font-size: 0.78rem !important;
-    font-weight: 900;
-    letter-spacing: 0.12em;
-    line-height: 1.2;
-    margin: 0 !important;
-    text-transform: uppercase;
-  }
-
-  .clock-reading-grid {
-    display: grid;
-    gap: 0.3rem;
-    margin: 0;
-  }
-
-  .clock-reading-row {
-    align-items: baseline;
-    border-top: 1px solid rgba(255, 248, 220, 0.14);
-    display: grid;
-    gap: 0.75rem;
-    grid-template-columns: minmax(5.5rem, 0.72fr) minmax(0, 1fr);
-    padding-top: 0.35rem;
-  }
-
-  .clock-reading-row:first-child {
-    border-top: 0;
-    padding-top: 0;
-  }
-
-  .clock-reading-row dt,
-  .clock-reading-row dd {
-    margin: 0;
-  }
-
-  .clock-reading-row dt {
-    color: rgba(255, 248, 220, 0.72);
-    font-size: 0.86rem;
-    font-weight: 800;
-    line-height: 1.2;
-  }
-
-  .clock-reading-row dd {
-    color: #fff8dc;
-    font-size: 1rem;
-    font-weight: 950;
-    line-height: 1.2;
-    text-align: right;
-  }
-
-  .clock-shell {
-    align-items: center;
-    aspect-ratio: 1;
-    display: grid;
-    justify-items: center;
-    margin-inline: auto;
-    max-width: 560px;
-    width: 100%;
-  }
-
-  .clock-glow {
-    animation: listening-glow 10s ease-in-out infinite;
-    background: radial-gradient(circle, rgba(255, 248, 220, 0.2), rgba(116, 164, 148, 0.14) 38%, transparent 70%);
-    border-radius: 50%;
-    filter: blur(0.28rem);
-    grid-area: 1 / 1;
-    height: 100%;
-    width: 100%;
-  }
-
-  .listening-clock {
-    filter: drop-shadow(0 1rem 2rem rgba(18, 12, 24, 0.32));
-    grid-area: 1 / 1;
-    height: auto;
-    max-height: 560px;
-    width: min(100%, 560px);
-  }
-
-  .clock-key {
-    align-self: end;
-    background: rgba(255, 248, 220, 0.12);
-    border: 1px solid rgba(255, 248, 220, 0.18);
-    border-radius: 999px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem 0.9rem;
-    grid-area: 1 / 1;
-    justify-content: center;
-    margin-bottom: 0.15rem;
-    padding: 0.55rem 0.8rem;
-    z-index: 2;
-  }
-
-  .clock-key span {
-    align-items: center;
-    color: rgba(255, 248, 220, 0.92);
-    display: inline-flex;
-    font-size: 0.86rem;
-    font-weight: 900;
-    gap: 0.35rem;
-    line-height: 1;
-  }
-
-  .key-mark {
-    border-radius: 999px;
-    display: inline-block;
-    height: 0.65rem;
-    width: 0.65rem;
-  }
-
-  .season-key { background: #e7cbff; }
-  .moon-key { background: #fff8dc; }
-  .water-key { background: #77d3d3; }
-  .day-key { background: #ffe899; }
-
-  .clock-plate {
-    fill: rgba(255, 248, 220, 0.08);
-    stroke: rgba(255, 248, 220, 0.16);
-    stroke-width: 1.5;
-  }
-
-  .clock-rim,
-  .path,
-  .path-progress {
-    fill: none;
-    transform: rotate(-90deg);
-    transform-origin: 180px 180px;
-  }
-
-  .clock-rim {
-    stroke: rgba(255, 248, 220, 0.36);
-    stroke-width: 2.5;
-  }
-
-  .path {
-    stroke: rgba(255, 248, 220, 0.16);
-    stroke-width: 4.5;
-  }
-
-  .path-moons {
-    stroke-dasharray: 2 10;
-    stroke-linecap: round;
-  }
-
-  .path-water {
-    stroke: rgba(119, 197, 190, 0.24);
-  }
-
-  .path-progress {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-    stroke-linecap: round;
-    transition: stroke-dashoffset 900ms ease;
-  }
-
-  .season-progress {
-    stroke: rgba(231, 203, 255, 0.72);
-    stroke-width: 5.5;
-  }
-
-  .water-progress {
-    stroke: rgba(119, 211, 211, 0.78);
-    stroke-width: 5;
-  }
-
-  .day-progress {
-    stroke: rgba(255, 232, 153, 0.78);
-    stroke-width: 4.5;
-  }
-
-  .moving-mark {
-    stroke: rgba(42, 29, 55, 0.82);
-    stroke-width: 1.8;
-  }
-
-  .season-mark {
-    fill: #e7cbff;
-  }
-
-  .moon-mark {
-    filter: drop-shadow(0 0 0.55rem rgba(255, 248, 220, 0.72));
-    stroke-width: 2;
-  }
-
-  .aelun-mark {
-    fill: #fff8dc;
-  }
-
-  .saelith-mark {
-    fill: #bec8ff;
-  }
-
-  .water-mark {
-    fill: #77d3d3;
-    filter: drop-shadow(0 0 0.55rem rgba(119, 211, 211, 0.66));
-  }
-
-  .day-mark {
-    fill: #ffe899;
-  }
-
-  .water-thread {
-    fill: none;
-    stroke: rgba(119, 211, 211, 0.48);
-    stroke-linecap: round;
-    stroke-width: 2.5;
-    transition: d 900ms ease;
-  }
-
-  .clock-centre {
-    fill: rgba(255, 248, 220, 0.15);
-    stroke: rgba(255, 248, 220, 0.34);
-    stroke-width: 2;
-  }
-
-  .clock-centre-ring {
-    fill: rgba(42, 29, 55, 0.58);
-    stroke: rgba(255, 248, 220, 0.22);
-    stroke-width: 1.5;
-  }
-
-  .clock-centre-glyph,
-  .clock-centre-word {
-    fill: #fff8dc;
-    font-family: inherit;
-  }
-
-  .clock-centre-glyph {
-    font-size: 2rem;
-    font-weight: 800;
-  }
-
-  .clock-centre-word {
-    font-size: 0.78rem;
-    font-weight: 900;
-    letter-spacing: 0.08em;
-  }
-
-  .read-clock-panel,
-  .name-guide-panel {
-    margin-top: 1rem;
-  }
-
-  .reading-grid,
-  .name-guide-grid {
-    display: grid;
-    gap: 1rem;
-    margin-top: 1.25rem;
-  }
-
-  .reading-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .name-guide-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .reading-grid section,
-  .name-card {
-    background: rgba(255, 255, 255, 0.68);
-    border: 1px solid rgba(68, 44, 88, 0.14);
-    border-radius: 1.1rem;
-    padding: 1rem;
-  }
-
-  .reading-grid h3,
-  .name-card h3 {
-    color: #2b3137;
-    margin-top: 0;
-  }
-
-  .reading-grid p,
-  .name-card p {
-    margin-bottom: 0;
-  }
-
-  .name-guide-intro {
-    max-width: 58rem;
-  }
-
-  .name-card-wide {
-    grid-column: 1 / -1;
-  }
-
-  .name-card-label {
-    color: rgba(43, 49, 55, 0.68);
-    font-size: 0.78rem;
-    font-weight: 900;
-    letter-spacing: 0.08em;
-    margin: 0 0 0.4rem !important;
-    text-transform: uppercase;
-  }
-
-  .name-list {
-    display: grid;
-    gap: 0.35rem;
-    margin: 0.8rem 0 0;
-    padding-left: 1.25rem;
-  }
-
-  .name-list li {
-    line-height: 1.35;
-  }
-
-  .month-name-grid {
-    display: grid;
-    gap: 0.65rem;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-top: 0.95rem;
-  }
-
-  .month-name-grid div {
-    background: rgba(255, 248, 220, 0.58);
-    border: 1px solid rgba(68, 44, 88, 0.1);
-    border-radius: 0.85rem;
-    display: grid;
-    gap: 0.25rem;
-    padding: 0.75rem;
-  }
-
-  .month-name-grid strong {
-    color: #2b3137;
-  }
-
-  .month-name-grid span {
-    line-height: 1.35;
-  }
-
-  .story-callout {
-    margin-top: 1rem;
-  }
-
-  @keyframes listening-glow {
-    0%, 100% {
-      opacity: 0.7;
-      transform: scale(0.985);
-    }
-    50% {
-      opacity: 1;
-      transform: scale(1.025);
-    }
-  }
-
-  @media (max-width: 960px) {
-    .clock-artefact {
-      grid-template-columns: 1fr;
-    }
-
-    .clock-copy h2 {
-      font-size: clamp(2.25rem, 12vw, 3.8rem);
-    }
-
-    .reading-grid,
-    .name-guide-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-
-  @media (max-width: 620px) {
-    .listening-clock-page {
-      max-width: min(100%, calc(100vw - 1rem));
-    }
-
-    .clock-artefact {
-      border-radius: 1.35rem;
-      padding: 1rem;
-    }
-
-    .clock-key {
-      border-radius: 1rem;
-      margin-bottom: -0.2rem;
-    }
-
-    .clock-reading-row {
-      grid-template-columns: 1fr;
-      gap: 0.15rem;
-    }
-
-    .clock-reading-row dd {
-      text-align: left;
-    }
-
-    .reading-grid,
-    .name-guide-grid,
-    .month-name-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .clock-glow {
-      animation: none;
-    }
-
-    .path-progress,
-    .water-thread {
-      transition: none;
-    }
-  }
+  .clock-copy, .clock-shell { position: relative; z-index: 1; }
+  .clock-copy .eyebrow, .story-callout .eyebrow { color: rgba(255, 248, 220, 0.82); }
+  .clock-copy h2 { color: #fff8dc; font-size: clamp(2rem, 4.3vw, 3.5rem); letter-spacing: -0.04em; line-height: 0.98; margin-bottom: 1rem; }
+  .clock-copy p, .clock-start-list li { color: rgba(255, 248, 220, 0.92); }
+  .clock-start-list { display: grid; gap: 0.5rem; margin: 1rem 0 0; padding-left: 1.25rem; }
+  .clock-start-list strong { color: #fff8dc; }
+
+  .clock-reading { background: rgba(255, 248, 220, 0.14); border: 1px solid rgba(255, 248, 220, 0.22); border-radius: 1.15rem; display: grid; gap: 0.55rem; margin-top: 1.25rem; max-width: 24rem; padding: 0.85rem 1rem; }
+  .clock-reading-title { color: #fff8dc !important; font-size: 0.78rem !important; font-weight: 900; letter-spacing: 0.12em; line-height: 1.2; margin: 0 !important; text-transform: uppercase; }
+  .clock-reading-grid { display: grid; gap: 0.3rem; margin: 0; }
+  .clock-reading-grid div { align-items: baseline; border-top: 1px solid rgba(255, 248, 220, 0.14); display: grid; gap: 0.75rem; grid-template-columns: minmax(5.5rem, 0.72fr) minmax(0, 1fr); padding-top: 0.35rem; }
+  .clock-reading-grid div:first-child { border-top: 0; padding-top: 0; }
+  .clock-reading-grid dt, .clock-reading-grid dd { margin: 0; }
+  .clock-reading-grid dt { color: rgba(255, 248, 220, 0.72); font-size: 0.86rem; font-weight: 800; }
+  .clock-reading-grid dd { color: #fff8dc; font-weight: 950; text-align: right; }
+
+  .clock-shell { align-items: center; aspect-ratio: 1; display: grid; justify-items: center; margin-inline: auto; max-width: 560px; width: 100%; }
+  .clock-glow { animation: listening-glow 10s ease-in-out infinite; background: radial-gradient(circle, rgba(255, 248, 220, 0.2), rgba(116, 164, 148, 0.14) 38%, transparent 70%); border-radius: 50%; filter: blur(0.28rem); grid-area: 1 / 1; height: 100%; width: 100%; }
+  .listening-clock { filter: drop-shadow(0 1rem 2rem rgba(18, 12, 24, 0.32)); grid-area: 1 / 1; height: auto; max-height: 560px; width: min(100%, 560px); }
+  .clock-key { align-self: end; background: rgba(255, 248, 220, 0.12); border: 1px solid rgba(255, 248, 220, 0.18); border-radius: 999px; display: flex; flex-wrap: wrap; gap: 0.6rem 0.9rem; grid-area: 1 / 1; justify-content: center; margin-bottom: 0.15rem; padding: 0.55rem 0.8rem; z-index: 2; }
+  .clock-key span { align-items: center; color: rgba(255, 248, 220, 0.92); display: inline-flex; font-size: 0.86rem; font-weight: 900; gap: 0.35rem; line-height: 1; }
+  .key-mark { border-radius: 999px; display: inline-block; height: 0.65rem; width: 0.65rem; }
+  .season-key { background: #e7cbff; } .moon-key { background: #fff8dc; } .water-key { background: #77d3d3; } .day-key { background: #ffe899; }
+
+  .clock-plate { fill: rgba(255, 248, 220, 0.08); stroke: rgba(255, 248, 220, 0.16); stroke-width: 1.5; }
+  .clock-rim, .path, .path-progress { fill: none; transform: rotate(-90deg); transform-origin: 180px 180px; }
+  .clock-rim { stroke: rgba(255, 248, 220, 0.36); stroke-width: 2.5; }
+  .path { stroke: rgba(255, 248, 220, 0.16); stroke-width: 4.5; }
+  .path-moons { stroke-dasharray: 2 10; stroke-linecap: round; }
+  .path-water { stroke: rgba(119, 197, 190, 0.24); }
+  .path-progress { stroke-dasharray: 1; stroke-dashoffset: 1; stroke-linecap: round; transition: stroke-dashoffset 900ms ease; }
+  .season-progress { stroke: rgba(231, 203, 255, 0.72); stroke-width: 5.5; }
+  .water-progress { stroke: rgba(119, 211, 211, 0.78); stroke-width: 5; }
+  .day-progress { stroke: rgba(255, 232, 153, 0.78); stroke-width: 4.5; }
+  .moving-mark { stroke: rgba(42, 29, 55, 0.82); stroke-width: 1.8; }
+  .season-mark { fill: #e7cbff; }
+  .moon-mark { filter: drop-shadow(0 0 0.55rem rgba(255, 248, 220, 0.72)); stroke-width: 2; }
+  .aelun-mark { fill: #fff8dc; } .saelith-mark { fill: #bec8ff; }
+  .water-mark { fill: #77d3d3; filter: drop-shadow(0 0 0.55rem rgba(119, 211, 211, 0.66)); }
+  .day-mark { fill: #ffe899; }
+  .water-thread { fill: none; stroke: rgba(119, 211, 211, 0.48); stroke-linecap: round; stroke-width: 2.5; transition: d 900ms ease; }
+  .clock-centre { fill: rgba(255, 248, 220, 0.15); stroke: rgba(255, 248, 220, 0.34); stroke-width: 2; }
+  .clock-centre-ring { fill: rgba(42, 29, 55, 0.58); stroke: rgba(255, 248, 220, 0.22); stroke-width: 1.5; }
+  .clock-centre-glyph, .clock-centre-word { fill: #fff8dc; font-family: inherit; }
+  .clock-centre-glyph { font-size: 2rem; font-weight: 800; }
+  .clock-centre-word { font-size: 0.78rem; font-weight: 900; letter-spacing: 0.08em; }
+
+  .read-clock-panel, .name-guide-panel, .story-callout { margin-top: 1rem; }
+  .reading-grid, .name-guide-grid { display: grid; gap: 1rem; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 1.25rem; }
+  .name-guide-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .reading-grid section, .name-card { background: rgba(255, 255, 255, 0.68); border: 1px solid rgba(68, 44, 88, 0.14); border-radius: 1.1rem; padding: 1rem; }
+  .reading-grid h3, .name-card h3 { color: #2b3137; margin-top: 0; }
+  .reading-grid p, .name-card p { margin-bottom: 0; }
+  .name-guide-intro { max-width: 58rem; }
+  .name-card-label { color: rgba(43, 49, 55, 0.68); font-size: 0.78rem; font-weight: 900; letter-spacing: 0.08em; margin: 0 0 0.4rem !important; text-transform: uppercase; }
+  .name-list { display: grid; gap: 0.35rem; margin: 0.8rem 0 0; padding-left: 1.25rem; }
+  .name-list li { line-height: 1.35; }
+
+  @keyframes listening-glow { 0%, 100% { opacity: 0.7; transform: scale(0.985); } 50% { opacity: 1; transform: scale(1.025); } }
+
+  @media (max-width: 960px) { .clock-artefact { grid-template-columns: 1fr; } .reading-grid, .name-guide-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 620px) { .listening-clock-page { max-width: min(100%, calc(100vw - 1rem)); } .clock-artefact { border-radius: 1.35rem; padding: 1rem; } .clock-key { border-radius: 1rem; margin-bottom: -0.2rem; } .clock-reading-grid div { grid-template-columns: 1fr; gap: 0.15rem; } .clock-reading-grid dd { text-align: left; } .reading-grid, .name-guide-grid { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .clock-glow { animation: none; } .path-progress, .water-thread { transition: none; } }
 </style>
