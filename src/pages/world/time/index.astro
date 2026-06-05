@@ -165,6 +165,7 @@ const description = 'How Vaelinya reads time through light, water, moons, season
 
 <style>
   .time-hub {
+    --time-page-pad: clamp(1.2rem, 2.35vw, 2rem);
     box-sizing: border-box;
     margin-inline: auto;
     max-width: min(1320px, calc(100vw - 2rem));
@@ -187,9 +188,10 @@ const description = 'How Vaelinya reads time through light, water, moons, season
 
   .river-time-hero {
     background: rgba(255, 255, 255, 0.72);
-    border: 1px solid rgba(68, 44, 88, 0.14);
-    border-radius: 1.1rem;
-    margin: 1rem 0;
+    border-block: 1px solid rgba(68, 44, 88, 0.14);
+    border-inline: 0;
+    border-radius: 0;
+    margin: 1rem calc(var(--time-page-pad) * -1);
     overflow: hidden;
     padding: 0;
   }
@@ -207,7 +209,7 @@ const description = 'How Vaelinya reads time through light, water, moons, season
     font-weight: 800;
     line-height: 1.45;
     margin: 0;
-    padding: 0.85rem 1rem 1rem;
+    padding: 0.85rem var(--time-page-pad) 1rem;
   }
 
   .time-jump-list {
