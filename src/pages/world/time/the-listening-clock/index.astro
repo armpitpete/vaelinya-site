@@ -21,7 +21,27 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
           <li><strong>River path:</strong> how strongly the moons are pulling the water.</li>
           <li><strong>Inner path:</strong> the current part of the day.</li>
         </ol>
-        <p class="clock-reading" id="clock-reading" aria-live="polite">Current reading will appear here.</p>
+        <div class="clock-reading" aria-live="polite">
+          <p class="clock-reading-title">Current reading</p>
+          <dl class="clock-reading-grid">
+            <div class="clock-reading-row">
+              <dt>Day part</dt>
+              <dd id="clock-day-part">—</dd>
+            </div>
+            <div class="clock-reading-row">
+              <dt>Month</dt>
+              <dd id="clock-month">—</dd>
+            </div>
+            <div class="clock-reading-row">
+              <dt>Arc</dt>
+              <dd id="clock-arc">—</dd>
+            </div>
+            <div class="clock-reading-row">
+              <dt>River</dt>
+              <dd id="clock-river">—</dd>
+            </div>
+          </dl>
+        </div>
       </div>
 
       <div class="clock-shell" aria-label="A live Vaelinyan Listening Clock showing four visible movements: the seasonal arc, the two moons, the river, and the day.">
@@ -133,9 +153,12 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
 
   const rings = new Map(Array.from(document.querySelectorAll('[data-ring]')).map((node) => [node.dataset.ring, node]));
   const dots = new Map(Array.from(document.querySelectorAll('[data-dot]')).map((node) => [node.dataset.dot, node]));
-  const reading = document.querySelector('#clock-reading');
   const centreWord = document.querySelector('#clock-centre-word');
   const waterThread = document.querySelector('#water-thread');
+  const dayPartValue = document.querySelector('#clock-day-part');
+  const monthValue = document.querySelector('#clock-month');
+  const arcValue = document.querySelector('#clock-arc');
+  const riverValue = document.querySelector('#clock-river');
 
   function clamp01(value) {
     return Math.max(0, Math.min(1, value));
@@ -149,6 +172,10 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
     const epoch = Date.UTC(2026, 0, 1);
     const elapsedDays = (now.getTime() - epoch) / 86400000;
     return ((elapsedDays + offsetDays) / cycleDays) % 1;
+  }
+
+  function titleCase(value) {
+    return value.replace(/\b\w/g, (letter) => letter.toUpperCase());
   }
 
   function setRing(name, progress) {
@@ -217,9 +244,10 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
     }
 
     if (centreWord) centreWord.textContent = arc;
-    if (reading) {
-      reading.textContent = `Current reading: day part = ${dayName}; month = ${vaelinyaMonth}; arc = ${arc}; river = ${waterName}.`;
-    }
+    if (dayPartValue) dayPartValue.textContent = titleCase(dayName);
+    if (monthValue) monthValue.textContent = vaelinyaMonth;
+    if (arcValue) arcValue.textContent = arc;
+    if (riverValue) riverValue.textContent = titleCase(waterName);
   }
 
   tick();
@@ -311,14 +339,63 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
 
   .clock-reading {
     background: rgba(255, 248, 220, 0.14);
-    border: 1px solid rgba(255, 248, 220, 0.2);
-    border-radius: 1rem;
-    color: #fff8dc !important;
-    display: block;
-    font-weight: 850;
-    line-height: 1.45;
+    border: 1px solid rgba(255, 248, 220, 0.22);
+    border-radius: 1.15rem;
+    display: grid;
+    gap: 0.55rem;
     margin-top: 1.25rem;
-    padding: 0.75rem 1rem;
+    max-width: 24rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .clock-reading-title {
+    color: #fff8dc !important;
+    font-size: 0.78rem !important;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+    margin: 0 !important;
+    text-transform: uppercase;
+  }
+
+  .clock-reading-grid {
+    display: grid;
+    gap: 0.3rem;
+    margin: 0;
+  }
+
+  .clock-reading-row {
+    align-items: baseline;
+    border-top: 1px solid rgba(255, 248, 220, 0.14);
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: minmax(5.5rem, 0.72fr) minmax(0, 1fr);
+    padding-top: 0.35rem;
+  }
+
+  .clock-reading-row:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .clock-reading-row dt,
+  .clock-reading-row dd {
+    margin: 0;
+  }
+
+  .clock-reading-row dt {
+    color: rgba(255, 248, 220, 0.72);
+    font-size: 0.86rem;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .clock-reading-row dd {
+    color: #fff8dc;
+    font-size: 1rem;
+    font-weight: 950;
+    line-height: 1.2;
+    text-align: right;
   }
 
   .clock-shell {
@@ -578,6 +655,15 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
     .clock-key {
       border-radius: 1rem;
       margin-bottom: -0.2rem;
+    }
+
+    .clock-reading-row {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+
+    .clock-reading-row dd {
+      text-align: left;
     }
 
     .reading-grid {
