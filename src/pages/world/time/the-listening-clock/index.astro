@@ -1,64 +1,53 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 
-const description = 'A Vaelinyan time artefact that gathers light, bells, water, seasons, and the two moons into one visible pattern.';
+const description = 'A Vaelinyan time artefact that gathers light, water, seasonal arcs, bells, and the two moons into one visible pattern.';
 ---
 <BaseLayout title="The Listening Clock" description={description}>
   <section class="page-section listening-clock-page">
     <p class="eyebrow">World · Time · Artefact</p>
     <h1>The Listening Clock</h1>
-    <p class="lede">The Listening Clock does not only count. It gathers signs.</p>
-    <p>Light, bell marks, water movement, the four seasonal arcs, and the two moons all pass through its face. A Timekeeper can read the clock as a pattern before reading it as a number.</p>
+    <p class="lede">The Listening Clock does not hurry. It listens for the shape of the moment.</p>
+    <p>Light, water, bells, the four seasonal arcs, and the two moons pass through its face. A Timekeeper reads the pattern first. The number comes later, if a number is needed at all.</p>
 
     <article class="clock-artefact" aria-labelledby="clock-title">
       <div class="clock-copy">
-        <p class="eyebrow">Visible pattern</p>
-        <h2 id="clock-title">What the clock is hearing now</h2>
-        <p>The outer rings turn slowly. The inner rings answer more quickly. The two moon paths do not match each other, so the water ring is never perfectly simple.</p>
+        <p class="eyebrow">Listening artefact</p>
+        <h2 id="clock-title">A clock that waits before it answers</h2>
+        <p>The old clocks do not show every small tick. They show the signs that matter: the year turning, the moons crossing, the river answering, and the day opening or closing.</p>
         <p class="clock-reading" id="clock-reading" aria-live="polite">The clock is listening.</p>
       </div>
 
-      <div class="clock-shell" aria-label="A live Vaelinyan Listening Clock showing rings for seconds, minutes, hours, year, two moons, and water pull.">
-        <div class="clock-halo" aria-hidden="true"></div>
+      <div class="clock-shell" aria-label="A live Vaelinyan Listening Clock showing four visible movements: the seasonal arc, the two moons, the river, and the day.">
+        <div class="clock-glow" aria-hidden="true"></div>
         <svg class="listening-clock" viewBox="0 0 360 360" role="img" aria-labelledby="clock-svg-title clock-svg-desc">
           <title id="clock-svg-title">The Listening Clock</title>
-          <desc id="clock-svg-desc">Concentric rings show the movement of the day, year, two moons, and river pull.</desc>
+          <desc id="clock-svg-desc">Four soft circular paths show the seasonal arc, the two moons, the river pull, and the local day.</desc>
 
-          <circle class="clock-back-ring" cx="180" cy="180" r="158" />
-          <circle class="clock-back-ring" cx="180" cy="180" r="136" />
-          <circle class="clock-back-ring" cx="180" cy="180" r="114" />
-          <circle class="clock-back-ring" cx="180" cy="180" r="92" />
-          <circle class="clock-back-ring" cx="180" cy="180" r="70" />
-          <circle class="clock-back-ring" cx="180" cy="180" r="48" />
+          <circle class="clock-plate" cx="180" cy="180" r="164" />
+          <circle class="clock-rim" cx="180" cy="180" r="158" />
 
-          <g class="ring-layer ring-year">
-            <circle data-ring="year" class="clock-progress" cx="180" cy="180" r="158" pathLength="1" />
-            <circle data-dot="year" class="clock-dot" r="4.5" />
-          </g>
-          <g class="ring-layer ring-aelun">
-            <circle data-ring="aelun" class="clock-progress" cx="180" cy="180" r="136" pathLength="1" />
-            <circle data-dot="aelun" class="clock-dot moon-dot" r="5.5" />
-          </g>
-          <g class="ring-layer ring-saelith">
-            <circle data-ring="saelith" class="clock-progress" cx="180" cy="180" r="114" pathLength="1" />
-            <circle data-dot="saelith" class="clock-dot moon-dot small" r="4" />
-          </g>
-          <g class="ring-layer ring-water">
-            <circle data-ring="water" class="clock-progress" cx="180" cy="180" r="92" pathLength="1" />
-            <circle data-dot="water" class="clock-dot water-dot" r="5" />
-          </g>
-          <g class="ring-layer ring-hour">
-            <circle data-ring="hour" class="clock-progress" cx="180" cy="180" r="70" pathLength="1" />
-            <circle data-dot="hour" class="clock-dot" r="4" />
-          </g>
-          <g class="ring-layer ring-minute">
-            <circle data-ring="minute" class="clock-progress" cx="180" cy="180" r="48" pathLength="1" />
-            <circle data-dot="minute" class="clock-dot" r="3.5" />
-          </g>
+          <circle class="path path-season" cx="180" cy="180" r="142" />
+          <circle class="path path-moons" cx="180" cy="180" r="111" />
+          <circle class="path path-water" cx="180" cy="180" r="82" />
+          <circle class="path path-day" cx="180" cy="180" r="54" />
 
-          <circle class="clock-centre" cx="180" cy="180" r="31" />
-          <text class="clock-centre-text" id="clock-centre-text" x="180" y="176" text-anchor="middle">LISTEN</text>
-          <text class="clock-centre-subtext" id="clock-centre-subtext" x="180" y="196" text-anchor="middle">--:--</text>
+          <circle data-ring="season" class="path-progress season-progress" cx="180" cy="180" r="142" pathLength="1" />
+          <circle data-ring="water" class="path-progress water-progress" cx="180" cy="180" r="82" pathLength="1" />
+          <circle data-ring="day" class="path-progress day-progress" cx="180" cy="180" r="54" pathLength="1" />
+
+          <circle data-dot="season" class="moving-mark season-mark" r="5" />
+          <circle data-dot="aelun" class="moving-mark moon-mark aelun-mark" r="7" />
+          <circle data-dot="saelith" class="moving-mark moon-mark saelith-mark" r="4.25" />
+          <circle data-dot="water" class="moving-mark water-mark" r="5.5" />
+          <circle data-dot="day" class="moving-mark day-mark" r="4.75" />
+
+          <path class="water-thread" id="water-thread" d="M 106 180 Q 132 168 154 180 T 202 180 T 254 180" />
+
+          <circle class="clock-centre" cx="180" cy="180" r="34" />
+          <circle class="clock-centre-ring" cx="180" cy="180" r="25" />
+          <text class="clock-centre-glyph" x="180" y="187" text-anchor="middle">✧</text>
+          <text class="clock-centre-word" id="clock-centre-word" x="180" y="226" text-anchor="middle">Listening</text>
         </svg>
       </div>
     </article>
@@ -68,28 +57,20 @@ const description = 'A Vaelinyan time artefact that gathers light, bells, water,
       <h2 id="read-clock-title">Read the large movements first</h2>
       <div class="reading-grid">
         <section>
-          <h3>Year ring</h3>
-          <p>Shows the long turn through Holding, Loosening, Opening, and Returning.</p>
+          <h3>Seasonal arc</h3>
+          <p>The outer path shows the long turn through Holding, Loosening, Opening, and Returning.</p>
         </section>
         <section>
-          <h3>Aelun</h3>
-          <p>The larger visible moon. Common counting follows this moon most often.</p>
+          <h3>Two moons</h3>
+          <p>Aelun and Saelith share one moon path. They rarely stand in the same place.</p>
         </section>
         <section>
-          <h3>Saelith</h3>
-          <p>The smaller, older-count moon. Its path is slower and less ordinary.</p>
+          <h3>River pull</h3>
+          <p>The water path answers the moons. When the pull strengthens, the river mark brightens.</p>
         </section>
         <section>
-          <h3>Water</h3>
-          <p>The river answers both moons. When the pulls meet, the water becomes more forceful.</p>
-        </section>
-        <section>
-          <h3>Hour and minute</h3>
-          <p>These are the quick rings. They help a Timekeeper place the local moment.</p>
-        </section>
-        <section>
-          <h3>Centre</h3>
-          <p>The centre gives a plain time so the artefact stays readable.</p>
+          <h3>Day path</h3>
+          <p>The inner path gives the local day-shape: first light, high day, falling light, lampkindle, or moonrise.</p>
         </section>
       </div>
     </article>
@@ -116,12 +97,10 @@ const description = 'A Vaelinyan time artefact that gathers light, bells, water,
   const TAU = Math.PI * 2;
   const CENTRE = 180;
   const RADIUS = {
-    year: 158,
-    aelun: 136,
-    saelith: 114,
-    water: 92,
-    hour: 70,
-    minute: 48,
+    season: 142,
+    moons: 111,
+    water: 82,
+    day: 54,
   };
 
   const MONTHS = [
@@ -142,8 +121,8 @@ const description = 'A Vaelinyan time artefact that gathers light, bells, water,
   const rings = new Map(Array.from(document.querySelectorAll('[data-ring]')).map((node) => [node.dataset.ring, node]));
   const dots = new Map(Array.from(document.querySelectorAll('[data-dot]')).map((node) => [node.dataset.dot, node]));
   const reading = document.querySelector('#clock-reading');
-  const centreText = document.querySelector('#clock-centre-text');
-  const centreSubtext = document.querySelector('#clock-centre-subtext');
+  const centreWord = document.querySelector('#clock-centre-word');
+  const waterThread = document.querySelector('#water-thread');
 
   function clamp01(value) {
     return Math.max(0, Math.min(1, value));
@@ -159,17 +138,20 @@ const description = 'A Vaelinyan time artefact that gathers light, bells, water,
     return ((elapsedDays + offsetDays) / cycleDays) % 1;
   }
 
-  function setProgress(name, progress) {
+  function setRing(name, progress) {
     const ring = rings.get(name);
-    const dot = dots.get(name);
-    const radius = RADIUS[name];
     const value = clamp01(progress);
 
     if (ring) {
       ring.style.strokeDashoffset = String(1 - value);
     }
+  }
 
-    if (dot && radius) {
+  function setDot(name, progress, radius) {
+    const dot = dots.get(name);
+    const value = clamp01(progress);
+
+    if (dot) {
       const angle = value * TAU - Math.PI / 2;
       dot.setAttribute('cx', String(CENTRE + Math.cos(angle) * radius));
       dot.setAttribute('cy', String(CENTRE + Math.sin(angle) * radius));
@@ -198,9 +180,8 @@ const description = 'A Vaelinyan time artefact that gathers light, bells, water,
     const now = new Date();
     const startOfYear = new Date(now.getFullYear(), 0, 1).getTime();
     const startOfNextYear = new Date(now.getFullYear() + 1, 0, 1).getTime();
-    const yearProgress = fractionBetween(now.getTime(), startOfYear, startOfNextYear);
-    const minuteProgress = (now.getMinutes() + now.getSeconds() / 60) / 60;
-    const hourProgress = (now.getHours() + now.getMinutes() / 60) / 24;
+    const season = fractionBetween(now.getTime(), startOfYear, startOfNextYear);
+    const day = (now.getHours() + now.getMinutes() / 60) / 24;
     const aelun = cycleFraction(now, 29.5, 2);
     const saelith = cycleFraction(now, 71, 19);
     const water = (Math.sin(aelun * TAU) + Math.sin(saelith * TAU) + 2) / 4;
@@ -208,27 +189,28 @@ const description = 'A Vaelinyan time artefact that gathers light, bells, water,
     const dayName = getDayName(now.getHours());
     const waterName = getWaterName(water);
 
-    setProgress('year', yearProgress);
-    setProgress('aelun', aelun);
-    setProgress('saelith', saelith);
-    setProgress('water', water);
-    setProgress('hour', hourProgress);
-    setProgress('minute', minuteProgress);
+    setRing('season', season);
+    setRing('water', water);
+    setRing('day', day);
+    setDot('season', season, RADIUS.season);
+    setDot('aelun', aelun, RADIUS.moons);
+    setDot('saelith', saelith, RADIUS.moons);
+    setDot('water', water, RADIUS.water);
+    setDot('day', day, RADIUS.day);
 
-    const plainTime = new Intl.DateTimeFormat('en-GB', {
-      hour: '2-digit',
-      minute: '2-digit',
-    }).format(now);
+    if (waterThread) {
+      const lift = Math.round(10 + water * 18);
+      waterThread.setAttribute('d', `M 106 180 Q 132 ${180 - lift} 154 180 T 202 180 T 254 180`);
+    }
 
-    if (centreText) centreText.textContent = arc.toUpperCase();
-    if (centreSubtext) centreSubtext.textContent = plainTime;
+    if (centreWord) centreWord.textContent = arc;
     if (reading) {
-      reading.textContent = `${dayName}. ${vaelinyaMonth}, in ${arc}. Water sign: ${waterName}.`;
+      reading.textContent = `${dayName}. ${vaelinyaMonth}. ${arc}. The river shows ${waterName}.`;
     }
   }
 
   tick();
-  window.setInterval(tick, 1000);
+  window.setInterval(tick, 4000);
 </script>
 
 <style>
@@ -247,16 +229,16 @@ const description = 'A Vaelinyan time artefact that gathers light, bells, water,
   .clock-artefact {
     align-items: center;
     background:
-      radial-gradient(circle at 74% 24%, rgba(255, 248, 220, 0.28), transparent 28%),
-      radial-gradient(circle at 18% 82%, rgba(69, 178, 199, 0.22), transparent 32%),
-      linear-gradient(135deg, rgba(35, 20, 54, 0.98), rgba(71, 48, 96, 0.95));
-    border: 1px solid rgba(255, 248, 220, 0.32);
-    border-radius: 2rem;
-    box-shadow: 0 1.5rem 4rem rgba(31, 17, 47, 0.22);
+      radial-gradient(circle at 78% 18%, rgba(255, 248, 220, 0.32), transparent 25%),
+      radial-gradient(circle at 12% 84%, rgba(83, 151, 139, 0.24), transparent 34%),
+      linear-gradient(145deg, rgba(42, 29, 55, 0.98), rgba(87, 67, 91, 0.94) 58%, rgba(49, 70, 69, 0.92));
+    border: 1px solid rgba(255, 248, 220, 0.28);
+    border-radius: 2.2rem;
+    box-shadow: 0 1.4rem 3.4rem rgba(36, 28, 48, 0.22);
     color: #fff8dc;
     display: grid;
     gap: clamp(1.25rem, 4vw, 3rem);
-    grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+    grid-template-columns: minmax(0, 0.86fr) minmax(300px, 1.14fr);
     margin: 2rem 0;
     overflow: hidden;
     padding: clamp(1.25rem, 4vw, 3rem);
@@ -265,11 +247,11 @@ const description = 'A Vaelinyan time artefact that gathers light, bells, water,
 
   .clock-artefact::before {
     background:
-      linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent),
-      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 42px);
+      radial-gradient(circle at 50% 50%, transparent 0 36%, rgba(255, 248, 220, 0.05) 36.4% 37%, transparent 37.4%),
+      radial-gradient(circle at 50% 50%, transparent 0 55%, rgba(255, 248, 220, 0.035) 55.4% 56%, transparent 56.4%);
     content: '';
     inset: 0;
-    opacity: 0.6;
+    opacity: 0.85;
     pointer-events: none;
     position: absolute;
   }
@@ -287,25 +269,26 @@ const description = 'A Vaelinyan time artefact that gathers light, bells, water,
 
   .clock-copy h2 {
     color: #fff8dc;
-    font-size: clamp(2rem, 5vw, 4rem);
-    letter-spacing: -0.04em;
-    line-height: 0.95;
+    font-size: clamp(2.05rem, 5vw, 4.2rem);
+    letter-spacing: -0.045em;
+    line-height: 0.96;
     margin-bottom: 1rem;
   }
 
   .clock-copy p {
-    color: rgba(255, 248, 220, 0.88);
+    color: rgba(255, 248, 220, 0.9);
     font-size: 1.05rem;
   }
 
   .clock-reading {
-    background: rgba(255, 248, 220, 0.12);
-    border: 1px solid rgba(255, 248, 220, 0.24);
-    border-radius: 1rem;
+    background: rgba(255, 248, 220, 0.14);
+    border: 1px solid rgba(255, 248, 220, 0.2);
+    border-radius: 999px;
     color: #fff8dc !important;
-    font-weight: 800;
+    display: inline-block;
+    font-weight: 850;
     margin-top: 1.25rem;
-    padding: 0.85rem 1rem;
+    padding: 0.7rem 1rem;
   }
 
   .clock-shell {
@@ -318,115 +301,145 @@ const description = 'A Vaelinyan time artefact that gathers light, bells, water,
     width: 100%;
   }
 
-  .clock-halo {
-    animation: listening-halo 8s ease-in-out infinite;
-    background: radial-gradient(circle, rgba(255, 248, 220, 0.18), rgba(111, 199, 214, 0.13) 36%, transparent 68%);
+  .clock-glow {
+    animation: listening-glow 10s ease-in-out infinite;
+    background: radial-gradient(circle, rgba(255, 248, 220, 0.2), rgba(116, 164, 148, 0.14) 38%, transparent 70%);
     border-radius: 50%;
-    filter: blur(0.2rem);
+    filter: blur(0.28rem);
     grid-area: 1 / 1;
     height: 100%;
     width: 100%;
   }
 
   .listening-clock {
-    filter: drop-shadow(0 1rem 2rem rgba(0, 0, 0, 0.28));
+    filter: drop-shadow(0 1rem 2rem rgba(18, 12, 24, 0.32));
     grid-area: 1 / 1;
     height: auto;
     max-height: 560px;
     width: min(100%, 560px);
   }
 
-  .clock-back-ring,
-  .clock-progress {
+  .clock-plate {
+    fill: rgba(255, 248, 220, 0.08);
+    stroke: rgba(255, 248, 220, 0.16);
+    stroke-width: 1.5;
+  }
+
+  .clock-rim,
+  .path,
+  .path-progress {
     fill: none;
     transform: rotate(-90deg);
     transform-origin: 180px 180px;
   }
 
-  .clock-back-ring {
-    stroke: rgba(255, 248, 220, 0.13);
-    stroke-width: 7;
+  .clock-rim {
+    stroke: rgba(255, 248, 220, 0.36);
+    stroke-width: 2.5;
   }
 
-  .clock-progress {
-    stroke: #fff8dc;
+  .path {
+    stroke: rgba(255, 248, 220, 0.16);
+    stroke-width: 4.5;
+  }
+
+  .path-moons {
+    stroke-dasharray: 2 10;
+    stroke-linecap: round;
+  }
+
+  .path-water {
+    stroke: rgba(119, 197, 190, 0.24);
+  }
+
+  .path-progress {
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
     stroke-linecap: round;
-    stroke-width: 7;
-    transition: stroke-dashoffset 420ms linear;
+    transition: stroke-dashoffset 900ms ease;
   }
 
-  .ring-year .clock-progress,
-  .ring-year .clock-dot {
-    stroke: #d8b6ff;
-    fill: #d8b6ff;
+  .season-progress {
+    stroke: rgba(231, 203, 255, 0.72);
+    stroke-width: 5.5;
   }
 
-  .ring-aelun .clock-progress,
-  .ring-aelun .clock-dot {
-    stroke: #fff8dc;
-    fill: #fff8dc;
+  .water-progress {
+    stroke: rgba(119, 211, 211, 0.78);
+    stroke-width: 5;
   }
 
-  .ring-saelith .clock-progress,
-  .ring-saelith .clock-dot {
-    stroke: #b8c7ff;
-    fill: #b8c7ff;
+  .day-progress {
+    stroke: rgba(255, 232, 153, 0.78);
+    stroke-width: 4.5;
   }
 
-  .ring-water .clock-progress,
-  .ring-water .clock-dot {
-    stroke: #75d7e8;
-    fill: #75d7e8;
+  .moving-mark {
+    stroke: rgba(42, 29, 55, 0.82);
+    stroke-width: 1.8;
   }
 
-  .ring-hour .clock-progress,
-  .ring-hour .clock-dot {
-    stroke: #ffd7a6;
-    fill: #ffd7a6;
+  .season-mark {
+    fill: #e7cbff;
   }
 
-  .ring-minute .clock-progress,
-  .ring-minute .clock-dot {
-    stroke: #ffe97a;
-    fill: #ffe97a;
-  }
-
-  .clock-dot {
-    stroke: rgba(35, 20, 54, 0.75);
+  .moon-mark {
+    filter: drop-shadow(0 0 0.55rem rgba(255, 248, 220, 0.72));
     stroke-width: 2;
   }
 
-  .moon-dot {
-    filter: drop-shadow(0 0 0.55rem rgba(255, 248, 220, 0.75));
+  .aelun-mark {
+    fill: #fff8dc;
   }
 
-  .water-dot {
-    filter: drop-shadow(0 0 0.55rem rgba(117, 215, 232, 0.7));
+  .saelith-mark {
+    fill: #bec8ff;
+  }
+
+  .water-mark {
+    fill: #77d3d3;
+    filter: drop-shadow(0 0 0.55rem rgba(119, 211, 211, 0.66));
+  }
+
+  .day-mark {
+    fill: #ffe899;
+  }
+
+  .water-thread {
+    fill: none;
+    stroke: rgba(119, 211, 211, 0.48);
+    stroke-linecap: round;
+    stroke-width: 2.5;
+    transition: d 900ms ease;
   }
 
   .clock-centre {
-    fill: rgba(35, 20, 54, 0.92);
-    stroke: rgba(255, 248, 220, 0.3);
+    fill: rgba(255, 248, 220, 0.15);
+    stroke: rgba(255, 248, 220, 0.34);
     stroke-width: 2;
   }
 
-  .clock-centre-text,
-  .clock-centre-subtext {
+  .clock-centre-ring {
+    fill: rgba(42, 29, 55, 0.58);
+    stroke: rgba(255, 248, 220, 0.22);
+    stroke-width: 1.5;
+  }
+
+  .clock-centre-glyph,
+  .clock-centre-word {
     fill: #fff8dc;
     font-family: inherit;
+  }
+
+  .clock-centre-glyph {
+    font-size: 2rem;
+    font-weight: 800;
+  }
+
+  .clock-centre-word {
+    font-size: 0.78rem;
     font-weight: 900;
     letter-spacing: 0.08em;
-  }
-
-  .clock-centre-text {
-    font-size: 0.72rem;
-  }
-
-  .clock-centre-subtext {
-    font-size: 0.9rem;
-    opacity: 0.78;
   }
 
   .read-clock-panel {
@@ -436,12 +449,12 @@ const description = 'A Vaelinyan time artefact that gathers light, bells, water,
   .reading-grid {
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     margin-top: 1.25rem;
   }
 
   .reading-grid section {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.68);
     border: 1px solid rgba(68, 44, 88, 0.14);
     border-radius: 1.1rem;
     padding: 1rem;
@@ -460,24 +473,24 @@ const description = 'A Vaelinyan time artefact that gathers light, bells, water,
     margin-top: 1rem;
   }
 
-  @keyframes listening-halo {
+  @keyframes listening-glow {
     0%, 100% {
-      opacity: 0.72;
-      transform: scale(0.98);
+      opacity: 0.7;
+      transform: scale(0.985);
     }
     50% {
       opacity: 1;
-      transform: scale(1.03);
+      transform: scale(1.025);
     }
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 960px) {
     .clock-artefact {
       grid-template-columns: 1fr;
     }
 
     .clock-copy h2 {
-      font-size: clamp(2.2rem, 12vw, 4rem);
+      font-size: clamp(2.25rem, 12vw, 4.2rem);
     }
 
     .reading-grid {
@@ -495,17 +508,22 @@ const description = 'A Vaelinyan time artefact that gathers light, bells, water,
       padding: 1rem;
     }
 
+    .clock-reading {
+      border-radius: 1rem;
+    }
+
     .reading-grid {
       grid-template-columns: 1fr;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .clock-halo {
+    .clock-glow {
       animation: none;
     }
 
-    .clock-progress {
+    .path-progress,
+    .water-thread {
       transition: none;
     }
   }
