@@ -136,16 +136,25 @@ const description = 'How Vaelinya reads time through light, water, moons, season
       <p class="eyebrow">Follow the paths</p>
       <h2 id="time-paths-title">More time paths will open from here</h2>
       <div class="time-card-grid">
-        <section class="time-card">
-          <h3>Calendar</h3>
+        <section class="time-card time-card-coming-soon" aria-label="Calendar page coming soon">
+          <div class="time-card-heading-row">
+            <h3>Calendar</h3>
+            <span class="coming-soon-label">Coming soon</span>
+          </div>
           <p>The arcs, months, water-turns, and regional seasons of Vaelinya.</p>
         </section>
-        <section class="time-card">
-          <h3>The Two Moons</h3>
+        <section class="time-card time-card-coming-soon" aria-label="The Two Moons page coming soon">
+          <div class="time-card-heading-row">
+            <h3>The Two Moons</h3>
+            <span class="coming-soon-label">Coming soon</span>
+          </div>
           <p>Aelun, Saelith, moon-turns, river pull, alignments, and older reckonings.</p>
         </section>
-        <section class="time-card">
-          <h3>Local Counts</h3>
+        <section class="time-card time-card-coming-soon" aria-label="Local Counts page coming soon">
+          <div class="time-card-heading-row">
+            <h3>Local Counts</h3>
+            <span class="coming-soon-label">Coming soon</span>
+          </div>
           <p>How Timekeepers read light, shadow, water, and local signs before the bells are rung.</p>
         </section>
         <a class="time-card time-card-link" href="/world/time/the-listening-clock/">
@@ -302,6 +311,30 @@ const description = 'How Vaelinya reads time through light, water, moons, season
     border: 1px solid rgba(68, 44, 88, 0.14);
     border-radius: 1.1rem;
     padding: 1rem;
+  }
+
+  .time-card-heading-row {
+    align-items: start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    justify-content: space-between;
+  }
+
+  .coming-soon-label {
+    background: rgba(255, 248, 220, 0.86);
+    border: 1px solid rgba(68, 44, 88, 0.13);
+    border-radius: 999px;
+    color: #2b3137;
+    font-size: 0.72rem;
+    font-weight: 900;
+    line-height: 1.2;
+    padding: 0.25rem 0.55rem;
+    white-space: nowrap;
+  }
+
+  .time-card-coming-soon {
+    cursor: default;
   }
 
   .time-card-link {
