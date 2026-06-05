@@ -1,14 +1,14 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 
-const description = 'A clear guide to the Vaelinyan Listening Clock, a time artefact that shows the season, two moons, river pull, and day path.';
+const description = 'A clear guide to the Vaelinyan Listening Clock, a time artefact that shows one shared Vaelinya reading for every reader.';
 ---
 <BaseLayout title="The Listening Clock" description={description}>
   <section class="page-section listening-clock-page">
     <p class="eyebrow">World · Time · Artefact</p>
     <h1>The Listening Clock</h1>
     <p class="lede">This is a fictional Vaelinya clock. It does not work like an Earth clock.</p>
-    <p>Instead of showing seconds and exact minutes first, it shows four signs at once: the season, the two moons, the river pull, and the part of the day. Read the labels beside the clock first, then look at the moving marks.</p>
+    <p>Instead of showing seconds and exact minutes first, it shows four signs at once: the season, the two moons, the river pull, and the part of the day. This version uses one shared Earth reference time, UTC, so readers in different countries see the same Vaelinya reading.</p>
 
     <article class="clock-artefact" aria-labelledby="clock-title">
       <div class="clock-copy">
@@ -22,7 +22,7 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
           <li><strong>Inner path:</strong> the current part of the day.</li>
         </ol>
         <div class="clock-reading" aria-live="polite">
-          <p class="clock-reading-title">Current reading</p>
+          <p class="clock-reading-title">Current Vaelinya reading</p>
           <dl class="clock-reading-grid">
             <div class="clock-reading-row">
               <dt>Day part</dt>
@@ -48,7 +48,7 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
         <div class="clock-glow" aria-hidden="true"></div>
         <svg class="listening-clock" viewBox="0 0 360 360" role="img" aria-labelledby="clock-svg-title clock-svg-desc">
           <title id="clock-svg-title">The Listening Clock</title>
-          <desc id="clock-svg-desc">Four circular paths show the seasonal arc, the two moons, the river pull, and the local day.</desc>
+          <desc id="clock-svg-desc">Four circular paths show the seasonal arc, the two moons, the river pull, and the shared Vaelinya day.</desc>
 
           <circle class="clock-plate" cx="180" cy="180" r="164" />
           <circle class="clock-rim" cx="180" cy="180" r="158" />
@@ -103,7 +103,7 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
         </section>
         <section>
           <h3>Day</h3>
-          <p>The inner path shows the part of the day, such as first light, high day, falling light, lampkindle, or moonrise.</p>
+          <p>The inner path shows the shared Vaelinya day-part, such as first light, high day, falling light, lampkindle, or moonrise.</p>
         </section>
       </div>
     </article>
@@ -218,15 +218,18 @@ const description = 'A clear guide to the Vaelinyan Listening Clock, a time arte
 
   function tick() {
     const now = new Date();
-    const startOfYear = new Date(now.getFullYear(), 0, 1).getTime();
-    const startOfNextYear = new Date(now.getFullYear() + 1, 0, 1).getTime();
+    const utcYear = now.getUTCFullYear();
+    const utcHour = now.getUTCHours();
+    const utcMinute = now.getUTCMinutes();
+    const startOfYear = Date.UTC(utcYear, 0, 1);
+    const startOfNextYear = Date.UTC(utcYear + 1, 0, 1);
     const season = fractionBetween(now.getTime(), startOfYear, startOfNextYear);
-    const day = (now.getHours() + now.getMinutes() / 60) / 24;
+    const day = (utcHour + utcMinute / 60) / 24;
     const aelun = cycleFraction(now, 29.5, 2);
     const saelith = cycleFraction(now, 71, 19);
     const water = (Math.sin(aelun * TAU) + Math.sin(saelith * TAU) + 2) / 4;
-    const [vaelinyaMonth, arc] = MONTHS[now.getMonth()];
-    const dayName = getDayName(now.getHours());
+    const [vaelinyaMonth, arc] = MONTHS[now.getUTCMonth()];
+    const dayName = getDayName(utcHour);
     const waterName = getWaterName(water);
 
     setRing('season', season);
