@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const entries = await getCollection('history');
+const source = entries.find((entry) => entry.id === 'the-warm-remembering.md')?.data;
+const description = source?.description ?? 'How remembrance, care, and continuity are held in Vaelinya.';
+---
+
+<BaseLayout title="The Warm Remembering" description={description}>
+  <section class="page-section">
+    <p class="eyebrow">World · Culture</p>
+    <h1>The Warm Remembering</h1>
+    <p class="lede">The Warm Remembering is how Vaelinya keeps love, names, stories, and useful memory close.</p>
+    <p>It is not a dark practice. It is a warm one. It lets care continue through people, places, songs, objects, routes, and repeated acts.</p>
+
+    <article class="panel">
+      <p class="eyebrow">What it means</p>
+      <h2>Memory stays useful when care is passed onward</h2>
+      <p>In Vaelinya, remembering is not only looking back. A memory should help someone live, return, cross safely, speak truly, or understand why a place matters.</p>
+      <p>A name spoken carefully, a song repeated at the right time, a promise kept visible, or an object placed where others can recognise it can all become part of the Warm Remembering.</p>
+    </article>
+
+    <article class="panel">
+      <p class="eyebrow">Ordinary practice</p>
+      <h2>It belongs to daily life</h2>
+      <p>The Warm Remembering can belong to a household, a road, a route-house, a shared task, a bridge, a cloth-pattern, or a story told at the right time.</p>
+      <p>It does not need to be grand. A small repeated act can carry more care than a large formal record if people understand why it is done.</p>
+    </article>
+
+    <article class="panel">
+      <p class="eyebrow">Shared witness</p>
+      <h2>Some memories need more than one keeper</h2>
+      <p>Some things affect more than one person. A promise, route agreement, warning, kindness, or loss may need to be held where others can recognise it too.</p>
+      <p>This keeps memory from becoming private power. What matters should remain in a form that the people affected by it can understand and check.</p>
+    </article>
+
+    <article class="panel">
+      <p class="eyebrow">Lina thread</p>
+      <h2>Listening keeps things alive</h2>
+      <p>Lina is a useful first guide to this idea because she notices what is quiet, small, hidden, or nearly missed.</p>
+      <p>The Warm Remembering depends on that kind of attention. Something can only be carried forward if someone first notices that it matters.</p>
+    </article>
+
+    <div class="link-list">
+      <a href="/world/culture/">Back to Culture</a>
+      <a href="/language/lexicon/#word-naerith">naerith — lived memory-trace</a>
+      <a href="/read/lina/">Read Lina’s stories</a>
+      <a href="/world/">Back to World</a>
+    </div>
+  </section>
+</BaseLayout>
