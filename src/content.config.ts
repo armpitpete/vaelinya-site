@@ -25,4 +25,56 @@ const stories = defineCollection({
   }),
 });
 
-export const collections = { stories };
+const lexicon = defineCollection({
+  loader: glob({ base: './src/content/lexicon', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    word: z.string(),
+    vaelinya_form: z.string(),
+    meaning: z.string(),
+    pronunciation: z.string(),
+    pronunciation_ipa: z.string(),
+    family: z.string(),
+    status: z.string().default('public'),
+    public_url: z.string().optional(),
+    what: z.string(),
+    richer: z.string().optional(),
+    use: z.string(),
+    example: z.string(),
+    plain_english: z.string(),
+    related_stories: z.array(z.string()).default([]),
+    related_world: z.array(z.string()).default([]),
+    tags: z.array(z.string()).default([]),
+  }),
+});
+
+const history = defineCollection({
+  loader: glob({ base: './src/content/history', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    era: z.string(),
+    status: z.string().default('canon-seed'),
+    public_url: z.string().optional(),
+    related_world: z.array(z.string()).default([]),
+    related_language: z.array(z.string()).default([]),
+    related_stories: z.array(z.string()).default([]),
+    tags: z.array(z.string()).default([]),
+  }),
+});
+
+const world = defineCollection({
+  loader: glob({ base: './src/content/world', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    category: z.string(),
+    status: z.string().default('canon-seed'),
+    public_url: z.string().optional(),
+    related_language: z.array(z.string()).default([]),
+    related_history: z.array(z.string()).default([]),
+    related_stories: z.array(z.string()).default([]),
+    tags: z.array(z.string()).default([]),
+  }),
+});
+
+export const collections = { stories, lexicon, history, world };
