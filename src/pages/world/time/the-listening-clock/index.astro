@@ -1,28 +1,34 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 
-const description = 'A Vaelinyan time artefact that gathers light, water, seasonal arcs, bells, and the two moons into one visible pattern.';
+const description = 'A clear guide to the Vaelinyan Listening Clock, a time artefact that shows the season, two moons, river pull, and day path.';
 ---
 <BaseLayout title="The Listening Clock" description={description}>
   <section class="page-section listening-clock-page">
     <p class="eyebrow">World · Time · Artefact</p>
     <h1>The Listening Clock</h1>
-    <p class="lede">The Listening Clock does not hurry. It listens for the shape of the moment.</p>
-    <p>Light, water, bells, the four seasonal arcs, and the two moons pass through its face. A Timekeeper reads the pattern first. The number comes later, if a number is needed at all.</p>
+    <p class="lede">This is a fictional Vaelinya clock. It does not work like an Earth clock.</p>
+    <p>Instead of showing seconds and exact minutes first, it shows four signs at once: the season, the two moons, the river pull, and the part of the day. Read the labels beside the clock first, then look at the moving marks.</p>
 
     <article class="clock-artefact" aria-labelledby="clock-title">
       <div class="clock-copy">
-        <p class="eyebrow">Listening artefact</p>
-        <h2 id="clock-title">A clock that waits before it answers</h2>
-        <p>The old clocks do not show every small tick. They show the signs that matter: the year turning, the moons crossing, the river answering, and the day opening or closing.</p>
-        <p class="clock-reading" id="clock-reading" aria-live="polite">The clock is listening.</p>
+        <p class="eyebrow">Start here</p>
+        <h2 id="clock-title">Read the four signs</h2>
+        <p>Look from the outside of the clock towards the centre.</p>
+        <ol class="clock-start-list">
+          <li><strong>Outer ring:</strong> the seasonal arc.</li>
+          <li><strong>Moon path:</strong> Aelun and Saelith.</li>
+          <li><strong>River path:</strong> how strongly the moons are pulling the water.</li>
+          <li><strong>Inner path:</strong> the current part of the day.</li>
+        </ol>
+        <p class="clock-reading" id="clock-reading" aria-live="polite">Current reading will appear here.</p>
       </div>
 
       <div class="clock-shell" aria-label="A live Vaelinyan Listening Clock showing four visible movements: the seasonal arc, the two moons, the river, and the day.">
         <div class="clock-glow" aria-hidden="true"></div>
         <svg class="listening-clock" viewBox="0 0 360 360" role="img" aria-labelledby="clock-svg-title clock-svg-desc">
           <title id="clock-svg-title">The Listening Clock</title>
-          <desc id="clock-svg-desc">Four soft circular paths show the seasonal arc, the two moons, the river pull, and the local day.</desc>
+          <desc id="clock-svg-desc">Four circular paths show the seasonal arc, the two moons, the river pull, and the local day.</desc>
 
           <circle class="clock-plate" cx="180" cy="180" r="164" />
           <circle class="clock-rim" cx="180" cy="180" r="158" />
@@ -49,28 +55,35 @@ const description = 'A Vaelinyan time artefact that gathers light, water, season
           <text class="clock-centre-glyph" x="180" y="187" text-anchor="middle">✧</text>
           <text class="clock-centre-word" id="clock-centre-word" x="180" y="226" text-anchor="middle">Listening</text>
         </svg>
+
+        <div class="clock-key" aria-label="Clock key">
+          <span><i class="key-mark season-key"></i>Season</span>
+          <span><i class="key-mark moon-key"></i>Moons</span>
+          <span><i class="key-mark water-key"></i>River</span>
+          <span><i class="key-mark day-key"></i>Day</span>
+        </div>
       </div>
     </article>
 
     <article class="panel read-clock-panel" aria-labelledby="read-clock-title">
-      <p class="eyebrow">How to read this</p>
-      <h2 id="read-clock-title">Read the large movements first</h2>
+      <p class="eyebrow">What the parts mean</p>
+      <h2 id="read-clock-title">The clock is read from outside to inside</h2>
       <div class="reading-grid">
         <section>
-          <h3>Seasonal arc</h3>
-          <p>The outer path shows the long turn through Holding, Loosening, Opening, and Returning.</p>
+          <h3>Season</h3>
+          <p>The outer ring shows where the year is in the four arcs: Holding, Loosening, Opening, and Returning.</p>
         </section>
         <section>
-          <h3>Two moons</h3>
-          <p>Aelun and Saelith share one moon path. They rarely stand in the same place.</p>
+          <h3>Moons</h3>
+          <p>The two dots on the moon path are Aelun and Saelith. When they move closer together, their pull on the water is stronger.</p>
         </section>
         <section>
-          <h3>River pull</h3>
-          <p>The water path answers the moons. When the pull strengthens, the river mark brightens.</p>
+          <h3>River</h3>
+          <p>The river path shows the water pull. A stronger pull can mean flood rise, twin pull, or difficult crossing times.</p>
         </section>
         <section>
-          <h3>Day path</h3>
-          <p>The inner path gives the local day-shape: first light, high day, falling light, lampkindle, or moonrise.</p>
+          <h3>Day</h3>
+          <p>The inner path shows the part of the day, such as first light, high day, falling light, lampkindle, or moonrise.</p>
         </section>
       </div>
     </article>
@@ -78,9 +91,9 @@ const description = 'A Vaelinyan time artefact that gathers light, water, season
     <article class="visual-callout visual-callout-world story-callout">
       <div class="visual-callout-mark" aria-hidden="true"><span>◌</span></div>
       <div class="visual-callout-copy">
-        <p class="eyebrow">Story path</p>
+        <p class="eyebrow">Story note</p>
         <h2>The clock will belong to Lina too</h2>
-        <p>One day Lina will find a clock that waits instead of hurrying. For now, this page gives the artefact a place in the world.</p>
+        <p>One day Lina will find a clock that waits instead of hurrying. This page gives that artefact a clear place in the world first.</p>
       </div>
     </article>
 
@@ -205,7 +218,7 @@ const description = 'A Vaelinyan time artefact that gathers light, water, season
 
     if (centreWord) centreWord.textContent = arc;
     if (reading) {
-      reading.textContent = `${dayName}. ${vaelinyaMonth}. ${arc}. The river shows ${waterName}.`;
+      reading.textContent = `Current reading: day part = ${dayName}; month = ${vaelinyaMonth}; arc = ${arc}; river = ${waterName}.`;
     }
   }
 
@@ -238,7 +251,7 @@ const description = 'A Vaelinyan time artefact that gathers light, water, season
     color: #fff8dc;
     display: grid;
     gap: clamp(1.25rem, 4vw, 3rem);
-    grid-template-columns: minmax(0, 0.86fr) minmax(300px, 1.14fr);
+    grid-template-columns: minmax(0, 0.82fr) minmax(300px, 1.18fr);
     margin: 2rem 0;
     overflow: hidden;
     padding: clamp(1.25rem, 4vw, 3rem);
@@ -269,9 +282,9 @@ const description = 'A Vaelinyan time artefact that gathers light, water, season
 
   .clock-copy h2 {
     color: #fff8dc;
-    font-size: clamp(2.05rem, 5vw, 4.2rem);
-    letter-spacing: -0.045em;
-    line-height: 0.96;
+    font-size: clamp(2rem, 4.3vw, 3.5rem);
+    letter-spacing: -0.04em;
+    line-height: 0.98;
     margin-bottom: 1rem;
   }
 
@@ -280,15 +293,32 @@ const description = 'A Vaelinyan time artefact that gathers light, water, season
     font-size: 1.05rem;
   }
 
+  .clock-start-list {
+    display: grid;
+    gap: 0.5rem;
+    margin: 1rem 0 0;
+    padding-left: 1.25rem;
+  }
+
+  .clock-start-list li {
+    color: rgba(255, 248, 220, 0.92);
+    line-height: 1.45;
+  }
+
+  .clock-start-list strong {
+    color: #fff8dc;
+  }
+
   .clock-reading {
     background: rgba(255, 248, 220, 0.14);
     border: 1px solid rgba(255, 248, 220, 0.2);
-    border-radius: 999px;
+    border-radius: 1rem;
     color: #fff8dc !important;
-    display: inline-block;
+    display: block;
     font-weight: 850;
+    line-height: 1.45;
     margin-top: 1.25rem;
-    padding: 0.7rem 1rem;
+    padding: 0.75rem 1rem;
   }
 
   .clock-shell {
@@ -318,6 +348,43 @@ const description = 'A Vaelinyan time artefact that gathers light, water, season
     max-height: 560px;
     width: min(100%, 560px);
   }
+
+  .clock-key {
+    align-self: end;
+    background: rgba(255, 248, 220, 0.12);
+    border: 1px solid rgba(255, 248, 220, 0.18);
+    border-radius: 999px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 0.9rem;
+    grid-area: 1 / 1;
+    justify-content: center;
+    margin-bottom: 0.15rem;
+    padding: 0.55rem 0.8rem;
+    z-index: 2;
+  }
+
+  .clock-key span {
+    align-items: center;
+    color: rgba(255, 248, 220, 0.92);
+    display: inline-flex;
+    font-size: 0.86rem;
+    font-weight: 900;
+    gap: 0.35rem;
+    line-height: 1;
+  }
+
+  .key-mark {
+    border-radius: 999px;
+    display: inline-block;
+    height: 0.65rem;
+    width: 0.65rem;
+  }
+
+  .season-key { background: #e7cbff; }
+  .moon-key { background: #fff8dc; }
+  .water-key { background: #77d3d3; }
+  .day-key { background: #ffe899; }
 
   .clock-plate {
     fill: rgba(255, 248, 220, 0.08);
@@ -490,7 +557,7 @@ const description = 'A Vaelinyan time artefact that gathers light, water, season
     }
 
     .clock-copy h2 {
-      font-size: clamp(2.25rem, 12vw, 4.2rem);
+      font-size: clamp(2.25rem, 12vw, 3.8rem);
     }
 
     .reading-grid {
@@ -508,8 +575,9 @@ const description = 'A Vaelinyan time artefact that gathers light, water, season
       padding: 1rem;
     }
 
-    .clock-reading {
+    .clock-key {
       border-radius: 1rem;
+      margin-bottom: -0.2rem;
     }
 
     .reading-grid {
