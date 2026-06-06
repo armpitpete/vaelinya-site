@@ -247,12 +247,21 @@ const initialReading = states[initialState];
   }
 
   .vaelinya-live-hero[data-state="night"] .vlh-moon {
-    background: radial-gradient(circle, rgba(244, 249, 255, 0.98) 0 22%, rgba(176, 211, 255, 0.5) 44%, rgba(76, 124, 218, 0.16) 68%, transparent 76%);
-    box-shadow: 0 0 34px rgba(157, 197, 255, 0.32);
+    background:
+      radial-gradient(circle at 43% 39%, rgba(243, 248, 255, 0.86) 0 15%, rgba(203, 225, 255, 0.5) 31%, rgba(100, 146, 222, 0.18) 59%, transparent 78%),
+      radial-gradient(circle at 58% 62%, rgba(20, 50, 110, 0.18), transparent 56%);
+    box-shadow:
+      0 0 22px rgba(157, 197, 255, 0.22),
+      0 0 64px rgba(76, 124, 218, 0.08);
+    filter: blur(0.2px);
   }
 
   .vlh-moon-a {
     inset: 12% 14% auto auto;
+  }
+
+  .vaelinya-live-hero[data-state="night"] .vlh-moon-a {
+    opacity: 0.92;
   }
 
   .vlh-moon-b {
@@ -262,8 +271,14 @@ const initialReading = states[initialState];
   }
 
   .vaelinya-live-hero[data-state="night"] .vlh-moon-b {
-    opacity: 0.82;
-    box-shadow: 0 0 24px rgba(157, 197, 255, 0.24);
+    opacity: 0.62;
+    background:
+      radial-gradient(circle at 44% 40%, rgba(224, 238, 255, 0.68) 0 15%, rgba(146, 183, 238, 0.28) 42%, transparent 76%),
+      radial-gradient(circle at 62% 66%, rgba(11, 32, 78, 0.22), transparent 58%);
+    box-shadow:
+      0 0 18px rgba(157, 197, 255, 0.16),
+      0 0 40px rgba(76, 124, 218, 0.06);
+    filter: blur(0.35px);
   }
 
   .vlh-mountains {
