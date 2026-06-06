@@ -32,18 +32,8 @@ const initialReading = states[initialState];
 ---
 
 <section class="vaelinya-live-hero" data-state={initialState}>
-  <div class="vlh-layer vlh-sky"></div>
-  <div class="vlh-layer vlh-stars"></div>
-  <div class="vlh-layer vlh-moon vlh-moon-a"></div>
-  <div class="vlh-layer vlh-moon vlh-moon-b"></div>
-  <div class="vlh-layer vlh-mountains"></div>
-  <div class="vlh-layer vlh-mist"></div>
-  <div class="vlh-layer vlh-river"></div>
-  <div class="vlh-layer vlh-forest"></div>
-  <div class="vlh-layer vlh-branch" aria-hidden="true"></div>
-  <div class="vlh-layer vlh-creature" aria-hidden="true"></div>
-  <div class="vlh-layer vlh-traveller" aria-hidden="true"></div>
-  <div class="vlh-layer vlh-glowlight" aria-hidden="true"></div>
+  <div class="vlh-image" aria-hidden="true"></div>
+  <div class="vlh-shade" aria-hidden="true"></div>
 
   <div class="vlh-content">
     <p class="vlh-kicker">Vaelinya now</p>
@@ -125,484 +115,135 @@ const initialReading = states[initialState];
 
 <style>
   .vaelinya-live-hero {
-    --sky-top: #01030a;
-    --sky-mid: #0c265a;
-    --sky-low: #163a8a;
-    --river: rgba(45, 98, 217, 0.78);
-    --river-soft: rgba(116, 139, 170, 0.35);
-    --star-opacity: 1;
-    --moon-opacity: 1;
-    --mist-opacity: 0.48;
-    --tree-opacity: 0.95;
+    --vlh-image: url("/images/home/live-hero/vaelinya-live-hero-night.webp");
+    --vlh-title: #f8fbff;
+    --vlh-text: rgba(248, 251, 255, 0.88);
+    --vlh-muted: rgba(248, 251, 255, 0.72);
+    --vlh-panel: rgba(5, 12, 32, 0.46);
+    --vlh-panel-border: rgba(248, 251, 255, 0.26);
+    --vlh-button: rgba(5, 12, 32, 0.42);
+    --vlh-button-hover: rgba(248, 251, 255, 0.16);
+    --vlh-shade-top: rgba(0, 0, 0, 0.12);
+    --vlh-shade-mid: rgba(0, 0, 0, 0.1);
+    --vlh-shade-bottom: rgba(0, 0, 0, 0.28);
 
     position: relative;
-    min-height: clamp(520px, 78vh, 820px);
+    min-height: clamp(520px, 74vh, 820px);
     overflow: hidden;
-    color: #f3f8ff;
-    background: #01030a;
     isolation: isolate;
-  }
-
-  .vaelinya-live-hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 8;
-    pointer-events: none;
-    background:
-      linear-gradient(to bottom, rgba(1, 3, 10, 0.12), transparent 28%, rgba(1, 3, 10, 0.28)),
-      radial-gradient(ellipse at 50% 30%, transparent 0 45%, rgba(1, 3, 10, 0.16) 100%);
+    color: var(--vlh-text);
+    background: #06122c;
   }
 
   .vaelinya-live-hero[data-state="dawn"] {
-    --sky-top: #102b5f;
-    --sky-mid: #2d62a8;
-    --sky-low: #9ab2c7;
-    --river: rgba(160, 196, 232, 0.55);
-    --river-soft: rgba(218, 235, 247, 0.35);
-    --star-opacity: 0.12;
-    --moon-opacity: 0.08;
-    --mist-opacity: 0.62;
-    --tree-opacity: 0.72;
+    --vlh-image: url("/images/home/live-hero/vaelinya-live-hero-dawn.webp");
+    --vlh-title: #fff8f3;
+    --vlh-text: rgba(255, 248, 243, 0.9);
+    --vlh-muted: rgba(255, 248, 243, 0.76);
+    --vlh-panel: rgba(34, 24, 54, 0.38);
+    --vlh-panel-border: rgba(255, 248, 243, 0.28);
+    --vlh-button: rgba(34, 24, 54, 0.32);
+    --vlh-button-hover: rgba(255, 248, 243, 0.18);
+    --vlh-shade-top: rgba(18, 20, 48, 0.1);
+    --vlh-shade-mid: rgba(18, 20, 48, 0.06);
+    --vlh-shade-bottom: rgba(18, 20, 48, 0.25);
   }
 
   .vaelinya-live-hero[data-state="day"] {
-    --sky-top: #1f5fa8;
-    --sky-mid: #5c9ed1;
-    --sky-low: #c8d9df;
-    --river: rgba(78, 147, 198, 0.38);
-    --river-soft: rgba(220, 239, 246, 0.25);
-    --star-opacity: 0;
-    --moon-opacity: 0.03;
-    --mist-opacity: 0.22;
-    --tree-opacity: 0.58;
+    --vlh-image: url("/images/home/live-hero/vaelinya-live-hero-day.webp");
+    --vlh-title: #ffffff;
+    --vlh-text: rgba(255, 255, 255, 0.92);
+    --vlh-muted: rgba(255, 255, 255, 0.8);
+    --vlh-panel: rgba(10, 46, 74, 0.34);
+    --vlh-panel-border: rgba(255, 255, 255, 0.34);
+    --vlh-button: rgba(10, 46, 74, 0.34);
+    --vlh-button-hover: rgba(255, 255, 255, 0.22);
+    --vlh-shade-top: rgba(8, 32, 52, 0.12);
+    --vlh-shade-mid: rgba(8, 32, 52, 0.1);
+    --vlh-shade-bottom: rgba(8, 32, 52, 0.22);
   }
 
   .vaelinya-live-hero[data-state="dusk"] {
-    --sky-top: #06122c;
-    --sky-mid: #183b7a;
-    --sky-low: #6e6f9f;
-    --river: rgba(59, 117, 225, 0.65);
-    --river-soft: rgba(180, 205, 245, 0.32);
-    --star-opacity: 0.45;
-    --moon-opacity: 0.35;
-    --mist-opacity: 0.38;
-    --tree-opacity: 0.82;
+    --vlh-image: url("/images/home/live-hero/vaelinya-live-hero-dusk.webp");
+    --vlh-title: #fff7ff;
+    --vlh-text: rgba(255, 247, 255, 0.91);
+    --vlh-muted: rgba(255, 247, 255, 0.76);
+    --vlh-panel: rgba(25, 15, 50, 0.42);
+    --vlh-panel-border: rgba(255, 247, 255, 0.3);
+    --vlh-button: rgba(25, 15, 50, 0.36);
+    --vlh-button-hover: rgba(255, 247, 255, 0.18);
+    --vlh-shade-top: rgba(12, 10, 35, 0.12);
+    --vlh-shade-mid: rgba(12, 10, 35, 0.08);
+    --vlh-shade-bottom: rgba(12, 10, 35, 0.28);
   }
 
   .vaelinya-live-hero[data-state="night"] {
-    --sky-top: #01020a;
-    --sky-mid: #061b4b;
-    --sky-low: #12377f;
-    --river: rgba(52, 122, 245, 0.9);
-    --river-soft: rgba(157, 197, 255, 0.5);
-    --star-opacity: 0.92;
-    --moon-opacity: 1;
-    --mist-opacity: 0.5;
-    --tree-opacity: 0.98;
+    --vlh-image: url("/images/home/live-hero/vaelinya-live-hero-night.webp");
+    --vlh-title: #f8fbff;
+    --vlh-text: rgba(248, 251, 255, 0.88);
+    --vlh-muted: rgba(248, 251, 255, 0.72);
+    --vlh-panel: rgba(5, 12, 32, 0.48);
+    --vlh-panel-border: rgba(248, 251, 255, 0.26);
+    --vlh-button: rgba(5, 12, 32, 0.44);
+    --vlh-button-hover: rgba(248, 251, 255, 0.16);
+    --vlh-shade-top: rgba(0, 0, 0, 0.1);
+    --vlh-shade-mid: rgba(0, 0, 0, 0.08);
+    --vlh-shade-bottom: rgba(0, 0, 0, 0.3);
   }
 
-  .vlh-layer {
+  .vlh-image,
+  .vlh-shade {
     position: absolute;
     inset: 0;
     pointer-events: none;
   }
 
-  .vlh-sky {
+  .vlh-image {
     z-index: 0;
-    background:
-      radial-gradient(circle at 72% 22%, rgba(218, 235, 247, 0.14), transparent 16rem),
-      linear-gradient(to bottom, var(--sky-top), var(--sky-mid) 52%, var(--sky-low));
+    background-image: var(--vlh-image);
+    background-position: center;
+    background-size: cover;
+    transform: scale(1.01);
   }
 
-  .vaelinya-live-hero[data-state="night"] .vlh-sky {
-    background:
-      radial-gradient(circle at 72% 20%, rgba(218, 235, 247, 0.2), transparent 13rem),
-      radial-gradient(ellipse at 50% 70%, rgba(45, 98, 217, 0.18), transparent 34rem),
-      linear-gradient(to bottom, var(--sky-top), var(--sky-mid) 56%, var(--sky-low));
-  }
-
-  .vlh-stars {
+  .vlh-shade {
     z-index: 1;
-    opacity: var(--star-opacity);
-    background-image:
-      radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 1px, transparent 1.5px),
-      radial-gradient(circle, rgba(218, 235, 247, 0.75) 0 1px, transparent 1.6px);
-    background-size: 90px 90px, 140px 140px;
-    background-position: 12px 20px, 60px 35px;
-  }
-
-  .vaelinya-live-hero[data-state="night"] .vlh-stars {
-    animation:
-      vlh-stars-breathe 5.5s ease-in-out infinite,
-      vlh-stars-drift 34s linear infinite;
-    background-image:
-      radial-gradient(circle, rgba(255, 255, 255, 0.96) 0 1px, transparent 1.6px),
-      radial-gradient(circle, rgba(218, 235, 247, 0.72) 0 1px, transparent 1.7px),
-      radial-gradient(circle, rgba(180, 210, 255, 0.7) 0 1.2px, transparent 1.9px);
-    background-size: 118px 118px, 176px 176px, 260px 260px;
-    background-position: 16px 18px, 70px 44px, 130px 86px;
-  }
-
-  .vlh-moon {
-    z-index: 2;
-    width: clamp(46px, 7vw, 92px);
-    aspect-ratio: 1;
-    border-radius: 999px;
-    background: radial-gradient(circle, rgba(218, 235, 247, 0.95), rgba(120, 160, 230, 0.18) 62%, transparent 70%);
-    opacity: var(--moon-opacity);
-  }
-
-  .vaelinya-live-hero[data-state="night"] .vlh-moon {
-    animation: vlh-moon-breathe 10s ease-in-out infinite;
     background:
-      radial-gradient(circle at 43% 39%, rgba(243, 248, 255, 0.86) 0 15%, rgba(203, 225, 255, 0.5) 31%, rgba(100, 146, 222, 0.18) 59%, transparent 78%),
-      radial-gradient(circle at 58% 62%, rgba(20, 50, 110, 0.18), transparent 56%);
-    box-shadow:
-      0 0 22px rgba(157, 197, 255, 0.22),
-      0 0 64px rgba(76, 124, 218, 0.08);
-    filter: blur(0.2px);
-  }
-
-  .vlh-moon-a {
-    inset: 12% 14% auto auto;
-  }
-
-  .vaelinya-live-hero[data-state="night"] .vlh-moon-a {
-    opacity: 0.92;
-  }
-
-  .vlh-moon-b {
-    width: clamp(26px, 4vw, 54px);
-    inset: 19% 9% auto auto;
-    opacity: calc(var(--moon-opacity) * 0.72);
-  }
-
-  .vaelinya-live-hero[data-state="night"] .vlh-moon-b {
-    animation-duration: 12s;
-    animation-delay: -4s;
-    opacity: 0.62;
-    background:
-      radial-gradient(circle at 44% 40%, rgba(224, 238, 255, 0.68) 0 15%, rgba(146, 183, 238, 0.28) 42%, transparent 76%),
-      radial-gradient(circle at 62% 66%, rgba(11, 32, 78, 0.22), transparent 58%);
-    box-shadow:
-      0 0 18px rgba(157, 197, 255, 0.16),
-      0 0 40px rgba(76, 124, 218, 0.06);
-    filter: blur(0.35px);
-  }
-
-  .vlh-mountains {
-    z-index: 3;
-    inset: auto 0 23%;
-    height: 48%;
-    overflow: hidden;
-  }
-
-  .vlh-mountains::before,
-  .vlh-mountains::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-  }
-
-  .vlh-mountains::before {
-    background: linear-gradient(to bottom, rgba(22, 58, 118, 0.26), rgba(3, 15, 38, 0.58));
-    clip-path: polygon(
-      0 78%, 9% 69%, 17% 72%, 29% 54%, 39% 64%,
-      51% 50%, 63% 66%, 74% 58%, 86% 70%, 100% 60%,
-      100% 100%, 0 100%
-    );
-  }
-
-  .vlh-mountains::after {
-    top: 22%;
-    background: linear-gradient(to bottom, rgba(12, 38, 90, 0.38), rgba(1, 8, 26, 0.7));
-    clip-path: polygon(
-      0 74%, 8% 68%, 18% 73%, 30% 62%, 42% 70%,
-      55% 58%, 68% 72%, 81% 64%, 92% 73%, 100% 69%,
-      100% 100%, 0 100%
-    );
-  }
-
-  .vlh-mist {
-    z-index: 4;
-    opacity: var(--mist-opacity);
-    background:
-      radial-gradient(ellipse at 30% 68%, rgba(218, 235, 247, 0.18), transparent 42%),
-      radial-gradient(ellipse at 70% 62%, rgba(218, 235, 247, 0.14), transparent 40%),
-      linear-gradient(to top, rgba(218, 235, 247, 0.14), transparent 46%);
-    transform: translateY(19%);
-  }
-
-  .vaelinya-live-hero[data-state="night"] .vlh-mist {
-    animation: vlh-mist-drift 15s ease-in-out infinite alternate;
-  }
-
-  .vlh-river {
-    z-index: 5;
-    inset: auto 0 11%;
-    height: 34%;
-    background:
-      linear-gradient(
-        to bottom,
-        transparent 0 24%,
-        rgba(218, 235, 247, 0.16) 25%,
-        var(--river-soft) 31%,
-        var(--river) 40%,
-        rgba(5, 27, 68, 0.54) 64%,
-        transparent 92%
-      ),
-      radial-gradient(ellipse at 50% 42%, rgba(218, 235, 247, 0.18), transparent 42%),
-      linear-gradient(to right, transparent, var(--river-soft), transparent);
-  }
-
-  .vaelinya-live-hero[data-state="night"] .vlh-river {
-    animation: vlh-river-shimmer 9s ease-in-out infinite alternate;
-    inset: auto 0 5%;
-    height: 44%;
-    background:
-      radial-gradient(ellipse at 56% 39%, rgba(225, 239, 255, 0.24), transparent 24%),
-      radial-gradient(ellipse at 48% 46%, rgba(82, 151, 255, 0.42), transparent 45%),
-      linear-gradient(
-        to bottom,
-        transparent 0 16%,
-        rgba(157, 197, 255, 0.08) 24%,
-        rgba(157, 197, 255, 0.26) 36%,
-        var(--river) 48%,
-        rgba(20, 64, 141, 0.5) 66%,
-        rgba(3, 17, 44, 0.34) 82%,
-        transparent 98%
-      ),
-      linear-gradient(to right, transparent, rgba(157, 197, 255, 0.32), rgba(82, 151, 255, 0.22), transparent);
-  }
-
-  .vlh-forest {
-    z-index: 6;
-    inset: auto 0 0;
-    height: 38%;
-    opacity: var(--tree-opacity);
-    overflow: hidden;
-  }
-
-  .vlh-forest::before,
-  .vlh-forest::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-  }
-
-  .vlh-forest::before {
-    bottom: 18%;
-    background: rgba(4, 18, 42, 0.48);
-    clip-path: polygon(
-      0 64%, 6% 55%, 13% 66%, 21% 53%, 30% 65%,
-      39% 56%, 48% 68%, 58% 52%, 67% 66%, 77% 55%,
-      87% 67%, 94% 56%, 100% 63%, 100% 100%, 0 100%
-    );
-  }
-
-  .vaelinya-live-hero[data-state="night"] .vlh-forest::before {
-    background: rgba(3, 12, 31, 0.72);
-  }
-
-  .vlh-forest::after {
-    background: linear-gradient(to top, rgba(1, 3, 10, 1), rgba(1, 3, 10, 0.9) 62%, rgba(1, 3, 10, 0.74));
-    clip-path: polygon(
-      0 72%, 5% 58%, 10% 74%, 17% 61%, 23% 76%,
-      31% 57%, 38% 75%, 47% 62%, 55% 78%, 64% 58%,
-      71% 75%, 80% 60%, 88% 76%, 95% 59%, 100% 70%,
-      100% 100%, 0 100%
-    );
-  }
-
-  .vaelinya-live-hero[data-state="night"] .vlh-forest::after {
-    background: linear-gradient(to top, rgba(0, 1, 5, 1), rgba(1, 3, 10, 0.96) 62%, rgba(1, 8, 22, 0.88));
-  }
-
-  .vlh-branch,
-  .vlh-creature,
-  .vlh-traveller,
-  .vlh-glowlight {
-    z-index: 9;
-    opacity: 0;
-  }
-
-  .vaelinya-live-hero[data-state="night"] .vlh-branch,
-  .vaelinya-live-hero[data-state="night"] .vlh-creature,
-  .vaelinya-live-hero[data-state="night"] .vlh-traveller,
-  .vaelinya-live-hero[data-state="night"] .vlh-glowlight {
-    opacity: 1;
-  }
-
-  .vlh-branch::before {
-    content: "";
-    position: absolute;
-    left: -5%;
-    top: 7%;
-    width: clamp(260px, 38vw, 540px);
-    height: clamp(16px, 1.6vw, 26px);
-    border-radius: 999px;
-    background: linear-gradient(to right, rgba(0, 1, 5, 0.98), rgba(3, 15, 38, 0.94), rgba(9, 34, 72, 0.52));
-    transform: rotate(9deg);
-    transform-origin: 0 50%;
-    animation: vlh-branch-sway 2.2s ease-in-out infinite alternate;
-  }
-
-  .vlh-branch::after {
-    content: "";
-    position: absolute;
-    left: clamp(110px, 16vw, 250px);
-    top: clamp(52px, 8vw, 106px);
-    width: clamp(110px, 17vw, 220px);
-    height: 10px;
-    border-radius: 999px;
-    background: linear-gradient(to right, rgba(0, 1, 5, 0.88), rgba(9, 34, 72, 0.46));
-    box-shadow:
-      26px -14px 0 -2px rgba(1, 8, 22, 0.75),
-      54px 14px 0 -3px rgba(1, 8, 22, 0.66),
-      88px -8px 0 -3px rgba(1, 8, 22, 0.58);
-    transform: rotate(32deg);
-    transform-origin: 0 50%;
-    animation: vlh-twig-sway 1.9s ease-in-out infinite alternate;
-  }
-
-  .vaelinya-live-hero[data-state="night"] .vlh-creature {
-    left: 8%;
-    right: auto;
-    top: auto;
-    bottom: 25%;
-    width: clamp(64px, 8vw, 104px);
-    height: clamp(48px, 6vw, 76px);
-    animation: vlh-creature-peek 4.2s ease-in-out infinite;
-  }
-
-  .vlh-creature::before {
-    content: "";
-    position: absolute;
-    left: 8%;
-    right: 8%;
-    bottom: 0;
-    height: 74%;
-    border-radius: 52% 52% 42% 42%;
-    background:
-      radial-gradient(circle at 36% 42%, rgba(164, 255, 220, 0.92) 0 6%, transparent 9%),
-      radial-gradient(circle at 64% 42%, rgba(164, 255, 220, 0.92) 0 6%, transparent 9%),
-      radial-gradient(ellipse at 50% 48%, rgba(33, 101, 112, 0.84), rgba(7, 29, 48, 0.94) 68%, transparent 72%);
-    box-shadow: 0 0 34px rgba(107, 246, 214, 0.3);
-  }
-
-  .vlh-creature::after {
-    content: "";
-    position: absolute;
-    left: 22%;
-    top: 3%;
-    width: 18%;
-    height: 30%;
-    border-radius: 70% 40% 30% 30%;
-    background: rgba(7, 29, 48, 0.9);
-    box-shadow: clamp(28px, 3.8vw, 48px) 0 0 rgba(7, 29, 48, 0.9);
-  }
-
-  .vaelinya-live-hero[data-state="night"] .vlh-traveller {
-    left: 72%;
-    top: 57%;
-    width: 12px;
-    height: 42px;
-    border-radius: 999px 999px 40% 40%;
-    background: linear-gradient(to bottom, rgba(2, 7, 18, 0.94), rgba(0, 1, 5, 0.98));
-    animation: vlh-traveller-cross 8s ease-in-out infinite;
-  }
-
-  .vlh-traveller::before {
-    content: "";
-    position: absolute;
-    left: 17px;
-    top: 2px;
-    width: 22px;
-    height: 22px;
-    border-radius: 999px;
-    background: radial-gradient(circle, rgba(255, 242, 178, 1) 0 20%, rgba(255, 198, 92, 0.58) 42%, rgba(255, 198, 92, 0.12) 72%, transparent 76%);
-    box-shadow: 0 0 34px rgba(255, 212, 112, 0.58);
-    animation: vlh-lantern-pulse 1.25s ease-in-out infinite alternate;
-  }
-
-  .vlh-traveller::after {
-    content: "";
-    position: absolute;
-    left: 11px;
-    top: 38px;
-    width: 58px;
-    height: 18px;
-    border-radius: 999px;
-    background: radial-gradient(ellipse, rgba(255, 212, 112, 0.24), transparent 70%);
-  }
-
-  .vaelinya-live-hero[data-state="night"] .vlh-glowlight {
-    left: 28%;
-    top: 47%;
-    width: 34px;
-    height: 34px;
-    border-radius: 999px;
-    background: radial-gradient(circle, rgba(202, 255, 231, 1) 0 14%, rgba(108, 246, 218, 0.62) 36%, rgba(75, 156, 255, 0.16) 70%, transparent 78%);
-    box-shadow:
-      0 0 24px rgba(108, 246, 218, 0.66),
-      0 0 74px rgba(75, 156, 255, 0.3);
-    animation: vlh-glowlight-float 5.2s ease-in-out infinite;
-  }
-
-  .vlh-glowlight::before,
-  .vlh-glowlight::after {
-    content: "";
-    position: absolute;
-    border-radius: 999px;
-    background: radial-gradient(circle, rgba(202, 255, 231, 0.9), transparent 68%);
-  }
-
-  .vlh-glowlight::before {
-    width: 12px;
-    height: 12px;
-    left: -20px;
-    top: 18px;
-    animation: vlh-small-glow-orbit 3.6s ease-in-out infinite alternate;
-  }
-
-  .vlh-glowlight::after {
-    width: 9px;
-    height: 9px;
-    right: -17px;
-    top: -6px;
-    animation: vlh-small-glow-orbit 4.4s ease-in-out infinite alternate-reverse;
+      linear-gradient(to bottom, var(--vlh-shade-top), transparent 28%, var(--vlh-shade-bottom)),
+      radial-gradient(ellipse at 50% 28%, transparent 0 34%, var(--vlh-shade-mid) 70%);
   }
 
   .vlh-content {
     position: relative;
-    z-index: 10;
-    max-width: 960px;
+    z-index: 2;
+    max-width: 980px;
     margin: 0 auto;
-    padding: clamp(4rem, 12vh, 8rem) 1.25rem 3rem;
+    padding: clamp(4.5rem, 13vh, 8.5rem) 1.25rem 3.5rem;
     text-align: center;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.36);
   }
 
   .vlh-kicker {
     margin: 0 0 0.75rem;
+    color: var(--vlh-muted);
     font-size: 0.82rem;
-    letter-spacing: 0.14em;
+    font-weight: 700;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: rgba(243, 248, 255, 0.78);
   }
 
   .vlh-content h1 {
     margin: 0;
-    color: #f3f8ff;
-    font-size: clamp(3rem, 9vw, 7.5rem);
+    color: var(--vlh-title);
+    font-size: clamp(3.2rem, 9vw, 7.8rem);
     line-height: 0.92;
     letter-spacing: -0.045em;
   }
 
   .vlh-subtitle {
     margin: 1rem 0 1.5rem;
-    color: rgba(243, 248, 255, 0.86);
-    font-size: clamp(1.1rem, 2vw, 1.45rem);
+    color: var(--vlh-text);
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
   }
 
   .vlh-doors {
@@ -614,213 +255,71 @@ const initialReading = states[initialState];
   }
 
   .vlh-doors a {
-    color: #f3f8ff;
+    color: var(--vlh-title);
     text-decoration: none;
-    border: 1px solid rgba(243, 248, 255, 0.42);
-    background: rgba(1, 3, 10, 0.28);
+    border: 1px solid var(--vlh-panel-border);
+    background: var(--vlh-button);
     border-radius: 999px;
-    padding: 0.75rem 1.05rem;
+    padding: 0.78rem 1.1rem;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.16);
+    backdrop-filter: blur(8px);
   }
 
   .vlh-doors a:hover,
   .vlh-doors a:focus-visible {
-    background: rgba(243, 248, 255, 0.14);
-    outline: 2px solid rgba(218, 235, 247, 0.75);
+    background: var(--vlh-button-hover);
+    outline: 2px solid rgba(255, 255, 255, 0.76);
     outline-offset: 3px;
   }
 
   .vlh-reading {
     display: grid;
     gap: 0.2rem;
-    width: min(100%, 520px);
+    width: min(100%, 540px);
     margin: 0 auto;
-    padding: 0.9rem 1rem;
-    border: 1px solid rgba(218, 235, 247, 0.28);
+    padding: 0.95rem 1rem;
+    border: 1px solid var(--vlh-panel-border);
     border-radius: 1.1rem;
-    background: rgba(1, 3, 10, 0.34);
+    background: var(--vlh-panel);
+    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(10px);
   }
 
   .vlh-reading-label {
+    color: var(--vlh-muted);
     font-size: 0.78rem;
-    letter-spacing: 0.08em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(243, 248, 255, 0.68);
   }
 
   .vlh-reading strong {
-    color: #f3f8ff;
-    font-size: 1.05rem;
+    color: var(--vlh-title);
+    font-size: 1.08rem;
   }
 
   .vlh-reading span:last-child {
-    color: rgba(243, 248, 255, 0.78);
+    color: var(--vlh-text);
   }
 
-  @keyframes vlh-stars-breathe {
-    0%,
-    100% {
-      opacity: 0.62;
+  @media (max-width: 720px) {
+    .vaelinya-live-hero {
+      min-height: 560px;
     }
 
-    50% {
-      opacity: 1;
-    }
-  }
-
-  @keyframes vlh-stars-drift {
-    0% {
-      background-position: 16px 18px, 70px 44px, 130px 86px;
+    .vlh-image {
+      background-position: center bottom;
     }
 
-    100% {
-      background-position: 32px 24px, 88px 52px, 156px 96px;
-    }
-  }
-
-  @keyframes vlh-moon-breathe {
-    0%,
-    100% {
-      transform: scale(0.99);
-      filter: blur(0.25px) brightness(0.94);
-    }
-
-    50% {
-      transform: scale(1.035);
-      filter: blur(0.4px) brightness(1.08);
-    }
-  }
-
-  @keyframes vlh-mist-drift {
-    0% {
-      opacity: calc(var(--mist-opacity) * 0.58);
-      transform: translate(-3.2%, 19%);
-    }
-
-    100% {
-      opacity: calc(var(--mist-opacity) * 1.08);
-      transform: translate(3.2%, 19%);
-    }
-  }
-
-  @keyframes vlh-river-shimmer {
-    0% {
-      filter: brightness(0.88) saturate(0.94);
-      opacity: 0.82;
-      transform: translateX(-0.75%) scaleX(1.01);
-    }
-
-    100% {
-      filter: brightness(1.16) saturate(1.08);
-      opacity: 1;
-      transform: translateX(0.75%) scaleX(1.025);
-    }
-  }
-
-  @keyframes vlh-branch-sway {
-    0% {
-      transform: rotate(5deg) translateY(-4px);
-    }
-
-    100% {
-      transform: rotate(16deg) translateY(8px);
-    }
-  }
-
-  @keyframes vlh-twig-sway {
-    0% {
-      transform: rotate(22deg) translateY(-3px);
-    }
-
-    100% {
-      transform: rotate(43deg) translateY(8px);
-    }
-  }
-
-  @keyframes vlh-creature-peek {
-    0%,
-    55% {
-      opacity: 0.95;
-      transform: translateY(0) scale(1);
-    }
-
-    75%,
-    100% {
-      opacity: 0.22;
-      transform: translateY(34px) scale(0.94);
-    }
-  }
-
-  @keyframes vlh-traveller-cross {
-    0% {
-      opacity: 0;
-      transform: translateX(-42px) translateY(4px);
-    }
-
-    8%,
-    82% {
-      opacity: 0.92;
-    }
-
-    100% {
-      opacity: 0;
-      transform: translateX(124px) translateY(-2px);
-    }
-  }
-
-  @keyframes vlh-lantern-pulse {
-    0% {
-      transform: scale(0.82);
-      opacity: 0.72;
-    }
-
-    100% {
-      transform: scale(1.24);
-      opacity: 1;
-    }
-  }
-
-  @keyframes vlh-glowlight-float {
-    0% {
-      opacity: 0.25;
-      transform: translate(-10px, 10px) scale(0.72);
-    }
-
-    18%,
-    76% {
-      opacity: 1;
-    }
-
-    100% {
-      opacity: 0.32;
-      transform: translate(88px, -42px) scale(1.08);
-    }
-  }
-
-  @keyframes vlh-small-glow-orbit {
-    0% {
-      opacity: 0.35;
-      transform: translate(-6px, 8px) scale(0.7);
-    }
-
-    100% {
-      opacity: 0.9;
-      transform: translate(9px, -7px) scale(1.15);
+    .vlh-content {
+      padding-top: 4rem;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .vlh-layer,
-    .vaelinya-live-hero,
-    .vlh-sky,
-    .vlh-stars,
-    .vlh-moon,
-    .vlh-mist,
-    .vlh-river,
-    .vlh-forest,
-    .vlh-branch,
-    .vlh-creature,
-    .vlh-traveller,
-    .vlh-glowlight {
+    .vlh-image,
+    .vlh-shade,
+    .vaelinya-live-hero {
       transition: none !important;
       animation: none !important;
     }
