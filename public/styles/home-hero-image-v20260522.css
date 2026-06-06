@@ -15,35 +15,75 @@
 }
 
 body:has(.home-page) {
+  --home-page-bg-image: url('/images/home/live-hero/vaelinya-live-hero-night.webp');
+  --home-page-bg-top: rgba(5, 12, 32, 0.56);
+  --home-page-bg-mid: rgba(5, 12, 32, 0.34);
+  --home-page-bg-bottom: rgba(5, 12, 32, 0.68);
+  --home-page-bg-glow-left: rgba(88, 142, 255, 0.16);
+  --home-page-bg-glow-right: rgba(113, 218, 203, 0.12);
+
   background-color: var(--night);
   background-image:
-    linear-gradient(180deg, rgba(29, 18, 46, 0.24) 0%, rgba(29, 18, 46, 0.08) 28%, rgba(29, 18, 46, 0.36) 100%),
-    radial-gradient(circle at 8% 10%, rgba(255, 213, 94, 0.20), transparent 18rem),
-    radial-gradient(circle at 92% 8%, rgba(113, 218, 203, 0.18), transparent 20rem),
-    radial-gradient(circle at 50% 92%, rgba(193, 68, 122, 0.16), transparent 24rem),
-    url('/images/vaelinya-homepage-background.png?v=2026-05-24-04'),
-    radial-gradient(circle, rgba(255, 248, 232, 0.08) 1px, transparent 1px);
+    linear-gradient(180deg, var(--home-page-bg-top) 0%, var(--home-page-bg-mid) 42%, var(--home-page-bg-bottom) 100%),
+    radial-gradient(circle at 8% 10%, var(--home-page-bg-glow-left), transparent 22rem),
+    radial-gradient(circle at 92% 8%, var(--home-page-bg-glow-right), transparent 24rem),
+    var(--home-page-bg-image);
   background-position:
     center top,
     center top,
     center top,
-    center bottom,
-    center top,
-    center top;
+    center center;
   background-repeat:
     no-repeat,
     no-repeat,
     no-repeat,
-    no-repeat,
-    no-repeat,
-    repeat;
+    no-repeat;
   background-size:
     cover,
     auto,
     auto,
-    auto,
-    cover,
-    28px 28px;
+    cover;
+  background-attachment:
+    fixed,
+    scroll,
+    scroll,
+    fixed;
+}
+
+body:has(.vaelinya-live-hero[data-state="dawn"]) {
+  --home-page-bg-image: url('/images/home/live-hero/vaelinya-live-hero-dawn.webp');
+  --home-page-bg-top: rgba(34, 24, 54, 0.42);
+  --home-page-bg-mid: rgba(34, 24, 54, 0.22);
+  --home-page-bg-bottom: rgba(34, 24, 54, 0.58);
+  --home-page-bg-glow-left: rgba(255, 190, 160, 0.2);
+  --home-page-bg-glow-right: rgba(160, 190, 255, 0.16);
+}
+
+body:has(.vaelinya-live-hero[data-state="day"]) {
+  --home-page-bg-image: url('/images/home/live-hero/vaelinya-live-hero-day.webp');
+  --home-page-bg-top: rgba(8, 32, 52, 0.34);
+  --home-page-bg-mid: rgba(8, 32, 52, 0.18);
+  --home-page-bg-bottom: rgba(8, 32, 52, 0.5);
+  --home-page-bg-glow-left: rgba(255, 255, 255, 0.16);
+  --home-page-bg-glow-right: rgba(113, 218, 203, 0.2);
+}
+
+body:has(.vaelinya-live-hero[data-state="dusk"]) {
+  --home-page-bg-image: url('/images/home/live-hero/vaelinya-live-hero-dusk.webp');
+  --home-page-bg-top: rgba(25, 15, 50, 0.48);
+  --home-page-bg-mid: rgba(25, 15, 50, 0.28);
+  --home-page-bg-bottom: rgba(25, 15, 50, 0.66);
+  --home-page-bg-glow-left: rgba(255, 160, 190, 0.18);
+  --home-page-bg-glow-right: rgba(255, 190, 90, 0.14);
+}
+
+body:has(.vaelinya-live-hero[data-state="night"]) {
+  --home-page-bg-image: url('/images/home/live-hero/vaelinya-live-hero-night.webp');
+  --home-page-bg-top: rgba(5, 12, 32, 0.56);
+  --home-page-bg-mid: rgba(5, 12, 32, 0.34);
+  --home-page-bg-bottom: rgba(5, 12, 32, 0.68);
+  --home-page-bg-glow-left: rgba(88, 142, 255, 0.16);
+  --home-page-bg-glow-right: rgba(113, 218, 203, 0.12);
 }
 
 .site-main:has(> .home-page) {
@@ -256,80 +296,4 @@ body:has(.home-page) {
 .first-path-copy p:not(.eyebrow) {
   margin: 0.55rem 0 0;
   max-width: 44rem;
-}
-
-.first-path-link {
-  width: fit-content;
-  margin-top: 0.95rem;
-}
-
-@media (min-width: 901px) {
-  .hero-illustrated {
-    grid-template-columns: minmax(0, 0.95fr) minmax(22rem, 0.85fr);
-    align-items: center;
-  }
-}
-
-@media (max-width: 900px) {
-  .hero-art-image {
-    aspect-ratio: 16 / 10;
-  }
-
-  .lina-greeting-panel,
-  .first-path-panel {
-    grid-template-columns: 1fr;
-  }
-
-  body:has(.home-page) {
-    background-position:
-      center top,
-      center top,
-      center top,
-      center bottom,
-      center top,
-      center top;
-    background-size:
-      auto,
-      auto,
-      auto,
-      auto,
-      auto 100%,
-      28px 28px;
-  }
-}
-
-@media (max-width: 520px) {
-  .hero-art-image {
-    aspect-ratio: 4 / 3;
-  }
-
-  .door-card__visual {
-    min-height: 7.8rem;
-  }
-
-  .lina-greeting-panel,
-  .first-path-panel {
-    border-radius: 1rem;
-    padding: 1rem;
-  }
-
-  .lina-greeting-image {
-    aspect-ratio: 4 / 3;
-  }
-
-  .first-path-image {
-    min-height: 7.8rem;
-  }
-
-  .first-path-link {
-    width: 100%;
-  }
-
-  .threshold-hero,
-  .door-intro,
-  .door-grid,
-  .lina-greeting-panel,
-  .first-path-panel {
-    border-radius: 1rem;
-  }
 }
