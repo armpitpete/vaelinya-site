@@ -64,6 +64,7 @@ const initialReading = states[initialState];
   const hero = document.querySelector(".vaelinya-live-hero");
   const label = document.querySelector("#vaelinya-live-label");
   const line = document.querySelector("#vaelinya-live-line");
+  const previewStates = new Set(["dawn", "day", "dusk", "night"]);
 
   const states = {
     dawn: {
@@ -84,6 +85,15 @@ const initialReading = states[initialState];
     },
   };
 
+  function getPreviewStateFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const previewState = params.get("vaelinya-state");
+
+    if (previewStates.has(previewState)) return previewState;
+
+    return null;
+  }
+
   function getVaelinyaHomepageState(date = new Date()) {
     const hour = date.getUTCHours();
 
@@ -96,7 +106,7 @@ const initialReading = states[initialState];
   function applyVaelinyaHomepageState() {
     if (!hero) return;
 
-    const state = getVaelinyaHomepageState();
+    const state = getPreviewStateFromUrl() ?? getVaelinyaHomepageState();
     const reading = states[state];
 
     hero.dataset.state = state;
