@@ -328,18 +328,22 @@ const initialReading = states[initialState];
   }
 
   .vaelinya-live-hero[data-state="night"] .vlh-river {
+    inset: auto 0 5%;
+    height: 44%;
     background:
+      radial-gradient(ellipse at 56% 39%, rgba(225, 239, 255, 0.24), transparent 24%),
+      radial-gradient(ellipse at 48% 46%, rgba(82, 151, 255, 0.42), transparent 45%),
       linear-gradient(
         to bottom,
-        transparent 0 20%,
-        rgba(218, 235, 247, 0.22) 24%,
-        var(--river-soft) 32%,
-        var(--river) 43%,
-        rgba(8, 35, 88, 0.7) 68%,
-        transparent 94%
+        transparent 0 16%,
+        rgba(157, 197, 255, 0.08) 24%,
+        rgba(157, 197, 255, 0.26) 36%,
+        var(--river) 48%,
+        rgba(20, 64, 141, 0.5) 66%,
+        rgba(3, 17, 44, 0.34) 82%,
+        transparent 98%
       ),
-      radial-gradient(ellipse at 58% 38%, rgba(218, 235, 247, 0.28), transparent 34%),
-      linear-gradient(to right, transparent, rgba(157, 197, 255, 0.4), transparent);
+      linear-gradient(to right, transparent, rgba(157, 197, 255, 0.32), rgba(82, 151, 255, 0.22), transparent);
   }
 
   .vlh-forest {
