@@ -229,7 +229,9 @@ const initialReading = states[initialState];
   }
 
   .vaelinya-live-hero[data-state="night"] .vlh-stars {
-    animation: vlh-stars-breathe 11s ease-in-out infinite;
+    animation:
+      vlh-stars-breathe 5.5s ease-in-out infinite,
+      vlh-stars-drift 34s linear infinite;
     background-image:
       radial-gradient(circle, rgba(255, 255, 255, 0.96) 0 1px, transparent 1.6px),
       radial-gradient(circle, rgba(218, 235, 247, 0.72) 0 1px, transparent 1.7px),
@@ -248,7 +250,7 @@ const initialReading = states[initialState];
   }
 
   .vaelinya-live-hero[data-state="night"] .vlh-moon {
-    animation: vlh-moon-breathe 16s ease-in-out infinite;
+    animation: vlh-moon-breathe 10s ease-in-out infinite;
     background:
       radial-gradient(circle at 43% 39%, rgba(243, 248, 255, 0.86) 0 15%, rgba(203, 225, 255, 0.5) 31%, rgba(100, 146, 222, 0.18) 59%, transparent 78%),
       radial-gradient(circle at 58% 62%, rgba(20, 50, 110, 0.18), transparent 56%);
@@ -273,8 +275,8 @@ const initialReading = states[initialState];
   }
 
   .vaelinya-live-hero[data-state="night"] .vlh-moon-b {
-    animation-duration: 19s;
-    animation-delay: -5s;
+    animation-duration: 12s;
+    animation-delay: -4s;
     opacity: 0.62;
     background:
       radial-gradient(circle at 44% 40%, rgba(224, 238, 255, 0.68) 0 15%, rgba(146, 183, 238, 0.28) 42%, transparent 76%),
@@ -329,7 +331,7 @@ const initialReading = states[initialState];
   }
 
   .vaelinya-live-hero[data-state="night"] .vlh-mist {
-    animation: vlh-mist-drift 24s ease-in-out infinite alternate;
+    animation: vlh-mist-drift 15s ease-in-out infinite alternate;
   }
 
   .vlh-river {
@@ -351,7 +353,7 @@ const initialReading = states[initialState];
   }
 
   .vaelinya-live-hero[data-state="night"] .vlh-river {
-    animation: vlh-river-shimmer 17s ease-in-out infinite alternate;
+    animation: vlh-river-shimmer 9s ease-in-out infinite alternate;
     inset: auto 0 5%;
     height: 44%;
     background:
@@ -498,48 +500,60 @@ const initialReading = states[initialState];
   @keyframes vlh-stars-breathe {
     0%,
     100% {
-      opacity: 0.78;
+      opacity: 0.62;
     }
 
     50% {
-      opacity: 0.96;
+      opacity: 1;
+    }
+  }
+
+  @keyframes vlh-stars-drift {
+    0% {
+      background-position: 16px 18px, 70px 44px, 130px 86px;
+    }
+
+    100% {
+      background-position: 32px 24px, 88px 52px, 156px 96px;
     }
   }
 
   @keyframes vlh-moon-breathe {
     0%,
     100% {
-      transform: scale(1);
-      filter: blur(0.25px);
+      transform: scale(0.99);
+      filter: blur(0.25px) brightness(0.94);
     }
 
     50% {
-      transform: scale(1.012);
-      filter: blur(0.36px);
+      transform: scale(1.035);
+      filter: blur(0.4px) brightness(1.08);
     }
   }
 
   @keyframes vlh-mist-drift {
     0% {
-      opacity: calc(var(--mist-opacity) * 0.72);
-      transform: translate(-1.2%, 19%);
+      opacity: calc(var(--mist-opacity) * 0.58);
+      transform: translate(-3.2%, 19%);
     }
 
     100% {
-      opacity: calc(var(--mist-opacity) * 0.96);
-      transform: translate(1.2%, 19%);
+      opacity: calc(var(--mist-opacity) * 1.08);
+      transform: translate(3.2%, 19%);
     }
   }
 
   @keyframes vlh-river-shimmer {
     0% {
-      filter: brightness(0.95) saturate(0.96);
-      opacity: 0.9;
+      filter: brightness(0.88) saturate(0.94);
+      opacity: 0.82;
+      transform: translateX(-0.75%) scaleX(1.01);
     }
 
     100% {
-      filter: brightness(1.08) saturate(1.04);
-      opacity: 0.98;
+      filter: brightness(1.16) saturate(1.08);
+      opacity: 1;
+      transform: translateX(0.75%) scaleX(1.025);
     }
   }
 
