@@ -229,6 +229,7 @@ const initialReading = states[initialState];
   }
 
   .vaelinya-live-hero[data-state="night"] .vlh-stars {
+    animation: vlh-stars-breathe 11s ease-in-out infinite;
     background-image:
       radial-gradient(circle, rgba(255, 255, 255, 0.96) 0 1px, transparent 1.6px),
       radial-gradient(circle, rgba(218, 235, 247, 0.72) 0 1px, transparent 1.7px),
@@ -247,6 +248,7 @@ const initialReading = states[initialState];
   }
 
   .vaelinya-live-hero[data-state="night"] .vlh-moon {
+    animation: vlh-moon-breathe 16s ease-in-out infinite;
     background:
       radial-gradient(circle at 43% 39%, rgba(243, 248, 255, 0.86) 0 15%, rgba(203, 225, 255, 0.5) 31%, rgba(100, 146, 222, 0.18) 59%, transparent 78%),
       radial-gradient(circle at 58% 62%, rgba(20, 50, 110, 0.18), transparent 56%);
@@ -271,6 +273,8 @@ const initialReading = states[initialState];
   }
 
   .vaelinya-live-hero[data-state="night"] .vlh-moon-b {
+    animation-duration: 19s;
+    animation-delay: -5s;
     opacity: 0.62;
     background:
       radial-gradient(circle at 44% 40%, rgba(224, 238, 255, 0.68) 0 15%, rgba(146, 183, 238, 0.28) 42%, transparent 76%),
@@ -324,6 +328,10 @@ const initialReading = states[initialState];
     transform: translateY(19%);
   }
 
+  .vaelinya-live-hero[data-state="night"] .vlh-mist {
+    animation: vlh-mist-drift 24s ease-in-out infinite alternate;
+  }
+
   .vlh-river {
     z-index: 5;
     inset: auto 0 11%;
@@ -343,6 +351,7 @@ const initialReading = states[initialState];
   }
 
   .vaelinya-live-hero[data-state="night"] .vlh-river {
+    animation: vlh-river-shimmer 17s ease-in-out infinite alternate;
     inset: auto 0 5%;
     height: 44%;
     background:
@@ -484,6 +493,54 @@ const initialReading = states[initialState];
 
   .vlh-reading span:last-child {
     color: rgba(243, 248, 255, 0.78);
+  }
+
+  @keyframes vlh-stars-breathe {
+    0%,
+    100% {
+      opacity: 0.78;
+    }
+
+    50% {
+      opacity: 0.96;
+    }
+  }
+
+  @keyframes vlh-moon-breathe {
+    0%,
+    100% {
+      transform: scale(1);
+      filter: blur(0.25px);
+    }
+
+    50% {
+      transform: scale(1.012);
+      filter: blur(0.36px);
+    }
+  }
+
+  @keyframes vlh-mist-drift {
+    0% {
+      opacity: calc(var(--mist-opacity) * 0.72);
+      transform: translate(-1.2%, 19%);
+    }
+
+    100% {
+      opacity: calc(var(--mist-opacity) * 0.96);
+      transform: translate(1.2%, 19%);
+    }
+  }
+
+  @keyframes vlh-river-shimmer {
+    0% {
+      filter: brightness(0.95) saturate(0.96);
+      opacity: 0.9;
+    }
+
+    100% {
+      filter: brightness(1.08) saturate(1.04);
+      opacity: 0.98;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
