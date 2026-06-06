@@ -40,6 +40,9 @@ const initialReading = states[initialState];
   <div class="vlh-layer vlh-mist"></div>
   <div class="vlh-layer vlh-river"></div>
   <div class="vlh-layer vlh-forest"></div>
+  <div class="vlh-layer vlh-branch" aria-hidden="true"></div>
+  <div class="vlh-layer vlh-creature" aria-hidden="true"></div>
+  <div class="vlh-layer vlh-traveller" aria-hidden="true"></div>
 
   <div class="vlh-content">
     <p class="vlh-kicker">Vaelinya now</p>
@@ -415,6 +418,122 @@ const initialReading = states[initialState];
     background: linear-gradient(to top, rgba(0, 1, 5, 1), rgba(1, 3, 10, 0.96) 62%, rgba(1, 8, 22, 0.88));
   }
 
+  .vlh-branch,
+  .vlh-creature,
+  .vlh-traveller {
+    z-index: 7;
+    opacity: 0;
+  }
+
+  .vaelinya-live-hero[data-state="night"] .vlh-branch,
+  .vaelinya-live-hero[data-state="night"] .vlh-creature,
+  .vaelinya-live-hero[data-state="night"] .vlh-traveller {
+    opacity: 1;
+  }
+
+  .vlh-branch::before {
+    content: "";
+    position: absolute;
+    left: -4%;
+    top: 9%;
+    width: clamp(210px, 31vw, 430px);
+    height: clamp(12px, 1.25vw, 20px);
+    border-radius: 999px;
+    background: linear-gradient(to right, rgba(0, 1, 5, 0.96), rgba(3, 15, 38, 0.88), rgba(9, 34, 72, 0.42));
+    transform: rotate(10deg);
+    transform-origin: 0 50%;
+    animation: vlh-branch-sway 2.7s ease-in-out infinite alternate;
+  }
+
+  .vlh-branch::after {
+    content: "";
+    position: absolute;
+    left: clamp(92px, 14vw, 210px);
+    top: clamp(47px, 7.3vw, 92px);
+    width: clamp(92px, 14vw, 180px);
+    height: 8px;
+    border-radius: 999px;
+    background: linear-gradient(to right, rgba(0, 1, 5, 0.84), rgba(9, 34, 72, 0.34));
+    box-shadow:
+      26px -14px 0 -2px rgba(1, 8, 22, 0.68),
+      54px 14px 0 -3px rgba(1, 8, 22, 0.58),
+      88px -8px 0 -3px rgba(1, 8, 22, 0.52);
+    transform: rotate(32deg);
+    transform-origin: 0 50%;
+    animation: vlh-twig-sway 2.25s ease-in-out infinite alternate;
+  }
+
+  .vaelinya-live-hero[data-state="night"] .vlh-creature {
+    left: 10%;
+    right: auto;
+    top: auto;
+    bottom: 15%;
+    width: clamp(46px, 6vw, 74px);
+    height: clamp(34px, 4.4vw, 52px);
+    animation: vlh-creature-peek 5.8s ease-in-out infinite;
+  }
+
+  .vlh-creature::before {
+    content: "";
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    bottom: 0;
+    height: 74%;
+    border-radius: 52% 52% 42% 42%;
+    background:
+      radial-gradient(circle at 36% 42%, rgba(164, 255, 220, 0.78) 0 5%, transparent 8%),
+      radial-gradient(circle at 64% 42%, rgba(164, 255, 220, 0.78) 0 5%, transparent 8%),
+      radial-gradient(ellipse at 50% 48%, rgba(33, 101, 112, 0.74), rgba(7, 29, 48, 0.88) 68%, transparent 72%);
+    box-shadow: 0 0 26px rgba(107, 246, 214, 0.2);
+  }
+
+  .vlh-creature::after {
+    content: "";
+    position: absolute;
+    left: 22%;
+    top: 3%;
+    width: 18%;
+    height: 30%;
+    border-radius: 70% 40% 30% 30%;
+    background: rgba(7, 29, 48, 0.86);
+    box-shadow: clamp(22px, 3vw, 34px) 0 0 rgba(7, 29, 48, 0.86);
+  }
+
+  .vaelinya-live-hero[data-state="night"] .vlh-traveller {
+    left: 62%;
+    top: 61%;
+    width: 8px;
+    height: 28px;
+    border-radius: 999px 999px 40% 40%;
+    background: linear-gradient(to bottom, rgba(2, 7, 18, 0.92), rgba(0, 1, 5, 0.98));
+    animation: vlh-traveller-cross 12s ease-in-out infinite;
+  }
+
+  .vlh-traveller::before {
+    content: "";
+    position: absolute;
+    left: 12px;
+    top: 2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(255, 242, 178, 0.92) 0 20%, rgba(255, 198, 92, 0.44) 42%, rgba(255, 198, 92, 0.08) 72%, transparent 76%);
+    box-shadow: 0 0 24px rgba(255, 212, 112, 0.42);
+    animation: vlh-lantern-pulse 1.65s ease-in-out infinite alternate;
+  }
+
+  .vlh-traveller::after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 25px;
+    width: 44px;
+    height: 14px;
+    border-radius: 999px;
+    background: radial-gradient(ellipse, rgba(255, 212, 112, 0.18), transparent 70%);
+  }
+
   .vlh-content {
     position: relative;
     z-index: 10;
@@ -557,6 +676,74 @@ const initialReading = states[initialState];
     }
   }
 
+  @keyframes vlh-branch-sway {
+    0% {
+      transform: rotate(7deg) translateY(-2px);
+    }
+
+    100% {
+      transform: rotate(13deg) translateY(4px);
+    }
+  }
+
+  @keyframes vlh-twig-sway {
+    0% {
+      transform: rotate(26deg) translateY(-1px);
+    }
+
+    100% {
+      transform: rotate(38deg) translateY(5px);
+    }
+  }
+
+  @keyframes vlh-creature-peek {
+    0% {
+      opacity: 0.1;
+      transform: translateY(32px) scale(0.92);
+    }
+
+    14%,
+    46% {
+      opacity: 0.92;
+      transform: translateY(0) scale(1);
+    }
+
+    60%,
+    100% {
+      opacity: 0.18;
+      transform: translateY(30px) scale(0.94);
+    }
+  }
+
+  @keyframes vlh-traveller-cross {
+    0% {
+      opacity: 0;
+      transform: translateX(-36px) translateY(4px);
+    }
+
+    12%,
+    80% {
+      opacity: 0.86;
+    }
+
+    100% {
+      opacity: 0;
+      transform: translateX(116px) translateY(-2px);
+    }
+  }
+
+  @keyframes vlh-lantern-pulse {
+    0% {
+      transform: scale(0.86);
+      opacity: 0.7;
+    }
+
+    100% {
+      transform: scale(1.18);
+      opacity: 1;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .vlh-layer,
     .vaelinya-live-hero,
@@ -565,7 +752,10 @@ const initialReading = states[initialState];
     .vlh-moon,
     .vlh-mist,
     .vlh-river,
-    .vlh-forest {
+    .vlh-forest,
+    .vlh-branch,
+    .vlh-creature,
+    .vlh-traveller {
       transition: none !important;
       animation: none !important;
     }
