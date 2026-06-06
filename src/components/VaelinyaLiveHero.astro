@@ -187,15 +187,15 @@ const initialReading = states[initialState];
   }
 
   .vaelinya-live-hero[data-state="night"] {
-    --sky-top: #01030a;
-    --sky-mid: #0c265a;
-    --sky-low: #163a8a;
-    --river: rgba(45, 98, 217, 0.78);
-    --river-soft: rgba(116, 139, 170, 0.35);
-    --star-opacity: 1;
+    --sky-top: #01020a;
+    --sky-mid: #061b4b;
+    --sky-low: #12377f;
+    --river: rgba(52, 122, 245, 0.9);
+    --river-soft: rgba(157, 197, 255, 0.5);
+    --star-opacity: 0.92;
     --moon-opacity: 1;
-    --mist-opacity: 0.48;
-    --tree-opacity: 0.95;
+    --mist-opacity: 0.5;
+    --tree-opacity: 0.98;
   }
 
   .vlh-layer {
@@ -211,6 +211,13 @@ const initialReading = states[initialState];
       linear-gradient(to bottom, var(--sky-top), var(--sky-mid) 52%, var(--sky-low));
   }
 
+  .vaelinya-live-hero[data-state="night"] .vlh-sky {
+    background:
+      radial-gradient(circle at 72% 20%, rgba(218, 235, 247, 0.2), transparent 13rem),
+      radial-gradient(ellipse at 50% 70%, rgba(45, 98, 217, 0.18), transparent 34rem),
+      linear-gradient(to bottom, var(--sky-top), var(--sky-mid) 56%, var(--sky-low));
+  }
+
   .vlh-stars {
     z-index: 1;
     opacity: var(--star-opacity);
@@ -219,6 +226,15 @@ const initialReading = states[initialState];
       radial-gradient(circle, rgba(218, 235, 247, 0.75) 0 1px, transparent 1.6px);
     background-size: 90px 90px, 140px 140px;
     background-position: 12px 20px, 60px 35px;
+  }
+
+  .vaelinya-live-hero[data-state="night"] .vlh-stars {
+    background-image:
+      radial-gradient(circle, rgba(255, 255, 255, 0.96) 0 1px, transparent 1.6px),
+      radial-gradient(circle, rgba(218, 235, 247, 0.72) 0 1px, transparent 1.7px),
+      radial-gradient(circle, rgba(180, 210, 255, 0.7) 0 1.2px, transparent 1.9px);
+    background-size: 118px 118px, 176px 176px, 260px 260px;
+    background-position: 16px 18px, 70px 44px, 130px 86px;
   }
 
   .vlh-moon {
@@ -230,6 +246,11 @@ const initialReading = states[initialState];
     opacity: var(--moon-opacity);
   }
 
+  .vaelinya-live-hero[data-state="night"] .vlh-moon {
+    background: radial-gradient(circle, rgba(244, 249, 255, 0.98) 0 22%, rgba(176, 211, 255, 0.5) 44%, rgba(76, 124, 218, 0.16) 68%, transparent 76%);
+    box-shadow: 0 0 34px rgba(157, 197, 255, 0.32);
+  }
+
   .vlh-moon-a {
     inset: 12% 14% auto auto;
   }
@@ -238,6 +259,11 @@ const initialReading = states[initialState];
     width: clamp(26px, 4vw, 54px);
     inset: 19% 9% auto auto;
     opacity: calc(var(--moon-opacity) * 0.72);
+  }
+
+  .vaelinya-live-hero[data-state="night"] .vlh-moon-b {
+    opacity: 0.82;
+    box-shadow: 0 0 24px rgba(157, 197, 255, 0.24);
   }
 
   .vlh-mountains {
@@ -301,6 +327,21 @@ const initialReading = states[initialState];
       linear-gradient(to right, transparent, var(--river-soft), transparent);
   }
 
+  .vaelinya-live-hero[data-state="night"] .vlh-river {
+    background:
+      linear-gradient(
+        to bottom,
+        transparent 0 20%,
+        rgba(218, 235, 247, 0.22) 24%,
+        var(--river-soft) 32%,
+        var(--river) 43%,
+        rgba(8, 35, 88, 0.7) 68%,
+        transparent 94%
+      ),
+      radial-gradient(ellipse at 58% 38%, rgba(218, 235, 247, 0.28), transparent 34%),
+      linear-gradient(to right, transparent, rgba(157, 197, 255, 0.4), transparent);
+  }
+
   .vlh-forest {
     z-index: 6;
     inset: auto 0 0;
@@ -326,6 +367,10 @@ const initialReading = states[initialState];
     );
   }
 
+  .vaelinya-live-hero[data-state="night"] .vlh-forest::before {
+    background: rgba(3, 12, 31, 0.72);
+  }
+
   .vlh-forest::after {
     background: linear-gradient(to top, rgba(1, 3, 10, 1), rgba(1, 3, 10, 0.9) 62%, rgba(1, 3, 10, 0.74));
     clip-path: polygon(
@@ -334,6 +379,10 @@ const initialReading = states[initialState];
       71% 75%, 80% 60%, 88% 76%, 95% 59%, 100% 70%,
       100% 100%, 0 100%
     );
+  }
+
+  .vaelinya-live-hero[data-state="night"] .vlh-forest::after {
+    background: linear-gradient(to top, rgba(0, 1, 5, 1), rgba(1, 3, 10, 0.96) 62%, rgba(1, 8, 22, 0.88));
   }
 
   .vlh-content {
