@@ -269,6 +269,10 @@ Clear and high and gentle.
 
 The bridge had gone. The listening had stayed.
 
+<div class="story-after-link story-after-link--song">
+  <a href="/characters/lina/#lina-song-title">Hear Lina’s song</a>
+</div>
+
 <div class="story-whisper-secret" aria-hidden="true">
   <span class="story-whisper-star">
     <span class="story-whisper-core"></span>
@@ -280,6 +284,32 @@ The bridge had gone. The listening had stayed.
 </div>
 
 <style>
+  .story-after-link {
+    margin: 1.8rem auto 0;
+    text-align: center;
+  }
+
+  .story-after-link a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.62rem 0.95rem;
+    border: 1px solid rgba(75, 99, 199, 0.24);
+    border-radius: 999px;
+    background: rgba(255, 250, 242, 0.72);
+    color: #20262c;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .story-after-link a:hover,
+  .story-after-link a:focus-visible {
+    border-color: rgba(75, 99, 199, 0.44);
+    background: rgba(255, 250, 242, 0.9);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
   .story-whisper-secret {
     display: none;
   }
