@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import VaelinyaLiveHero from '../components/VaelinyaLiveHero.astro';
 
-const description = 'A colourful, illustrated, learnable story world where readers can begin with a simple doorway, then follow stories, world, and language.';
+const description = 'Vaelinya is a colourful story world on a planet on the far side of the Sun, with two moons, gentle magic, brave children, and living words.';
 const site = Astro.site ?? new URL('https://vaelinya.uk');
 
 const webSiteJsonLd = {
@@ -20,27 +20,28 @@ const webSiteJsonLd = {
   <div class="home-page">
     <VaelinyaLiveHero />
 
+    <section class="panel home-intro-panel" aria-labelledby="home-intro-title">
+      <p class="eyebrow">What is Vaelinya?</p>
+      <h2 id="home-intro-title">Vaelinya is a colourful story world.</h2>
+      <p>Vaelinya is a planet on the far side of the Sun, with two moons in its sky.</p>
+      <p>People, animals, plants, words, songs, and places are different there. Everyone has their own way of noticing, feeling, moving, speaking, remembering, and understanding.</p>
+      <p>Kindness is part of everyday life. People are given time, space, clear words, and gentle ways to begin.</p>
+      <p>On this website, you can read stories, meet Lina and her friends, explore the world, learn Vaelinya words, hear songs, and find artefacts from the stories.</p>
+      <div class="home-main-invite">
+        <a class="button" href="/start/">Say hello to Lina</a>
+        <span>Lina will greet you and show you the first gentle path into Vaelinya.</span>
+      </div>
+    </section>
+
     <section class="door-intro" aria-labelledby="door-intro-title" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-      <p class="eyebrow" style="text-align: center; margin-left: auto; margin-right: auto;">Four doors</p>
-      <h2 id="door-intro-title" style="text-align: center; margin-left: auto; margin-right: auto;">Choose how to enter Vaelinya.</h2>
+      <p class="eyebrow" style="text-align: center; margin-left: auto; margin-right: auto;">After you begin</p>
+      <h2 id="door-intro-title" style="text-align: center; margin-left: auto; margin-right: auto;">Choose a door.</h2>
       <p class="door-intro-copy" style="max-width: 46rem; width: 100%; margin-left: auto; margin-right: auto; text-align: center; line-height: 1.45;">
-        <span style="display: block; width: 100%; text-align: center;">Read Lina’s first story, continue through the stories, explore the world, or learn a word.</span>
-        <span style="display: block; width: 100%; text-align: center;">Story 1 is the easiest first step, but you do not need to understand everything before you begin.</span>
+        <span style="display: block; width: 100%; text-align: center;">Once Lina has shown you the first path, you can keep reading, explore the world, learn the language, or follow artefacts and hidden things.</span>
       </p>
     </section>
 
     <section class="door-grid" aria-label="Four doorways into Vaelinya">
-      <a class="door-card door-card--start" href="/read/lina/01-the-bridge-that-sang-back/" aria-label="Read Lina’s first story: The Bridge That Sang Back">
-        <div class="door-card__visual" aria-hidden="true">
-          <div class="door-card__shape"><span>✦</span></div>
-        </div>
-        <div class="door-card__content">
-          <p class="door-card__label">First story</p>
-          <h3>The Bridge That Sang Back</h3>
-          <p>Begin with Lina and the old bridge that answers in song.</p>
-        </div>
-      </a>
-
       <a class="door-card door-card--read" href="/read/" aria-label="Read the stories">
         <div class="door-card__visual" aria-hidden="true">
           <div class="door-card__shape"><span>✦</span></div>
@@ -73,39 +74,17 @@ const webSiteJsonLd = {
           <p>Learn one small family of Vaelinya words at a time.</p>
         </div>
       </a>
-    </section>
 
-    <section class="panel lina-greeting-panel" aria-labelledby="lina-greeting-title">
-      <figure class="lina-greeting-image">
-        <img
-          src="/images/lina-says-hello-card.jpg?v=2026-05-25-hello-real-01"
-          alt="Lina smiles and raises one hand in greeting."
-          width="1600"
-          height="900"
-          loading="lazy"
-          decoding="async"
-        />
-      </figure>
-      <div class="lina-greeting-copy">
-        <p class="eyebrow">Lina greeting</p>
-        <h2 id="lina-greeting-title">Meet Lina</h2>
-        <p>“Hello. You can begin slowly.”</p>
-        <p>Lina is the first person many readers meet in Vaelinya. She notices small things, listens carefully, and helps the world open without rushing.</p>
-        <p>
-          <a class="button secondary" href="/characters/lina/">Open Lina’s character page</a>
-          <a class="button secondary" href="/read/lina/01-the-bridge-that-sang-back/">Read Lina’s first story</a>
-        </p>
-      </div>
-    </section>
-
-    <section class="panel first-path-panel" aria-labelledby="first-path-title">
-      <div class="first-path-image" aria-hidden="true"></div>
-      <div class="first-path-copy">
-        <p class="eyebrow">After the first story</p>
-        <h2 id="first-path-title">Follow what catches your attention.</h2>
-        <p>Use the first story as your doorway. Then follow a place, word, symbol, object, or person into the wider world.</p>
-        <a class="button first-path-link" href="/read/">Open the story path</a>
-      </div>
+      <a class="door-card door-card--start" href="/artefacts/" aria-label="Find artefacts from the stories">
+        <div class="door-card__visual" aria-hidden="true">
+          <div class="door-card__shape"><span>✦</span></div>
+        </div>
+        <div class="door-card__content">
+          <p class="door-card__label">Artefacts</p>
+          <h3>Find artefacts</h3>
+          <p>Find symbols, maps, objects, songs, and hidden things from the stories.</p>
+        </div>
+      </a>
     </section>
   </div>
 </BaseLayout>
