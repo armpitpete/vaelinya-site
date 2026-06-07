@@ -33,7 +33,7 @@ body:has(.about-page) {
   background-image:
     linear-gradient(90deg, rgba(255, 248, 232, 0.88) 0%, rgba(255, 248, 232, 0.7) 35%, rgba(255, 248, 232, 0.3) 68%, rgba(29, 18, 46, 0.2) 100%),
     linear-gradient(0deg, rgba(29, 18, 46, 0.2), rgba(255, 248, 232, 0.04)),
-    url('/images/about/magical_riverside_at_dusk.webp');
+    var(--vaelinya-body-image);
   background-size: cover;
   background-position: center;
   transform: scale(1.01);
@@ -187,8 +187,8 @@ body:has(.about-page) {
   .about-hero::before {
     background-image:
       linear-gradient(0deg, rgba(255, 248, 232, 0.9), rgba(255, 248, 232, 0.35)),
-      url('/images/about/magical_riverside_at_dusk.webp');
-    background-position: center bottom;
+      var(--vaelinya-body-image);
+    background-position: center top;
   }
 
   .creator-card__copy {
