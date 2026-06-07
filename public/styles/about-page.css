@@ -1,9 +1,9 @@
 body:has(.about-page) {
-  background-color: #1d122e;
+  background-color: var(--vaelinya-body-base);
   background-image:
-    linear-gradient(90deg, rgba(29, 18, 46, 0.92) 0%, rgba(29, 18, 46, 0.7) 34%, rgba(29, 18, 46, 0.5) 100%),
-    linear-gradient(0deg, rgba(29, 18, 46, 0.94) 0%, rgba(29, 18, 46, 0.36) 52%, rgba(29, 18, 46, 0.82) 100%),
-    url('/images/about/magical_riverside_at_dusk.webp');
+    linear-gradient(90deg, var(--vaelinya-body-shade-bottom) 0%, var(--vaelinya-body-shade-mid) 38%, rgba(29, 18, 46, 0.22) 100%),
+    linear-gradient(0deg, var(--vaelinya-body-shade-bottom) 0%, var(--vaelinya-body-shade-mid) 52%, var(--vaelinya-body-shade-top) 100%),
+    var(--vaelinya-body-image);
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
