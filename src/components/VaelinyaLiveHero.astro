@@ -32,7 +32,6 @@ const initialReading = states[initialState];
 ---
 
 <section class="vaelinya-live-hero" data-state={initialState}>
-  <div class="vlh-image" aria-hidden="true"></div>
   <div class="vlh-shade" aria-hidden="true"></div>
 
   <div class="vlh-content">
@@ -115,18 +114,16 @@ const initialReading = states[initialState];
 
 <style>
   .vaelinya-live-hero {
-    --vlh-image: url("/images/home/live-hero/vaelinya-live-hero-night.webp");
-    --vlh-image-opacity: 0.78;
     --vlh-title: #f8fbff;
     --vlh-text: rgba(248, 251, 255, 0.88);
     --vlh-muted: rgba(248, 251, 255, 0.72);
-    --vlh-panel: rgba(5, 12, 32, 0.28);
+    --vlh-panel: rgba(5, 12, 32, 0.3);
     --vlh-panel-border: rgba(248, 251, 255, 0.28);
-    --vlh-button: rgba(5, 12, 32, 0.24);
+    --vlh-button: rgba(5, 12, 32, 0.26);
     --vlh-button-hover: rgba(248, 251, 255, 0.18);
-    --vlh-shade-top: rgba(0, 0, 0, 0.06);
-    --vlh-shade-mid: rgba(0, 0, 0, 0.05);
-    --vlh-shade-bottom: rgba(0, 0, 0, 0.18);
+    --vlh-shade-top: rgba(0, 0, 0, 0.02);
+    --vlh-shade-mid: rgba(0, 0, 0, 0.02);
+    --vlh-shade-bottom: rgba(0, 0, 0, 0.08);
 
     position: relative;
     min-height: clamp(520px, 74vh, 820px);
@@ -137,8 +134,6 @@ const initialReading = states[initialState];
   }
 
   .vaelinya-live-hero[data-state="dawn"] {
-    --vlh-image: url("/images/home/live-hero/vaelinya-live-hero-dawn.webp");
-    --vlh-image-opacity: 0.76;
     --vlh-title: #fff8f3;
     --vlh-text: rgba(255, 248, 243, 0.9);
     --vlh-muted: rgba(255, 248, 243, 0.76);
@@ -146,74 +141,55 @@ const initialReading = states[initialState];
     --vlh-panel-border: rgba(255, 248, 243, 0.3);
     --vlh-button: rgba(34, 24, 54, 0.22);
     --vlh-button-hover: rgba(255, 248, 243, 0.2);
-    --vlh-shade-top: rgba(18, 20, 48, 0.05);
-    --vlh-shade-mid: rgba(18, 20, 48, 0.04);
-    --vlh-shade-bottom: rgba(18, 20, 48, 0.16);
+    --vlh-shade-top: rgba(18, 20, 48, 0.02);
+    --vlh-shade-mid: rgba(18, 20, 48, 0.02);
+    --vlh-shade-bottom: rgba(18, 20, 48, 0.08);
   }
 
   .vaelinya-live-hero[data-state="day"] {
-    --vlh-image: url("/images/home/live-hero/vaelinya-live-hero-day.webp");
-    --vlh-image-opacity: 0.74;
     --vlh-title: #ffffff;
     --vlh-text: rgba(255, 255, 255, 0.92);
     --vlh-muted: rgba(255, 255, 255, 0.8);
-    --vlh-panel: rgba(10, 46, 74, 0.22);
+    --vlh-panel: rgba(10, 46, 74, 0.24);
     --vlh-panel-border: rgba(255, 255, 255, 0.36);
-    --vlh-button: rgba(10, 46, 74, 0.22);
+    --vlh-button: rgba(10, 46, 74, 0.24);
     --vlh-button-hover: rgba(255, 255, 255, 0.24);
-    --vlh-shade-top: rgba(8, 32, 52, 0.06);
-    --vlh-shade-mid: rgba(8, 32, 52, 0.05);
-    --vlh-shade-bottom: rgba(8, 32, 52, 0.15);
+    --vlh-shade-top: rgba(8, 32, 52, 0.02);
+    --vlh-shade-mid: rgba(8, 32, 52, 0.02);
+    --vlh-shade-bottom: rgba(8, 32, 52, 0.08);
   }
 
   .vaelinya-live-hero[data-state="dusk"] {
-    --vlh-image: url("/images/home/live-hero/vaelinya-live-hero-dusk.webp");
-    --vlh-image-opacity: 0.78;
     --vlh-title: #fff7ff;
     --vlh-text: rgba(255, 247, 255, 0.91);
     --vlh-muted: rgba(255, 247, 255, 0.76);
-    --vlh-panel: rgba(25, 15, 50, 0.26);
+    --vlh-panel: rgba(25, 15, 50, 0.28);
     --vlh-panel-border: rgba(255, 247, 255, 0.32);
-    --vlh-button: rgba(25, 15, 50, 0.24);
+    --vlh-button: rgba(25, 15, 50, 0.26);
     --vlh-button-hover: rgba(255, 247, 255, 0.2);
-    --vlh-shade-top: rgba(12, 10, 35, 0.06);
-    --vlh-shade-mid: rgba(12, 10, 35, 0.05);
-    --vlh-shade-bottom: rgba(12, 10, 35, 0.18);
+    --vlh-shade-top: rgba(12, 10, 35, 0.02);
+    --vlh-shade-mid: rgba(12, 10, 35, 0.02);
+    --vlh-shade-bottom: rgba(12, 10, 35, 0.08);
   }
 
   .vaelinya-live-hero[data-state="night"] {
-    --vlh-image: url("/images/home/live-hero/vaelinya-live-hero-night.webp");
-    --vlh-image-opacity: 0.8;
     --vlh-title: #f8fbff;
     --vlh-text: rgba(248, 251, 255, 0.88);
     --vlh-muted: rgba(248, 251, 255, 0.72);
-    --vlh-panel: rgba(5, 12, 32, 0.3);
+    --vlh-panel: rgba(5, 12, 32, 0.34);
     --vlh-panel-border: rgba(248, 251, 255, 0.28);
-    --vlh-button: rgba(5, 12, 32, 0.26);
+    --vlh-button: rgba(5, 12, 32, 0.3);
     --vlh-button-hover: rgba(248, 251, 255, 0.18);
-    --vlh-shade-top: rgba(0, 0, 0, 0.05);
-    --vlh-shade-mid: rgba(0, 0, 0, 0.04);
-    --vlh-shade-bottom: rgba(0, 0, 0, 0.2);
+    --vlh-shade-top: rgba(0, 0, 0, 0.02);
+    --vlh-shade-mid: rgba(0, 0, 0, 0.02);
+    --vlh-shade-bottom: rgba(0, 0, 0, 0.1);
   }
 
-  .vlh-image,
   .vlh-shade {
     position: absolute;
     inset: 0;
-    pointer-events: none;
-  }
-
-  .vlh-image {
-    z-index: 0;
-    background-image: var(--vlh-image);
-    background-position: center;
-    background-size: cover;
-    opacity: var(--vlh-image-opacity);
-    transform: scale(1.01);
-  }
-
-  .vlh-shade {
     z-index: 1;
+    pointer-events: none;
     background:
       linear-gradient(to bottom, var(--vlh-shade-top), transparent 28%, var(--vlh-shade-bottom)),
       radial-gradient(ellipse at 50% 28%, transparent 0 34%, var(--vlh-shade-mid) 70%);
@@ -226,7 +202,7 @@ const initialReading = states[initialState];
     margin: 0 auto;
     padding: clamp(4.5rem, 13vh, 8.5rem) 1.25rem 3.5rem;
     text-align: center;
-    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.36);
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.42);
   }
 
   .vlh-kicker {
@@ -311,14 +287,9 @@ const initialReading = states[initialState];
   @media (max-width: 720px) {
     .vaelinya-live-hero {
       min-height: 560px;
-      --vlh-image-opacity: 0.86;
-      --vlh-panel: rgba(5, 12, 32, 0.42);
-      --vlh-button: rgba(5, 12, 32, 0.36);
-      --vlh-shade-bottom: rgba(0, 0, 0, 0.28);
-    }
-
-    .vlh-image {
-      background-position: center bottom;
+      --vlh-panel: rgba(5, 12, 32, 0.44);
+      --vlh-button: rgba(5, 12, 32, 0.38);
+      --vlh-shade-bottom: rgba(0, 0, 0, 0.22);
     }
 
     .vlh-content {
@@ -327,7 +298,6 @@ const initialReading = states[initialState];
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .vlh-image,
     .vlh-shade,
     .vaelinya-live-hero {
       transition: none !important;
