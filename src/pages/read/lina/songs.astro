@@ -29,6 +29,14 @@ const description = 'Songs from Lina’s stories in Vaelinya.';
         A song about too much noise, one hidden sound, and Lina finding the rhythm that lets the world answer back.
       </p>
 
+      <figure class="audio-panel">
+        <figcaption>Listen to Lina Hears the Hidden Song</figcaption>
+        <audio controls preload="metadata" src="/audio/lina/Lina%20Hears%20the%20Hidden%20Song.mp3">
+          Your browser does not support the audio player. You can open the song file directly at
+          <a href="/audio/lina/Lina%20Hears%20the%20Hidden%20Song.mp3">Lina Hears the Hidden Song</a>.
+        </audio>
+      </figure>
+
       <div class="link-list">
         <a href="/read/lina/01-the-bridge-that-sang-back/">Read the story</a>
         <a href="/read/lina/">Return to Lina’s stories</a>
@@ -37,11 +45,31 @@ const description = 'Songs from Lina’s stories in Vaelinya.';
 
     <article class="panel">
       <p class="eyebrow">Future songs</p>
-      <h2>More Lina songs will be added here</h2>
+      <h2>More Lina songs are coming</h2>
 
       <p>
-        Each future Lina story song will be added after the matching story has its song.
+        As each Lina story receives its song, it will be added here.
       </p>
     </article>
   </section>
 </BaseLayout>
+
+<style>
+  .audio-panel {
+    margin: 1.4rem 0;
+    padding: 1rem;
+    border: 1px solid rgba(75, 43, 92, 0.18);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.48);
+  }
+
+  .audio-panel figcaption {
+    margin-bottom: 0.65rem;
+    font-weight: 800;
+  }
+
+  .audio-panel audio {
+    display: block;
+    width: 100%;
+  }
+</style>
