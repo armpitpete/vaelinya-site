@@ -1,0 +1,109 @@
+:root {
+  --vaelinya-body-image: url('/images/home/live-hero/vaelinya-live-hero-night.webp');
+  --vaelinya-body-base: #1d122e;
+  --vaelinya-body-shade-top: rgba(5, 12, 32, 0.5);
+  --vaelinya-body-shade-mid: rgba(5, 12, 32, 0.34);
+  --vaelinya-body-shade-bottom: rgba(5, 12, 32, 0.68);
+  --vaelinya-body-glow-left: rgba(88, 142, 255, 0.16);
+  --vaelinya-body-glow-right: rgba(113, 218, 203, 0.12);
+  --vaelinya-body-glow-low: rgba(193, 68, 122, 0.12);
+}
+
+html[data-vaelinya-state="dawn"] {
+  --vaelinya-body-image: url('/images/home/live-hero/vaelinya-live-hero-dawn.webp');
+  --vaelinya-body-base: #2a1d44;
+  --vaelinya-body-shade-top: rgba(34, 24, 54, 0.4);
+  --vaelinya-body-shade-mid: rgba(34, 24, 54, 0.24);
+  --vaelinya-body-shade-bottom: rgba(34, 24, 54, 0.58);
+  --vaelinya-body-glow-left: rgba(255, 190, 160, 0.2);
+  --vaelinya-body-glow-right: rgba(160, 190, 255, 0.16);
+  --vaelinya-body-glow-low: rgba(255, 213, 94, 0.12);
+}
+
+html[data-vaelinya-state="day"] {
+  --vaelinya-body-image: url('/images/home/live-hero/vaelinya-live-hero-day.webp');
+  --vaelinya-body-base: #17364a;
+  --vaelinya-body-shade-top: rgba(8, 32, 52, 0.36);
+  --vaelinya-body-shade-mid: rgba(8, 32, 52, 0.22);
+  --vaelinya-body-shade-bottom: rgba(8, 32, 52, 0.5);
+  --vaelinya-body-glow-left: rgba(255, 255, 255, 0.16);
+  --vaelinya-body-glow-right: rgba(113, 218, 203, 0.2);
+  --vaelinya-body-glow-low: rgba(255, 213, 94, 0.14);
+}
+
+html[data-vaelinya-state="dusk"] {
+  --vaelinya-body-image: url('/images/home/live-hero/vaelinya-live-hero-dusk.webp');
+  --vaelinya-body-base: #24143f;
+  --vaelinya-body-shade-top: rgba(25, 15, 50, 0.46);
+  --vaelinya-body-shade-mid: rgba(25, 15, 50, 0.3);
+  --vaelinya-body-shade-bottom: rgba(25, 15, 50, 0.66);
+  --vaelinya-body-glow-left: rgba(255, 160, 190, 0.18);
+  --vaelinya-body-glow-right: rgba(255, 190, 90, 0.14);
+  --vaelinya-body-glow-low: rgba(113, 218, 203, 0.1);
+}
+
+html[data-vaelinya-state="night"] {
+  --vaelinya-body-image: url('/images/home/live-hero/vaelinya-live-hero-night.webp');
+  --vaelinya-body-base: #1d122e;
+  --vaelinya-body-shade-top: rgba(5, 12, 32, 0.5);
+  --vaelinya-body-shade-mid: rgba(5, 12, 32, 0.34);
+  --vaelinya-body-shade-bottom: rgba(5, 12, 32, 0.68);
+  --vaelinya-body-glow-left: rgba(88, 142, 255, 0.16);
+  --vaelinya-body-glow-right: rgba(113, 218, 203, 0.12);
+  --vaelinya-body-glow-low: rgba(193, 68, 122, 0.12);
+}
+
+html {
+  background: var(--vaelinya-body-base);
+}
+
+body {
+  background-color: var(--vaelinya-body-base);
+  background-image:
+    linear-gradient(180deg, var(--vaelinya-body-shade-top) 0%, var(--vaelinya-body-shade-mid) 44%, var(--vaelinya-body-shade-bottom) 100%),
+    radial-gradient(circle at 8% 10%, var(--vaelinya-body-glow-left), transparent 22rem),
+    radial-gradient(circle at 92% 8%, var(--vaelinya-body-glow-right), transparent 24rem),
+    radial-gradient(circle at 50% 96%, var(--vaelinya-body-glow-low), transparent 28rem),
+    var(--vaelinya-body-image);
+  background-position:
+    center top,
+    center top,
+    center top,
+    center bottom,
+    center center;
+  background-repeat:
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat;
+  background-size:
+    cover,
+    auto,
+    auto,
+    auto,
+    cover;
+  background-attachment:
+    fixed,
+    scroll,
+    scroll,
+    scroll,
+    fixed;
+}
+
+@media (max-width: 720px) {
+  body {
+    background-position:
+      center top,
+      center top,
+      center top,
+      center bottom,
+      center top;
+    background-attachment:
+      scroll,
+      scroll,
+      scroll,
+      scroll,
+      scroll;
+  }
+}
