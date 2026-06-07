@@ -5,17 +5,36 @@ const description = 'Songs from Lina’s stories in Vaelinya.';
 ---
 
 <BaseLayout title="Lina’s Songs" description={description}>
-  <section class="page-section">
-    <p class="eyebrow">Lina’s Songs</p>
-    <h1>Lina’s songs</h1>
+  <section class="page-section lina-songs-page">
+    <header class="lina-songs-hero">
+      <div class="lina-songs-hero-copy">
+        <p class="eyebrow">Lina’s Songs</p>
+        <h1>Lina’s songs</h1>
 
-    <p class="lede">
-      Each Lina story has its own song.
-    </p>
+        <p class="lede">
+          Each Lina story has its own song.
+        </p>
 
-    <p>
-      The songs follow how Lina listens, notices, waits, answers, and finds her way through Vaelinya.
-    </p>
+        <p>
+          The songs follow how Lina listens, notices, waits, answers, and finds her way through Vaelinya.
+        </p>
+
+        <p class="lina-songs-hero-note">
+          Songs for Lina’s stories, quiet ways, and hidden sounds.
+        </p>
+      </div>
+
+      <figure class="lina-songs-hero-art">
+        <img
+          src="/images/characters/lina/lina-portrait.webp"
+          alt="Lina smiles softly and raises one hand in greeting."
+          width="1448"
+          height="1086"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
+    </header>
 
     <article class="panel">
       <p class="eyebrow">Lina theme song</p>
@@ -67,6 +86,49 @@ const description = 'Songs from Lina’s stories in Vaelinya.';
 </BaseLayout>
 
 <style>
+  .lina-songs-page {
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.9)),
+      url('/images/read/lina/lina-06-the-song-that-found-its-voice.webp') center center / cover no-repeat;
+  }
+
+  .lina-songs-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(240px, 0.75fr);
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1.25rem 0 0.5rem;
+  }
+
+  .lina-songs-hero-copy {
+    max-width: 42rem;
+  }
+
+  .lina-songs-hero-note {
+    margin-top: 1rem;
+    font-weight: 800;
+    color: #4b2b5c;
+  }
+
+  .lina-songs-hero-art {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    margin: 0;
+  }
+
+  .lina-songs-hero-art img {
+    display: block;
+    width: min(100%, 22rem);
+    height: auto;
+    object-fit: contain;
+    border-radius: 1.5rem;
+    filter: drop-shadow(0 1rem 1.8rem rgba(34, 18, 50, 0.24));
+  }
+
   .audio-panel {
     margin: 1.4rem 0;
     padding: 1rem;
@@ -83,5 +145,21 @@ const description = 'Songs from Lina’s stories in Vaelinya.';
   .audio-panel audio {
     display: block;
     width: 100%;
+  }
+
+  @media (max-width: 860px) {
+    .lina-songs-hero {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .lina-songs-hero-art {
+      order: -1;
+      justify-content: flex-start;
+    }
+
+    .lina-songs-hero-art img {
+      width: min(100%, 17rem);
+    }
   }
 </style>
