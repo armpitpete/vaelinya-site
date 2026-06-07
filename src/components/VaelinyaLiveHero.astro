@@ -32,8 +32,6 @@ const initialReading = states[initialState];
 ---
 
 <section class="vaelinya-live-hero" data-state={initialState}>
-  <div class="vlh-shade" aria-hidden="true"></div>
-
   <div class="vlh-content">
     <p class="vlh-kicker">Vaelinya now</p>
     <h1>Vaelinya</h1>
@@ -121,9 +119,6 @@ const initialReading = states[initialState];
     --vlh-panel-border: rgba(248, 251, 255, 0.28);
     --vlh-button: rgba(5, 12, 32, 0.26);
     --vlh-button-hover: rgba(248, 251, 255, 0.18);
-    --vlh-shade-top: rgba(0, 0, 0, 0.02);
-    --vlh-shade-mid: rgba(0, 0, 0, 0.02);
-    --vlh-shade-bottom: rgba(0, 0, 0, 0.08);
 
     position: relative;
     min-height: clamp(520px, 74vh, 820px);
@@ -141,9 +136,6 @@ const initialReading = states[initialState];
     --vlh-panel-border: rgba(255, 248, 243, 0.3);
     --vlh-button: rgba(34, 24, 54, 0.22);
     --vlh-button-hover: rgba(255, 248, 243, 0.2);
-    --vlh-shade-top: rgba(18, 20, 48, 0.02);
-    --vlh-shade-mid: rgba(18, 20, 48, 0.02);
-    --vlh-shade-bottom: rgba(18, 20, 48, 0.08);
   }
 
   .vaelinya-live-hero[data-state="day"] {
@@ -154,9 +146,6 @@ const initialReading = states[initialState];
     --vlh-panel-border: rgba(255, 255, 255, 0.36);
     --vlh-button: rgba(10, 46, 74, 0.24);
     --vlh-button-hover: rgba(255, 255, 255, 0.24);
-    --vlh-shade-top: rgba(8, 32, 52, 0.02);
-    --vlh-shade-mid: rgba(8, 32, 52, 0.02);
-    --vlh-shade-bottom: rgba(8, 32, 52, 0.08);
   }
 
   .vaelinya-live-hero[data-state="dusk"] {
@@ -167,9 +156,6 @@ const initialReading = states[initialState];
     --vlh-panel-border: rgba(255, 247, 255, 0.32);
     --vlh-button: rgba(25, 15, 50, 0.26);
     --vlh-button-hover: rgba(255, 247, 255, 0.2);
-    --vlh-shade-top: rgba(12, 10, 35, 0.02);
-    --vlh-shade-mid: rgba(12, 10, 35, 0.02);
-    --vlh-shade-bottom: rgba(12, 10, 35, 0.08);
   }
 
   .vaelinya-live-hero[data-state="night"] {
@@ -180,19 +166,6 @@ const initialReading = states[initialState];
     --vlh-panel-border: rgba(248, 251, 255, 0.28);
     --vlh-button: rgba(5, 12, 32, 0.3);
     --vlh-button-hover: rgba(248, 251, 255, 0.18);
-    --vlh-shade-top: rgba(0, 0, 0, 0.02);
-    --vlh-shade-mid: rgba(0, 0, 0, 0.02);
-    --vlh-shade-bottom: rgba(0, 0, 0, 0.1);
-  }
-
-  .vlh-shade {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    background:
-      linear-gradient(to bottom, var(--vlh-shade-top), transparent 28%, var(--vlh-shade-bottom)),
-      radial-gradient(ellipse at 50% 28%, transparent 0 34%, var(--vlh-shade-mid) 70%);
   }
 
   .vlh-content {
@@ -202,7 +175,7 @@ const initialReading = states[initialState];
     margin: 0 auto;
     padding: clamp(4.5rem, 13vh, 8.5rem) 1.25rem 3.5rem;
     text-align: center;
-    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.42);
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.48);
   }
 
   .vlh-kicker {
@@ -289,7 +262,6 @@ const initialReading = states[initialState];
       min-height: 560px;
       --vlh-panel: rgba(5, 12, 32, 0.44);
       --vlh-button: rgba(5, 12, 32, 0.38);
-      --vlh-shade-bottom: rgba(0, 0, 0, 0.22);
     }
 
     .vlh-content {
@@ -298,7 +270,6 @@ const initialReading = states[initialState];
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .vlh-shade,
     .vaelinya-live-hero {
       transition: none !important;
       animation: none !important;
