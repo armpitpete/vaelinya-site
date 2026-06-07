@@ -1,11 +1,11 @@
 body:has(.storybook-start-page) {
-  background-color: var(--night);
+  background-color: var(--vaelinya-body-base);
   background-image:
-    linear-gradient(180deg, rgba(29, 18, 46, 0.58) 0%, rgba(29, 18, 46, 0.22) 38%, rgba(29, 18, 46, 0.72) 100%),
-    radial-gradient(circle at 12% 12%, rgba(255, 229, 119, 0.18), transparent 19rem),
-    radial-gradient(circle at 86% 18%, rgba(113, 218, 203, 0.16), transparent 22rem),
-    radial-gradient(circle at 50% 84%, rgba(193, 68, 122, 0.15), transparent 24rem),
-    url('/images/lina-first-path.webp?v=2026-05-24-start-bg-01'),
+    linear-gradient(180deg, var(--vaelinya-body-shade-top) 0%, var(--vaelinya-body-shade-mid) 38%, var(--vaelinya-body-shade-bottom) 100%),
+    radial-gradient(circle at 12% 12%, var(--vaelinya-body-glow-left), transparent 19rem),
+    radial-gradient(circle at 86% 18%, var(--vaelinya-body-glow-right), transparent 22rem),
+    radial-gradient(circle at 50% 84%, var(--vaelinya-body-glow-low), transparent 24rem),
+    var(--vaelinya-body-image),
     radial-gradient(circle, rgba(255, 248, 232, 0.08) 1px, transparent 1px);
   background-position:
     center top,
@@ -172,7 +172,7 @@ body:has(.storybook-start-page) {
       auto,
       auto,
       auto,
-      auto 100%,
+      cover,
       28px 28px;
   }
 
