@@ -1,35 +1,82 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { storybookChapters } from '../../data/storybookChapters';
+
+const firstRoute = [
+  {
+    step: 'Step 1',
+    title: 'Meet Lina',
+    text: 'Lina is the first guide into Vaelinya. She notices small things, listens carefully, and helps the world open without rushing.',
+    href: '/characters/lina/',
+    action: 'Meet Lina',
+  },
+  {
+    step: 'Step 2',
+    title: 'Read the first story',
+    text: 'The Bridge That Sang Back is the easiest first story. Read this before trying to understand the whole world.',
+    href: '/read/lina/01-the-bridge-that-sang-back/',
+    action: 'Read Story 1',
+  },
+  {
+    step: 'Step 3',
+    title: 'Hear Lina’s song',
+    text: 'Lina Hears the Hidden Song gives the first story another way to settle in your mind.',
+    href: '/characters/lina/#lina-song-title',
+    action: 'Hear the song',
+  },
+  {
+    step: 'Step 4',
+    title: 'Meet Lina’s seven friends',
+    text: 'Lina is not separate from the other children. Each child has their own way of noticing, feeling, moving, remembering, and understanding.',
+    href: '/read/children/',
+    action: 'Meet the children',
+  },
+];
+
+const doors = [
+  ['Stories', '/read/', 'Keep reading the stories.'],
+  ['World', '/world/', 'Explore places, people, customs, animals, and shared life.'],
+  ['Language', '/language/', 'Learn words, meanings, and Vaelinya ways of speaking.'],
+  ['Artefacts', '/artefacts/', 'Find symbols, maps, objects, chant cards, and hidden things.'],
+];
 ---
-<BaseLayout title="A Storybook of Vaelinya" description="A quiet optional guided route through Vaelinya.">
-  <link rel="stylesheet" href="/styles/storybook-start.css?v=2026-06-07-time-body-01" />
-  <div class="storybook-start-page">
-    <section class="page-section storybook-start-hero">
-      <p class="eyebrow">Start</p>
-      <h1>A Storybook of Vaelinya.</h1>
-      <p class="lede">A quiet optional guided route through Vaelinya, led first by Lina.</p>
-      <p>You can begin here, or go straight to Lina’s first story. The Storybook path is for readers who want a slower guided way in.</p>
-      <p><a class="button" href="/start/chapter-one/">Open Chapter One: The First Walk</a></p>
+<BaseLayout title="Start with Lina" description="The simplest first path into Vaelinya: meet Lina, read one story, then choose where to go next.">
+  <link rel="stylesheet" href="/styles/storybook-start.css?v=2026-06-07-guided-lina-01" />
+  <div class="storybook-start-page start-with-lina-page">
+    <section class="page-section storybook-start-hero start-route-hero">
+      <p class="eyebrow">Start here</p>
+      <h1>Start with Lina.</h1>
+      <p class="lede">This is the simplest first path into Vaelinya.</p>
+      <p>Read one story first. Then follow only the parts that help the story open.</p>
+      <div class="start-hero-actions" aria-label="First route actions">
+        <a class="button" href="/characters/lina/">Meet Lina</a>
+        <a class="button secondary" href="/read/lina/01-the-bridge-that-sang-back/">Read Story 1</a>
+      </div>
     </section>
 
-    <section class="page-section">
-      <p class="eyebrow">Storybook path</p>
-      <h2>Journey order</h2>
-      <div class="storybook-chapter-grid" aria-label="Storybook chapter order">
-        {storybookChapters.map((chapter) => (
-          <a
-            class={`storybook-chapter-card storybook-chapter-card--${chapter.number}`}
-            href={chapter.status === 'active' ? chapter.route : '#'}
-            aria-label={`Chapter ${chapter.number}: ${chapter.title}`}
-          >
-            <span class="storybook-chapter-card__image" aria-hidden="true">
-              <span class="storybook-chapter-card__mark"></span>
-            </span>
-            <span class="storybook-chapter-card__copy">
-              <span class="storybook-chapter-card__number">Chapter {chapter.number}</span>
-              <strong>{chapter.title}</strong>
-            </span>
+    <section class="page-section start-route-section" aria-labelledby="first-route-title">
+      <p class="eyebrow">First route</p>
+      <h2 id="first-route-title">Follow this path first</h2>
+      <div class="start-route-grid" aria-label="Guided first route through Vaelinya">
+        {firstRoute.map((item) => (
+          <a class="start-route-card" href={item.href}>
+            <span class="start-route-card__step">{item.step}</span>
+            <strong>{item.title}</strong>
+            <span>{item.text}</span>
+            <em>{item.action}</em>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="page-section start-door-section" aria-labelledby="start-door-title">
+      <p class="eyebrow">After you begin</p>
+      <h2 id="start-door-title">Choose a door</h2>
+      <p>Once you have met Lina and read the first story, you can choose where to go next.</p>
+      <div class="start-door-grid" aria-label="Doors to explore after the first route">
+        {doors.map(([label, href, note]) => (
+          <a class="start-door-card" href={href}>
+            <strong>{label}</strong>
+            <span>{note}</span>
           </a>
         ))}
       </div>
