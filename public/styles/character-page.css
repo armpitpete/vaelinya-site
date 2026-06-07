@@ -175,6 +175,43 @@ body:has(.lina-character-page) {
   margin-bottom: 0;
 }
 
+.lina-song-section {
+  display: grid;
+  gap: 0.8rem;
+  background:
+    radial-gradient(circle at 16% 12%, rgba(75, 99, 199, 0.14), transparent 15rem),
+    radial-gradient(circle at 92% 18%, rgba(193, 68, 122, 0.1), transparent 14rem),
+    rgba(250, 245, 236, 0.72);
+}
+
+.lina-song-section audio {
+  width: 100%;
+  max-width: 44rem;
+}
+
+.lyrics-panel {
+  max-width: 54rem;
+  border-radius: 1rem;
+  background: rgba(255, 250, 242, 0.68);
+  border: 1px solid rgba(122, 91, 50, 0.16);
+  overflow: hidden;
+}
+
+.lyrics-panel summary {
+  cursor: pointer;
+  padding: 0.85rem 1rem;
+  color: #20262c;
+  font-weight: 900;
+}
+
+.lyrics-panel pre {
+  margin: 0;
+  padding: 0 1rem 1rem;
+  white-space: pre-wrap;
+  font: inherit;
+  line-height: 1.65;
+}
+
 .character-gallery {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -316,22 +353,5 @@ body:has(.lina-character-page) {
   .story-link-grid,
   .quiet-lists {
     grid-template-columns: 1fr;
-  }
-
-  .quick-card div,
-  .favourites-grid div {
-    grid-template-columns: 1fr;
-    gap: 0.25rem;
-  }
-
-  .character-hero,
-  .character-section,
-  .quick-card div,
-  .favourites-grid div,
-  .detail-grid article,
-  .quiet-list-card,
-  .gallery-card,
-  .story-link-card {
-    background: rgba(255, 250, 242, 0.78);
   }
 }
