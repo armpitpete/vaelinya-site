@@ -45,6 +45,157 @@ body:has(.storybook-start-page) {
   -webkit-backdrop-filter: blur(5px);
 }
 
+.start-route-hero {
+  display: grid;
+  gap: 0.85rem;
+  min-height: clamp(18rem, 32vw, 26rem);
+  align-content: center;
+  background:
+    linear-gradient(90deg, rgba(250, 245, 236, 0.86) 0%, rgba(250, 245, 236, 0.72) 52%, rgba(250, 245, 236, 0.5) 100%),
+    var(--vaelinya-body-image);
+  background-size: cover;
+  background-position: center;
+}
+
+.start-route-hero h1 {
+  max-width: 42rem;
+  margin: 0;
+  color: #20262c;
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+}
+
+.start-route-hero .lede {
+  max-width: 42rem;
+  margin: 0;
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  font-weight: 800;
+  color: rgba(31, 23, 48, 0.86);
+}
+
+.start-route-hero p:not(.eyebrow):not(.lede) {
+  max-width: 44rem;
+}
+
+.start-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.4rem;
+}
+
+.start-route-section,
+.start-door-section {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.start-route-section h2,
+.start-door-section h2 {
+  margin: 0;
+  color: #20262c;
+}
+
+.start-route-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-top: 0.45rem;
+}
+
+.start-route-card {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 0.55rem;
+  min-height: 15rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: rgba(255, 250, 242, 0.76);
+  border: 1px solid rgba(122, 91, 50, 0.16);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: 0 0.7rem 1.8rem rgba(9, 5, 18, 0.12);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.start-route-card:hover,
+.start-route-card:focus-visible,
+.start-door-card:hover,
+.start-door-card:focus-visible,
+.storybook-chapter-card:hover,
+.storybook-chapter-card:focus-visible {
+  transform: translateY(-0.08rem);
+  border-color: rgba(75, 99, 199, 0.42);
+  background: rgba(255, 250, 242, 0.88);
+  box-shadow: 0 1rem 2.4rem rgba(9, 5, 18, 0.22);
+}
+
+.start-route-card:focus-visible,
+.start-door-card:focus-visible,
+.storybook-chapter-card:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 4px;
+}
+
+.start-route-card__step {
+  color: #6d3b91;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.start-route-card strong {
+  color: #20262c;
+  font-size: clamp(1.08rem, 1.7vw, 1.35rem);
+  line-height: 1.18;
+}
+
+.start-route-card span:not(.start-route-card__step) {
+  color: rgba(31, 23, 48, 0.78);
+  line-height: 1.45;
+}
+
+.start-route-card em {
+  align-self: end;
+  color: #4d2372;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.start-door-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.35rem;
+}
+
+.start-door-card {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.95rem;
+  border-radius: 1rem;
+  background: rgba(255, 250, 242, 0.72);
+  border: 1px solid rgba(122, 91, 50, 0.16);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: 0 0.55rem 1.35rem rgba(9, 5, 18, 0.1);
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.start-door-card strong {
+  color: #20262c;
+  font-size: 1.05rem;
+}
+
+.start-door-card span {
+  color: rgba(31, 23, 48, 0.76);
+  line-height: 1.42;
+}
+
 .storybook-chapter-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -62,17 +213,6 @@ body:has(.storybook-start-page) {
   text-decoration: none;
   border: 1px solid rgba(31, 23, 48, 0.12);
   box-shadow: 0 0.7rem 1.8rem rgba(9, 5, 18, 0.12);
-}
-
-.storybook-chapter-card:hover,
-.storybook-chapter-card:focus-visible {
-  transform: translateY(-0.08rem);
-  box-shadow: 0 1rem 2.4rem rgba(9, 5, 18, 0.22);
-}
-
-.storybook-chapter-card:focus-visible {
-  outline: 3px solid var(--focus-ring);
-  outline-offset: 4px;
 }
 
 .storybook-chapter-card__image {
@@ -159,6 +299,8 @@ body:has(.storybook-start-page) {
 }
 
 @media (max-width: 1000px) {
+  .start-route-grid,
+  .start-door-grid,
   .storybook-chapter-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -180,7 +322,18 @@ body:has(.storybook-start-page) {
     border-radius: 1rem;
   }
 
+  .start-route-hero {
+    min-height: auto;
+    background-position: center top;
+  }
+
+  .start-route-grid,
+  .start-door-grid,
   .storybook-chapter-grid {
     grid-template-columns: 1fr;
+  }
+
+  .start-route-card {
+    min-height: auto;
   }
 }
