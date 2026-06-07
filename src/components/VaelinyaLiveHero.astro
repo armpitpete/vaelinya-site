@@ -116,79 +116,84 @@ const initialReading = states[initialState];
 <style>
   .vaelinya-live-hero {
     --vlh-image: url("/images/home/live-hero/vaelinya-live-hero-night.webp");
+    --vlh-image-opacity: 0.78;
     --vlh-title: #f8fbff;
     --vlh-text: rgba(248, 251, 255, 0.88);
     --vlh-muted: rgba(248, 251, 255, 0.72);
-    --vlh-panel: rgba(5, 12, 32, 0.46);
-    --vlh-panel-border: rgba(248, 251, 255, 0.26);
-    --vlh-button: rgba(5, 12, 32, 0.42);
-    --vlh-button-hover: rgba(248, 251, 255, 0.16);
-    --vlh-shade-top: rgba(0, 0, 0, 0.12);
-    --vlh-shade-mid: rgba(0, 0, 0, 0.1);
-    --vlh-shade-bottom: rgba(0, 0, 0, 0.28);
+    --vlh-panel: rgba(5, 12, 32, 0.28);
+    --vlh-panel-border: rgba(248, 251, 255, 0.28);
+    --vlh-button: rgba(5, 12, 32, 0.24);
+    --vlh-button-hover: rgba(248, 251, 255, 0.18);
+    --vlh-shade-top: rgba(0, 0, 0, 0.06);
+    --vlh-shade-mid: rgba(0, 0, 0, 0.05);
+    --vlh-shade-bottom: rgba(0, 0, 0, 0.18);
 
     position: relative;
     min-height: clamp(520px, 74vh, 820px);
     overflow: hidden;
     isolation: isolate;
     color: var(--vlh-text);
-    background: #06122c;
+    background: transparent;
   }
 
   .vaelinya-live-hero[data-state="dawn"] {
     --vlh-image: url("/images/home/live-hero/vaelinya-live-hero-dawn.webp");
+    --vlh-image-opacity: 0.76;
     --vlh-title: #fff8f3;
     --vlh-text: rgba(255, 248, 243, 0.9);
     --vlh-muted: rgba(255, 248, 243, 0.76);
-    --vlh-panel: rgba(34, 24, 54, 0.38);
-    --vlh-panel-border: rgba(255, 248, 243, 0.28);
-    --vlh-button: rgba(34, 24, 54, 0.32);
-    --vlh-button-hover: rgba(255, 248, 243, 0.18);
-    --vlh-shade-top: rgba(18, 20, 48, 0.1);
-    --vlh-shade-mid: rgba(18, 20, 48, 0.06);
-    --vlh-shade-bottom: rgba(18, 20, 48, 0.25);
+    --vlh-panel: rgba(34, 24, 54, 0.24);
+    --vlh-panel-border: rgba(255, 248, 243, 0.3);
+    --vlh-button: rgba(34, 24, 54, 0.22);
+    --vlh-button-hover: rgba(255, 248, 243, 0.2);
+    --vlh-shade-top: rgba(18, 20, 48, 0.05);
+    --vlh-shade-mid: rgba(18, 20, 48, 0.04);
+    --vlh-shade-bottom: rgba(18, 20, 48, 0.16);
   }
 
   .vaelinya-live-hero[data-state="day"] {
     --vlh-image: url("/images/home/live-hero/vaelinya-live-hero-day.webp");
+    --vlh-image-opacity: 0.74;
     --vlh-title: #ffffff;
     --vlh-text: rgba(255, 255, 255, 0.92);
     --vlh-muted: rgba(255, 255, 255, 0.8);
-    --vlh-panel: rgba(10, 46, 74, 0.34);
-    --vlh-panel-border: rgba(255, 255, 255, 0.34);
-    --vlh-button: rgba(10, 46, 74, 0.34);
-    --vlh-button-hover: rgba(255, 255, 255, 0.22);
-    --vlh-shade-top: rgba(8, 32, 52, 0.12);
-    --vlh-shade-mid: rgba(8, 32, 52, 0.1);
-    --vlh-shade-bottom: rgba(8, 32, 52, 0.22);
+    --vlh-panel: rgba(10, 46, 74, 0.22);
+    --vlh-panel-border: rgba(255, 255, 255, 0.36);
+    --vlh-button: rgba(10, 46, 74, 0.22);
+    --vlh-button-hover: rgba(255, 255, 255, 0.24);
+    --vlh-shade-top: rgba(8, 32, 52, 0.06);
+    --vlh-shade-mid: rgba(8, 32, 52, 0.05);
+    --vlh-shade-bottom: rgba(8, 32, 52, 0.15);
   }
 
   .vaelinya-live-hero[data-state="dusk"] {
     --vlh-image: url("/images/home/live-hero/vaelinya-live-hero-dusk.webp");
+    --vlh-image-opacity: 0.78;
     --vlh-title: #fff7ff;
     --vlh-text: rgba(255, 247, 255, 0.91);
     --vlh-muted: rgba(255, 247, 255, 0.76);
-    --vlh-panel: rgba(25, 15, 50, 0.42);
-    --vlh-panel-border: rgba(255, 247, 255, 0.3);
-    --vlh-button: rgba(25, 15, 50, 0.36);
-    --vlh-button-hover: rgba(255, 247, 255, 0.18);
-    --vlh-shade-top: rgba(12, 10, 35, 0.12);
-    --vlh-shade-mid: rgba(12, 10, 35, 0.08);
-    --vlh-shade-bottom: rgba(12, 10, 35, 0.28);
+    --vlh-panel: rgba(25, 15, 50, 0.26);
+    --vlh-panel-border: rgba(255, 247, 255, 0.32);
+    --vlh-button: rgba(25, 15, 50, 0.24);
+    --vlh-button-hover: rgba(255, 247, 255, 0.2);
+    --vlh-shade-top: rgba(12, 10, 35, 0.06);
+    --vlh-shade-mid: rgba(12, 10, 35, 0.05);
+    --vlh-shade-bottom: rgba(12, 10, 35, 0.18);
   }
 
   .vaelinya-live-hero[data-state="night"] {
     --vlh-image: url("/images/home/live-hero/vaelinya-live-hero-night.webp");
+    --vlh-image-opacity: 0.8;
     --vlh-title: #f8fbff;
     --vlh-text: rgba(248, 251, 255, 0.88);
     --vlh-muted: rgba(248, 251, 255, 0.72);
-    --vlh-panel: rgba(5, 12, 32, 0.48);
-    --vlh-panel-border: rgba(248, 251, 255, 0.26);
-    --vlh-button: rgba(5, 12, 32, 0.44);
-    --vlh-button-hover: rgba(248, 251, 255, 0.16);
-    --vlh-shade-top: rgba(0, 0, 0, 0.1);
-    --vlh-shade-mid: rgba(0, 0, 0, 0.08);
-    --vlh-shade-bottom: rgba(0, 0, 0, 0.3);
+    --vlh-panel: rgba(5, 12, 32, 0.3);
+    --vlh-panel-border: rgba(248, 251, 255, 0.28);
+    --vlh-button: rgba(5, 12, 32, 0.26);
+    --vlh-button-hover: rgba(248, 251, 255, 0.18);
+    --vlh-shade-top: rgba(0, 0, 0, 0.05);
+    --vlh-shade-mid: rgba(0, 0, 0, 0.04);
+    --vlh-shade-bottom: rgba(0, 0, 0, 0.2);
   }
 
   .vlh-image,
@@ -203,6 +208,7 @@ const initialReading = states[initialState];
     background-image: var(--vlh-image);
     background-position: center;
     background-size: cover;
+    opacity: var(--vlh-image-opacity);
     transform: scale(1.01);
   }
 
@@ -261,7 +267,7 @@ const initialReading = states[initialState];
     background: var(--vlh-button);
     border-radius: 999px;
     padding: 0.78rem 1.1rem;
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.14);
     backdrop-filter: blur(8px);
   }
 
@@ -281,7 +287,7 @@ const initialReading = states[initialState];
     border: 1px solid var(--vlh-panel-border);
     border-radius: 1.1rem;
     background: var(--vlh-panel);
-    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.16);
     backdrop-filter: blur(10px);
   }
 
@@ -305,6 +311,10 @@ const initialReading = states[initialState];
   @media (max-width: 720px) {
     .vaelinya-live-hero {
       min-height: 560px;
+      --vlh-image-opacity: 0.86;
+      --vlh-panel: rgba(5, 12, 32, 0.42);
+      --vlh-button: rgba(5, 12, 32, 0.36);
+      --vlh-shade-bottom: rgba(0, 0, 0, 0.28);
     }
 
     .vlh-image {
