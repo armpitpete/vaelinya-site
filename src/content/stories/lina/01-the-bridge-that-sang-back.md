@@ -270,7 +270,7 @@ Clear and high and gentle.
 The bridge had gone. The listening had stayed.
 
 <div class="story-after-link story-after-link--song">
-  <a href="/characters/lina/#lina-song-title">Hear Lina’s song</a>
+  <a href="/read/lina/songs/">Hear Lina’s song</a>
 </div>
 
 <div class="story-whisper-secret" aria-hidden="true">
