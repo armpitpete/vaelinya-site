@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const description = 'A quiet guide for choosing where to begin and what to read next in Vaelinya.';
+
+const paths = [
+  {
+    title: 'Start here',
+    intro: 'If you are new to Vaelinya, begin with Lina. Her first story is the safest doorway into the world.',
+    best: {
+      label: 'Read Lina’s first story',
+      href: '/read/lina/01-the-bridge-that-sang-back/',
+    },
+    links: [
+      { label: 'Meet Lina', href: '/read/lina/' },
+      { label: 'Return to the start', href: '/start/' },
+    ],
+  },
+  {
+    title: 'I want a story',
+    intro: 'Follow the story path first. Let the world appear through rain, river, sound, and small discoveries.',
+    best: {
+      label: 'Begin the first Lina story',
+      href: '/read/lina/01-the-bridge-that-sang-back/',
+    },
+    links: [
+      { label: 'Lina', href: '/read/lina/' },
+      { label: 'Lina’s songs', href: '/read/lina/songs/' },
+    ],
+  },
+  {
+    title: 'I want the world',
+    intro: 'Follow the river first. The Rim shapes crossing, travel, memory, danger, and meeting.',
+    best: {
+      label: 'Visit the Rim',
+      href: '/world/the-rim/',
+    },
+    links: [
+      { label: 'The Rimaeri', href: '/world/rimaeri/' },
+      { label: 'Time in Vaelinya', href: '/world/time/' },
+    ],
+  },
+  {
+    title: 'I am lost',
+    intro: 'Choose one simple door. You do not need to understand everything before you begin.',
+    best: {
+      label: 'Return to the start',
+      href: '/start/',
+    },
+    links: [
+      { label: 'Read a story', href: '/read/lina/01-the-bridge-that-sang-back/' },
+      { label: 'Explore the world', href: '/world/the-rim/' },
+      { label: 'Listen to songs', href: '/read/lina/songs/' },
+    ],
+  },
+];
+---
+<BaseLayout title="Vaelinya Reading Guide" description={description}>
+  <section class="page-section reading-guide-page">
+    <p class="eyebrow">World · Reading Guide</p>
+    <h1>Vaelinya Reading Guide</h1>
+
+    <p class="lede">Not every path through Vaelinya begins in the same place.</p>
+    <p>Some readers follow stories. Some follow rivers. Some follow songs. Some find hidden stars.</p>
+    <p>Choose the path that feels closest to how you want to enter.</p>
+
+    <div class="reading-guide-grid" aria-label="Reading paths through Vaelinya">
+      {paths.map((path) => (
+        <article class="panel reading-guide-card">
+          <p class="eyebrow">Path</p>
+          <h2>{path.title}</h2>
+          <p>{path.intro}</p>
+
+          <p>
+            <a class="reading-guide-best-link" href={path.best.href}>{path.best.label}</a>
+          </p>
+
+          <div class="link-list reading-guide-links">
+            {path.links.map((link) => (
+              <a href={link.href}>{link.label}</a>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .reading-guide-page {
+    max-width: 1040px;
+  }
+
+  .reading-guide-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1rem, 2.5vw, 1.4rem);
+    margin-top: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .reading-guide-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .reading-guide-card h2 {
+    margin-top: 0;
+  }
+
+  .reading-guide-card p {
+    margin-bottom: 0;
+  }
+
+  .reading-guide-best-link {
+    display: inline-block;
+    padding: 0.72rem 0.95rem;
+    border-radius: 999px;
+    background: #20262c;
+    color: #fffaf2;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .reading-guide-best-link:hover,
+  .reading-guide-best-link:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .reading-guide-links {
+    margin-top: auto;
+  }
+
+  @media (max-width: 720px) {
+    .reading-guide-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
