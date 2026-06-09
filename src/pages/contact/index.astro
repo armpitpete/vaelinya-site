@@ -1,10 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const email = 'merrin@merrinworld.uk';
+const description = 'Contact Merrin W. Dream about Vaelinya.';
 ---
-<BaseLayout title="Contact" description="Contact details for Vaelinya are not public yet.">
+<BaseLayout title="Contact" description={description}>
   <section class="page-section">
     <p class="eyebrow">Contact</p>
     <h1>Contact</h1>
-    <p>Contact details are not public yet.</p>
+    <p>If you want to write about Vaelinya, send a message to Merrin.</p>
+    <p>
+      <a href={`mailto:${email}`}>{email}</a>
+    </p>
   </section>
 </BaseLayout>
