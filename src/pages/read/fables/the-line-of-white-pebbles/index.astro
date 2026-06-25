@@ -39,10 +39,6 @@ const storyJsonLd = {
       </figure>
       <h1>The Line of White Pebbles</h1>
       <p class="lede">A Thirst Beetle and a Slippy Snail learn that love must not harm what keeps another creature alive.</p>
-      <div class="link-list fable-top-links" aria-label="Story links">
-        <a href="/read/fables/">Back to Vaelinyan fables</a>
-        <a href="/read/">Back to Read</a>
-      </div>
     </header>
 
     <div class="story-content fable-story-content">
@@ -192,6 +188,10 @@ const storyJsonLd = {
 
       <p>Shining at dawn and dusk.</p>
     </div>
+    <nav class="link-list fable-bottom-links" aria-label="Story links">
+      <a href="/read/fables/">Back to Vaelinyan fables</a>
+      <a href="/read/">Back to Read</a>
+    </nav>
   </article>
 </BaseLayout>
 
@@ -221,8 +221,9 @@ const storyJsonLd = {
     height: auto;
   }
 
-  .fable-top-links {
+  .fable-bottom-links {
     max-width: 32rem;
+    margin: 2rem auto 0;
   }
 
   .fable-story-content p {
