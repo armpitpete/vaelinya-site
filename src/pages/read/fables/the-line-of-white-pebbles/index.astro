@@ -197,31 +197,32 @@ const storyJsonLd = {
 
 <style>
   .fable-page {
+    width: min(100% - 2rem, 860px);
+    margin-inline: auto;
     overflow: hidden;
     background: rgba(255, 248, 232, 0.94);
   }
 
-  .fable-top-links {
-    max-width: 32rem;
+  .story-header-compact,
+  .fable-story-content {
+    width: min(100%, 680px);
+    margin-inline: auto;
   }
 
   .fable-hero-image {
-    width: min(100%, 56rem);
-    max-width: 56rem;
-    margin: 1.25rem auto 1.5rem;
+    width: min(100%, 680px);
+    max-width: 680px;
+    margin: 1rem auto 0;
   }
 
   .fable-hero-image img {
     display: block;
     width: 100%;
     height: auto;
-    max-height: none;
-    object-fit: contain;
-    margin-inline: auto;
   }
 
-  .fable-story-content {
-    max-width: 44rem;
+  .fable-top-links {
+    max-width: 32rem;
   }
 
   .fable-story-content p {
