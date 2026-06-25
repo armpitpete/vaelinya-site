@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const description = 'Small Vaelinyan moral fables that teach through creatures, places, objects, and choices.';
+const site = Astro.site ?? new URL('https://vaelinya.uk');
+const pageUrl = new URL('/read/fables/', site).toString();
+
+const fables = [
+  {
+    title: 'The Line of White Pebbles',
+    label: 'A Vaelinyan moral fable',
+    href: '/read/fables/the-line-of-white-pebbles/',
+    description: 'A Thirst Beetle and a Slippy Snail learn that love must not harm what keeps another creature alive.',
+  },
+];
+
+const fablesJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Vaelinyan Fables',
+  description,
+  url: pageUrl,
+  numberOfItems: fables.length,
+  itemListOrder: 'https://schema.org/ItemListOrderAscending',
+  itemListElement: fables.map((fable, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    url: new URL(fable.href, site).toString(),
+    name: fable.title,
+    description: fable.description,
+  })),
+};
+---
+<BaseLayout title="Vaelinyan Fables" description={description} jsonLd={fablesJsonLd}>
+  <section class="page-section">
+    <p class="eyebrow">Read</p>
+    <h1>Vaelinyan fables</h1>
+    <p class="lede">Small stories from Vaelinya that teach through creatures, places, objects, and choices.</p>
+    <p>Each fable can be read on its own. Some fables also open small paths into the World, Language, and Artefacts sections later.</p>
+
+    <ol class="story-grid story-list fable-card-grid" aria-label="Vaelinyan moral fables">
+      {fables.map((fable) => (
+        <li>
+          <a class="story-card fable-story-card" href={fable.href} aria-label={`Read ${fable.title}`}>
+            <span>{fable.label}</span>
+            <strong>{fable.title}</strong>
+            <p>{fable.description}</p>
+            <span class="story-card-action" aria-hidden="true">Read this fable</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+
+    <article class="panel">
+      <p class="eyebrow">How to read them</p>
+      <h2>Read first. Explore after.</h2>
+      <p>Fables are story-first. Creature facts, symbols, artefacts, and language notes should support the story after the reader has met it.</p>
+      <div class="link-list">
+        <a href="/read/">Back to Read</a>
+        <a href="/world/">Explore the World</a>
+        <a href="/artefacts/">Find Artefacts</a>
+      </div>
+    </article>
+  </section>
+</BaseLayout>
+
+<style>
+  .fable-card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    align-items: stretch;
+  }
+
+  .fable-card-grid li {
+    display: flex;
+  }
+
+  .fable-story-card {
+    width: 100%;
+    min-height: 14rem;
+    color: #fff8e8;
+    background:
+      radial-gradient(circle at 82% 18%, rgba(113, 218, 203, 0.34), transparent 6rem),
+      radial-gradient(circle at 18% 82%, rgba(255, 229, 119, 0.28), transparent 7rem),
+      linear-gradient(135deg, #462b65 0%, #c1447a 58%, #d17a22 100%);
+  }
+
+  .fable-story-card p {
+    color: rgba(255, 248, 232, 0.94);
+  }
+</style>

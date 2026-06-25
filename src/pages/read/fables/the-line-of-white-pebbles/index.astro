@@ -1,0 +1,309 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const description = 'A Vaelinyan moral fable about a Thirst Beetle, a Slippy Snail, and love that learns what keeps another creature safe.';
+const site = Astro.site ?? new URL('https://vaelinya.uk');
+const pageUrl = new URL('/read/fables/the-line-of-white-pebbles/', site).toString();
+
+const storyJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: 'The Line of White Pebbles',
+  description,
+  url: pageUrl,
+  isPartOf: {
+    '@type': 'CreativeWorkSeries',
+    name: 'Vaelinyan Fables',
+    url: new URL('/read/fables/', site).toString(),
+  },
+  genre: 'Moral fable',
+  audience: {
+    '@type': 'Audience',
+    audienceType: 'Children aged 8 to 10',
+  },
+};
+---
+<BaseLayout title="The Line of White Pebbles" description={description} jsonLd={storyJsonLd}>
+  <article class="story-page fable-page">
+    <header class="story-header-compact">
+      <p class="eyebrow">A Vaelinyan moral fable</p>
+      <h1>The Line of White Pebbles</h1>
+      <p class="lede">A Thirst Beetle and a Slippy Snail learn that love must not harm what keeps another creature alive.</p>
+      <div class="link-list fable-top-links" aria-label="Story links">
+        <a href="/read/fables/">Back to Vaelinyan fables</a>
+        <a href="/read/">Back to Read</a>
+      </div>
+    </header>
+
+    <div class="fable-boundary-art" role="img" aria-label="A dry side and a damp side divided by a line of white pebbles beneath two moons.">
+      <span class="moon moon-large"></span>
+      <span class="moon moon-small"></span>
+      <span class="dry-side"></span>
+      <span class="damp-side"></span>
+      <span class="pebble-line" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </span>
+    </div>
+
+    <div class="story-content fable-story-content">
+      <p>On the far side of Vaelinya, there lived a Thirst Beetle.</p>
+
+      <p>He was tiny, dark, and dry as dust. Damp air made him weak. Rain could kill him. His shell soaked up water from anything nearby, even when he did not mean to.</p>
+
+      <p>Under the same stone wall lived a Slippy Snail.</p>
+
+      <p>She was soft, bright, and silver. Damp moss kept her alive. Rain made her happy. At night, she travelled slowly through the wet grass, leaving a shining trail behind her.</p>
+
+      <p>They met twice a day.</p>
+
+      <p>At dawn, the Beetle woke up as the first warm light touched the stones. The Snail, tired from her night journey, curled into the moss to sleep.</p>
+
+      <p>At dusk, the Snail woke up as the air grew cool and soft. The Beetle was getting ready to sleep inside his dry crack in the wall.</p>
+
+      <p>So they only had two small moments together.</p>
+
+      <p>Dawn.</p>
+
+      <p>And dusk.</p>
+
+      <p>At first, they talked about simple things.</p>
+
+      <p>“I like rain,” said the Snail.</p>
+
+      <p>“I fear rain,” said the Beetle.</p>
+
+      <p>“I like hot stones,” said the Beetle.</p>
+
+      <p>“They would dry me up,” said the Snail.</p>
+
+      <p>They soon understood something important.</p>
+
+      <p>What kept one of them safe could hurt the other.</p>
+
+      <p>Still, they came back every dawn and every dusk.</p>
+
+      <p>The Snail told the Beetle how lovely it felt to be a snail.</p>
+
+      <p>She told him about sliding through cool moss, tasting rain on leaves, and leaving silver paths under the moon.</p>
+
+      <p>“It sounds wonderful,” said the Beetle. “But I could never live that way.”</p>
+
+      <p>The Beetle told the Snail how lovely it felt to be a beetle.</p>
+
+      <p>He told her about warm stones, dry cracks in old walls, and the tiny clicking songs he made with his feet.</p>
+
+      <p>“It sounds wonderful,” said the Snail. “But I could never live that way.”</p>
+
+      <p>They both loved listening.</p>
+
+      <p>The Beetle loved hearing about the wet, soft world of the Snail.</p>
+
+      <p>The Snail loved hearing about the dry, warm world of the Beetle.</p>
+
+      <p>Neither of them wanted the other to change.</p>
+
+      <p>That was part of their love.</p>
+
+      <p>After many days, the Snail moved a little closer.</p>
+
+      <p>The Beetle stepped back.</p>
+
+      <p>The Snail looked sad.</p>
+
+      <p>“You do not want to be near me,” she said.</p>
+
+      <p>The Beetle shook his dry little head.</p>
+
+      <p>“I want to be near you very much,” he said. “That is why I must be careful.”</p>
+
+      <p>One dusk, the Snail slipped on a curled leaf.</p>
+
+      <p>She slid too close to the Beetle.</p>
+
+      <p>The Beetle froze.</p>
+
+      <p>The air between them grew dry. The Snail’s silver trail began to fade.</p>
+
+      <p>The Beetle ran away.</p>
+
+      <p>Not because he did not care.</p>
+
+      <p>Because he cared very much.</p>
+
+      <p>The next dawn, the Snail waited in the moss.</p>
+
+      <p>“You left me,” she said.</p>
+
+      <p>“I was drying you without meaning to,” said the Beetle. “If I had stayed, I might have hurt you.”</p>
+
+      <p>A moth fluttered above them.</p>
+
+      <p>“If you really love each other, you should cross every line,” said the moth.</p>
+
+      <p>A stone ant clicked its jaws.</p>
+
+      <p>“If she loves you, she should become dry,” said the ant.</p>
+
+      <p>A reed-fly buzzed from a wet leaf.</p>
+
+      <p>“If he loves you, he should stand in the rain,” said the reed-fly.</p>
+
+      <p>The Beetle and the Snail listened.</p>
+
+      <p>Then the Snail said, “No. That is not love.”</p>
+
+      <p>The Beetle nodded.</p>
+
+      <p>So they made their own promise.</p>
+
+      <p>Between the dry stone and the damp moss, they placed a line of tiny white pebbles.</p>
+
+      <p>The Beetle would stay on the dry side.</p>
+
+      <p>The Snail would stay on the damp side.</p>
+
+      <p>They would meet at dawn and dusk, when the world was gentle enough for both of them.</p>
+
+      <p>From then on, they loved across the line.</p>
+
+      <p>The Snail left silver trails beside the pebbles.</p>
+
+      <p>The Beetle kept the stones clean with his dry little feet.</p>
+
+      <p>When rain came, the Snail sang safely from under a leaf.</p>
+
+      <p>When the sun was hot, the Beetle tapped stories into the wall.</p>
+
+      <p>They never touched.</p>
+
+      <p>But neither of them became less alive.</p>
+
+      <aside class="panel fable-moral" aria-label="Fable moral">
+        <p class="eyebrow">The saying</p>
+        <p>Love does not take what keeps another creature living.</p>
+        <p>Love learns what keeps them safe.</p>
+      </aside>
+
+      <p>Some old tellers say the white pebbles are still there.</p>
+
+      <p>Dry on one side.</p>
+
+      <p>Damp on the other.</p>
+
+      <p>Shining at dawn and dusk.</p>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .fable-page {
+    overflow: hidden;
+  }
+
+  .fable-top-links {
+    max-width: 32rem;
+  }
+
+  .fable-boundary-art {
+    position: relative;
+    min-height: clamp(16rem, 34vw, 26rem);
+    margin: 1rem 0 1.4rem;
+    overflow: hidden;
+    border: 1px solid rgba(31, 23, 48, 0.16);
+    border-radius: 1.15rem;
+    background:
+      radial-gradient(circle at 58% 18%, rgba(255, 248, 232, 0.82), transparent 3.2rem),
+      linear-gradient(180deg, #46356d 0%, #ee996f 43%, #fff1c7 100%);
+    box-shadow: 0 0.85rem 2rem rgba(9, 5, 18, 0.16);
+  }
+
+  .dry-side,
+  .damp-side {
+    position: absolute;
+    inset: 38% auto 0 0;
+    width: 52%;
+  }
+
+  .dry-side {
+    background:
+      radial-gradient(circle at 28% 62%, rgba(31, 23, 48, 0.24) 0 0.22rem, transparent 0.24rem),
+      radial-gradient(circle at 62% 68%, rgba(31, 23, 48, 0.16) 0 0.16rem, transparent 0.18rem),
+      linear-gradient(135deg, #d89c5f 0%, #b77547 100%);
+    clip-path: polygon(0 0, 92% 9%, 100% 100%, 0 100%);
+  }
+
+  .damp-side {
+    right: 0;
+    left: auto;
+    background:
+      radial-gradient(circle at 22% 58%, rgba(255, 248, 232, 0.72) 0 0.18rem, transparent 0.2rem),
+      radial-gradient(circle at 72% 42%, rgba(255, 248, 232, 0.56) 0 0.14rem, transparent 0.16rem),
+      linear-gradient(135deg, #48a983 0%, #1f766d 100%);
+    clip-path: polygon(4% 8%, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .moon {
+    position: absolute;
+    display: block;
+    border-radius: 999px;
+    background: rgba(255, 248, 232, 0.86);
+    box-shadow: 0 0 2rem rgba(255, 248, 232, 0.44);
+  }
+
+  .moon-large {
+    top: 13%;
+    left: 64%;
+    width: 4.2rem;
+    height: 4.2rem;
+  }
+
+  .moon-small {
+    top: 23%;
+    left: 75%;
+    width: 1.8rem;
+    height: 1.8rem;
+    opacity: 0.72;
+  }
+
+  .pebble-line {
+    position: absolute;
+    left: 50%;
+    bottom: 7%;
+    display: grid;
+    gap: clamp(0.35rem, 0.9vw, 0.55rem);
+    transform: translateX(-50%);
+  }
+
+  .pebble-line span {
+    width: clamp(0.8rem, 1.7vw, 1.25rem);
+    height: clamp(0.8rem, 1.7vw, 1.25rem);
+    display: block;
+    border-radius: 999px;
+    background: #fff8e8;
+    border: 1px solid rgba(31, 23, 48, 0.12);
+    box-shadow: 0 0.25rem 0.7rem rgba(31, 23, 48, 0.18);
+  }
+
+  .fable-story-content {
+    max-width: 44rem;
+  }
+
+  .fable-story-content p {
+    font-size: clamp(1.05rem, 1.45vw, 1.16rem);
+  }
+
+  .fable-moral {
+    margin: 1.35rem 0;
+    background:
+      radial-gradient(circle at 12% 20%, rgba(255, 255, 255, 0.52), transparent 9rem),
+      rgba(255, 241, 199, 0.9);
+  }
+
+  .fable-moral p:not(.eyebrow) {
+    margin: 0.45rem 0;
+    color: #2b3137;
+    font-size: clamp(1.12rem, 1.65vw, 1.28rem);
+    font-weight: 850;
+    line-height: 1.35;
+  }
+</style>
