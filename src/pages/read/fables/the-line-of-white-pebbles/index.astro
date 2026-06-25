@@ -4,6 +4,7 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 const description = 'A Vaelinyan moral fable about a Thirst Beetle, a Slippy Snail, and love that learns what keeps another creature safe.';
 const site = Astro.site ?? new URL('https://vaelinya.uk');
 const pageUrl = new URL('/read/fables/the-line-of-white-pebbles/', site).toString();
+const heroImage = '/images/read/fables/the-line-of-white-pebbles/hero.webp';
 
 const storyJsonLd = {
   '@context': 'https://schema.org',
@@ -11,6 +12,7 @@ const storyJsonLd = {
   name: 'The Line of White Pebbles',
   description,
   url: pageUrl,
+  image: new URL(heroImage, site).toString(),
   isPartOf: {
     '@type': 'CreativeWorkSeries',
     name: 'Vaelinyan Fables',
@@ -23,7 +25,7 @@ const storyJsonLd = {
   },
 };
 ---
-<BaseLayout title="The Line of White Pebbles" description={description} jsonLd={storyJsonLd}>
+<BaseLayout title="The Line of White Pebbles" description={description} image={heroImage} jsonLd={storyJsonLd}>
   <article class="story-page fable-page">
     <header class="story-header-compact">
       <p class="eyebrow">A Vaelinyan moral fable</p>
@@ -35,15 +37,14 @@ const storyJsonLd = {
       </div>
     </header>
 
-    <div class="fable-boundary-art" role="img" aria-label="A dry side and a damp side divided by a line of white pebbles beneath two moons.">
-      <span class="moon moon-large"></span>
-      <span class="moon moon-small"></span>
-      <span class="dry-side"></span>
-      <span class="damp-side"></span>
-      <span class="pebble-line" aria-hidden="true">
-        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-      </span>
-    </div>
+    <figure class="fable-hero-image">
+      <img
+        src={heroImage}
+        alt="A Thirst Beetle and a Slippy Snail face each other across a line of white pebbles, with dry stone on one side, damp moss on the other, and two moons above Vaelinya."
+        loading="eager"
+        decoding="async"
+      />
+    </figure>
 
     <div class="story-content fable-story-content">
       <p>On the far side of Vaelinya, there lived a Thirst Beetle.</p>
@@ -198,90 +199,25 @@ const storyJsonLd = {
 <style>
   .fable-page {
     overflow: hidden;
+    background: rgba(255, 248, 232, 0.94);
   }
 
   .fable-top-links {
     max-width: 32rem;
   }
 
-  .fable-boundary-art {
-    position: relative;
-    min-height: clamp(16rem, 34vw, 26rem);
+  .fable-hero-image {
     margin: 1rem 0 1.4rem;
-    overflow: hidden;
+  }
+
+  .fable-hero-image img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
     border: 1px solid rgba(31, 23, 48, 0.16);
     border-radius: 1.15rem;
-    background:
-      radial-gradient(circle at 58% 18%, rgba(255, 248, 232, 0.82), transparent 3.2rem),
-      linear-gradient(180deg, #46356d 0%, #ee996f 43%, #fff1c7 100%);
     box-shadow: 0 0.85rem 2rem rgba(9, 5, 18, 0.16);
-  }
-
-  .dry-side,
-  .damp-side {
-    position: absolute;
-    inset: 38% auto 0 0;
-    width: 52%;
-  }
-
-  .dry-side {
-    background:
-      radial-gradient(circle at 28% 62%, rgba(31, 23, 48, 0.24) 0 0.22rem, transparent 0.24rem),
-      radial-gradient(circle at 62% 68%, rgba(31, 23, 48, 0.16) 0 0.16rem, transparent 0.18rem),
-      linear-gradient(135deg, #d89c5f 0%, #b77547 100%);
-    clip-path: polygon(0 0, 92% 9%, 100% 100%, 0 100%);
-  }
-
-  .damp-side {
-    right: 0;
-    left: auto;
-    background:
-      radial-gradient(circle at 22% 58%, rgba(255, 248, 232, 0.72) 0 0.18rem, transparent 0.2rem),
-      radial-gradient(circle at 72% 42%, rgba(255, 248, 232, 0.56) 0 0.14rem, transparent 0.16rem),
-      linear-gradient(135deg, #48a983 0%, #1f766d 100%);
-    clip-path: polygon(4% 8%, 100% 0, 100% 100%, 0 100%);
-  }
-
-  .moon {
-    position: absolute;
-    display: block;
-    border-radius: 999px;
-    background: rgba(255, 248, 232, 0.86);
-    box-shadow: 0 0 2rem rgba(255, 248, 232, 0.44);
-  }
-
-  .moon-large {
-    top: 13%;
-    left: 64%;
-    width: 4.2rem;
-    height: 4.2rem;
-  }
-
-  .moon-small {
-    top: 23%;
-    left: 75%;
-    width: 1.8rem;
-    height: 1.8rem;
-    opacity: 0.72;
-  }
-
-  .pebble-line {
-    position: absolute;
-    left: 50%;
-    bottom: 7%;
-    display: grid;
-    gap: clamp(0.35rem, 0.9vw, 0.55rem);
-    transform: translateX(-50%);
-  }
-
-  .pebble-line span {
-    width: clamp(0.8rem, 1.7vw, 1.25rem);
-    height: clamp(0.8rem, 1.7vw, 1.25rem);
-    display: block;
-    border-radius: 999px;
-    background: #fff8e8;
-    border: 1px solid rgba(31, 23, 48, 0.12);
-    box-shadow: 0 0.25rem 0.7rem rgba(31, 23, 48, 0.18);
   }
 
   .fable-story-content {
