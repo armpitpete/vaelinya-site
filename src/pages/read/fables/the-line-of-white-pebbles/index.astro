@@ -29,6 +29,14 @@ const storyJsonLd = {
   <article class="story-page fable-page">
     <header class="story-header-compact">
       <p class="eyebrow">A Vaelinyan moral fable</p>
+      <figure class="story-hero-image fable-hero-image">
+        <img
+          src={heroImage}
+          alt="A Thirst Beetle and a Slippy Snail face each other across a line of white pebbles, with dry stone on one side, damp moss on the other, and two moons above Vaelinya."
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
       <h1>The Line of White Pebbles</h1>
       <p class="lede">A Thirst Beetle and a Slippy Snail learn that love must not harm what keeps another creature alive.</p>
       <div class="link-list fable-top-links" aria-label="Story links">
@@ -36,15 +44,6 @@ const storyJsonLd = {
         <a href="/read/">Back to Read</a>
       </div>
     </header>
-
-    <figure class="fable-hero-image">
-      <img
-        src={heroImage}
-        alt="A Thirst Beetle and a Slippy Snail face each other across a line of white pebbles, with dry stone on one side, damp moss on the other, and two moons above Vaelinya."
-        loading="eager"
-        decoding="async"
-      />
-    </figure>
 
     <div class="story-content fable-story-content">
       <p>On the far side of Vaelinya, there lived a Thirst Beetle.</p>
@@ -207,17 +206,7 @@ const storyJsonLd = {
   }
 
   .fable-hero-image {
-    margin: 1rem 0 1.4rem;
-  }
-
-  .fable-hero-image img {
-    display: block;
-    width: min(100%, 28rem);
-    height: auto;
-    margin-inline: auto;
-    border: 1px solid rgba(31, 23, 48, 0.16);
-    border-radius: 1.15rem;
-    box-shadow: 0 0.85rem 2rem rgba(9, 5, 18, 0.16);
+    margin-bottom: 1rem;
   }
 
   .fable-story-content {
