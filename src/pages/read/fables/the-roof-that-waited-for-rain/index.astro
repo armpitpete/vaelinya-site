@@ -1,0 +1,474 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const description = 'A Vaelinyan fable about a living moss roof, three rains, one quiet friend, and the first small repair.';
+const site = Astro.site ?? new URL('https://vaelinya.uk');
+const pageUrl = new URL('/read/fables/the-roof-that-waited-for-rain/', site).toString();
+const heroImage = '/images/read/fables/the-roof-that-waited-for-rain/hero.png';
+
+const storyJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: 'The Roof That Waited for Rain',
+  description,
+  url: pageUrl,
+  image: new URL(heroImage, site).toString(),
+  isPartOf: {
+    '@type': 'CreativeWorkSeries',
+    name: 'Vaelinyan Fables',
+    url: new URL('/read/fables/', site).toString(),
+  },
+  genre: 'Vaelinyan fable',
+  audience: {
+    '@type': 'Audience',
+    audienceType: 'Young people and neurodivergent readers',
+  },
+};
+---
+<BaseLayout title="The Roof That Waited for Rain" description={description} image={heroImage} jsonLd={storyJsonLd}>
+  <article class="story-page fable-page">
+    <header class="story-header-compact">
+      <p class="eyebrow">A deep Vaelinyan fable</p>
+      <figure class="story-hero-image fable-hero-image">
+        <img
+          src={heroImage}
+          alt="A young Vaelinyan named Aven stands outside a small blue-doored house at Solaen Edge, looking up at a dark patch in the living moss roof, with glowmoss, white pebbles, and a repair box nearby."
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
+      <h1>The Roof That Waited for Rain</h1>
+      <p class="lede">Aven has a roof that only seems urgent when the rain begins.</p>
+    </header>
+
+    <div class="story-content fable-story-content">
+      <p>At the edge of the glowmoss field, on the low side of Solaen Edge, stood a small house with a blue door and a roof of living moss.</p>
+
+      <p>The house belonged to Aven.</p>
+
+      <p>It was not a grand house. It had one round room, one low window, one small stove, and a shelf for bowls, cups, seed cakes, and folded cloths.</p>
+
+      <p>The roof was Aven's favourite part.</p>
+
+      <p>In the morning, it glowed faintly green where the sun touched it. At dusk, when the glowmoss field began to shine, the roof gave a soft answering light, as if the house was saying, I am still here.</p>
+
+      <p>When the wind passed over a healthy moss roof, it made a quiet sound.</p>
+
+      <p>Hush-hush.</p>
+
+      <p>Hush-hush.</p>
+
+      <p>Like a kind creature breathing in its sleep.</p>
+
+      <p>One dry morning, Aven noticed a dark patch above the stove.</p>
+
+      <p>It was no bigger than a hand.</p>
+
+      <p>Aven stood beneath it for a long time.</p>
+
+      <p>There was a tall ladder beside the wall. There was moss-thread under the shelf. There was a little tin of shell-pins near the stove.</p>
+
+      <p>There were things that could mend a roof, if a person could bear to begin.</p>
+
+      <p>Aven looked at the dark patch.</p>
+
+      <p>Then at the ladder.</p>
+
+      <p>Then back at the dark patch.</p>
+
+      <p>"I will mend it soon," Aven said.</p>
+
+      <p>The roof made its soft sound.</p>
+
+      <p>Hush-hush.</p>
+
+      <p>Hush-hush.</p>
+
+      <p>The next day was bright.</p>
+
+      <p>The glowmoss field was pale in the morning and silver at the edges. Little bell insects moved through the grass. The blue door opened easily. The floor was warm where the sunlight fell.</p>
+
+      <p>Aven carried water from the spring, swept the room, washed their bowl, and folded the blanket.</p>
+
+      <p>They looked up once.</p>
+
+      <p>The dark patch seemed smaller in daylight.</p>
+
+      <p>"Not today," Aven said. "Today is good."</p>
+
+      <p>That evening, clouds gathered beyond the glowmoss field.</p>
+
+      <p>At first, the rain came gently.</p>
+
+      <p>Tap.</p>
+
+      <p>Tap.</p>
+
+      <p>Tap.</p>
+
+      <p>The living roof drank the water. That was what moss roofs were meant to do. They swelled a little, darkened, and held the rain away from the room below.</p>
+
+      <p>But the dark patch did not hold.</p>
+
+      <p>One drop fell onto the stove.</p>
+
+      <p>The iron hissed.</p>
+
+      <p>Another drop fell onto the floor.</p>
+
+      <p>Aven put a bowl under the leak.</p>
+
+      <p>The bowl filled.</p>
+
+      <p>They changed it for a pot.</p>
+
+      <p>The pot filled too.</p>
+
+      <p>The room grew cold around the edges. The blanket became damp. The stove struggled.</p>
+
+      <p>Aven looked at the tall ladder.</p>
+
+      <p>It seemed higher than it had in the morning.</p>
+
+      <p>The moss-thread looked heavy.</p>
+
+      <p>The shell-pins looked sharp.</p>
+
+      <p>"I cannot mend it now," Aven whispered.</p>
+
+      <p>The rain kept falling.</p>
+
+      <p>All night, the room sounded busy.</p>
+
+      <p>Drip in the pot.</p>
+
+      <p>Drip on the floor.</p>
+
+      <p>Drip on the stove.</p>
+
+      <p>Aven sat in the chair with their knees pulled close and waited for morning.</p>
+
+      <p>When the sun returned, everything looked different.</p>
+
+      <p>The floor dried.</p>
+
+      <p>The stove warmed.</p>
+
+      <p>The blanket steamed gently over the chair.</p>
+
+      <p>Aven poured the rainwater outside and watched it run down the path toward the glowmoss field.</p>
+
+      <p>The dark patch was still there.</p>
+
+      <p>But now it was quiet.</p>
+
+      <p>The tall ladder looked like a ladder again.</p>
+
+      <p>The moss-thread looked like thread.</p>
+
+      <p>The shell-pins looked like pins.</p>
+
+      <p>Aven touched the first rung.</p>
+
+      <p>Then they let go.</p>
+
+      <p>There were other things to do.</p>
+
+      <p>The bowl needed washing. The rug needed drying. The spring path needed clearing because the rain had brought little stones down from Solaen Edge.</p>
+
+      <p>Aven did those things.</p>
+
+      <p>By dusk, the room looked almost normal.</p>
+
+      <p>Almost.</p>
+
+      <p>For five days, no rain came.</p>
+
+      <p>The roof dried. The floor stayed warm. The stove clicked peacefully after dark. Birds landed on the roof and shook dew from their wings.</p>
+
+      <p>Aven walked past the ladder each morning.</p>
+
+      <p>Once, they moved the moss-thread into the middle of the room.</p>
+
+      <p>Once, they opened the tin of shell-pins.</p>
+
+      <p>Once, they stood under the dark patch with one hand on the ladder.</p>
+
+      <p>Then they closed the tin.</p>
+
+      <p>"Tomorrow," Aven said.</p>
+
+      <p>On the sixth night, the rain returned.</p>
+
+      <p>This time, it did not tap.</p>
+
+      <p>It poured.</p>
+
+      <p>The dark patch widened.</p>
+
+      <p>Water ran down the wall behind the stove. It filled the pot, then the bowl, then the cup. It crossed the floor in thin shining lines and found the rug. It found the blanket.</p>
+
+      <p>Aven tried to move everything out of the way, but there were too many drops and not enough hands.</p>
+
+      <p>The room became a place of water.</p>
+
+      <p>The tall ladder waited by the wall.</p>
+
+      <p>The moss-thread waited beside it.</p>
+
+      <p>The shell-pins waited in their tin.</p>
+
+      <p>Aven sat on the chair and covered their ears.</p>
+
+      <p>"I cannot," they said.</p>
+
+      <p>The roof dripped.</p>
+
+      <p>The rain fell.</p>
+
+      <p>The night passed slowly.</p>
+
+      <p>Near morning, when the rain had softened, there came a knock at the blue door.</p>
+
+      <p>Not a loud knock.</p>
+
+      <p>Two small taps.</p>
+
+      <p>Aven did not move.</p>
+
+      <p>After a while, footsteps went away.</p>
+
+      <p>When daylight came, Aven opened the door.</p>
+
+      <p>On the step was a small wooden box.</p>
+
+      <p>Inside were three bundles of dry moss-thread, a folded cloth, six bright shell-pins, and a short hand-ladder with four wide rungs.</p>
+
+      <p>Beside the box was one white pebble.</p>
+
+      <p>There was no note.</p>
+
+      <p>Aven looked along the path.</p>
+
+      <p>Nobody was there.</p>
+
+      <p>But in the wet earth near the door was the print of Lio's left boot.</p>
+
+      <p>Lio lived two houses down, where the path curved beside the blueleaf trees. Lio did not say much before midday. They knew how to sit beside someone without filling the air.</p>
+
+      <p>Their bootprints stopped at the step.</p>
+
+      <p>They had not crossed the threshold.</p>
+
+      <p>Aven picked up the white pebble.</p>
+
+      <p>It was smooth and warm from someone's hand.</p>
+
+      <p>They carried the box inside.</p>
+
+      <p>For a long time, they did nothing.</p>
+
+      <p>They dried the floor, wrung out the rug, and hung the blanket over the chair.</p>
+
+      <p>They moved the tall ladder away from the wall.</p>
+
+      <p>Then they sat beside the short hand-ladder.</p>
+
+      <p>It was not tall.</p>
+
+      <p>It did not lean over them.</p>
+
+      <p>It had only four rungs.</p>
+
+      <p>Aven put one foot on the first rung.</p>
+
+      <p>Then they stepped down.</p>
+
+      <p>The house was quiet.</p>
+
+      <p>Hush-hush.</p>
+
+      <p>Hush-hush.</p>
+
+      <p>The roof sounded tired.</p>
+
+      <p>Aven picked up one strand of moss-thread.</p>
+
+      <p>It was lighter than they expected.</p>
+
+      <p>They climbed one rung.</p>
+
+      <p>Then another.</p>
+
+      <p>Their hands shook, so they climbed down again.</p>
+
+      <p>They drank water.</p>
+
+      <p>They waited.</p>
+
+      <p>Then they climbed back up.</p>
+
+      <p>The dark patch was larger up close. It was not one hole, but many small ones hiding together. Some moss had thinned. Some had lifted. One corner had pulled away from the wooden rib beneath.</p>
+
+      <p>Aven could not mend the whole roof.</p>
+
+      <p>Not that day.</p>
+
+      <p>So they chose one corner.</p>
+
+      <p>They pressed one small piece of moss back into place.</p>
+
+      <p>They wound moss-thread around it.</p>
+
+      <p>They pushed in one shell-pin.</p>
+
+      <p>The pin made a clean little sound.</p>
+
+      <p>Tick.</p>
+
+      <p>Aven climbed down.</p>
+
+      <p>Their arms ached.</p>
+
+      <p>The room did not look greatly changed.</p>
+
+      <p>The dark patch was still there.</p>
+
+      <p>The pot was still beneath it.</p>
+
+      <p>There was still work to do.</p>
+
+      <p>But one corner held.</p>
+
+      <p>Aven carried the white pebble outside and placed it beside the blue door.</p>
+
+      <p>The next morning, Lio passed with a basket under one arm.</p>
+
+      <p>They looked at the pebble.</p>
+
+      <p>They looked at the roof.</p>
+
+      <p>They did not ask a question.</p>
+
+      <p>They only lifted one hand.</p>
+
+      <p>Aven lifted one hand back.</p>
+
+      <p>For two days, the sky stayed clear.</p>
+
+      <p>On the first day, Aven rested.</p>
+
+      <p>On the second day, they brought the short hand-ladder into the square of sunlight on the floor.</p>
+
+      <p>They climbed two rungs.</p>
+
+      <p>They fixed another small piece.</p>
+
+      <p>This time, they used two shell-pins.</p>
+
+      <p>Tick.</p>
+
+      <p>Tick.</p>
+
+      <p>Aven put a second white pebble beside the first.</p>
+
+      <p>That evening, the wind changed.</p>
+
+      <p>The glowmoss field shone brighter than usual, as it often did before rain. The bell insects went quiet. The clouds came low over Solaen Edge.</p>
+
+      <p>Aven woke after midnight.</p>
+
+      <p>Tap.</p>
+
+      <p>Tap.</p>
+
+      <p>Tap.</p>
+
+      <p>They sat up.</p>
+
+      <p>The room was dark except for the low red glow of the stove.</p>
+
+      <p>One drop fell into the pot.</p>
+
+      <p>Another followed.</p>
+
+      <p>Aven waited.</p>
+
+      <p>The roof whispered.</p>
+
+      <p>The stove did not hiss.</p>
+
+      <p>The blanket stayed dry.</p>
+
+      <p>The water did not cross the floor.</p>
+
+      <p>Aven lay down again, still listening.</p>
+
+      <p>The rain continued for a long time.</p>
+
+      <p>It tapped on the blue door.</p>
+
+      <p>It ran from the eaves.</p>
+
+      <p>It filled the path outside and made the two white pebbles shine.</p>
+
+      <p>But inside the house, the lamp stayed lit.</p>
+
+      <p>In the morning, Aven opened the door.</p>
+
+      <p>The world smelled of wet grass and clean stone.</p>
+
+      <p>There was still a dark patch in the roof.</p>
+
+      <p>There was a pot beneath it.</p>
+
+      <p>There was work waiting.</p>
+
+      <p>Aven picked up a third white pebble from the edge of the path.</p>
+
+      <p>They set it beside the others.</p>
+
+      <p>Then they carried the short hand-ladder back into the middle of the room, where the morning sun could reach it.</p>
+    </div>
+    <nav class="link-list fable-bottom-links" aria-label="Story links">
+      <a href="/read/fables/">Back to Vaelinyan fables</a>
+      <a href="/read/">Back to Read</a>
+    </nav>
+  </article>
+</BaseLayout>
+
+<style>
+  .fable-page {
+    width: min(100% - 2rem, 860px);
+    margin-inline: auto;
+    overflow: hidden;
+    background: rgba(255, 248, 232, 0.94);
+  }
+
+  .story-header-compact,
+  .fable-story-content {
+    width: min(100%, 680px);
+    margin-inline: auto;
+  }
+
+  .fable-hero-image {
+    width: min(100%, 680px);
+    max-width: 680px;
+    margin: 1rem auto 0;
+  }
+
+  .fable-hero-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .fable-bottom-links {
+    max-width: 32rem;
+    margin: 2rem auto 0;
+  }
+
+  .fable-story-content p {
+    font-size: clamp(1.05rem, 1.45vw, 1.16rem);
+  }
+</style>

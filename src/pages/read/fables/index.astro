@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
-const description = 'Small Vaelinyan moral fables that teach through creatures, places, objects, and choices.';
+const description = 'Small Vaelinyan fables that teach through creatures, places, objects, and choices.';
 const site = Astro.site ?? new URL('https://vaelinya.uk');
 const pageUrl = new URL('/read/fables/', site).toString();
 
@@ -11,6 +11,12 @@ const fables = [
     label: 'A Vaelinyan moral fable',
     href: '/read/fables/the-line-of-white-pebbles/',
     description: 'A Thirst Beetle and a Slippy Snail learn that love must not harm what keeps another creature alive.',
+  },
+  {
+    title: 'The Roof That Waited for Rain',
+    label: 'A deep Vaelinyan fable',
+    href: '/read/fables/the-roof-that-waited-for-rain/',
+    description: 'Aven has a living moss roof that only seems urgent when the rain begins.',
   },
 ];
 
@@ -38,7 +44,7 @@ const fablesJsonLd = {
     <p class="lede">Small stories from Vaelinya that teach through creatures, places, objects, and choices.</p>
     <p>Each fable can be read on its own. Some fables also open small paths into the World, Language, and Artefacts sections later.</p>
 
-    <ol class="story-grid story-list fable-card-grid" aria-label="Vaelinyan moral fables">
+    <ol class="story-grid story-list fable-card-grid" aria-label="Vaelinyan fables">
       {fables.map((fable) => (
         <li>
           <a class="story-card fable-story-card" href={fable.href} aria-label={`Read ${fable.title}`}>
