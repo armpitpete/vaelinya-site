@@ -10,12 +10,16 @@ const fables = [
     title: 'The Line of White Pebbles',
     label: 'A Vaelinyan moral fable',
     href: '/read/fables/the-line-of-white-pebbles/',
+    image: '/images/read/fables/the-line-of-white-pebbles/hero.webp',
+    imageAlt: 'A Thirst Beetle and a Slippy Snail face each other across a line of white pebbles.',
     description: 'A Thirst Beetle and a Slippy Snail learn that love must not harm what keeps another creature alive.',
   },
   {
     title: 'The Roof That Waited for Rain',
     label: 'A deep Vaelinyan fable',
     href: '/read/fables/the-roof-that-waited-for-rain/',
+    image: '/images/read/fables/the-roof-that-waited-for-rain/hero.png',
+    imageAlt: 'A young Vaelinyan named Aven stands outside a small blue-doored house, looking up at a dark patch in the living moss roof.',
     description: 'Aven has a living moss roof that only seems urgent when the rain begins.',
   },
 ];
@@ -48,6 +52,7 @@ const fablesJsonLd = {
       {fables.map((fable) => (
         <li>
           <a class="story-card fable-story-card" href={fable.href} aria-label={`Read ${fable.title}`}>
+            <img class="fable-card-image" src={fable.image} alt={fable.imageAlt} loading="lazy" decoding="async" />
             <span>{fable.label}</span>
             <strong>{fable.title}</strong>
             <p>{fable.description}</p>
@@ -83,6 +88,8 @@ const fablesJsonLd = {
   .fable-story-card {
     width: 100%;
     min-height: 14rem;
+    padding: 0;
+    overflow: hidden;
     color: #fff8e8;
     background:
       radial-gradient(circle at 82% 18%, rgba(113, 218, 203, 0.34), transparent 6rem),
@@ -90,7 +97,28 @@ const fablesJsonLd = {
       linear-gradient(135deg, #462b65 0%, #c1447a 58%, #d17a22 100%);
   }
 
+  .fable-card-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .fable-story-card span,
+  .fable-story-card strong,
+  .fable-story-card p {
+    margin-inline: 1.35rem;
+  }
+
+  .fable-story-card span:first-of-type {
+    margin-top: 1.15rem;
+  }
+
   .fable-story-card p {
     color: rgba(255, 248, 232, 0.94);
+  }
+
+  .fable-story-card .story-card-action {
+    margin-bottom: 1.25rem;
   }
 </style>
