@@ -1,0 +1,337 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const description = "A Vaelinyan fable about Luma, Sen's white seed, and silver grass that holds a place of remembering.";
+const site = Astro.site ?? new URL('https://vaelinya.uk');
+const pageUrl = new URL('/read/fables/luma-and-the-grass-that-held-sens-place/', site).toString();
+const heroImage = '/images/read/fables/luma-and-the-grass-that-held-sens-place/hero.png';
+
+const storyJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: "Luma and the Grass That Held Sen's Place",
+  description,
+  url: pageUrl,
+  image: new URL(heroImage, site).toString(),
+  isPartOf: {
+    '@type': 'CreativeWorkSeries',
+    name: 'Vaelinyan Fables',
+    url: new URL('/read/fables/', site).toString(),
+  },
+  genre: 'Vaelinyan fable',
+  audience: {
+    '@type': 'Audience',
+    audienceType: 'Young people and neurodivergent readers',
+  },
+};
+---
+<BaseLayout title="Luma and the Grass That Held Sen's Place" description={description} image={heroImage} jsonLd={storyJsonLd}>
+  <article class="story-page fable-page">
+    <header class="story-header-compact">
+      <p class="eyebrow">A metamorphic Vaelinyan fable</p>
+      <figure class="story-hero-image fable-hero-image">
+        <img
+          src={heroImage}
+          alt="A child named Luma sits at dusk beside silver grass growing in a crescent at the edge of a pale plain, looking toward hidden Earth beyond the horizon."
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
+      <h1>Luma and the Grass That Held Sen's Place</h1>
+      <p class="lede">When Sen crosses to Earth, Luma plants a white seed so sadness has somewhere kind to rest.</p>
+    </header>
+
+    <div class="story-content fable-story-content">
+      <p>On the far side of Vaelinya, where the dry wind moved softly over the pale hills, there lived a child named Luma.</p>
+
+      <p>Luma had a kind elder friend called Sen.</p>
+
+      <p>Sen was old enough to remember six crossings and three returns. Luma was not old enough to remember even one. But that did not matter.</p>
+
+      <p>Sen knew where the small blue beetles slept during the heat of the day.</p>
+
+      <p>Sen knew how to hear rain before it formed.</p>
+
+      <p>Sen knew the names of stones that looked ordinary until evening.</p>
+
+      <p>Every dusk, Luma and Sen walked to the edge of the silver plain.</p>
+
+      <p>Every dusk, Sen pointed to the low red line where the sun was leaving.</p>
+
+      <p>Every dusk, Luma asked the same question.</p>
+
+      <p>“Is Earth there?”</p>
+
+      <p>And every dusk, Sen gave the same answer.</p>
+
+      <p>“Not where we can see it. But yes.”</p>
+
+      <p>Then came the half-year turning, when Earth and Vaelinya came near in the old hidden way.</p>
+
+      <p>The elders gathered with quiet faces.</p>
+
+      <p>The crossing cloths were unfolded.</p>
+
+      <p>The listening bowls were filled.</p>
+
+      <p>The old songs were sung without hurry.</p>
+
+      <p>Sen was going to Earth.</p>
+
+      <p>He had been called by a memory he had left there long ago, and Vaelinyans do not hold someone back from a true return.</p>
+
+      <p>Luma stood beside him while the crossing circle was made.</p>
+
+      <p>She did not cry at first.</p>
+
+      <p>Sen knelt and pressed one small white seed into her hand.</p>
+
+      <p>“This is not to stop you missing me,” he said. “Missing someone is not wrong.”</p>
+
+      <p>“What is it for?” asked Luma.</p>
+
+      <p>“So you have somewhere kind to go, when missing me feels too heavy.”</p>
+
+      <p>Luma closed her fingers around the seed.</p>
+
+      <p>Then Sen crossed.</p>
+
+      <p>There was no thunder.</p>
+
+      <p>No tearing of the sky.</p>
+
+      <p>No great crack in the world.</p>
+
+      <p>There was only a stillness, and then a space where he had been.</p>
+
+      <p>After that, Luma went to the edge of the silver plain every dusk.</p>
+
+      <p>Every dusk, she stood where Sen had stood.</p>
+
+      <p>Every dusk, she looked at the low red line.</p>
+
+      <p>Every dusk, she asked, “Is Earth there?”</p>
+
+      <p>But no one answered in Sen’s voice.</p>
+
+      <p>The others tried to help.</p>
+
+      <p>Her mother brought warm root-bread.</p>
+
+      <p>Her brother brought polished stones.</p>
+
+      <p>The old mapmaker showed her where Earth would be, if eyes could see through sunlight and distance and time.</p>
+
+      <p>Luma thanked them all.</p>
+
+      <p>Still, the space Sen had left stayed there.</p>
+
+      <p>It was there when Luma saw the blue beetles and had no one to tell.</p>
+
+      <p>It was there when the rain-smell came early and no one smiled in Sen’s way.</p>
+
+      <p>It was there at dusk, beside her, where Sen should have been standing.</p>
+
+      <p>The space was not empty because Luma had forgotten him.</p>
+
+      <p>It hurt because she remembered him.</p>
+
+      <p>One dusk, Luma did not go home.</p>
+
+      <p>She sat at the edge of the silver plain with Sen’s white seed in her hand.</p>
+
+      <p>The dry wind moved over her knees.</p>
+
+      <p>The pale hills held their breath.</p>
+
+      <p>“I miss Sen,” she said.</p>
+
+      <p>The listening bowls in the village began to tremble.</p>
+
+      <p>Her mother heard them first.</p>
+
+      <p>Then the elders.</p>
+
+      <p>Then the children, who were always better at noticing small changes.</p>
+
+      <p>They came to the edge of the silver plain, but they did not crowd her.</p>
+
+      <p>They made a wide circle.</p>
+
+      <p>No one said, “Come away.”</p>
+
+      <p>No one said, “Be brave.”</p>
+
+      <p>No one said, “It is time to be finished.”</p>
+
+      <p>The eldest listener knelt at the edge of the circle.</p>
+
+      <p>“Luma,” she said, “the sadness of missing Sen is too heavy to carry only inside you.”</p>
+
+      <p>Luma looked down at the seed.</p>
+
+      <p>“What should I do?”</p>
+
+      <p>“Plant it,” said the eldest listener. “Not to forget Sen. Not to stop loving him. Plant it so you have a place to go when the sadness feels too heavy.”</p>
+
+      <p>“Will it take me away?”</p>
+
+      <p>“No,” said the eldest listener. “You will stay Luma.”</p>
+
+      <p>“Will it make me forget?”</p>
+
+      <p>“No.”</p>
+
+      <p>“Will it hurt Sen?”</p>
+
+      <p>“No.”</p>
+
+      <p>“Will it bring him back?”</p>
+
+      <p>The eldest listener was quiet for a moment.</p>
+
+      <p>“No,” she said gently. “It will not bring him back.”</p>
+
+      <p>Luma nodded, because this was the answer she had feared, and also the answer she trusted.</p>
+
+      <p>“What will it do?”</p>
+
+      <p>“It may give you a place to remember him.”</p>
+
+      <p>Luma pressed the seed into the dry ground.</p>
+
+      <p>“I miss Sen,” she said again.</p>
+
+      <p>The seed opened.</p>
+
+      <p>A thin blade of silver grass rose from the dust.</p>
+
+      <p>Then another.</p>
+
+      <p>Then another.</p>
+
+      <p>The grass did not take Sen’s place.</p>
+
+      <p>It did not pretend he was back.</p>
+
+      <p>It did not tell Luma to stop being sad.</p>
+
+      <p>It simply grew in the place where Luma came when she missed him.</p>
+
+      <p>The silver grass grew in a crescent, all the blades leaning toward the hidden Earth.</p>
+
+      <p>Luma watched it.</p>
+
+      <p>The sadness did not vanish.</p>
+
+      <p>But now Luma had somewhere to sit with it.</p>
+
+      <p>The next dusk, Luma returned to the plain.</p>
+
+      <p>The silver grass was waiting.</p>
+
+      <p>She sat beside it and told Sen what the blue beetles had done that morning.</p>
+
+      <p>The next dusk, she returned again.</p>
+
+      <p>The silver grass bent toward the hidden Earth.</p>
+
+      <p>Luma told it that her brother had dropped three bowls and blamed the wind.</p>
+
+      <p>The next dusk, she returned again.</p>
+
+      <p>The silver grass shivered though the air was still.</p>
+
+      <p>Luma laughed for the first time since the crossing.</p>
+
+      <p>After that, people began to visit the silver grass when someone they loved had gone beyond sight.</p>
+
+      <p>They did not pull it.</p>
+
+      <p>They did not cut it.</p>
+
+      <p>They did not braid it into crowns.</p>
+
+      <p>They sat beside it.</p>
+
+      <p>Some spoke aloud.</p>
+
+      <p>Some said nothing.</p>
+
+      <p>Some brought seeds.</p>
+
+      <p>Some brought names.</p>
+
+      <p>Some only placed one hand on the dry ground and let the world know they were still carrying love.</p>
+
+      <p>Each half-year, when Earth and Vaelinya came near in the old hidden way, the silver grass bent lower.</p>
+
+      <p>Not sadly.</p>
+
+      <p>Not desperately.</p>
+
+      <p>Only faithfully, as if greeting something far away.</p>
+
+      <p>Luma grew older.</p>
+
+      <p>She learned the names of stones.</p>
+
+      <p>She learned how to hear rain before it formed.</p>
+
+      <p>She learned where the small blue beetles slept during the heat of the day.</p>
+
+      <p>Children began to walk beside her at dusk.</p>
+
+      <p>They asked where Earth was.</p>
+
+      <p>Luma pointed to the low red line where the sun was leaving.</p>
+
+      <p>“Not where we can see it,” she said.</p>
+
+      <p>“But yes.”</p>
+
+      <p>And the silver grass moved softly in the windless light.</p>
+    </div>
+
+    <nav class="link-list fable-bottom-links" aria-label="Story links">
+      <a href="/read/fables/">Back to Vaelinyan fables</a>
+      <a href="/read/">Back to Read</a>
+    </nav>
+  </article>
+</BaseLayout>
+
+<style>
+  .fable-page {
+    width: min(100% - 2rem, 860px);
+    margin-inline: auto;
+    overflow: hidden;
+    background: rgba(255, 248, 232, 0.94);
+  }
+
+  .story-header-compact,
+  .fable-story-content {
+    width: min(100%, 680px);
+    margin-inline: auto;
+  }
+
+  .fable-hero-image {
+    width: min(100%, 680px);
+    max-width: 680px;
+    margin: 1rem auto 0;
+  }
+
+  .fable-hero-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .fable-bottom-links {
+    max-width: 32rem;
+    margin: 2rem auto 0;
+  }
+
+  .fable-story-content p {
+    font-size: clamp(1.05rem, 1.45vw, 1.16rem);
+  }
+</style>
