@@ -8,19 +8,25 @@ const pageUrl = new URL('/read/fables/', site).toString();
 const fables = [
   {
     title: 'The Line of White Pebbles',
-    label: 'A Vaelinyan moral fable',
+    label: 'Boundary Fable',
     href: '/read/fables/the-line-of-white-pebbles/',
     image: '/images/read/fables/the-line-of-white-pebbles/hero.webp',
     imageAlt: 'A Thirst Beetle and a Slippy Snail face each other across a line of white pebbles.',
     description: 'A Thirst Beetle and a Slippy Snail learn that love must not harm what keeps another creature alive.',
+    readingFeel: 'Gentle / Tender',
+    bestFor: 'readers thinking about love, distance, and care',
+    moralShape: 'Love is not proved by crossing a boundary. Sometimes love is proved by keeping one.',
   },
   {
     title: 'The Roof That Waited for Rain',
-    label: 'A deep Vaelinyan fable',
+    label: 'Dwelling Fable',
     href: '/read/fables/the-roof-that-waited-for-rain/',
     image: '/images/read/fables/the-roof-that-waited-for-rain/hero.png',
     imageAlt: 'A young Vaelinyan named Aven stands outside a small blue-doored house, looking up at a dark patch in the living moss roof.',
     description: 'Aven has a living moss roof that only seems urgent when the rain begins.',
+    readingFeel: 'Quiet / Gentle',
+    bestFor: 'readers thinking about patience, shelter, and belonging',
+    moralShape: 'A home is not a thing you possess. A home is care repeated over time.',
   },
 ];
 
@@ -48,6 +54,15 @@ const fablesJsonLd = {
     <p class="lede">Small stories from Vaelinya that teach through creatures, places, objects, and choices.</p>
     <p>Each fable can be read on its own. Some fables also open small paths into the World, Language, and Artefacts sections later.</p>
 
+    <article class="panel fable-system-panel">
+      <p class="eyebrow">Vaelinyan Moral Fables</p>
+      <h2>Teaching stories, not instructions</h2>
+      <p>Vaelinyan Moral Fables are teaching stories.</p>
+      <p>They do not tell the reader what to obey. They show the reader what to notice.</p>
+      <p>A Vaelinyan fable may explain a creature, a ritual, a boundary, a transformation, a place, a return, or a leaving.</p>
+      <p>The lesson is not usually spoken at the end. It is carried by the image the story leaves behind.</p>
+    </article>
+
     <ol class="story-grid story-list fable-card-grid" aria-label="Vaelinyan fables">
       {fables.map((fable) => (
         <li>
@@ -56,6 +71,20 @@ const fablesJsonLd = {
             <span>{fable.label}</span>
             <strong>{fable.title}</strong>
             <p>{fable.description}</p>
+            <dl class="fable-card-meta">
+              <div>
+                <dt>Reading feel</dt>
+                <dd>{fable.readingFeel}</dd>
+              </div>
+              <div>
+                <dt>Best for</dt>
+                <dd>{fable.bestFor}</dd>
+              </div>
+              <div>
+                <dt>Moral shape</dt>
+                <dd>{fable.moralShape}</dd>
+              </div>
+            </dl>
             <span class="story-card-action" aria-hidden="true">Read this fable</span>
           </a>
         </li>
@@ -76,6 +105,10 @@ const fablesJsonLd = {
 </BaseLayout>
 
 <style>
+  .fable-system-panel {
+    margin-block: 2rem;
+  }
+
   .fable-card-grid {
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
     align-items: stretch;
@@ -116,6 +149,30 @@ const fablesJsonLd = {
 
   .fable-story-card p {
     color: rgba(255, 248, 232, 0.94);
+  }
+
+  .fable-card-meta {
+    display: grid;
+    gap: 0.55rem;
+    margin: 0.25rem 1.35rem 1.1rem;
+    color: rgba(255, 248, 232, 0.94);
+  }
+
+  .fable-card-meta div {
+    display: grid;
+    gap: 0.15rem;
+  }
+
+  .fable-card-meta dt {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 248, 232, 0.72);
+  }
+
+  .fable-card-meta dd {
+    margin: 0;
   }
 
   .fable-story-card .story-card-action {
