@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Story from '../../../../content/fables/the-mountain-healers-who-would-not-help-their-own.md';
+
+const title = 'The Mountain Healers Who Would Not Help Their Own';
+const description = 'Mera is a skilled movement healer. When the overseers promise support but change nothing, both Mera and the mountain become ill.';
+const site = Astro.site ?? new URL('https://vaelinya.uk');
+const pageUrl = new URL('/read/fables/the-mountain-healers-who-would-not-help-their-own/', site).toString();
+const heroImage = '/images/read/fables/the-mountain-healers-who-would-not-help-their-own/hero.webp';
+
+const storyJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: title,
+  description,
+  url: pageUrl,
+  image: new URL(heroImage, site).toString(),
+  isPartOf: {
+    '@type': 'CreativeWorkSeries',
+    name: 'Vaelinyan Fables',
+    url: new URL('/read/fables/', site).toString(),
+  },
+  genre: 'Work and care fable',
+  audience: {
+    '@type': 'Audience',
+    audienceType: 'Young people and neurodivergent readers',
+  },
+};
+---
+<BaseLayout title={title} description={description} image={heroImage} jsonLd={storyJsonLd}>
+  <article class="story-page fable-page">
+    <header class="story-header-compact">
+      <p class="eyebrow">A deep Vaelinyan fable about work and care</p>
+      <figure class="story-hero-image fable-hero-image">
+        <img
+          src={heroImage}
+          alt="Mera stands outside a stone care house held between seven mountains. Grey-coated overseers wait in the doorway, damaged healing terraces lie below, and one healthy silver-vein plant grows beside the path."
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
+      <h1>{title}</h1>
+      <p class="lede">Mera works in a mountain care house that promises nobody will carry pain alone. When she needs help herself, the overseers record her requests but leave the harm in place.</p>
+    </header>
+
+    <div class="story-content fable-story-content mountain-healers-content">
+      <Story />
+    </div>
+
+    <nav class="link-list fable-bottom-links" aria-label="Story links">
+      <a href="/read/fables/">Back to Vaelinyan fables</a>
+      <a href="/read/lina/">Meet Lina</a>
+      <a href="/read/">Back to Read</a>
+    </nav>
+  </article>
+</BaseLayout>
+
+<style>
+  .fable-page {
+    width: min(100% - 2rem, 860px);
+    margin-inline: auto;
+    overflow: hidden;
+    background: rgba(255, 248, 232, 0.94);
+  }
+
+  .story-header-compact,
+  .fable-story-content {
+    width: min(100%, 680px);
+    margin-inline: auto;
+  }
+
+  .fable-hero-image {
+    width: min(100%, 680px);
+    max-width: 680px;
+    margin: 1rem auto 0;
+  }
+
+  .fable-hero-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .fable-bottom-links {
+    max-width: 38rem;
+    margin: 2rem auto 0;
+  }
+
+  .mountain-healers-content :global(p),
+  .mountain-healers-content :global(li) {
+    font-size: clamp(1.05rem, 1.45vw, 1.16rem);
+  }
+
+  .mountain-healers-content :global(h2) {
+    margin-top: 2.6rem;
+    scroll-margin-top: 1rem;
+  }
+
+  .mountain-healers-content :global(blockquote) {
+    margin: 1.35rem 0;
+    padding: 1rem 1.2rem;
+    border-left: 0.3rem solid rgba(89, 64, 117, 0.72);
+    background: rgba(232, 222, 245, 0.55);
+  }
+
+  .mountain-healers-content :global(blockquote p) {
+    margin: 0;
+    color: #2b3137;
+    font-weight: 760;
+  }
+
+  .mountain-healers-content :global(blockquote:last-child) {
+    background:
+      radial-gradient(circle at 12% 20%, rgba(255, 255, 255, 0.52), transparent 9rem),
+      rgba(255, 241, 199, 0.9);
+    border-left-color: #b06f14;
+  }
+
+  .mountain-healers-content :global(blockquote:last-child p) {
+    font-size: clamp(1.12rem, 1.65vw, 1.28rem);
+    font-weight: 850;
+    line-height: 1.4;
+  }
+</style>
