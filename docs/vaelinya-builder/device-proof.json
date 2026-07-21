@@ -1,0 +1,158 @@
+{
+  "generatedAt": "2026-07-21T15:50:00Z",
+  "devices": [
+    {
+      "ready": true,
+      "worldId": "vaelinya-builder-prototype-v1",
+      "assetCount": 12,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "noHorizontalOverflow": true,
+      "canvas": {
+        "width": 972,
+        "height": 762
+      },
+      "stage": {
+        "width": 974,
+        "height": 764
+      },
+      "palette": {
+        "width": 310,
+        "height": 764
+      },
+      "snapshot": {
+        "worldId": "vaelinya-builder-prototype-v1",
+        "assetCount": 12,
+        "terrainCount": 144,
+        "objectCount": 8,
+        "selectedAssetId": "vaelinya-meadow",
+        "category": "terrain",
+        "tool": "place",
+        "zoom": 1.05
+      },
+      "interaction": {
+        "riverPlaced": true,
+        "boatPlacedOnRiver": true,
+        "boatRejectedOnMeadow": true,
+        "saveValidated": true,
+        "objectCountBefore": 7,
+        "objectCountAfter": 8
+      },
+      "bodyClientWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "screenshotSha256": "ed5246fd2e56845208dd90a19ac745a6efc5f9472ff3c1655765b64f71c77ded",
+      "screenshotBytes": 151853,
+      "device": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900,
+        "deviceScaleFactor": 1,
+        "mobile": false
+      }
+    },
+    {
+      "ready": true,
+      "worldId": "vaelinya-builder-prototype-v1",
+      "assetCount": 12,
+      "viewport": {
+        "width": 1024,
+        "height": 1366
+      },
+      "noHorizontalOverflow": true,
+      "canvas": {
+        "width": 894,
+        "height": 758
+      },
+      "stage": {
+        "width": 896,
+        "height": 760
+      },
+      "palette": {
+        "width": 1000,
+        "height": 185.984375
+      },
+      "snapshot": {
+        "worldId": "vaelinya-builder-prototype-v1",
+        "assetCount": 12,
+        "terrainCount": 144,
+        "objectCount": 8,
+        "selectedAssetId": "vaelinya-meadow",
+        "category": "terrain",
+        "tool": "place",
+        "zoom": 1.05
+      },
+      "interaction": {
+        "riverPlaced": true,
+        "boatPlacedOnRiver": true,
+        "boatRejectedOnMeadow": true,
+        "saveValidated": true,
+        "objectCountBefore": 7,
+        "objectCountAfter": 8
+      },
+      "bodyClientWidth": 1024,
+      "bodyScrollWidth": 1024,
+      "screenshotSha256": "fb15cb742d892834de62f4795c6f12cb1da4493869be58b042f21233b4324a8f",
+      "screenshotBytes": 302170,
+      "device": {
+        "name": "ipad",
+        "width": 1024,
+        "height": 1366,
+        "deviceScaleFactor": 2,
+        "mobile": true
+      }
+    },
+    {
+      "ready": true,
+      "worldId": "vaelinya-builder-prototype-v1",
+      "assetCount": 12,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "noHorizontalOverflow": true,
+      "canvas": {
+        "width": 374,
+        "height": 555.03125
+      },
+      "stage": {
+        "width": 376,
+        "height": 557.03125
+      },
+      "palette": {
+        "width": 376,
+        "height": 253.984375
+      },
+      "snapshot": {
+        "worldId": "vaelinya-builder-prototype-v1",
+        "assetCount": 12,
+        "terrainCount": 144,
+        "objectCount": 8,
+        "selectedAssetId": "vaelinya-meadow",
+        "category": "terrain",
+        "tool": "place",
+        "zoom": 1.05
+      },
+      "interaction": {
+        "riverPlaced": true,
+        "boatPlacedOnRiver": true,
+        "boatRejectedOnMeadow": true,
+        "saveValidated": true,
+        "objectCountBefore": 7,
+        "objectCountAfter": 8
+      },
+      "bodyClientWidth": 390,
+      "bodyScrollWidth": 390,
+      "screenshotSha256": "81c0870fd1e0f0bda4fea56692f8f455de5ee70f4899c1fc76ccb11186601fa9",
+      "screenshotBytes": 241639,
+      "device": {
+        "name": "phone",
+        "width": 390,
+        "height": 844,
+        "deviceScaleFactor": 3,
+        "mobile": true
+      }
+    }
+  ]
+}

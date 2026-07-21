@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "test:builder": "node --test tests/vaelinya-builder/*.test.js"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
