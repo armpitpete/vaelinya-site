@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#674e86">
+    <title>Vaelinya Builder — theme-neutral prototype</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <main class="builder-shell">
+        <header class="title-panel">
+            <div>
+                <p class="eyebrow">Theme-neutral isometric engine · vertical slice</p>
+                <h1 data-world-title>A Small Place in Vaelinya</h1>
+                <p class="subtitle" data-world-subtitle></p>
+            </div>
+            <a class="fixture-link" data-world-switch href="?world=mykonos">Open Mykonos fixture</a>
+        </header>
+
+        <nav class="toolbar" aria-label="Builder tools">
+            <button type="button" data-tool="place" aria-pressed="true"><span aria-hidden="true">＋</span>Place</button>
+            <button type="button" data-tool="fill" aria-pressed="false"><span aria-hidden="true">▧</span>Fill</button>
+            <button type="button" data-tool="erase" aria-pressed="false"><span aria-hidden="true">◇</span>Erase</button>
+            <button type="button" data-tool="pan" aria-pressed="false"><span aria-hidden="true">↔</span>Pan</button>
+            <button type="button" data-tool="grid" aria-pressed="false"><span aria-hidden="true">▦</span>Grid</button>
+            <button type="button" data-tool="save" aria-pressed="false"><span aria-hidden="true">↓</span>Save</button>
+            <button type="button" data-tool="reset" aria-pressed="false"><span aria-hidden="true">↺</span>Reset</button>
+        </nav>
+
+        <section class="stage" aria-label="Isometric building canvas">
+            <canvas id="builder-canvas"></canvas>
+            <div class="stage-readout" aria-live="polite">
+                <strong data-selection>Selected piece</strong>
+                <span data-counts></span>
+            </div>
+            <p class="status" data-status data-active="false" role="status">A new place is ready.</p>
+        </section>
+
+        <aside class="palette-panel" aria-label="Building pieces">
+            <div class="category-tabs" data-categories role="tablist" aria-label="Piece categories"></div>
+            <div class="asset-palette" data-palette></div>
+            <details class="controls-help">
+                <summary>Controls</summary>
+                <p><strong>Desktop:</strong> click to place, right-click to erase, Pan then drag, wheel to zoom.</p>
+                <p><strong>Touch:</strong> tap to place, hold to erase, Pan then drag, pinch to zoom.</p>
+            </details>
+        </aside>
+    </main>
+    <noscript>This prototype requires JavaScript.</noscript>
+    <script type="module" src="./src/app.js"></script>
+</body>
+</html>
