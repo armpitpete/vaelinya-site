@@ -15,23 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  validate-verifier:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Confirm post-merge verification contract
-        shell: bash
-        run: |
-          set -euo pipefail
-          {
-            echo '### Production verifier contract'
-            echo '- Pull requests validate this workflow.'
-            echo '- The live route check runs after merge on `main`, when the Cloudflare production deployment has begun.'
-            echo '- The live check requires HTTP 200 and exact page markers.'
-          } >> "$GITHUB_STEP_SUMMARY"
-
   verify-live-site:
-    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
