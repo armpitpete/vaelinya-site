@@ -37,13 +37,21 @@ jobs:
         run: git clone --mirror "$REPOSITORY_URL" source.git
 
       - name: Build non-pushed rewrite candidate and backup
+        shell: bash
         env:
           REPOSITORY_URL: https://github.com/${{ github.repository }}.git
         run: |
+          set -euo pipefail
+          EXTRA_ARGS=()
+          if [[ "$GITHUB_EVENT_NAME" != "pull_request" ]]; then
+            EXTRA_ARGS+=(--require-main-tree-preserved)
+          fi
+
           python tools/security/history_remediation.py \
             --mirror source.git \
             --output evidence \
-            --repository-url "$REPOSITORY_URL" | tee evidence-summary.json
+            --repository-url "$REPOSITORY_URL" \
+            "${EXTRA_ARGS[@]}" | tee evidence-summary.json
 
           python tools/security/final_candidate_boundary.py \
             --source-mirror source.git \
@@ -70,17 +78,22 @@ jobs:
         run: |
           python - <<'PY'
           import json
+          import os
           from pathlib import Path
 
           manifest = json.loads(Path('evidence/manifest.json').read_text())
           boundary = json.loads(Path('evidence/reference-boundary.json').read_text())
           affected = Path('evidence/affected-blobs.tsv').read_text().splitlines()
+          stage = 'final post-merge' if manifest['main_tree_preservation_required'] else 'pre-merge validation'
 
           with Path('candidate-summary.md').open('w') as out:
               out.write('## Final history remediation candidate\n\n')
-              out.write(f"- Workflow commit: `{__import__('os').environ['GITHUB_SHA']}`\n")
+              out.write(f"- Workflow commit: `{os.environ['GITHUB_SHA']}`\n")
+              out.write(f"- Validation stage: `{stage}`\n")
               out.write(f"- Current main before rewrite: `{boundary['main_before']}`\n")
               out.write(f"- Rewritten main candidate: `{boundary['main_after']}`\n")
+              out.write(f"- Current main tree preserved: `{str(manifest['main_tree_preserved']).lower()}`\n")
+              out.write(f"- Tree preservation required at this stage: `{str(manifest['main_tree_preservation_required']).lower()}`\n")
               out.write(f"- Affected reachable blobs: `{manifest['affected_blob_count']}`\n")
               out.write(f"- Pushable branch/tag refs: `{boundary['pushable_ref_count']}`\n")
               out.write(f"- GitHub-controlled pull refs: `{boundary['github_controlled_pull_ref_count']}`\n")
@@ -175,6 +188,8 @@ jobs:
           assert sha256(backup) == manifest['backup_bundle_sha256']
           assert sha256(candidate) == manifest['candidate_bundle_sha256']
           assert sha256(candidate) == boundary['candidate_bundle_file_sha256']
+          if manifest['main_tree_preservation_required']:
+              assert manifest['main_tree_preserved'] is True
           subprocess.run(['git', 'bundle', 'verify', str(backup)], check=True)
           subprocess.run(['git', 'bundle', 'verify', str(candidate)], check=True)
           subprocess.run(['git', 'clone', '--mirror', str(candidate), 'candidate-review.git'], check=True)
@@ -230,6 +245,7 @@ jobs:
             echo '- GitHub-controlled pull-ref inventory: passed'
             echo '- Forbidden local-path scan: zero remaining candidate blobs'
             echo '- Rewritten main build: passed'
+            echo '- Final-stage tree-preservation rule: enforced when required'
             echo '- Remote refs changed: no'
             echo '- Backup deleted: no'
           } >> "$GITHUB_STEP_SUMMARY"
