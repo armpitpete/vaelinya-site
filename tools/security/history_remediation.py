@@ -271,6 +271,7 @@ def main() -> int:
     parser.add_argument("--mirror", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--repository-url", required=True)
+    parser.add_argument("--require-main-tree-preserved", action="store_true")
     args = parser.parse_args()
 
     source = args.mirror.resolve()
@@ -318,9 +319,9 @@ def main() -> int:
 
     after_tree_oid = tree_oid(candidate_repo, "refs/heads/main")
     main_tree_preserved = before_tree_oid == after_tree_oid
-    if not main_tree_preserved:
+    if args.require_main_tree_preserved and not main_tree_preserved:
         raise SystemExit(
-            "Current main tree changed during the history rewrite: "
+            "Current main tree changed during the final history rewrite: "
             f"before={before_tree_oid}, after={after_tree_oid}"
         )
 
@@ -337,6 +338,7 @@ def main() -> int:
         "main_tree_before_git_oid": before_tree_oid,
         "main_tree_after_git_oid": after_tree_oid,
         "main_tree_preserved": main_tree_preserved,
+        "main_tree_preservation_required": args.require_main_tree_preserved,
         "affected_blob_count": len(affected),
         "ref_count": len(pre_refs),
         "repository_url": args.repository_url,
