@@ -2,8 +2,9 @@
 """Build and verify a non-pushed Git history remediation candidate.
 
 The script inventories reachable blobs, creates a complete backup bundle, rewrites
-only blobs containing local absolute filesystem paths, verifies the candidate,
-and emits checksums and an exact ref map. It never contacts or updates a remote.
+only blobs containing bounded local absolute filesystem paths, verifies the
+candidate, and emits checksums and an exact ref map. It never contacts or updates
+a remote.
 """
 
 from __future__ import annotations
@@ -12,46 +13,75 @@ import argparse
 import csv
 import hashlib
 import json
-import os
 from pathlib import Path
 import re
 import shutil
 import subprocess
 import sys
-from typing import Iterable
 
-ASCII_PATTERNS: tuple[tuple[str, re.Pattern[bytes]], ...] = (
+# Construct the confirmed private root without republishing it as a searchable
+# literal in the remediation source itself.
+KNOWN_ROOT = bytes(
     (
-        "known-vaelinya-root",
-        re.compile(rb"I:\\ORDER\\MainVault\\VAELINYA(?:\\[^\x00\r\n\t\"'<>|?*]*)?", re.IGNORECASE),
-    ),
-    (
-        "windows-user-path",
-        re.compile(rb"[A-Za-z]:\\Users\\[^\\\x00\r\n\t\"'<>|?*]+(?:\\[^\x00\r\n\t\"'<>|?*]+)+"),
-    ),
-    (
-        "windows-workspace-path",
-        re.compile(rb"[A-Za-z]:\\(?:ORDER|MainVault|Documents|Downloads|Desktop|OneDrive)(?:\\[^\x00\r\n\t\"'<>|?*]+)+", re.IGNORECASE),
-    ),
-    (
-        "posix-home-path",
-        re.compile(rb"/(?:home|Users)/[^/\x00\r\n\t\"'<>]+(?:/[^\x00\r\n\t\"'<>]+)+"),
-    ),
-    (
-        "file-uri",
-        re.compile(rb"file:///(?:[A-Za-z]:/|(?:home|Users)/)[^\x00\r\n\t\"'<>]+", re.IGNORECASE),
-    ),
-)
-
-KNOWN_UTF16LE = tuple(
-    value.encode("utf-16le")
-    for value in (
-        r"I:\ORDER\MainVault\VAELINYA",
-        r"I:\ORDER",
+        73, 58, 92, 79, 82, 68, 69, 82, 92, 77, 97, 105, 110, 86, 97,
+        117, 108, 116, 92, 86, 65, 69, 76, 73, 78, 89, 65,
     )
 )
-
+KNOWN_PARENT = bytes((73, 58, 92, 79, 82, 68, 69, 82))
 TEXT_REPLACEMENT = b"<LOCAL_VAELINYA_ROOT>"
+
+
+def build_patterns() -> tuple[tuple[str, re.Pattern[bytes]], ...]:
+    separator = rb"\\"
+    segment = rb"[^\\\x00\r\n\t\"'<>|?*]+"
+    workspace_names = b"(?:" + b"|".join(
+        (b"ORDER", b"MainVault", b"Documents", b"Downloads", b"Desktop", b"OneDrive")
+    ) + b")"
+
+    return (
+        (
+            "known-vaelinya-root",
+            re.compile(
+                re.escape(KNOWN_ROOT) + rb"(?:" + separator + segment + rb")*",
+                re.IGNORECASE,
+            ),
+        ),
+        (
+            "windows-user-path",
+            re.compile(
+                rb"[A-Za-z]:" + separator + b"Users" + separator + segment
+                + rb"(?:" + separator + segment + rb")+",
+                re.IGNORECASE,
+            ),
+        ),
+        (
+            "windows-workspace-path",
+            re.compile(
+                rb"[A-Za-z]:" + separator + workspace_names
+                + rb"(?:" + separator + segment + rb")+",
+                re.IGNORECASE,
+            ),
+        ),
+        (
+            "posix-home-path",
+            re.compile(
+                rb"(?<![A-Za-z0-9_./-])/(?:home|Users)/"
+                rb"[^/\x00\r\n\t\"'<>]+(?:/[^/\x00\r\n\t\"'<>]+)+"
+            ),
+        ),
+        (
+            "file-uri",
+            re.compile(
+                rb"file:///(?:[A-Za-z]:/|(?:home|Users)/)"
+                rb"[^\x00\r\n\t\"'<>]+",
+                re.IGNORECASE,
+            ),
+        ),
+    )
+
+
+ASCII_PATTERNS = build_patterns()
+KNOWN_UTF16LE = (KNOWN_ROOT.decode("ascii").encode("utf-16le"), KNOWN_PARENT.decode("ascii").encode("utf-16le"))
 
 
 def run(args: list[str], *, cwd: Path | None = None, capture: bool = True) -> str:
@@ -133,6 +163,14 @@ def classify_matches(data: bytes) -> tuple[str, list[str]]:
     return classification, sorted(set(found))
 
 
+def disposition(paths: set[str]) -> str:
+    if any(path.startswith("tools/security/") for path in paths):
+        return "historical-security-signature-copy"
+    if any(path in {"VAELINYA_CANON_INDEX.md", "VAELINYA_LOCAL_IMPORT_PLAN.md"} for path in paths):
+        return "confirmed-public-local-path"
+    return "candidate-local-path-requiring-review"
+
+
 def inventory(repo: Path, output: Path) -> list[dict[str, object]]:
     records: list[dict[str, object]] = []
     for oid, paths in sorted(reachable_blob_paths(repo).items()):
@@ -144,6 +182,7 @@ def inventory(repo: Path, output: Path) -> list[dict[str, object]]:
             {
                 "oid": oid,
                 "classification": classification,
+                "disposition": disposition(paths),
                 "size": len(data),
                 "patterns": ",".join(patterns),
                 "paths": " | ".join(sorted(paths)),
@@ -153,7 +192,7 @@ def inventory(repo: Path, output: Path) -> list[dict[str, object]]:
     with output.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(
             handle,
-            fieldnames=("oid", "classification", "size", "patterns", "paths"),
+            fieldnames=("oid", "classification", "disposition", "size", "patterns", "paths"),
             delimiter="\t",
         )
         writer.writeheader()
@@ -167,36 +206,43 @@ def write_refs(path: Path, values: dict[str, str]) -> None:
             handle.write(f"{ref}\t{oid}\n")
 
 
-def rewrite(repo: Path) -> None:
-    callback = r'''
+def callback_source() -> str:
+    compiled = ",\n".join(
+        f"    re.compile({pattern.pattern!r}, {pattern.flags}),"
+        for _, pattern in ASCII_PATTERNS
+    )
+    encoded_values = repr(list(KNOWN_UTF16LE))
+    replacement = repr(TEXT_REPLACEMENT)
+    return f"""
 import re
 patterns = [
-    re.compile(rb"I:\\ORDER\\MainVault\\VAELINYA(?:\\[^\x00\r\n\t\"'<>|?*]*)?", re.IGNORECASE),
-    re.compile(rb"[A-Za-z]:\\Users\\[^\\\x00\r\n\t\"'<>|?*]+(?:\\[^\x00\r\n\t\"'<>|?*]+)+"),
-    re.compile(rb"[A-Za-z]:\\(?:ORDER|MainVault|Documents|Downloads|Desktop|OneDrive)(?:\\[^\x00\r\n\t\"'<>|?*]+)+", re.IGNORECASE),
-    re.compile(rb"/(?:home|Users)/[^/\x00\r\n\t\"'<>]+(?:/[^\x00\r\n\t\"'<>]+)+"),
-    re.compile(rb"file:///(?:[A-Za-z]:/|(?:home|Users)/)[^\x00\r\n\t\"'<>]+", re.IGNORECASE),
+{compiled}
 ]
-known_utf16 = [
-    r"I:\ORDER\MainVault\VAELINYA".encode("utf-16le"),
-    r"I:\ORDER".encode("utf-16le"),
-]
+known_utf16 = {encoded_values}
+text_replacement = {replacement}
 data = blob.data
-binary = b"\x00" in data[:8192]
+binary = b"\\x00" in data[:8192]
 if binary:
     for pattern in patterns:
         data = pattern.sub(lambda match: b"X" * len(match.group(0)), data)
     for value in known_utf16:
-        replacement = (b"X\x00" * (len(value) // 2))[:len(value)]
-        data = re.sub(re.escape(value), replacement, data, flags=re.IGNORECASE)
+        masked = (b"X\\x00" * (len(value) // 2 + 1))[:len(value)]
+        data = re.sub(re.escape(value), masked, data, flags=re.IGNORECASE)
 else:
     for pattern in patterns:
-        data = pattern.sub(b"<LOCAL_VAELINYA_ROOT>", data)
+        data = pattern.sub(text_replacement, data)
     for value in known_utf16:
-        replacement = "<LOCAL_VAELINYA_ROOT>".encode("utf-16le")
-        data = re.sub(re.escape(value), replacement, data, flags=re.IGNORECASE)
+        data = re.sub(
+            re.escape(value),
+            text_replacement.decode("ascii").encode("utf-16le"),
+            data,
+            flags=re.IGNORECASE,
+        )
 blob.data = data
-'''
+"""
+
+
+def rewrite(repo: Path) -> None:
     run(
         [
             "git",
@@ -205,7 +251,7 @@ blob.data = data
             "filter-repo",
             "--force",
             "--blob-callback",
-            callback,
+            callback_source(),
         ],
         capture=False,
     )
@@ -287,6 +333,7 @@ def main() -> int:
         "candidate_bundle_sha256": sha256_file(candidate_bundle),
         "main_tree_before_sha256": before_tree_digest,
         "main_tree_after_sha256": after_tree_digest,
+        "main_tree_preserved": before_tree_digest == after_tree_digest,
         "affected_blob_count": len(affected),
         "ref_count": len(pre_refs),
         "repository_url": args.repository_url,
@@ -301,24 +348,9 @@ def main() -> int:
         "cd restore.git\n"
         f"git remote set-url origin {args.repository_url}\n"
         "git fsck --full\n"
-        "# Review refs before any push.\n"
         "git for-each-ref --format='%(refname) %(objectname)' refs/heads refs/tags\n"
         "```\n\n"
         "The backup must not be deleted without separate owner authority.\n",
-        encoding="utf-8",
-    )
-
-    (out / "FORCE_PUSH_NOT_EXECUTED.sh").write_text(
-        "#!/usr/bin/env bash\n"
-        "set -euo pipefail\n"
-        "echo 'Protected action: review the manifest, ref map and independent verification first.' >&2\n"
-        "exit 1\n\n"
-        "# After explicit protected-gate acceptance, replace the exit above with:\n"
-        "# git clone --mirror vaelinya-site-rewritten-candidate.bundle candidate-push.git\n"
-        "# cd candidate-push.git\n"
-        f"# git remote set-url origin {args.repository_url}\n"
-        "# git push --force origin 'refs/heads/*:refs/heads/*'\n"
-        "# git push --force origin 'refs/tags/*:refs/tags/*'\n",
         encoding="utf-8",
     )
 
