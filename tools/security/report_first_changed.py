@@ -90,16 +90,27 @@ def main() -> int:
     if not first_source.is_file():
         raise SystemExit("git-filter-repo did not produce first-changed-commits")
 
-    first_changed = [
-        line.strip()
-        for line in first_source.read_text(encoding="utf-8").splitlines()
-        if line.strip()
-    ]
-    if not first_changed:
+    mappings: list[dict[str, str]] = []
+    for raw_line in first_source.read_text(encoding="utf-8").splitlines():
+        columns = raw_line.split()
+        if not columns:
+            continue
+        if len(columns) != 2:
+            raise SystemExit(f"Unexpected first-changed-commits row: {raw_line!r}")
+        old_oid, new_oid = columns
+        mappings.append({"original": old_oid, "rewritten": new_oid})
+
+    if not mappings:
         raise SystemExit("git-filter-repo reported no first changed commits")
 
+    first_changed = [item["original"] for item in mappings]
     (output / "first-changed-commits.txt").write_text(
         "\n".join(first_changed) + "\n",
+        encoding="utf-8",
+    )
+    (output / "first-changed-commit-map.tsv").write_text(
+        "original\trewritten\n"
+        + "".join(f"{item['original']}\t{item['rewritten']}\n" for item in mappings),
         encoding="utf-8",
     )
 
@@ -120,17 +131,22 @@ def main() -> int:
         raise SystemExit("Sensitive-data reporting pass differs from primary candidate refs")
 
     locations = []
-    for oid in first_changed:
+    for mapping in mappings:
+        old_oid = mapping["original"]
+        new_oid = mapping["rewritten"]
         locations.append(
             {
-                "oid": oid,
-                "source_object_type": object_type(source, oid),
-                "candidate_object_type": object_type(report_repo, oid),
+                "original_oid": old_oid,
+                "rewritten_oid": new_oid,
+                "original_source_object_type": object_type(source, old_oid),
+                "original_candidate_object_type": object_type(report_repo, old_oid),
+                "rewritten_candidate_object_type": object_type(report_repo, new_oid),
             }
         )
 
     report = {
         "first_changed_commits": first_changed,
+        "first_changed_commit_mappings": mappings,
         "first_changed_commit_count": len(first_changed),
         "orphaned_lfs_objects": orphaned_lfs,
         "orphaned_lfs_object_count": len(orphaned_lfs),
