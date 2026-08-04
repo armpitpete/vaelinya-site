@@ -1,0 +1,108 @@
+name: DS-02 visual evidence
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/pages/read/fables/the-mountain-healers-who-would-not-help-their-own/index.astro'
+      - '.github/workflows/ds-02-visual-evidence.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out exact branch head
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install site and capture dependencies
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund playwright@1.54.1
+          npx playwright install --with-deps chromium
+
+      - name: Build site
+        run: npm run build
+
+      - name: Start local production preview
+        shell: bash
+        run: |
+          npm run preview -- --host 127.0.0.1 > /tmp/vaelinya-preview.log 2>&1 &
+          echo $! > /tmp/vaelinya-preview.pid
+          for attempt in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:4321/read/fables/the-mountain-healers-who-would-not-help-their-own/?vaelinya-state=dusk > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/vaelinya-preview.log
+          exit 1
+
+      - name: Capture desktop and 390 px mobile
+        shell: bash
+        env:
+          TARGET_URL: http://127.0.0.1:4321/read/fables/the-mountain-healers-who-would-not-help-their-own/?vaelinya-state=dusk
+        run: |
+          mkdir -p visual-evidence
+          node <<'JS'
+          const { chromium } = require('playwright');
+
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+            const captures = [
+              { name: 'ds-02-desktop-1440.png', width: 1440, height: 1100 },
+              { name: 'ds-02-mobile-390.png', width: 390, height: 844 },
+            ];
+
+            for (const capture of captures) {
+              const page = await browser.newPage({
+                viewport: { width: capture.width, height: capture.height },
+                deviceScaleFactor: 1,
+                reducedMotion: 'reduce',
+              });
+              await page.goto(process.env.TARGET_URL, { waitUntil: 'networkidle' });
+              await page.screenshot({
+                path: `visual-evidence/${capture.name}`,
+                fullPage: true,
+                animations: 'disabled',
+              });
+              await page.close();
+            }
+
+            await browser.close();
+          })().catch((error) => {
+            console.error(error);
+            process.exit(1);
+          });
+          JS
+
+      - name: Record exact evidence state
+        run: |
+          {
+            echo '## DS-02 visual evidence'
+            echo
+            echo "- Exact commit: `${GITHUB_SHA}`"
+            echo '- Route: `/read/fables/the-mountain-healers-who-would-not-help-their-own/?vaelinya-state=dusk`'
+            echo '- Desktop viewport: `1440 × 1100`'
+            echo '- Mobile viewport: `390 × 844`'
+            echo '- Full-page captures: yes'
+            echo '- Inspector overlays: none'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: ds-02-visual-evidence-${{ github.sha }}
+          path: visual-evidence/
+          if-no-files-found: error
+          retention-days: 30
