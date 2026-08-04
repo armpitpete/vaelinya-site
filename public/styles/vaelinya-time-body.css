@@ -107,3 +107,23 @@ body {
       scroll;
   }
 }
+
+/* DS-01.1 review correction: keep illustration slots subordinate to sensory content. */
+.sr-prototype .sr-record .sr-illustration {
+  min-height: 7.25rem;
+}
+
+.sr-prototype .sr-record .sr-illustration::after {
+  width: 3.7rem;
+  height: 3.7rem;
+}
+
+.sr-prototype .sr-record .sr-illustration-mark {
+  font-size: 2.15rem;
+}
+
+@media (max-width: 720px) {
+  .sr-prototype .sr-record .sr-illustration {
+    min-height: 6.5rem;
+  }
+}
