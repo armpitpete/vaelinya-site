@@ -1,0 +1,84 @@
+name: Production verification
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-verification-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify-live-site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Verify DS-01.1 production route
+        shell: bash
+        env:
+          RECORD_URL: https://vaelinya.uk/studio/cultural-records/
+          RECORD_HEADING: Enter the record through what can be sensed.
+          HOME_URL: https://vaelinya.uk/
+          HOME_MARKER: Choose a door. Begin.
+        run: |
+          set -euo pipefail
+
+          verify_page() {
+            local url="$1"
+            local marker="$2"
+            local label="$3"
+            local body
+            local metadata
+            local status
+            local effective_url
+
+            body="$(mktemp)"
+
+            for attempt in $(seq 1 30); do
+              metadata="$(curl \
+                --silent \
+                --show-error \
+                --location \
+                --connect-timeout 10 \
+                --max-time 30 \
+                --output "$body" \
+                --write-out '%{http_code}\n%{url_effective}\n' \
+                "$url" 2>&1 || true)"
+
+              status="$(printf '%s\n' "$metadata" | tail -n 2 | head -n 1)"
+              effective_url="$(printf '%s\n' "$metadata" | tail -n 1)"
+
+              if [[ "$status" == "200" ]] && grep --fixed-strings --quiet "$marker" "$body"; then
+                {
+                  echo "### $label"
+                  echo "- Requested URL: \`$url\`"
+                  echo "- Effective URL: \`$effective_url\`"
+                  echo "- HTTP status: \`$status\`"
+                  echo "- Required marker found: \`$marker\`"
+                  echo "- Verified from workflow commit: \`${GITHUB_SHA}\`"
+                } >> "$GITHUB_STEP_SUMMARY"
+                rm -f "$body"
+                return 0
+              fi
+
+              echo "$label attempt $attempt/30 did not pass: status=${status:-unknown}, effective_url=${effective_url:-unknown}"
+              sleep 20
+            done
+
+            echo "::error::$label did not return HTTP 200 with the required marker after 30 attempts."
+            echo "Last curl metadata:"
+            printf '%s\n' "$metadata"
+            echo "Last response excerpt:"
+            head -c 1000 "$body" || true
+            rm -f "$body"
+            return 1
+          }
+
+          verify_page "$RECORD_URL" "$RECORD_HEADING" "DS-01.1 sensory-record route"
+          verify_page "$HOME_URL" "$HOME_MARKER" "Production homepage preservation"
