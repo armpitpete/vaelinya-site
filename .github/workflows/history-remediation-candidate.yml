@@ -3,10 +3,13 @@ name: History remediation candidate
 on:
   pull_request:
     branches: [main]
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
+  issues: write
 
 concurrency:
   group: history-remediation-${{ github.ref }}
@@ -15,7 +18,7 @@ concurrency:
 jobs:
   build-candidate:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 45
     steps:
       - name: Check out remediation tooling
         uses: actions/checkout@v4
@@ -42,10 +45,16 @@ jobs:
             --output evidence \
             --repository-url "$REPOSITORY_URL" | tee evidence-summary.json
 
+          python tools/security/final_candidate_boundary.py \
+            --source-mirror source.git \
+            --candidate-bundle evidence/vaelinya-site-rewritten-candidate.bundle \
+            --output evidence \
+            --repository-url "$REPOSITORY_URL" | tee reference-boundary-summary.json
+
           rm -rf evidence/candidate.git
           rm -f evidence/main-before.tar evidence/main-after.tar
 
-      - name: Verify current branch build
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -62,30 +71,60 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
+
           manifest = json.loads(Path('evidence/manifest.json').read_text())
+          boundary = json.loads(Path('evidence/reference-boundary.json').read_text())
           affected = Path('evidence/affected-blobs.tsv').read_text().splitlines()
-          refs = Path('evidence/ref-map.tsv').read_text().splitlines()
+
           with Path('candidate-summary.md').open('w') as out:
-              out.write('## History remediation candidate\n\n')
+              out.write('## Final history remediation candidate\n\n')
+              out.write(f"- Workflow commit: `{__import__('os').environ['GITHUB_SHA']}`\n")
+              out.write(f"- Current main before rewrite: `{boundary['main_before']}`\n")
+              out.write(f"- Rewritten main candidate: `{boundary['main_after']}`\n")
               out.write(f"- Affected reachable blobs: `{manifest['affected_blob_count']}`\n")
-              out.write(f"- Branch/tag refs represented: `{manifest['ref_count']}`\n")
+              out.write(f"- Pushable branch/tag refs: `{boundary['pushable_ref_count']}`\n")
+              out.write(f"- GitHub-controlled pull refs: `{boundary['github_controlled_pull_ref_count']}`\n")
               out.write(f"- Backup bundle SHA-256: `{manifest['backup_bundle_sha256']}`\n")
               out.write(f"- Candidate bundle SHA-256: `{manifest['candidate_bundle_sha256']}`\n")
-              out.write(f"- Main tree before SHA-256: `{manifest['main_tree_before_sha256']}`\n")
-              out.write(f"- Main tree after SHA-256: `{manifest['main_tree_after_sha256']}`\n")
               out.write(f"- Inventory rows: `{max(len(affected) - 1, 0)}`\n")
-              out.write(f"- Ref-map rows: `{max(len(refs) - 1, 0)}`\n")
               out.write('- Force-push: **not executed**\n')
+              out.write('- GitHub Support pull-ref/cache purge: **not completed**\n')
+              out.write('- Backup deletion: **not authorised**\n')
           PY
           cat candidate-summary.md >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Upload immutable review evidence
+      - name: Upload complete immutable review evidence
         uses: actions/upload-artifact@v4
         with:
           name: vaelinya-history-remediation-candidate-${{ github.sha }}
           path: |
             evidence/
             evidence-summary.json
+            reference-boundary-summary.json
+            candidate-summary.md
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload compact inspection evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: vaelinya-history-remediation-metadata-${{ github.sha }}
+          path: |
+            evidence/manifest.json
+            evidence/reference-boundary.json
+            evidence/affected-blobs.tsv
+            evidence/pre-refs.tsv
+            evidence/post-refs.tsv
+            evidence/ref-map.tsv
+            evidence/all-ref-map.tsv
+            evidence/pushable-refs.txt
+            evidence/github-controlled-pull-refs.txt
+            evidence/other-refs.txt
+            evidence/GITHUB_SUPPORT_REQUEST.md
+            evidence/RESTORE.md
+            evidence/FINAL_EXECUTION_NOT_RUN.sh
+            evidence-summary.json
+            reference-boundary-summary.json
             candidate-summary.md
           if-no-files-found: error
           retention-days: 30
@@ -93,7 +132,7 @@ jobs:
   independent-review:
     needs: build-candidate
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 45
     steps:
       - name: Check out independent verifier
         uses: actions/checkout@v4
@@ -122,6 +161,7 @@ jobs:
 
           root = Path('review/evidence')
           manifest = json.loads((root / 'manifest.json').read_text())
+          boundary = json.loads((root / 'reference-boundary.json').read_text())
 
           def sha256(path: Path) -> str:
               h = hashlib.sha256()
@@ -134,6 +174,7 @@ jobs:
           candidate = root / 'vaelinya-site-rewritten-candidate.bundle'
           assert sha256(backup) == manifest['backup_bundle_sha256']
           assert sha256(candidate) == manifest['candidate_bundle_sha256']
+          assert sha256(candidate) == boundary['candidate_bundle_file_sha256']
           subprocess.run(['git', 'bundle', 'verify', str(backup)], check=True)
           subprocess.run(['git', 'bundle', 'verify', str(candidate)], check=True)
           subprocess.run(['git', 'clone', '--mirror', str(candidate), 'candidate-review.git'], check=True)
@@ -151,7 +192,15 @@ jobs:
                   ref, oid = line.split('\t', 1)
                   expected[ref] = oid
           actual = module.refs(Path('candidate-review.git'))
-          assert actual == expected, 'Candidate refs differ from recorded post-refs'
+          assert actual == expected, 'Candidate branch/tag refs differ from recorded post-refs'
+
+          pushable = [line for line in (root / 'pushable-refs.txt').read_text().splitlines() if line]
+          pull_refs = [line for line in (root / 'github-controlled-pull-refs.txt').read_text().splitlines() if line]
+          assert len(pushable) == boundary['pushable_ref_count']
+          assert len(pull_refs) == boundary['github_controlled_pull_ref_count']
+          assert boundary['force_push_executed'] is False
+          assert boundary['github_support_purge_completed'] is False
+          assert (root / 'GITHUB_SUPPORT_REQUEST.md').is_file()
           PY
 
       - name: Set up Node.js
@@ -177,9 +226,43 @@ jobs:
             echo '- Backup bundle checksum: passed'
             echo '- Candidate bundle checksum: passed'
             echo '- Bundle integrity and Git fsck: passed'
-            echo '- Exact branch/tag ref map: passed'
-            echo '- Forbidden local-path scan: zero remaining reachable blobs'
+            echo '- Exact pushable branch/tag ref map: passed'
+            echo '- GitHub-controlled pull-ref inventory: passed'
+            echo '- Forbidden local-path scan: zero remaining candidate blobs'
             echo '- Rewritten main build: passed'
             echo '- Remote refs changed: no'
             echo '- Backup deleted: no'
           } >> "$GITHUB_STEP_SUMMARY"
+
+  record-final-candidate:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: independent-review
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download compact evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: vaelinya-history-remediation-metadata-${{ github.sha }}
+          path: final-record
+
+      - name: Record exact final candidate on Issue 21
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          {
+            cat final-record/candidate-summary.md
+            echo
+            echo '### Immutable evidence'
+            echo "- Workflow run: `${GITHUB_RUN_ID}`"
+            echo "- Workflow URL: https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+            echo "- Full artifact: `vaelinya-history-remediation-candidate-${GITHUB_SHA}`"
+            echo "- Compact artifact: `vaelinya-history-remediation-metadata-${GITHUB_SHA}`"
+            echo
+            echo '### Remaining external gate'
+            echo '- Coordinate the pushable branch/tag rewrite with GitHub Support.'
+            echo '- Submit the generated `GITHUB_SUPPORT_REQUEST.md` so GitHub-controlled `refs/pull/*` and cached views are purged.'
+            echo '- Do not delete the backup bundle.'
+          } > final-comment.md
+          gh issue comment 21 --repo "$GITHUB_REPOSITORY" --body-file final-comment.md
