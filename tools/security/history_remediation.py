@@ -207,7 +207,7 @@ def write_refs(path: Path, values: dict[str, str]) -> None:
 
 
 def callback_source() -> str:
-    compiled = ",\n".join(
+    compiled = "\n".join(
         f"    re.compile({pattern.pattern!r}, {pattern.flags}),"
         for _, pattern in ASCII_PATTERNS
     )
