@@ -1,0 +1,185 @@
+name: History remediation candidate
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: history-remediation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Check out remediation tooling
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install history-rewrite dependency
+        run: python -m pip install --disable-pip-version-check git-filter-repo==2.47.0
+
+      - name: Clone complete public repository mirror
+        env:
+          REPOSITORY_URL: https://github.com/${{ github.repository }}.git
+        run: git clone --mirror "$REPOSITORY_URL" source.git
+
+      - name: Build non-pushed rewrite candidate and backup
+        env:
+          REPOSITORY_URL: https://github.com/${{ github.repository }}.git
+        run: |
+          python tools/security/history_remediation.py \
+            --mirror source.git \
+            --output evidence \
+            --repository-url "$REPOSITORY_URL" | tee evidence-summary.json
+
+          rm -rf evidence/candidate.git
+          rm -f evidence/main-before.tar evidence/main-after.tar
+
+      - name: Verify current branch build
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install current dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Build current branch
+        run: npm run build
+
+      - name: Publish candidate summary
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          manifest = json.loads(Path('evidence/manifest.json').read_text())
+          affected = Path('evidence/affected-blobs.tsv').read_text().splitlines()
+          refs = Path('evidence/ref-map.tsv').read_text().splitlines()
+          with Path('candidate-summary.md').open('w') as out:
+              out.write('## History remediation candidate\n\n')
+              out.write(f"- Affected reachable blobs: `{manifest['affected_blob_count']}`\n")
+              out.write(f"- Branch/tag refs represented: `{manifest['ref_count']}`\n")
+              out.write(f"- Backup bundle SHA-256: `{manifest['backup_bundle_sha256']}`\n")
+              out.write(f"- Candidate bundle SHA-256: `{manifest['candidate_bundle_sha256']}`\n")
+              out.write(f"- Main tree before SHA-256: `{manifest['main_tree_before_sha256']}`\n")
+              out.write(f"- Main tree after SHA-256: `{manifest['main_tree_after_sha256']}`\n")
+              out.write(f"- Inventory rows: `{max(len(affected) - 1, 0)}`\n")
+              out.write(f"- Ref-map rows: `{max(len(refs) - 1, 0)}`\n")
+              out.write('- Force-push: **not executed**\n')
+          PY
+          cat candidate-summary.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload immutable review evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: vaelinya-history-remediation-candidate-${{ github.sha }}
+          path: |
+            evidence/
+            evidence-summary.json
+            candidate-summary.md
+          if-no-files-found: error
+          retention-days: 30
+
+  independent-review:
+    needs: build-candidate
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Check out independent verifier
+        uses: actions/checkout@v4
+
+      - name: Download candidate evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: vaelinya-history-remediation-candidate-${{ github.sha }}
+          path: review
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify bundles, checksums, refs and forbidden-pattern absence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib
+          import importlib.util
+          import json
+          from pathlib import Path
+          import subprocess
+
+          root = Path('review/evidence')
+          manifest = json.loads((root / 'manifest.json').read_text())
+
+          def sha256(path: Path) -> str:
+              h = hashlib.sha256()
+              with path.open('rb') as f:
+                  for chunk in iter(lambda: f.read(1024 * 1024), b''):
+                      h.update(chunk)
+              return h.hexdigest()
+
+          backup = root / 'vaelinya-site-pre-rewrite.bundle'
+          candidate = root / 'vaelinya-site-rewritten-candidate.bundle'
+          assert sha256(backup) == manifest['backup_bundle_sha256']
+          assert sha256(candidate) == manifest['candidate_bundle_sha256']
+          subprocess.run(['git', 'bundle', 'verify', str(backup)], check=True)
+          subprocess.run(['git', 'bundle', 'verify', str(candidate)], check=True)
+          subprocess.run(['git', 'clone', '--mirror', str(candidate), 'candidate-review.git'], check=True)
+          subprocess.run(['git', '--git-dir', 'candidate-review.git', 'fsck', '--full'], check=True)
+
+          spec = importlib.util.spec_from_file_location('remediation', 'tools/security/history_remediation.py')
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          remaining = module.inventory(Path('candidate-review.git'), Path('remaining-review.tsv'))
+          assert not remaining, f'Forbidden paths remain: {remaining}'
+
+          expected = {}
+          for line in (root / 'post-refs.tsv').read_text().splitlines():
+              if line.strip():
+                  ref, oid = line.split('\t', 1)
+                  expected[ref] = oid
+          actual = module.refs(Path('candidate-review.git'))
+          assert actual == expected, 'Candidate refs differ from recorded post-refs'
+          PY
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build rewritten main independently
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone review/evidence/vaelinya-site-rewritten-candidate.bundle candidate-worktree
+          cd candidate-worktree
+          git checkout main
+          npm install --no-audit --no-fund
+          npm run build
+
+      - name: Record independent acceptance
+        run: |
+          {
+            echo '## Independent remediation review'
+            echo
+            echo '- Backup bundle checksum: passed'
+            echo '- Candidate bundle checksum: passed'
+            echo '- Bundle integrity and Git fsck: passed'
+            echo '- Exact branch/tag ref map: passed'
+            echo '- Forbidden local-path scan: zero remaining reachable blobs'
+            echo '- Rewritten main build: passed'
+            echo '- Remote refs changed: no'
+            echo '- Backup deleted: no'
+          } >> "$GITHUB_STEP_SUMMARY"

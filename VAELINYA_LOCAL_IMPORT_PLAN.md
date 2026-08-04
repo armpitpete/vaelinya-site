@@ -12,6 +12,12 @@ Do not import the whole local folder directly into `armpitpete/vaelinya-site`.
 
 The website repo is public. It should only contain public website material and public canon.
 
+Do not publish a personal absolute filesystem path. In public documentation, refer to the private working folder as:
+
+```txt
+<LOCAL_VAELINYA_ROOT>
+```
+
 ## Recommended repository split
 
 ### 1. `armpitpete/vaelinya-site` — public
@@ -69,7 +75,7 @@ This is now probably needed if the aim is to make the local Vaelinya folder retr
 
 ### Step 1 — inventory the local folder
 
-Run the PowerShell inventory script from the repository:
+Run the PowerShell inventory script from the repository, substituting the private local root at execution time:
 
 ```powershell
 pwsh ./tools/inventory-local-vaelinya.ps1 -Root "<LOCAL_VAELINYA_ROOT>"
