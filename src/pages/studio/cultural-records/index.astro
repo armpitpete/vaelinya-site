@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const description = 'An isolated design prototype for presenting Vaelinya as a compact, illustrated living cultural archive.';
+---
+<BaseLayout title="Cultural Record Prototype" description={description} noindex={true}>
+  <link rel="stylesheet" href="/styles/cultural-record-prototype.css?v=ds-01-01" />
+
+  <article class="cr-prototype" aria-labelledby="cr-title">
+    <header class="cr-masthead">
+      <div>
+        <p class="cr-kicker">Vaelinya Digital Experience Studio · DS-01 prototype</p>
+        <h1 id="cr-title">Stories, language and records from a living imagined world.</h1>
+        <p class="cr-deck">Begin anywhere. A story leads to a person, a person to a word, a word to a place, and a place back into the life of Vaelinya.</p>
+      </div>
+      <aside class="cr-orientation" aria-label="Prototype orientation">
+        <p class="cr-label">How to use this record</p>
+        <p>This page tests a denser cultural-archive model. It does not replace the current homepage.</p>
+        <ul class="cr-route" aria-label="Example route through the archive">
+          <li>Story</li>
+          <li>Person</li>
+          <li>Word</li>
+          <li>Place</li>
+        </ul>
+      </aside>
+    </header>
+
+    <section class="cr-section" aria-labelledby="featured-records">
+      <div class="cr-section-heading">
+        <h2 id="featured-records">Four ways into Vaelinya</h2>
+        <p>Real public material, connected rather than separated into doors.</p>
+      </div>
+
+      <div class="cr-grid">
+        <article class="cr-record cr-record--story">
+          <div class="cr-record-head">
+            <p class="cr-label">Story record 004</p>
+            <span class="cr-status">Published</span>
+          </div>
+          <h3><a href="/read/fables/the-mountain-healers-who-would-not-help-their-own/">The Mountain Healers Who Would Not Help Their Own</a></h3>
+          <p class="cr-summary">Mera is a gifted movement healer injured by a care-house that records concern but refuses to change. Lina follows the promises, the damaged land and the workers’ evidence.</p>
+          <p class="cr-meta">Connected themes: work · care · promises · institutional harm · repair</p>
+        </article>
+
+        <article class="cr-record cr-record--language">
+          <div class="cr-record-head">
+            <p class="cr-label">Language record 001</p>
+            <span class="cr-status">Canonical</span>
+          </div>
+          <div class="cr-word">
+            <div class="cr-word-form">
+              <strong>rith</strong>
+              <span>truth</span>
+            </div>
+            <div>
+              <h3><a href="/language/">A living word</a></h3>
+              <p class="cr-summary"><em>Ena rith vakal</em> means “I speak truth.” The phrase is used as Lina’s public greeting and opens a route into speech, honesty and witness.</p>
+              <p class="cr-meta">Related form: naerith · related verb: vakal, to speak</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="cr-record cr-record--world">
+          <div class="cr-record-head">
+            <p class="cr-label">World record 001</p>
+            <span class="cr-status">Canonical</span>
+          </div>
+          <h3><a href="/world/the-rim/">The Rim</a></h3>
+          <p class="cr-summary">A public place record should orient the reader quickly: what the place is, who lives there, which stories enter it, and which names and customs belong to it.</p>
+          <p class="cr-meta">Connected records: Rimaeri · Lina · local words · weather · borders</p>
+        </article>
+
+        <article class="cr-record cr-record--collection">
+          <div class="cr-record-head">
+            <p class="cr-label">Collection record 001</p>
+            <span class="cr-status">Published</span>
+          </div>
+          <h3><a href="/artefacts/chant-cards/">Chant cards</a></h3>
+          <p class="cr-summary">Small public artefacts carry language out of explanation and into use. A chant card can connect words, rhythm, story context and a printable object.</p>
+          <p class="cr-meta">Record type: printable · connections: language · song · story use</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cr-section" aria-labelledby="connections-title">
+      <div class="cr-section-heading">
+        <h2 id="connections-title">Follow the connections</h2>
+        <p>The archive becomes useful when every record opens another path.</p>
+      </div>
+
+      <nav class="cr-connections" aria-label="Connected Vaelinya records">
+        <a class="cr-record-link" href="/read/lina/">
+          <span>Person and story path</span>
+          <strong>Meet Lina</strong>
+        </a>
+        <a class="cr-record-link" href="/language/lexicon/">
+          <span>Language path</span>
+          <strong>Open the lexicon</strong>
+        </a>
+        <a class="cr-record-link" href="/world/culture/the-warm-remembering/">
+          <span>Cultural practice</span>
+          <strong>The Warm Remembering</strong>
+        </a>
+        <a class="cr-record-link" href="/read/fables/">
+          <span>Story collection</span>
+          <strong>Read the fables</strong>
+        </a>
+      </nav>
+    </section>
+
+    <section class="cr-section" aria-labelledby="status-title">
+      <div class="cr-section-heading">
+        <h2 id="status-title">Record status</h2>
+        <p>Status explains the material without making the world feel like an unfinished wiki.</p>
+      </div>
+      <div class="cr-connections" aria-label="Record status examples">
+        <div class="cr-record-link"><span>Released publicly</span><strong>Published</strong></div>
+        <div class="cr-record-link"><span>Accepted world fact</span><strong>Canonical</strong></div>
+        <div class="cr-record-link"><span>Accepted, still expanding</span><strong>Developing</strong></div>
+        <div class="cr-record-link"><span>Older in-world form</span><strong>Historical form</strong></div>
+      </div>
+    </section>
+
+    <footer class="cr-footer-note">
+      <p><strong>Prototype boundary:</strong> isolated, no-index, no production navigation change, no replacement of the current homepage.</p>
+    </footer>
+  </article>
+</BaseLayout>
