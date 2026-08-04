@@ -28,97 +28,533 @@ const storyJsonLd = {
 };
 ---
 <BaseLayout title={title} description={description} image={heroImage} jsonLd={storyJsonLd}>
-  <article class="story-page fable-page">
-    <header class="story-header-compact">
-      <p class="eyebrow">A deep Vaelinyan fable about work and care</p>
-      <figure class="story-hero-image fable-hero-image">
+  <article class="sensory-story-record" aria-labelledby="record-title">
+    <header class="record-opening">
+      <div class="record-introduction">
+        <p class="record-kicker">Story record 004 · Published</p>
+        <div class="emotional-weather" aria-label="Emotional weather: resolve under strain">
+          <span class="weather-mark" aria-hidden="true"></span>
+          <span><strong>Emotional weather</strong> Resolve under strain</span>
+        </div>
+        <h1 id="record-title">{title}</h1>
+        <p class="record-lede">Mera works in a mountain care house that promises nobody will carry pain alone. When she needs help herself, the overseers record her requests but leave the harm in place.</p>
+
+        <nav class="reading-route" aria-label="Reading route">
+          <a href="#story">Read the story</a>
+          <a href="#sensory-evidence">Notice the evidence</a>
+          <a href="#connected-records">Follow connections</a>
+        </nav>
+      </div>
+
+      <figure class="record-illustration">
         <img
           src={heroImage}
           alt="Mera stands outside a stone care house held between seven mountains. Grey-coated overseers wait in the doorway, damaged healing terraces lie below, and one healthy silver-vein plant grows beside the path."
           loading="eager"
           decoding="async"
         />
+        <figcaption>Care-house above wounded ground · canonical story illustration</figcaption>
       </figure>
-      <h1>{title}</h1>
-      <p class="lede">Mera works in a mountain care house that promises nobody will carry pain alone. When she needs help herself, the overseers record her requests but leave the harm in place.</p>
     </header>
 
-    <div class="story-content fable-story-content mountain-healers-content">
-      <Story />
-    </div>
+    <section class="sensory-evidence" id="sensory-evidence" aria-labelledby="sensory-title">
+      <div class="section-heading">
+        <p class="record-kicker">Recognise first</p>
+        <h2 id="sensory-title">The record through its senses</h2>
+      </div>
+      <dl class="sensory-grid">
+        <div>
+          <dt>Sight</dt>
+          <dd>Ash-grey coats, blue-grey promise stone and damaged terraces hidden behind woven screens.</dd>
+        </div>
+        <div>
+          <dt>Sound</dt>
+          <dd>Bells cutting across bells and strained tone-stones driving birds from the roofs.</dd>
+        </div>
+        <div>
+          <dt>Touch</dt>
+          <dd>Cold hands, steep stone paths and small bitter leaves where strong plants once grew.</dd>
+        </div>
+        <div>
+          <dt>After-feeling</dt>
+          <dd>Care is measured, praised and promised, while the person asking for it is left carrying the harm.</dd>
+        </div>
+      </dl>
+    </section>
 
-    <nav class="link-list fable-bottom-links" aria-label="Story links">
-      <a href="/read/fables/">Back to Vaelinyan fables</a>
-      <a href="/read/lina/">Meet Lina</a>
-      <a href="/read/">Back to Read</a>
+    <main class="record-reading" id="story">
+      <div class="reading-label" aria-hidden="true">
+        <span>Canonical fable</span>
+        <span>Work · care · evidence</span>
+      </div>
+      <div class="story-content mountain-healers-content">
+        <Story />
+      </div>
+    </main>
+
+    <aside class="record-note" aria-labelledby="record-note-title">
+      <p class="record-kicker">Evidence pattern</p>
+      <h2 id="record-note-title">The promises and the material world tell different stories.</h2>
+      <p>The ledger records support. The unchanged light, blocked quiet room, exhausted healers and damaged terraces show whether support was actually delivered.</p>
+    </aside>
+
+    <nav class="connected-records" id="connected-records" aria-labelledby="connected-title">
+      <div class="section-heading">
+        <p class="record-kicker">Continue through Vaelinya</p>
+        <h2 id="connected-title">Connected records</h2>
+      </div>
+      <div class="connected-grid">
+        <a href="/read/fables/">
+          <span>Collection</span>
+          <strong>Vaelinyan fables</strong>
+          <small>Read other stories built to carry more than one age of meaning.</small>
+        </a>
+        <a href="/read/lina/">
+          <span>Person</span>
+          <strong>Meet Lina</strong>
+          <small>Follow the young record-checker who asks where promised help was actually given.</small>
+        </a>
+        <a href="/language/">
+          <span>Language</span>
+          <strong>Words and meanings</strong>
+          <small>Enter Vaelinya through its language, sound and cultural use.</small>
+        </a>
+        <a href="/studio/cultural-records/">
+          <span>Studio record</span>
+          <strong>Sensory record system</strong>
+          <small>See the design system that connects atmosphere, feeling and evidence.</small>
+        </a>
+      </div>
     </nav>
   </article>
 </BaseLayout>
 
 <style>
-  .fable-page {
-    width: min(100% - 2rem, 860px);
+  .sensory-story-record {
+    --record-ink: #241d2d;
+    --record-muted: #625968;
+    --record-paper: rgba(248, 239, 218, 0.91);
+    --record-paper-strong: rgba(255, 249, 235, 0.96);
+    --record-rule: rgba(63, 43, 72, 0.34);
+    --record-accent: #8a315e;
+    --record-accent-soft: rgba(138, 49, 94, 0.12);
+    --record-focus: #1711a8;
+    width: min(calc(100% - 1.25rem), 72rem);
     margin-inline: auto;
-    overflow: hidden;
-    background: rgba(255, 248, 232, 0.94);
+    color: var(--record-ink);
+    background: var(--record-paper);
+    border: 1px solid var(--record-rule);
+    box-shadow: 0 1rem 3.5rem rgba(11, 7, 20, 0.22);
+    backdrop-filter: blur(15px) saturate(0.88);
+    font-family: Georgia, 'Times New Roman', serif;
   }
 
-  .story-header-compact,
-  .fable-story-content {
-    width: min(100%, 680px);
-    margin-inline: auto;
+  .sensory-story-record a:focus-visible {
+    outline: 3px solid var(--record-focus);
+    outline-offset: 4px;
   }
 
-  .fable-hero-image {
-    width: min(100%, 680px);
-    max-width: 680px;
-    margin: 1rem auto 0;
+  .record-opening {
+    display: grid;
+    grid-template-columns: minmax(0, 1.03fr) minmax(19rem, 0.97fr);
+    gap: clamp(1.1rem, 3vw, 2.3rem);
+    align-items: center;
+    padding: clamp(1rem, 3vw, 2.25rem);
+    border-bottom: 1px solid var(--record-rule);
   }
 
-  .fable-hero-image img {
+  .record-introduction {
+    min-width: 0;
+  }
+
+  .record-kicker,
+  .emotional-weather,
+  .reading-route,
+  .record-illustration figcaption,
+  .reading-label,
+  .connected-records span,
+  .connected-records small {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .record-kicker {
+    margin: 0 0 0.5rem;
+    color: var(--record-accent);
+    font-size: 0.72rem;
+    font-weight: 850;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  .emotional-weather {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-bottom: 0.9rem;
+    padding: 0.32rem 0.62rem;
+    border: 1px solid rgba(138, 49, 94, 0.5);
+    background: var(--record-accent-soft);
+    font-size: 0.78rem;
+    line-height: 1.3;
+  }
+
+  .emotional-weather strong {
+    margin-right: 0.28rem;
+  }
+
+  .weather-mark {
+    width: 0.72rem;
+    height: 0.72rem;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--record-accent);
+    box-shadow: 0 0 0 0.22rem rgba(138, 49, 94, 0.14);
+  }
+
+  .record-opening h1 {
+    max-width: 18ch;
+    margin: 0;
+    font-size: clamp(2rem, 4.2vw, 3.45rem);
+    line-height: 0.99;
+    letter-spacing: -0.038em;
+  }
+
+  .record-lede {
+    max-width: 55ch;
+    margin: 0.85rem 0 0;
+    font-size: clamp(1rem, 1.45vw, 1.14rem);
+    line-height: 1.52;
+  }
+
+  .reading-route {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 1rem;
+  }
+
+  .reading-route a {
+    padding: 0.44rem 0.68rem;
+    border: 1px solid var(--record-rule);
+    background: rgba(255, 255, 255, 0.28);
+    color: inherit;
+    font-size: 0.78rem;
+    font-weight: 760;
+    text-decoration: none;
+  }
+
+  .reading-route a:hover {
+    background: rgba(255, 255, 255, 0.58);
+  }
+
+  .record-illustration {
+    margin: 0;
+    border: 1px solid var(--record-rule);
+    background: rgba(255, 255, 255, 0.28);
+  }
+
+  .record-illustration img {
     display: block;
     width: 100%;
-    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
   }
 
-  .fable-bottom-links {
-    max-width: 38rem;
-    margin: 2rem auto 0;
+  .record-illustration figcaption {
+    padding: 0.48rem 0.62rem;
+    color: var(--record-muted);
+    font-size: 0.72rem;
+    line-height: 1.35;
+  }
+
+  .sensory-evidence,
+  .connected-records {
+    padding: clamp(1rem, 2.6vw, 1.8rem);
+    border-bottom: 1px solid var(--record-rule);
+  }
+
+  .section-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: baseline;
+    margin-bottom: 0.8rem;
+  }
+
+  .section-heading .record-kicker {
+    margin: 0;
+  }
+
+  .section-heading h2 {
+    margin: 0;
+    font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+  }
+
+  .sensory-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: 0;
+    border-top: 1px solid var(--record-rule);
+    border-left: 1px solid var(--record-rule);
+  }
+
+  .sensory-grid div {
+    min-width: 0;
+    padding: 0.85rem;
+    border-right: 1px solid var(--record-rule);
+    border-bottom: 1px solid var(--record-rule);
+    background: rgba(255, 255, 255, 0.22);
+  }
+
+  .sensory-grid dt {
+    color: var(--record-accent);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .sensory-grid dd {
+    margin: 0.42rem 0 0;
+    font-size: 0.94rem;
+    line-height: 1.46;
+  }
+
+  .record-reading {
+    padding: clamp(1rem, 3vw, 2.2rem);
+    border-bottom: 1px solid var(--record-rule);
+    background: var(--record-paper-strong);
+  }
+
+  .reading-label {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    width: min(100%, 46rem);
+    margin: 0 auto 1.2rem;
+    padding-bottom: 0.55rem;
+    border-bottom: 1px solid var(--record-rule);
+    color: var(--record-muted);
+    font-size: 0.72rem;
+    font-weight: 760;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .story-content {
+    width: min(100%, 46rem);
+    margin-inline: auto;
   }
 
   .mountain-healers-content :global(p),
   .mountain-healers-content :global(li) {
-    font-size: clamp(1.05rem, 1.45vw, 1.16rem);
+    font-size: clamp(1.03rem, 1.25vw, 1.12rem);
+    line-height: 1.67;
   }
 
   .mountain-healers-content :global(h2) {
-    margin-top: 2.6rem;
+    margin-top: 2.45rem;
+    font-size: clamp(1.45rem, 2.4vw, 2rem);
     scroll-margin-top: 1rem;
   }
 
   .mountain-healers-content :global(blockquote) {
-    margin: 1.35rem 0;
-    padding: 1rem 1.2rem;
-    border-left: 0.3rem solid rgba(89, 64, 117, 0.72);
-    background: rgba(232, 222, 245, 0.55);
+    margin: 1.3rem 0;
+    padding: 0.9rem 1.05rem;
+    border-left: 0.3rem solid rgba(138, 49, 94, 0.72);
+    background: rgba(226, 206, 224, 0.42);
   }
 
   .mountain-healers-content :global(blockquote p) {
     margin: 0;
-    color: #2b3137;
-    font-weight: 760;
+    color: #2b2730;
+    font-weight: 780;
   }
 
   .mountain-healers-content :global(blockquote:last-child) {
     background:
       radial-gradient(circle at 12% 20%, rgba(255, 255, 255, 0.52), transparent 9rem),
       rgba(255, 241, 199, 0.9);
-    border-left-color: #b06f14;
+    border-left-color: #a7640b;
   }
 
   .mountain-healers-content :global(blockquote:last-child p) {
-    font-size: clamp(1.12rem, 1.65vw, 1.28rem);
+    font-size: clamp(1.1rem, 1.55vw, 1.24rem);
     font-weight: 850;
-    line-height: 1.4;
+    line-height: 1.42;
+  }
+
+  .record-note {
+    width: min(calc(100% - 2rem), 46rem);
+    margin: clamp(1.2rem, 3vw, 2rem) auto;
+    padding: 1rem 1.1rem;
+    border-left: 0.38rem solid var(--record-accent);
+    background: var(--record-accent-soft);
+  }
+
+  .record-note h2 {
+    margin: 0;
+    font-size: clamp(1.22rem, 2vw, 1.58rem);
+    line-height: 1.18;
+  }
+
+  .record-note p:last-child {
+    margin: 0.62rem 0 0;
+    font-size: 0.98rem;
+    line-height: 1.52;
+  }
+
+  .connected-records {
+    border-top: 1px solid var(--record-rule);
+    border-bottom: 0;
+  }
+
+  .connected-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-top: 1px solid var(--record-rule);
+    border-left: 1px solid var(--record-rule);
+  }
+
+  .connected-grid a {
+    min-width: 0;
+    min-height: 8.8rem;
+    padding: 0.9rem;
+    border-right: 1px solid var(--record-rule);
+    border-bottom: 1px solid var(--record-rule);
+    background: rgba(255, 255, 255, 0.22);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .connected-grid a:hover {
+    background: rgba(255, 255, 255, 0.52);
+  }
+
+  .connected-grid span,
+  .connected-grid strong,
+  .connected-grid small {
+    display: block;
+  }
+
+  .connected-grid span {
+    color: var(--record-accent);
+    font-size: 0.68rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .connected-grid strong {
+    margin-top: 0.35rem;
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .connected-grid small {
+    margin-top: 0.45rem;
+    color: var(--record-muted);
+    font-size: 0.76rem;
+    line-height: 1.42;
+  }
+
+  @media (max-width: 880px) {
+    .record-opening {
+      grid-template-columns: 1fr;
+    }
+
+    .record-illustration {
+      order: -1;
+    }
+
+    .sensory-grid,
+    .connected-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 520px) {
+    .sensory-story-record {
+      width: min(calc(100% - 0.6rem), 72rem);
+    }
+
+    .record-opening,
+    .sensory-evidence,
+    .record-reading,
+    .connected-records {
+      padding: 0.85rem;
+    }
+
+    .record-opening h1 {
+      font-size: clamp(1.85rem, 9vw, 2.42rem);
+    }
+
+    .section-heading,
+    .reading-label {
+      display: block;
+    }
+
+    .section-heading h2 {
+      margin-top: 0.28rem;
+    }
+
+    .reading-label span:last-child {
+      display: block;
+      margin-top: 0.25rem;
+    }
+
+    .sensory-grid,
+    .connected-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .connected-grid a {
+      min-height: auto;
+    }
+
+    .record-note {
+      width: calc(100% - 1.7rem);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sensory-story-record *,
+    .sensory-story-record *::before,
+    .sensory-story-record *::after {
+      scroll-behavior: auto !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  @media (prefers-contrast: more) {
+    .sensory-story-record,
+    .record-illustration,
+    .sensory-grid,
+    .sensory-grid div,
+    .connected-grid,
+    .connected-grid a,
+    .record-reading,
+    .sensory-evidence,
+    .connected-records {
+      border-color: var(--record-ink);
+    }
+  }
+
+  @media (forced-colors: active) {
+    .sensory-story-record,
+    .record-reading,
+    .record-note,
+    .sensory-grid div,
+    .connected-grid a,
+    .emotional-weather {
+      forced-color-adjust: auto;
+    }
+
+    .weather-mark {
+      background: CanvasText;
+    }
   }
 </style>
