@@ -1,4 +1,5 @@
 name: DS-02 visual evidence
+# Revalidate the accepted page against the sanitised main baseline.
 
 on:
   pull_request:
@@ -16,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - name: Check out exact branch head
+      - name: Check out tested pull-request merge result
         uses: actions/checkout@v4
 
       - name: Set up Node.js
@@ -123,7 +124,8 @@ jobs:
           {
             echo '## DS-02 visual evidence'
             echo
-            echo "- Exact commit: `${GITHUB_SHA}`"
+            echo "- Tested merge commit: `${GITHUB_SHA}`"
+            echo "- Pull-request head: `${GITHUB_HEAD_REF}`"
             echo '- Route: `/read/fables/the-mountain-healers-who-would-not-help-their-own/?vaelinya-state=dusk`'
             echo '- Desktop viewport: `1440 × 1100`, full page'
             echo '- Mobile viewport: `390 × 844`, top/reading/connections segments'
