@@ -248,8 +248,14 @@ jobs:
               assert location['original_candidate_object_type'] is None
               assert location['rewritten_candidate_object_type'] == 'commit'
 
-          subprocess.run(['git', 'bundle', 'verify', str(backup)], check=True)
-          subprocess.run(['git', 'bundle', 'verify', str(candidate)], check=True)
+          subprocess.run(
+              ['git', '-C', 'verifier', 'bundle', 'verify', str(backup.resolve())],
+              check=True,
+          )
+          subprocess.run(
+              ['git', '-C', 'verifier', 'bundle', 'verify', str(candidate.resolve())],
+              check=True,
+          )
           support = (root / 'GITHUB_SUPPORT_REQUEST.md').read_text()
           for oid in sensitive['first_changed_commits']:
               assert oid in support
