@@ -190,6 +190,8 @@ jobs:
 
       - name: Check out verifier
         uses: actions/checkout@v4
+        with:
+          path: verifier
 
       - name: Independently validate exact support fields
         shell: bash
