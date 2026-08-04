@@ -81,7 +81,10 @@ def build_patterns() -> tuple[tuple[str, re.Pattern[bytes]], ...]:
 
 
 ASCII_PATTERNS = build_patterns()
-KNOWN_UTF16LE = (KNOWN_ROOT.decode("ascii").encode("utf-16le"), KNOWN_PARENT.decode("ascii").encode("utf-16le"))
+KNOWN_UTF16LE = (
+    KNOWN_ROOT.decode("ascii").encode("utf-16le"),
+    KNOWN_PARENT.decode("ascii").encode("utf-16le"),
+)
 
 
 def run(args: list[str], *, cwd: Path | None = None, capture: bool = True) -> str:
@@ -123,6 +126,12 @@ def refs(repo: Path) -> dict[str, str]:
         ref, oid = line.split("\t", 1)
         result[ref] = oid
     return result
+
+
+def tree_oid(repo: Path, ref: str) -> str:
+    return run(
+        ["git", "--git-dir", str(repo), "rev-parse", f"{ref}^{{tree}}"]
+    ).strip()
 
 
 def reachable_blob_paths(repo: Path) -> dict[str, set[str]]:
@@ -257,16 +266,6 @@ def rewrite(repo: Path) -> None:
     )
 
 
-def archive_digest(repo: Path, ref: str, destination: Path) -> str:
-    with destination.open("wb") as handle:
-        subprocess.run(
-            ["git", "--git-dir", str(repo), "archive", "--format=tar", ref],
-            check=True,
-            stdout=handle,
-        )
-    return sha256_file(destination)
-
-
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--mirror", required=True, type=Path)
@@ -291,8 +290,7 @@ def main() -> int:
     run(["git", "--git-dir", str(source), "bundle", "create", str(backup), "--all"], capture=False)
     run(["git", "bundle", "verify", str(backup)], capture=False)
 
-    before_tar = out / "main-before.tar"
-    before_tree_digest = archive_digest(source, "refs/heads/main", before_tar)
+    before_tree_oid = tree_oid(source, "refs/heads/main")
 
     candidate_repo = out / "candidate.git"
     shutil.copytree(source, candidate_repo, symlinks=True)
@@ -318,8 +316,13 @@ def main() -> int:
     if remaining:
         raise SystemExit(f"Forbidden paths remain in {len(remaining)} reachable blobs")
 
-    after_tar = out / "main-after.tar"
-    after_tree_digest = archive_digest(candidate_repo, "refs/heads/main", after_tar)
+    after_tree_oid = tree_oid(candidate_repo, "refs/heads/main")
+    main_tree_preserved = before_tree_oid == after_tree_oid
+    if not main_tree_preserved:
+        raise SystemExit(
+            "Current main tree changed during the history rewrite: "
+            f"before={before_tree_oid}, after={after_tree_oid}"
+        )
 
     candidate_bundle = out / "vaelinya-site-rewritten-candidate.bundle"
     run(
@@ -331,9 +334,9 @@ def main() -> int:
     checksums = {
         "backup_bundle_sha256": sha256_file(backup),
         "candidate_bundle_sha256": sha256_file(candidate_bundle),
-        "main_tree_before_sha256": before_tree_digest,
-        "main_tree_after_sha256": after_tree_digest,
-        "main_tree_preserved": before_tree_digest == after_tree_digest,
+        "main_tree_before_git_oid": before_tree_oid,
+        "main_tree_after_git_oid": after_tree_oid,
+        "main_tree_preserved": main_tree_preserved,
         "affected_blob_count": len(affected),
         "ref_count": len(pre_refs),
         "repository_url": args.repository_url,
