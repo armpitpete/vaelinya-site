@@ -6,7 +6,7 @@ This file exists so Vaelinya has one obvious place to start when returning to th
 
 GitHub is the shared source of truth for Vaelinya material that needs to be found, reused, edited, published, or connected to the API.
 
-The local computer folder is still useful for drafts, backups, images, experiments, and private working material, but it should not be the only place where important canon lives.
+A local computer folder is still useful for drafts, backups, images, experiments, and private working material, but it should not be the only place where important canon lives.
 
 ## Main GitHub locations
 
@@ -52,31 +52,33 @@ This repo should not become the main canon library. It should only contain code 
 
 ## Local computer location
 
-Recommended local working folder:
+Do not record a personal absolute filesystem path in this public repository.
+
+Local tools and instructions should refer to the private working folder through the placeholder:
 
 ```txt
-I:\ORDER\MainVault\VAELINYA\
+<LOCAL_VAELINYA_ROOT>
 ```
 
-Recommended local structure:
+Recommended structure beneath that private root:
 
 ```txt
-VAELINYA\
-  00_Admin\
-  01_Canon\
-    Lexicon\
-    History\
-    World\
-    Time\
-    People\
-    Stories\
-  02_Website_Planning\
-  03_Images_And_Assets\
-  04_Songs\
-  05_Twitch_And_Live\
-  90_GitHub_Repos\
-    vaelinya-site\
-    vaelinya-api\
+VAELINYA/
+  00_Admin/
+  01_Canon/
+    Lexicon/
+    History/
+    World/
+    Time/
+    People/
+    Stories/
+  02_Website_Planning/
+  03_Images_And_Assets/
+  04_Songs/
+  05_Twitch_And_Live/
+  90_GitHub_Repos/
+    vaelinya-site/
+    vaelinya-api/
 ```
 
 ## Retrieval rule
