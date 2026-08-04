@@ -80,12 +80,28 @@ jobs:
           import json
           import os
           from pathlib import Path
+          import re
 
           evidence = Path('evidence')
           manifest = json.loads((evidence / 'manifest.json').read_text())
           boundary = json.loads((evidence / 'reference-boundary.json').read_text())
           sensitive = json.loads((evidence / 'sensitive-removal-report.json').read_text())
           first = sensitive['first_changed_commits']
+          pull_refs = [
+              line for line in (evidence / 'github-controlled-pull-refs.txt').read_text().splitlines()
+              if line
+          ]
+          pull_numbers = sorted({
+              int(match.group(1))
+              for ref in pull_refs
+              if (match := re.match(r'^refs/pull/(\d+)/', ref))
+          })
+          affected_pr_count = len(pull_numbers)
+          if affected_pr_count == 0:
+              raise SystemExit('No affected pull requests were identified')
+          (evidence / 'affected-pull-request-numbers.txt').write_text(
+              '\n'.join(str(number) for number in pull_numbers) + '\n'
+          )
 
           request = (evidence / 'GITHUB_SUPPORT_REQUEST.md').read_text()
           marker = '## GitHub-controlled refs requiring purge\n'
@@ -93,7 +109,7 @@ jobs:
               '## First Changed Commit(s) reported by git-filter-repo\n\n'
               + ''.join(f'- `{oid}`\n' for oid in first)
               + '\n'
-              + f"Affected pull requests: `{boundary['github_controlled_pull_ref_count']}`\n\n"
+              + f"Affected pull requests: `{affected_pr_count}`\n\n"
           )
           if marker not in request:
               raise SystemExit('Support request insertion marker missing')
@@ -109,7 +125,8 @@ jobs:
               f"- Current main before rewrite: `{boundary['main_before']}`",
               f"- Rewritten main candidate: `{boundary['main_after']}`",
               f"- Current main tree preserved: `{str(manifest['main_tree_preserved']).lower()}`",
-              f"- Affected pull requests: `{boundary['github_controlled_pull_ref_count']}`",
+              f"- Affected pull requests: `{affected_pr_count}`",
+              f"- GitHub-controlled pull-ref entries: `{len(pull_refs)}`",
               '- First Changed Commit(s):',
           ]
           summary.extend(f"  - `{oid}`" for oid in first)
@@ -147,11 +164,13 @@ jobs:
             evidence/reference-boundary.json
             evidence/sensitive-removal-report.json
             evidence/first-changed-commits.txt
+            evidence/first-changed-commit-map.tsv
             evidence/git-filter-repo-sensitive-output.txt
             evidence/affected-blobs.tsv
             evidence/all-ref-map.tsv
             evidence/pushable-refs.txt
             evidence/github-controlled-pull-refs.txt
+            evidence/affected-pull-request-numbers.txt
             evidence/GITHUB_SUPPORT_REQUEST.md
             evidence/RESTORE.md
             support-summary.md
@@ -180,6 +199,7 @@ jobs:
           import hashlib
           import json
           from pathlib import Path
+          import re
           import subprocess
 
           root = Path('review/evidence')
@@ -201,18 +221,37 @@ jobs:
           assert sensitive['first_changed_commit_count'] >= 1
           assert sensitive['candidate_refs_match_primary'] is True
           assert sensitive['remote_refs_changed'] is False
-          assert boundary['github_controlled_pull_ref_count'] == len(
-              [line for line in (root / 'github-controlled-pull-refs.txt').read_text().splitlines() if line]
-          )
+
+          pull_refs = [
+              line for line in (root / 'github-controlled-pull-refs.txt').read_text().splitlines()
+              if line
+          ]
+          pull_numbers = sorted({
+              int(match.group(1))
+              for ref in pull_refs
+              if (match := re.match(r'^refs/pull/(\d+)/', ref))
+          })
+          recorded_numbers = [
+              int(line)
+              for line in (root / 'affected-pull-request-numbers.txt').read_text().splitlines()
+              if line
+          ]
+          assert recorded_numbers == pull_numbers
+          assert boundary['github_controlled_pull_ref_count'] == len(pull_refs)
           if manifest['main_tree_preservation_required']:
               assert manifest['main_tree_preserved'] is True
+
+          for location in sensitive['reported_hash_locations']:
+              assert location['original_source_object_type'] == 'commit'
+              assert location['original_candidate_object_type'] is None
+              assert location['rewritten_candidate_object_type'] == 'commit'
 
           subprocess.run(['git', 'bundle', 'verify', str(backup)], check=True)
           subprocess.run(['git', 'bundle', 'verify', str(candidate)], check=True)
           support = (root / 'GITHUB_SUPPORT_REQUEST.md').read_text()
           for oid in sensitive['first_changed_commits']:
               assert oid in support
-          assert str(boundary['github_controlled_pull_ref_count']) in support
+          assert f"Affected pull requests: `{len(pull_numbers)}`" in support
           PY
 
       - name: Set up Node.js
@@ -236,8 +275,8 @@ jobs:
             echo '## Independent GitHub Support evidence review'
             echo
             echo '- Official sensitive-data-removal report: passed'
-            echo '- First Changed Commit(s) present: passed'
-            echo '- Affected pull-request count present: passed'
+            echo '- First Changed Commit(s) mapping: passed'
+            echo '- Unique affected pull-request count: passed'
             echo '- Primary and reporting candidate refs identical: passed'
             echo '- Backup and candidate checksums: passed'
             echo '- Final-stage tree preservation: enforced when required'
@@ -271,6 +310,16 @@ jobs:
           manifest = json.loads((root / 'manifest.json').read_text())
           boundary = json.loads((root / 'reference-boundary.json').read_text())
           sensitive = json.loads((root / 'sensitive-removal-report.json').read_text())
+          affected_numbers = [
+              int(line)
+              for line in (root / 'affected-pull-request-numbers.txt').read_text().splitlines()
+              if line
+          ]
+          pull_ref_entries = [
+              line
+              for line in (root / 'github-controlled-pull-refs.txt').read_text().splitlines()
+              if line
+          ]
           sha = os.environ['GITHUB_SHA']
           run_id = os.environ['GITHUB_RUN_ID']
           repository = os.environ['GITHUB_REPOSITORY']
@@ -284,7 +333,8 @@ jobs:
               f"- Current main before rewrite: `{boundary['main_before']}`",
               f"- Rewritten main candidate: `{boundary['main_after']}`",
               f"- Current main tree preserved: `{str(manifest['main_tree_preserved']).lower()}`",
-              f"- Affected pull requests: `{boundary['github_controlled_pull_ref_count']}`",
+              f'- Affected pull requests: `{len(affected_numbers)}`',
+              f'- GitHub-controlled pull-ref entries: `{len(pull_ref_entries)}`',
               '- First Changed Commit(s) reported by git-filter-repo:',
           ]
           lines.extend(f'  - `{oid}`' for oid in sensitive['first_changed_commits'])
@@ -297,7 +347,7 @@ jobs:
               '',
               '### Remaining external and destructive gate',
               '- Submit the generated `GITHUB_SUPPORT_REQUEST.md` through the authenticated GitHub Support portal.',
-              '- Coordinate the force-push of the 30 user-pushable branch/tag refs with Support removal of GitHub-controlled pull refs and cached views.',
+              f"- Coordinate the force-push of the {boundary['pushable_ref_count']} user-pushable branch/tag refs with Support removal of GitHub-controlled pull refs and cached views.",
               '- Do not delete the verified backup bundle.',
               '- No force-push has occurred.',
           ])
