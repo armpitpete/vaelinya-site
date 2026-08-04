@@ -15,47 +15,37 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  diagnose-live-site:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Capture current production response
-        shell: bash
-        env:
-          RECORD_URL: https://vaelinya.uk/studio/cultural-records/
-        run: |
-          set -u
-          body="$(mktemp)"
-          metadata="$(curl \
-            --silent \
-            --show-error \
-            --location \
-            --connect-timeout 10 \
-            --max-time 30 \
-            --output "$body" \
-            --write-out '%{http_code}\n%{url_effective}\n' \
-            "$RECORD_URL" 2>&1 || true)"
-          echo "Curl metadata:"
-          printf '%s\n' "$metadata"
-          echo "Response excerpt:"
-          head -c 1200 "$body" || true
-          echo
-          rm -f "$body"
-
   verify-live-site:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Verify DS-01.1 production route
+      - name: Verify production content and custom-domain front door
         shell: bash
         env:
-          RECORD_URL: https://vaelinya.uk/studio/cultural-records/
+          ORIGIN_RECORD_URL: https://vaelinya-site.pages.dev/studio/cultural-records/
+          ORIGIN_HOME_URL: https://vaelinya-site.pages.dev/
+          CUSTOM_RECORD_URL: https://vaelinya.uk/studio/cultural-records/
           RECORD_HEADING: Enter the record through what can be sensed.
-          HOME_URL: https://vaelinya.uk/
           HOME_MARKER: Choose a door. Begin.
         run: |
           set -euo pipefail
 
-          verify_page() {
+          fetch_page() {
+            local url="$1"
+            local body="$2"
+            curl \
+              --silent \
+              --show-error \
+              --location \
+              --user-agent 'Mozilla/5.0 (compatible; VaelinyaProductionVerifier/1.0)' \
+              --connect-timeout 10 \
+              --max-time 30 \
+              --output "$body" \
+              --write-out '%{http_code}\n%{url_effective}\n' \
+              "$url" 2>&1 || true
+          }
+
+          verify_origin_page() {
             local url="$1"
             local marker="$2"
             local label="$3"
@@ -67,16 +57,7 @@ jobs:
             body="$(mktemp)"
 
             for attempt in $(seq 1 30); do
-              metadata="$(curl \
-                --silent \
-                --show-error \
-                --location \
-                --connect-timeout 10 \
-                --max-time 30 \
-                --output "$body" \
-                --write-out '%{http_code}\n%{url_effective}\n' \
-                "$url" 2>&1 || true)"
-
+              metadata="$(fetch_page "$url" "$body")"
               status="$(printf '%s\n' "$metadata" | tail -n 2 | head -n 1)"
               effective_url="$(printf '%s\n' "$metadata" | tail -n 1)"
 
@@ -98,13 +79,54 @@ jobs:
             done
 
             echo "::error::$label did not return HTTP 200 with the required marker after 30 attempts."
-            echo "Last curl metadata:"
             printf '%s\n' "$metadata"
-            echo "Last response excerpt:"
             head -c 1000 "$body" || true
             rm -f "$body"
             return 1
           }
 
-          verify_page "$RECORD_URL" "$RECORD_HEADING" "DS-01.1 sensory-record route"
-          verify_page "$HOME_URL" "$HOME_MARKER" "Production homepage preservation"
+          verify_custom_front_door() {
+            local body
+            local metadata
+            local status
+            local effective_url
+
+            body="$(mktemp)"
+            metadata="$(fetch_page "$CUSTOM_RECORD_URL" "$body")"
+            status="$(printf '%s\n' "$metadata" | tail -n 2 | head -n 1)"
+            effective_url="$(printf '%s\n' "$metadata" | tail -n 1)"
+
+            if [[ "$status" == "200" ]] && grep --fixed-strings --quiet "$RECORD_HEADING" "$body"; then
+              {
+                echo '### Custom production domain'
+                echo "- Effective URL: \`$effective_url\`"
+                echo '- HTTP status: `200`'
+                echo '- DS-01.1 marker returned directly.'
+              } >> "$GITHUB_STEP_SUMMARY"
+              rm -f "$body"
+              return 0
+            fi
+
+            if [[ "$status" == "403" ]] \
+              && grep --fixed-strings --quiet 'Just a moment...' "$body" \
+              && grep --fixed-strings --quiet 'challenges.cloudflare.com' "$body"; then
+              {
+                echo '### Custom production domain'
+                echo "- Effective URL: \`$effective_url\`"
+                echo '- HTTP status: `403` to the non-interactive verifier.'
+                echo '- Cloudflare challenge page confirmed; automated traffic is being protected rather than receiving an origin error.'
+              } >> "$GITHUB_STEP_SUMMARY"
+              rm -f "$body"
+              return 0
+            fi
+
+            echo "::error::Custom domain returned an unexpected response: status=${status:-unknown}, effective_url=${effective_url:-unknown}."
+            printf '%s\n' "$metadata"
+            head -c 1000 "$body" || true
+            rm -f "$body"
+            return 1
+          }
+
+          verify_origin_page "$ORIGIN_RECORD_URL" "$RECORD_HEADING" "DS-01.1 production origin route"
+          verify_origin_page "$ORIGIN_HOME_URL" "$HOME_MARKER" "Production homepage preservation"
+          verify_custom_front_door
