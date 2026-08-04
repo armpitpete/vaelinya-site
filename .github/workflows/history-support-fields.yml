@@ -1,0 +1,364 @@
+name: History support fields
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tools/security/**'
+      - '.github/workflows/history-support-fields.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: history-support-fields-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-support-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - name: Check out exact tested state
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install official rewrite dependency
+        run: python -m pip install --disable-pip-version-check git-filter-repo==2.47.0
+
+      - name: Clone complete repository mirror
+        env:
+          REPOSITORY_URL: https://github.com/${{ github.repository }}.git
+        run: git clone --mirror "$REPOSITORY_URL" source.git
+
+      - name: Build primary non-pushed candidate
+        shell: bash
+        env:
+          REPOSITORY_URL: https://github.com/${{ github.repository }}.git
+        run: |
+          set -euo pipefail
+          EXTRA_ARGS=()
+          if [[ "$GITHUB_EVENT_NAME" != "pull_request" ]]; then
+            EXTRA_ARGS+=(--require-main-tree-preserved)
+          fi
+
+          python tools/security/history_remediation.py \
+            --mirror source.git \
+            --output evidence \
+            --repository-url "$REPOSITORY_URL" \
+            "${EXTRA_ARGS[@]}" | tee evidence-summary.json
+
+          python tools/security/final_candidate_boundary.py \
+            --source-mirror source.git \
+            --candidate-bundle evidence/vaelinya-site-rewritten-candidate.bundle \
+            --output evidence \
+            --repository-url "$REPOSITORY_URL" | tee reference-boundary-summary.json
+
+      - name: Capture official first changed commit report
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/security/report_first_changed.py \
+            --source-mirror source.git \
+            --expected-candidate-bundle evidence/vaelinya-site-rewritten-candidate.bundle \
+            --remediation-module tools/security/history_remediation.py \
+            --output evidence | tee sensitive-removal-summary.json
+
+      - name: Complete GitHub Support request
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          import re
+
+          evidence = Path('evidence')
+          manifest = json.loads((evidence / 'manifest.json').read_text())
+          boundary = json.loads((evidence / 'reference-boundary.json').read_text())
+          sensitive = json.loads((evidence / 'sensitive-removal-report.json').read_text())
+          first = sensitive['first_changed_commits']
+          pull_refs = [
+              line for line in (evidence / 'github-controlled-pull-refs.txt').read_text().splitlines()
+              if line
+          ]
+          pull_numbers = sorted({
+              int(match.group(1))
+              for ref in pull_refs
+              if (match := re.match(r'^refs/pull/(\d+)/', ref))
+          })
+          affected_pr_count = len(pull_numbers)
+          if affected_pr_count == 0:
+              raise SystemExit('No affected pull requests were identified')
+          (evidence / 'affected-pull-request-numbers.txt').write_text(
+              '\n'.join(str(number) for number in pull_numbers) + '\n'
+          )
+
+          request = (evidence / 'GITHUB_SUPPORT_REQUEST.md').read_text()
+          marker = '## GitHub-controlled refs requiring purge\n'
+          first_section = (
+              '## First Changed Commit(s) reported by git-filter-repo\n\n'
+              + ''.join(f'- `{oid}`\n' for oid in first)
+              + '\n'
+              + f"Affected pull requests: `{affected_pr_count}`\n\n"
+          )
+          if marker not in request:
+              raise SystemExit('Support request insertion marker missing')
+          request = request.replace(marker, first_section + marker, 1)
+          (evidence / 'GITHUB_SUPPORT_REQUEST.md').write_text(request)
+
+          stage = 'final post-merge' if manifest['main_tree_preservation_required'] else 'pre-merge validation'
+          summary = [
+              '## GitHub Support-ready history evidence',
+              '',
+              f"- Workflow commit: `{os.environ['GITHUB_SHA']}`",
+              f"- Validation stage: `{stage}`",
+              f"- Current main before rewrite: `{boundary['main_before']}`",
+              f"- Rewritten main candidate: `{boundary['main_after']}`",
+              f"- Current main tree preserved: `{str(manifest['main_tree_preserved']).lower()}`",
+              f"- Affected pull requests: `{affected_pr_count}`",
+              f"- GitHub-controlled pull-ref entries: `{len(pull_refs)}`",
+              '- First Changed Commit(s):',
+          ]
+          summary.extend(f"  - `{oid}`" for oid in first)
+          summary.extend([
+              f"- Orphaned Git LFS objects: `{sensitive['orphaned_lfs_object_count']}`",
+              f"- Backup bundle SHA-256: `{manifest['backup_bundle_sha256']}`",
+              f"- Candidate bundle SHA-256: `{manifest['candidate_bundle_sha256']}`",
+              '- Candidate refs match official sensitive-data reporting pass: `true`',
+              '- Force-push executed: `false`',
+              '- GitHub Support purge completed: `false`',
+          ])
+          Path('support-summary.md').write_text('\n'.join(summary) + '\n')
+          PY
+          cat support-summary.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload complete support package
+        uses: actions/upload-artifact@v4
+        with:
+          name: vaelinya-history-support-package-${{ github.sha }}
+          path: |
+            evidence/
+            evidence-summary.json
+            reference-boundary-summary.json
+            sensitive-removal-summary.json
+            support-summary.md
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload compact support metadata
+        uses: actions/upload-artifact@v4
+        with:
+          name: vaelinya-history-support-metadata-${{ github.sha }}
+          path: |
+            evidence/manifest.json
+            evidence/reference-boundary.json
+            evidence/sensitive-removal-report.json
+            evidence/first-changed-commits.txt
+            evidence/first-changed-commit-map.tsv
+            evidence/git-filter-repo-sensitive-output.txt
+            evidence/affected-blobs.tsv
+            evidence/all-ref-map.tsv
+            evidence/pushable-refs.txt
+            evidence/github-controlled-pull-refs.txt
+            evidence/affected-pull-request-numbers.txt
+            evidence/GITHUB_SUPPORT_REQUEST.md
+            evidence/RESTORE.md
+            support-summary.md
+          if-no-files-found: error
+          retention-days: 30
+
+  independent-review:
+    needs: build-support-package
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Download complete support package
+        uses: actions/download-artifact@v4
+        with:
+          name: vaelinya-history-support-package-${{ github.sha }}
+          path: review
+
+      - name: Check out verifier
+        uses: actions/checkout@v4
+        with:
+          path: verifier
+
+      - name: Independently validate exact support fields
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+          import re
+          import subprocess
+
+          root = Path('review/evidence')
+          manifest = json.loads((root / 'manifest.json').read_text())
+          boundary = json.loads((root / 'reference-boundary.json').read_text())
+          sensitive = json.loads((root / 'sensitive-removal-report.json').read_text())
+
+          def sha256(path: Path) -> str:
+              digest = hashlib.sha256()
+              with path.open('rb') as handle:
+                  for chunk in iter(lambda: handle.read(1024 * 1024), b''):
+                      digest.update(chunk)
+              return digest.hexdigest()
+
+          backup = root / 'vaelinya-site-pre-rewrite.bundle'
+          candidate = root / 'vaelinya-site-rewritten-candidate.bundle'
+          assert sha256(backup) == manifest['backup_bundle_sha256']
+          assert sha256(candidate) == manifest['candidate_bundle_sha256']
+          assert sensitive['first_changed_commit_count'] >= 1
+          assert sensitive['candidate_refs_match_primary'] is True
+          assert sensitive['remote_refs_changed'] is False
+
+          pull_refs = [
+              line for line in (root / 'github-controlled-pull-refs.txt').read_text().splitlines()
+              if line
+          ]
+          pull_numbers = sorted({
+              int(match.group(1))
+              for ref in pull_refs
+              if (match := re.match(r'^refs/pull/(\d+)/', ref))
+          })
+          recorded_numbers = [
+              int(line)
+              for line in (root / 'affected-pull-request-numbers.txt').read_text().splitlines()
+              if line
+          ]
+          assert recorded_numbers == pull_numbers
+          assert boundary['github_controlled_pull_ref_count'] == len(pull_refs)
+          if manifest['main_tree_preservation_required']:
+              assert manifest['main_tree_preserved'] is True
+
+          for location in sensitive['reported_hash_locations']:
+              assert location['original_source_object_type'] == 'commit'
+              assert location['original_candidate_object_type'] is None
+              assert location['rewritten_candidate_object_type'] == 'commit'
+
+          subprocess.run(
+              ['git', '-C', 'verifier', 'bundle', 'verify', str(backup.resolve())],
+              check=True,
+          )
+          subprocess.run(
+              ['git', '-C', 'verifier', 'bundle', 'verify', str(candidate.resolve())],
+              check=True,
+          )
+          support = (root / 'GITHUB_SUPPORT_REQUEST.md').read_text()
+          for oid in sensitive['first_changed_commits']:
+              assert oid in support
+          assert f"Affected pull requests: `{len(pull_numbers)}`" in support
+          PY
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build rewritten main independently
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone review/evidence/vaelinya-site-rewritten-candidate.bundle candidate-worktree
+          cd candidate-worktree
+          git checkout main
+          npm install --no-audit --no-fund
+          npm run build
+
+      - name: Record independent acceptance
+        run: |
+          {
+            echo '## Independent GitHub Support evidence review'
+            echo
+            echo '- Official sensitive-data-removal report: passed'
+            echo '- First Changed Commit(s) mapping: passed'
+            echo '- Unique affected pull-request count: passed'
+            echo '- Primary and reporting candidate refs identical: passed'
+            echo '- Backup and candidate checksums: passed'
+            echo '- Final-stage tree preservation: enforced when required'
+            echo '- Rewritten main build: passed'
+            echo '- Remote refs changed: no'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  record-final-support-package:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: independent-review
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download compact support metadata
+        uses: actions/download-artifact@v4
+        with:
+          name: vaelinya-history-support-metadata-${{ github.sha }}
+          path: final-record
+
+      - name: Record exact external gate on Issue 21
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path('final-record/evidence')
+          manifest = json.loads((root / 'manifest.json').read_text())
+          boundary = json.loads((root / 'reference-boundary.json').read_text())
+          sensitive = json.loads((root / 'sensitive-removal-report.json').read_text())
+          affected_numbers = [
+              int(line)
+              for line in (root / 'affected-pull-request-numbers.txt').read_text().splitlines()
+              if line
+          ]
+          pull_ref_entries = [
+              line
+              for line in (root / 'github-controlled-pull-refs.txt').read_text().splitlines()
+              if line
+          ]
+          sha = os.environ['GITHUB_SHA']
+          run_id = os.environ['GITHUB_RUN_ID']
+          repository = os.environ['GITHUB_REPOSITORY']
+
+          lines = [
+              '## Final GitHub Support-ready remediation package',
+              '',
+              f'- Workflow commit: `{sha}`',
+              f'- Workflow run: `{run_id}`',
+              f'- Workflow URL: https://github.com/{repository}/actions/runs/{run_id}',
+              f"- Current main before rewrite: `{boundary['main_before']}`",
+              f"- Rewritten main candidate: `{boundary['main_after']}`",
+              f"- Current main tree preserved: `{str(manifest['main_tree_preserved']).lower()}`",
+              f'- Affected pull requests: `{len(affected_numbers)}`',
+              f'- GitHub-controlled pull-ref entries: `{len(pull_ref_entries)}`',
+              '- First Changed Commit(s) reported by git-filter-repo:',
+          ]
+          lines.extend(f'  - `{oid}`' for oid in sensitive['first_changed_commits'])
+          lines.extend([
+              f"- Orphaned Git LFS objects: `{sensitive['orphaned_lfs_object_count']}`",
+              f"- Backup bundle SHA-256: `{manifest['backup_bundle_sha256']}`",
+              f"- Candidate bundle SHA-256: `{manifest['candidate_bundle_sha256']}`",
+              f'- Full artifact: `vaelinya-history-support-package-{sha}`',
+              f'- Compact artifact: `vaelinya-history-support-metadata-{sha}`',
+              '',
+              '### Remaining external and destructive gate',
+              '- Submit the generated `GITHUB_SUPPORT_REQUEST.md` through the authenticated GitHub Support portal.',
+              f"- Coordinate the force-push of the {boundary['pushable_ref_count']} user-pushable branch/tag refs with Support removal of GitHub-controlled pull refs and cached views.",
+              '- Do not delete the verified backup bundle.',
+              '- No force-push has occurred.',
+          ])
+          Path('final-comment.md').write_text('\n'.join(lines) + '\n')
+          PY
+          gh issue comment 21 --repo "$GITHUB_REPOSITORY" --body-file final-comment.md
