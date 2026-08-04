@@ -47,7 +47,7 @@ jobs:
           cat /tmp/vaelinya-preview.log
           exit 1
 
-      - name: Capture desktop and 390 px mobile
+      - name: Capture desktop and segmented 390 px mobile evidence
         shell: bash
         env:
           TARGET_URL: http://127.0.0.1:4321/read/fables/the-mountain-healers-who-would-not-help-their-own/?vaelinya-state=dusk
@@ -58,26 +58,59 @@ jobs:
 
           (async () => {
             const browser = await chromium.launch({ headless: true });
-            const captures = [
-              { name: 'ds-02-desktop-1440.png', width: 1440, height: 1100 },
-              { name: 'ds-02-mobile-390.png', width: 390, height: 844 },
-            ];
 
-            for (const capture of captures) {
-              const page = await browser.newPage({
-                viewport: { width: capture.width, height: capture.height },
-                deviceScaleFactor: 1,
-                reducedMotion: 'reduce',
-              });
-              await page.goto(process.env.TARGET_URL, { waitUntil: 'networkidle' });
-              await page.screenshot({
-                path: `visual-evidence/${capture.name}`,
-                fullPage: true,
-                animations: 'disabled',
-              });
-              await page.close();
+            const desktop = await browser.newPage({
+              viewport: { width: 1440, height: 1100 },
+              deviceScaleFactor: 1,
+              reducedMotion: 'reduce',
+            });
+            await desktop.goto(process.env.TARGET_URL, { waitUntil: 'networkidle' });
+            await desktop.screenshot({
+              path: 'visual-evidence/ds-02-desktop-1440.png',
+              fullPage: true,
+              animations: 'disabled',
+            });
+            await desktop.close();
+
+            const mobile = await browser.newPage({
+              viewport: { width: 390, height: 844 },
+              deviceScaleFactor: 1,
+              reducedMotion: 'reduce',
+            });
+            await mobile.goto(process.env.TARGET_URL, { waitUntil: 'networkidle' });
+
+            await mobile.evaluate(() => window.scrollTo(0, 0));
+            await mobile.screenshot({
+              path: 'visual-evidence/ds-02-mobile-top-390.png',
+              animations: 'disabled',
+            });
+
+            await mobile.locator('#story').scrollIntoViewIfNeeded();
+            await mobile.screenshot({
+              path: 'visual-evidence/ds-02-mobile-reading-390.png',
+              animations: 'disabled',
+            });
+
+            await mobile.locator('#connected-records').scrollIntoViewIfNeeded();
+            await mobile.screenshot({
+              path: 'visual-evidence/ds-02-mobile-connections-390.png',
+              animations: 'disabled',
+            });
+
+            const metrics = await mobile.evaluate(() => ({
+              scrollWidth: document.documentElement.scrollWidth,
+              clientWidth: document.documentElement.clientWidth,
+              scrollHeight: document.documentElement.scrollHeight,
+            }));
+            require('fs').writeFileSync(
+              'visual-evidence/mobile-layout-metrics.json',
+              JSON.stringify(metrics, null, 2) + '\n',
+            );
+            if (metrics.scrollWidth > metrics.clientWidth) {
+              throw new Error(`Horizontal overflow: ${metrics.scrollWidth} > ${metrics.clientWidth}`);
             }
 
+            await mobile.close();
             await browser.close();
           })().catch((error) => {
             console.error(error);
@@ -92,13 +125,13 @@ jobs:
             echo
             echo "- Exact commit: `${GITHUB_SHA}`"
             echo '- Route: `/read/fables/the-mountain-healers-who-would-not-help-their-own/?vaelinya-state=dusk`'
-            echo '- Desktop viewport: `1440 × 1100`'
-            echo '- Mobile viewport: `390 × 844`'
-            echo '- Full-page captures: yes'
+            echo '- Desktop viewport: `1440 × 1100`, full page'
+            echo '- Mobile viewport: `390 × 844`, top/reading/connections segments'
+            echo '- Mobile horizontal-overflow assertion: enabled'
             echo '- Inspector overlays: none'
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Upload screenshots
+      - name: Upload screenshots and metrics
         uses: actions/upload-artifact@v4
         with:
           name: ds-02-visual-evidence-${{ github.sha }}
