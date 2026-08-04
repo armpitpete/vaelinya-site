@@ -15,6 +15,32 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  diagnose-live-site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Capture current production response
+        shell: bash
+        env:
+          RECORD_URL: https://vaelinya.uk/studio/cultural-records/
+        run: |
+          set -u
+          body="$(mktemp)"
+          metadata="$(curl \
+            --silent \
+            --show-error \
+            --location \
+            --connect-timeout 10 \
+            --max-time 30 \
+            --output "$body" \
+            --write-out '%{http_code}\n%{url_effective}\n' \
+            "$RECORD_URL" 2>&1 || true)"
+          echo "Curl metadata:"
+          printf '%s\n' "$metadata"
+          echo "Response excerpt:"
+          head -c 1200 "$body" || true
+          echo
+          rm -f "$body"
+
   verify-live-site:
     runs-on: ubuntu-latest
     timeout-minutes: 15
