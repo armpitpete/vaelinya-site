@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const description = 'Privacy and analytics choices for Vaelinya, including how Merrin Analytics counts visits and how to turn analytics off or on.';
+---
+<BaseLayout title="Privacy & analytics" description={description}>
+  <section class="page-section" aria-labelledby="privacy-title">
+    <p class="eyebrow">Privacy</p>
+    <h1 id="privacy-title">Privacy &amp; analytics</h1>
+    <p class="lede">Vaelinya uses simple, privacy-preserving audience counts to understand which parts of the site are being used.</p>
+
+    <h2>What Merrin Analytics does</h2>
+    <p>A random Vaelinya-only browser token can stay on this device for up to 12 months so repeat visits can be estimated without creating a cross-site identity.</p>
+    <p>Merrin Analytics does not store your IP address, the browser token itself, precise location, or an identity that follows you across different websites.</p>
+
+    <h2>Your choice</h2>
+    <p>You can turn Merrin Analytics off on this device at any time. Turning it off removes the existing Vaelinya visitor token and stops future Merrin Analytics page-view and engagement sends from this site. You can turn it back on later.</p>
+    <button class="button secondary" type="button" data-analytics-toggle disabled>Analytics control loading</button>
+    <p data-analytics-status role="status" aria-live="polite"></p>
+  </section>
+</BaseLayout>
