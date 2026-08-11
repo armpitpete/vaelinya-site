@@ -45,10 +45,16 @@
                 <p><strong>Desktop:</strong> click to place, right-click to erase, Pan then drag, wheel to zoom.</p>
                 <p><strong>Touch:</strong> tap to place, hold to erase, Pan then drag, pinch to zoom.</p>
             </details>
+            <section class="controls-help" aria-label="Analytics privacy">
+                <p><strong>Privacy:</strong> We count visits to learn which parts of Vaelinya are being used. A random Vaelinya-only browser token can stay on this device for up to 12 months. Merrin Analytics does not store your IP address, the token itself, precise location, or an identity that follows you across sites. You can turn analytics off at any time.</p>
+                <button class="category-tab" type="button" data-analytics-toggle disabled>Analytics control loading</button>
+                <p data-analytics-status role="status" aria-live="polite"></p>
+            </section>
         </aside>
     </main>
     <noscript>This prototype requires JavaScript.</noscript>
     <script type="module" src="./src/app.js"></script>
     <script src="https://collect.merrinworld.uk/beacon.js" data-site="vaelinya" defer></script>
+    <script src="/scripts/analytics-privacy.js" defer></script>
 </body>
 </html>
