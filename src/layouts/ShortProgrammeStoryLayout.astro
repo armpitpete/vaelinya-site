@@ -11,9 +11,24 @@ interface Props {
   heroImageAlt?: string;
   previousStory?: NavStory;
   nextStory?: NavStory;
+  seriesName?: string;
+  collectionUrl?: string;
+  collectionLabel?: string;
 }
 
-const { title, description, storyNumber, totalStories, heroImage, heroImageAlt, previousStory, nextStory } = Astro.props;
+const {
+  title,
+  description,
+  storyNumber,
+  totalStories,
+  heroImage,
+  heroImageAlt,
+  previousStory,
+  nextStory,
+  seriesName = 'Vaelinya Short Story Programme',
+  collectionUrl = '/read/short-stories/',
+  collectionLabel = 'All 57 stories',
+} = Astro.props;
 const site = Astro.site ?? new URL('https://vaelinya.uk');
 const canonicalUrl = new URL(Astro.url.pathname, site).toString();
 const imageUrl = heroImage ? new URL(heroImage, site).toString() : undefined;
@@ -23,7 +38,7 @@ const jsonLd = {
   name: title,
   description,
   url: canonicalUrl,
-  isPartOf: { '@type': 'CreativeWorkSeries', name: 'Vaelinya Short Story Programme', url: new URL('/read/short-stories/', site).toString() },
+  isPartOf: { '@type': 'CreativeWorkSeries', name: seriesName, url: new URL(collectionUrl, site).toString() },
   position: storyNumber,
   inLanguage: 'en',
   ...(imageUrl ? { image: imageUrl } : {}),
@@ -32,7 +47,7 @@ const jsonLd = {
 <BaseLayout title={title} description={description} image={heroImage} jsonLd={jsonLd}>
   <article class="story-page">
     <header class="story-header">
-      <p class="eyebrow">Vaelinya Short Story Programme · {storyNumber} of {totalStories}</p>
+      <p class="eyebrow">{seriesName} · {storyNumber} of {totalStories}</p>
       {heroImage && (
         <figure class="story-hero-image">
           <img src={heroImage} alt={heroImageAlt ?? ''} loading="eager" decoding="async" />
@@ -41,9 +56,9 @@ const jsonLd = {
     </header>
     <div class="story-content"><slot /></div>
     <footer class="story-footer">
-      <nav class="story-page-nav" aria-label="Short story navigation">
+      <nav class="story-page-nav" aria-label="Story navigation">
         {previousStory && <a class="button secondary" href={previousStory.url}>Previous: {previousStory.title}</a>}
-        <a class="button secondary" href="/read/short-stories/">All 57 stories</a>
+        <a class="button secondary" href={collectionUrl}>{collectionLabel}</a>
         {nextStory && <a class="button secondary" href={nextStory.url}>Next: {nextStory.title}</a>}
       </nav>
     </footer>

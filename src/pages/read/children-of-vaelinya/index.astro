@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { allChildrenOfVaelinyaGroups } from '../../../data/children-of-vaelinya';
+
+const description = 'The Children of Vaelinya story library: eight children, eight individual stories each, followed by eight adventures together.';
+---
+<BaseLayout title="Children of Vaelinya" description={description}>
+  <section class="page-section">
+    <p class="eyebrow">Read</p>
+    <h1>Children of Vaelinya</h1>
+    <p class="lede">Eight children. Eight stories each. Then eight adventures together.</p>
+    <p>This is the main story shelf for the children. Choose a child to read their eight-story path, or go to the final folder for the eight adventures they share.</p>
+
+    <ol class="story-grid story-list" aria-label="Children of Vaelinya story folders">
+      {allChildrenOfVaelinyaGroups.map((group) => (
+        <li>
+          <a class="story-card" href={`/read/children-of-vaelinya/${group.slug}/`} aria-label={`Open ${group.name} stories`}>
+            <span>{group.slug === 'together' ? 'Together folder' : 'Child folder'}</span>
+            <strong>{group.name}</strong>
+            <p>{group.description}</p>
+            <span class="story-card-action" aria-hidden="true">8 stories</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+
+    <article class="panel">
+      <p class="eyebrow">Library shape</p>
+      <h2>72 story pages</h2>
+      <p>Lina has eight stories. Fina, Elara, Nira, Kaelen, Valen, Reo and Liana each have one existing starter story plus seven further stories. The eight children then have eight adventures together.</p>
+    </article>
+
+    <div class="link-list">
+      <a href="/read/">All reading paths</a>
+      <a href="/world/">Explore the world</a>
+      <a href="/language/">Explore the language</a>
+    </div>
+  </section>
+</BaseLayout>

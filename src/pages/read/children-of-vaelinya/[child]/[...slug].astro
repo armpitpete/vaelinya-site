@@ -1,0 +1,126 @@
+---
+import { getCollection, render } from 'astro:content';
+import ShortProgrammeStoryLayout from '../../../../layouts/ShortProgrammeStoryLayout.astro';
+import {
+  childStoryGroups,
+  togetherGroup,
+  nestedLinaStoryUrl,
+  nestedProgrammeStoryUrl,
+} from '../../../../data/children-of-vaelinya';
+
+export async function getStaticPaths() {
+  const paths = [];
+  const programmeStories = (await getCollection('stories', ({ data }) => data.arc === 'Short Story Programme'))
+    .sort((a, b) => a.data.story_number - b.data.story_number);
+  if (programmeStories.length !== 57) throw new Error(`Expected 57 publication-programme stories; found ${programmeStories.length}`);
+  const programmeByPosition = new Map(programmeStories.map((story) => [story.data.story_number, story]));
+
+  const assignedPositions = [
+    ...childStoryGroups.flatMap((group) => group.programmePositions),
+    ...togetherGroup.programmePositions,
+  ];
+  if (assignedPositions.length !== 57 || new Set(assignedPositions).size !== 57) {
+    throw new Error('Children of Vaelinya mapping must assign each of the 57 publication-programme positions exactly once');
+  }
+  for (let position = 1; position <= 57; position += 1) {
+    if (!assignedPositions.includes(position)) throw new Error(`Unassigned publication-programme position ${position}`);
+  }
+
+  const linaStories = (await getCollection('stories', ({ data }) => data.arc === 'Lina'))
+    .sort((a, b) => a.data.story_number - b.data.story_number);
+  if (linaStories.length !== 8) throw new Error(`Expected 8 Lina stories; found ${linaStories.length}`);
+
+  for (const story of linaStories) {
+    const number = story.data.story_number;
+    const filename = story.id.split('/').pop() ?? story.id;
+    const slug = `${String(number).padStart(2, '0')}-${filename.replace(/\.md$/, '').replace(/^\d+-/, '')}`;
+    const previous = number > 1 ? linaStories[number - 2] : undefined;
+    const next = number < 8 ? linaStories[number] : undefined;
+    paths.push({
+      params: { child: 'lina', slug },
+      props: {
+        story,
+        groupName: 'Lina',
+        storyNumber: number,
+        previousStory: previous ? { title: previous.data.title, url: nestedLinaStoryUrl(previous.data.story_number, previous.id) } : undefined,
+        nextStory: next ? { title: next.data.title, url: nestedLinaStoryUrl(next.data.story_number, next.id) } : undefined,
+      },
+    });
+  }
+
+  for (const group of childStoryGroups.filter((item) => item.slug !== 'lina')) {
+    if (!group.starter) throw new Error(`Missing starter story for ${group.name}`);
+    if (group.programmePositions.length !== 7) throw new Error(`Expected 7 later stories for ${group.name}`);
+    for (let index = 0; index < group.programmePositions.length; index += 1) {
+      const position = group.programmePositions[index];
+      const story = programmeByPosition.get(position);
+      if (!story) throw new Error(`Missing ${group.name} programme position ${position}`);
+      const localNumber = index + 2;
+      const filename = story.id.split('/').pop() ?? story.id;
+      const slug = `${String(localNumber).padStart(2, '0')}-${filename.replace(/\.md$/, '').replace(/^\d+-/, '')}`;
+      const previousStory = localNumber === 2
+        ? { title: group.starter.title, url: group.starter.href }
+        : (() => {
+            const previous = programmeByPosition.get(group.programmePositions[index - 1]);
+            return previous ? { title: previous.data.title, url: nestedProgrammeStoryUrl(group.slug, localNumber - 1, previous.id) } : undefined;
+          })();
+      const next = index + 1 < group.programmePositions.length
+        ? programmeByPosition.get(group.programmePositions[index + 1])
+        : undefined;
+      paths.push({
+        params: { child: group.slug, slug },
+        props: {
+          story,
+          groupName: group.name,
+          storyNumber: localNumber,
+          previousStory,
+          nextStory: next ? { title: next.data.title, url: nestedProgrammeStoryUrl(group.slug, localNumber + 1, next.id) } : undefined,
+        },
+      });
+    }
+  }
+
+  if (togetherGroup.programmePositions.length !== 8) throw new Error('Expected 8 Together stories');
+  for (let index = 0; index < togetherGroup.programmePositions.length; index += 1) {
+    const position = togetherGroup.programmePositions[index];
+    const story = programmeByPosition.get(position);
+    if (!story) throw new Error(`Missing Together programme position ${position}`);
+    const localNumber = index + 1;
+    const filename = story.id.split('/').pop() ?? story.id;
+    const slug = `${String(localNumber).padStart(2, '0')}-${filename.replace(/\.md$/, '').replace(/^\d+-/, '')}`;
+    const previous = index > 0 ? programmeByPosition.get(togetherGroup.programmePositions[index - 1]) : undefined;
+    const next = index + 1 < togetherGroup.programmePositions.length ? programmeByPosition.get(togetherGroup.programmePositions[index + 1]) : undefined;
+    paths.push({
+      params: { child: 'together', slug },
+      props: {
+        story,
+        groupName: togetherGroup.name,
+        storyNumber: localNumber,
+        previousStory: previous ? { title: previous.data.title, url: nestedProgrammeStoryUrl('together', localNumber - 1, previous.id) } : undefined,
+        nextStory: next ? { title: next.data.title, url: nestedProgrammeStoryUrl('together', localNumber + 1, next.id) } : undefined,
+      },
+    });
+  }
+
+  if (paths.length !== 65) throw new Error(`Expected 65 nested content story routes; found ${paths.length}`);
+  return paths;
+}
+
+const { story, groupName, storyNumber, previousStory, nextStory } = Astro.props;
+const { Content } = await render(story);
+---
+<ShortProgrammeStoryLayout
+  title={story.data.title}
+  description={story.data.description}
+  storyNumber={storyNumber}
+  totalStories={8}
+  heroImage={story.data.hero_image}
+  heroImageAlt={story.data.hero_image_alt}
+  previousStory={previousStory}
+  nextStory={nextStory}
+  seriesName={`Children of Vaelinya · ${groupName}`}
+  collectionUrl={`/read/children-of-vaelinya/${Astro.params.child}/`}
+  collectionLabel={groupName === 'All Eight Together' ? 'All eight Together adventures' : `${groupName}'s eight stories`}
+>
+  <Content />
+</ShortProgrammeStoryLayout>
