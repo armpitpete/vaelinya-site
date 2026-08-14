@@ -9,7 +9,7 @@ total_stories: 8
 status: "ready"
 public_url: "/read/lina/05-the-sleeping-tree/"
 old_url: "/stories/canon/solo/child-01-lina/05-story/"
-hero_image: "/images/stories/lina/sleeping-tree.webp"
+hero_image: "/images/read/lina/lina-05-the-sleeping-tree.webp"
 related_world:
   - "/world/the-rim/"
   - "/world/the-warm-remembering/"

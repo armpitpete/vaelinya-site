@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "verify:short-stories": "node scripts/verify-short-story-release.mjs",
-    "build": "npm run verify:short-stories && astro build",
+    "verify:story-assets": "node scripts/verify-story-hero-assets.mjs",
+    "build": "npm run verify:short-stories && npm run verify:story-assets && astro build",
     "preview": "astro preview",
     "test:builder": "node --test tests/vaelinya-builder/*.test.js"
   },

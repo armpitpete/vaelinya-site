@@ -9,7 +9,7 @@ total_stories: 8
 status: "ready"
 public_url: "/read/lina/03-the-maze-that-remembers/"
 old_url: "/stories/canon/solo/child-01-lina/03-story/"
-hero_image: "/images/stories/lina/maze-that-remembers.webp"
+hero_image: "/images/read/lina/lina-03-the-maze-that-remembers.webp"
 related_world:
   - "/world/the-rim/"
   - "/world/the-warm-remembering/"
