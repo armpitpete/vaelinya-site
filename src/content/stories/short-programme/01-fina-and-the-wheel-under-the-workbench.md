@@ -1,0 +1,374 @@
+---
+title: "Fina and the Wheel Under the Workbench"
+description: "Story 1 of 57 in the Vaelinya Short Story Programme: Fina and the Wheel Under the Workbench."
+section: "read"
+series: "Vaelinya Short Story Programme"
+arc: "Short Story Programme"
+story_number: 1
+total_stories: 57
+status: "ready"
+public_url: "/read/short-stories/01-fina-and-the-wheel-under-the-workbench/"
+hero_image: "/images/read/fables/the-line-of-white-pebbles/hero.webp"
+hero_image_alt: "Vaelinya artwork used as the header image for this story in the initial web edition."
+related_world:
+  - "/world/"
+related_language:
+  - "/language/"
+related_artefacts: []
+---
+
+# Fina and the Wheel Under the Workbench
+
+The wheel had been under the workbench for so long that dust had learned its shape.
+
+Fina found it because she was not looking for it.
+
+She was waiting for Maer Pell to finish measuring a new handle for the grain cart, and waiting made her feet want a job. So she rocked from heel to toe. Then toe to heel. Then she balanced on the edge of a floorboard until it squeaked.
+
+“Fina,” Maer Pell said without looking up.
+
+“I am not touching anything.”
+
+“You are making the floor complain.”
+
+Fina stopped.
+
+For three breaths.
+
+Then she crouched.
+
+Something round showed beneath the workbench, behind a basket of bent pegs and two lengths of old rope.
+
+“What is that?”
+
+Maer Pell kept his ruler against the cart handle. “Probably something I put there because I did not need it.”
+
+“That is not an answer about what it is.”
+
+“It is the answer I have.”
+
+Fina lay on her stomach and reached into the dark.
+
+Her fingers found cold wood, a rim, and three spokes.
+
+She pulled.
+
+Nothing happened.
+
+She pulled harder.
+
+The basket of pegs tipped over and scattered across the floor.
+
+Maer Pell closed his eyes.
+
+Fina looked at the pegs.
+
+“Those moved very well.”
+
+“Put them back.”
+
+She did. Then she moved the rope, shifted the basket properly, and tried again.
+
+This time the wheel came out.
+
+It was small, perhaps the width of Fina’s two hands spread wide. Its wooden rim had been darkened by years of oil. One spoke had a pale repair where a crack had been bound and glued. At the centre was a square hole.
+
+Fina set it upright and gave it a push.
+
+The wheel rolled in a crooked circle, wobbled, and fell over.
+
+She grinned.
+
+Maer Pell looked down at last.
+
+“Oh,” he said. “That wheel.”
+
+“What did it do?”
+
+“Turned.”
+
+Fina waited.
+
+Maer Pell’s mouth twitched.
+
+“It belonged to the old cord-twister. Before your time.”
+
+“What is a cord-twister?”
+
+“A machine for making long cord from short fibres.”
+
+“Why do we not use it?”
+
+“Because the frame split. The new one works better.”
+
+Fina spun the wheel with one finger.
+
+It shivered to a stop.
+
+“Does this part still work?”
+
+“The wheel?”
+
+“Yes.”
+
+“It turns.”
+
+“That is still not the same answer.”
+
+Maer Pell put down his ruler.
+
+He crouched beside her and held the wheel by its centre. “The hole is worn. See?”
+
+Fina looked. The square opening was no longer properly square. Two corners had rounded away.
+
+“So it slips.”
+
+“Probably.”
+
+“Probably is testable.”
+
+“That sentence is why I hide old machine parts from you.”
+
+Fina carried the wheel to the open yard behind the workshop.
+
+The morning had warmed the stones. A row of laundry cords hung between two posts, waiting to be taken to the dye house. Near the wall, a worker named Senn was trying to wind a long new rope into a coil.
+
+The rope was winning.
+
+It twisted around his boots, kinked near his knees, and slapped the ground every time he tried to gather another armful.
+
+Fina stopped.
+
+The wheel under her arm suddenly felt less like an old thing and more like a question.
+
+“Senn.”
+
+“No.”
+
+“I did not ask yet.”
+
+“You have the face you use before asking whether something can be made more interesting.”
+
+Fina looked at the rope.
+
+“Can it?”
+
+“No.”
+
+The rope looped around his ankle.
+
+Fina waited.
+
+Senn sighed. “What?”
+
+She held up the wheel.
+
+He stared at it.
+
+“That is a wheel.”
+
+“Yes.”
+
+“I am winding rope.”
+
+“Yes.”
+
+Neither of them spoke for a moment.
+
+Then Senn said, “I dislike where this conversation is going.”
+
+Fina rolled the wheel across the yard.
+
+It wobbled again.
+
+She rolled it more slowly.
+
+Still wobble.
+
+She pushed a stick through the square centre and held the stick at both ends. The wheel turned around it, but every few turns it caught against the rounded hole.
+
+Fina frowned.
+
+Fast made it worse.
+
+She tried a thicker stick.
+
+It did not fit.
+
+She wrapped a strip of cloth around the first stick.
+
+The wheel turned more smoothly for six rotations, then the cloth slid sideways.
+
+Senn had stopped winding the rope.
+
+“You are making a very bad spindle,” he said.
+
+“I know.”
+
+“That does not trouble you?”
+
+“It is the first one.”
+
+Maer Pell came into the yard carrying the grain-cart handle.
+
+“What are you testing?”
+
+“The hole is too worn for a plain axle.”
+
+“I told you it slipped.”
+
+“You said probably.”
+
+Maer Pell looked at the wheel, the stick, the cloth, and Senn’s tangled rope.
+
+“What do you want it to do?” he asked.
+
+Fina pointed at the rope.
+
+Senn said, “I have not agreed to anything.”
+
+“Not yet,” Fina said.
+
+That made Maer Pell smile.
+
+They set two low stools opposite each other and laid the stick across them. The wheel turned between the stools. Fina tied one end of a short practice cord to the rim.
+
+She pushed the wheel.
+
+The cord wound once around it, then slipped off.
+
+She pushed again.
+
+Same result.
+
+She tried looping the cord through a spoke.
+
+The wheel jerked sideways.
+
+“That would pull badly on a long rope,” Maer Pell said.
+
+Fina nodded.
+
+She had wanted it to work at once.
+
+The wanting was still in her hands.
+
+But the wheel did not care what she wanted.
+
+She looked at the rim.
+
+There was a shallow groove worn around one side, almost hidden under the old oil.
+
+“What was that for?”
+
+Maer Pell ran his thumb along it. “Guide cord, perhaps.”
+
+Fina threaded the practice cord into the groove.
+
+This time, when she turned the wheel slowly, the cord followed.
+
+One turn.
+
+Two.
+
+Three.
+
+Then it climbed out of the groove.
+
+“Still wrong,” said Senn.
+
+“Less wrong,” said Fina.
+
+She moved one stool closer so the axle could not shift sideways as much.
+
+The wheel turned again.
+
+The cord stayed in the groove for twelve turns.
+
+Fina stopped it.
+
+Senn blinked. “Why did you stop?”
+
+“Because now I know it can do twelve. I want to know why it cannot do thirteen.”
+
+Maer Pell laughed.
+
+They found the cause near the repaired spoke. The rim rose there by the width of a fingernail. When the cord reached the bump, it climbed out.
+
+Fina pressed the place with her thumb.
+
+“So the wheel is not a rope-winder.”
+
+“Not without repair,” said Maer Pell.
+
+Fina looked disappointed.
+
+Then Senn said, “Could it hold the rope off the ground while I coil it?”
+
+Fina looked at him.
+
+He pointed to the stools. “Not wind it. Just guide it.”
+
+They untied the practice cord and brought over the real rope.
+
+This time they did not ask the wheel to do everything.
+
+Maer Pell steadied the stools. Fina fed the rope through the shallow groove and turned the wheel only enough to follow Senn’s pull. Senn walked backwards, making a wide coil on the clean stones.
+
+The first loop lay flat.
+
+Then the second.
+
+Then the third.
+
+The rope did not twist around his boots.
+
+Fina sped up.
+
+The rope jumped the groove.
+
+Senn stopped.
+
+Fina stopped too.
+
+“Too fast,” she said.
+
+“Too fast for this,” Maer Pell corrected.
+
+Fina nodded.
+
+They began again.
+
+This time she watched the rope instead of chasing the wheel.
+
+When Senn pulled faster, she turned faster.
+
+When he slowed near the growing coil, she slowed.
+
+When the repaired spoke came round, she eased the wheel through the bump.
+
+By the end, the rope lay in a broad even circle on the yard stones.
+
+Senn looked at it.
+
+Then at the wheel.
+
+“That was useful.”
+
+Fina put both hands on the rim.
+
+“It was not what I thought it was useful for.”
+
+“No,” said Maer Pell.
+
+Fina considered that.
+
+She rolled the wheel back towards the workshop.
+
+It made one crooked circle and fell over beside her foot.
+
+Fina laughed.
+
+“Still bad at rolling,” Senn called.
+
+“Yes,” she said, lifting it again. “We tested that too.”
