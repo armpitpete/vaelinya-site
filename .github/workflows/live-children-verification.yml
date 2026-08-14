@@ -1,0 +1,123 @@
+name: Live Children of Vaelinya verification
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-live-route:
+    name: ${{ matrix.label }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: origin · read shelf
+            mode: content
+            url: https://vaelinya-site.pages.dev/read/
+            marker: Children of Vaelinya · 72 story pages
+          - label: origin · parent shelf
+            mode: content
+            url: https://vaelinya-site.pages.dev/read/children-of-vaelinya/
+            marker: Eight children. Eight stories each. Then eight adventures together.
+          - label: origin · Lina folder
+            mode: content
+            url: https://vaelinya-site.pages.dev/read/children-of-vaelinya/lina/
+            marker: The Bridge That Sang Back
+          - label: origin · Fina folder
+            mode: content
+            url: https://vaelinya-site.pages.dev/read/children-of-vaelinya/fina/
+            marker: Fina and the Smallest Bell
+          - label: origin · Together folder
+            mode: content
+            url: https://vaelinya-site.pages.dev/read/children-of-vaelinya/together/
+            marker: Eight adventures together
+          - label: origin · Together finale
+            mode: content
+            url: https://vaelinya-site.pages.dev/read/children-of-vaelinya/together/08-the-house-with-one-welcome/
+            marker: The House With One Welcome
+          - label: vaelinya.uk · read shelf
+            mode: custom-front-door
+            url: https://vaelinya.uk/read/
+            marker: Children of Vaelinya · 72 story pages
+          - label: vaelinya.uk · parent shelf
+            mode: custom-front-door
+            url: https://vaelinya.uk/read/children-of-vaelinya/
+            marker: Eight children. Eight stories each. Then eight adventures together.
+          - label: vaelinya.uk · Lina folder
+            mode: custom-front-door
+            url: https://vaelinya.uk/read/children-of-vaelinya/lina/
+            marker: The Bridge That Sang Back
+          - label: vaelinya.uk · Fina folder
+            mode: custom-front-door
+            url: https://vaelinya.uk/read/children-of-vaelinya/fina/
+            marker: Fina and the Smallest Bell
+          - label: vaelinya.uk · Together folder
+            mode: custom-front-door
+            url: https://vaelinya.uk/read/children-of-vaelinya/together/
+            marker: Eight adventures together
+          - label: vaelinya.uk · Together finale
+            mode: custom-front-door
+            url: https://vaelinya.uk/read/children-of-vaelinya/together/08-the-house-with-one-welcome/
+            marker: The House With One Welcome
+    steps:
+      - name: Verify live route
+        shell: bash
+        env:
+          TARGET_URL: ${{ matrix.url }}
+          REQUIRED_MARKER: ${{ matrix.marker }}
+          CHECK_LABEL: ${{ matrix.label }}
+          CHECK_MODE: ${{ matrix.mode }}
+        run: |
+          set -euo pipefail
+          body="$(mktemp)"
+
+          for attempt in $(seq 1 24); do
+            metadata="$({ curl \
+              --silent \
+              --show-error \
+              --location \
+              --user-agent 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36' \
+              --header 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8' \
+              --header 'Accept-Language: en-GB,en;q=0.9' \
+              --connect-timeout 10 \
+              --max-time 30 \
+              --output "$body" \
+              --write-out '%{http_code}\n%{url_effective}\n' \
+              "$TARGET_URL"; } 2>&1 || true)"
+            status="$(printf '%s\n' "$metadata" | tail -n 2 | head -n 1)"
+            effective_url="$(printf '%s\n' "$metadata" | tail -n 1)"
+            marker_found=no
+            if grep --fixed-strings --quiet "$REQUIRED_MARKER" "$body"; then marker_found=yes; fi
+
+            if [[ "$status" == "200" && "$marker_found" == "yes" ]]; then
+              echo "$CHECK_LABEL PASS: direct content verified; status=200 url=$effective_url marker=$REQUIRED_MARKER"
+              rm -f "$body"
+              exit 0
+            fi
+
+            if [[ "$CHECK_MODE" == "custom-front-door" && "$status" == "403" ]] \
+              && grep --fixed-strings --quiet 'Just a moment...' "$body" \
+              && grep --fixed-strings --quiet 'challenges.cloudflare.com' "$body"; then
+              echo "$CHECK_LABEL PASS: exact custom-domain URL reached Cloudflare's interactive challenge."
+              echo "Content is NOT claimed verified by this job; paired Cloudflare Pages origin job supplies content proof for the same path."
+              rm -f "$body"
+              exit 0
+            fi
+
+            echo "$CHECK_LABEL attempt $attempt/24: status=${status:-unknown} url=${effective_url:-unknown} marker_found=$marker_found"
+            sleep 10
+          done
+
+          echo "::error::$CHECK_LABEL did not satisfy its verification mode. Required marker: $REQUIRED_MARKER"
+          printf '%s\n' "$metadata"
+          head -c 1500 "$body" || true
+          rm -f "$body"
+          exit 1
