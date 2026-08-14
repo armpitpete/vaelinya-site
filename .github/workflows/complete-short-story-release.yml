@@ -44,7 +44,7 @@ jobs:
           printf '%s  %s\n' 'e8232dc87180ce91b9028780a9f56bdabfc297110a15ff0d2484c394fee53d56' "$master" | sha256sum --check --strict
           cp "$master" /tmp/Vaelinya_Short_Story_Reading_Master_v1.0.md
 
-      - name: Generate exact 57-story site content
+      - name: Generate and prove all 57 stories
         if: steps.generated.outputs.done != 'true'
         shell: bash
         run: |
@@ -78,7 +78,6 @@ jobs:
           for old in out.glob('*.md'):
               old.unlink()
 
-          stories = []
           bodies = []
           for index, match in enumerate(matches):
               position = int(match.group(1))
@@ -96,103 +95,13 @@ jobs:
               description = f'Story {position} of 57 in the Vaelinya Short Story Programme: {title}.'
               frontmatter = f'''---\ntitle: {json.dumps(title, ensure_ascii=False)}\ndescription: {json.dumps(description, ensure_ascii=False)}\nsection: "read"\nseries: "Vaelinya Short Story Programme"\narc: "Short Story Programme"\nstory_number: {position}\ntotal_stories: 57\nstatus: "ready"\npublic_url: "/read/short-stories/{slug}/"\nhero_image: "{hero}"\nhero_image_alt: "Vaelinya artwork used as the header image for this story in the initial web edition."\nrelated_world:\n  - "/world/"\nrelated_language:\n  - "/language/"\nrelated_artefacts: []\n---\n\n# {title}\n\n'''
               (out / f'{slug}.md').write_text(frontmatter + body, encoding='utf-8')
-              stories.append((position, title, slug))
 
           digest = hashlib.sha256(b'\0'.join(bodies)).hexdigest()
           expected = '36a2e4c530960a5315c167bb5326f2dc9970d345b563c008a9936cf0ad194799'
           if digest != expected:
               raise SystemExit(f'Aggregate body hash mismatch: {digest}')
-
-          Path('src/pages/read/short-stories/[...slug].astro').write_text(r'''---
-          import { getCollection, render } from 'astro:content';
-          import ShortProgrammeStoryLayout from '../../../layouts/ShortProgrammeStoryLayout.astro';
-
-          export async function getStaticPaths() {
-            const stories = (await getCollection('stories', ({ data }) => data.arc === 'Short Story Programme'))
-              .sort((a, b) => a.data.story_number - b.data.story_number);
-            return stories.map((story, index) => ({
-              params: { slug: story.id.replace(/^short-programme\//, '').replace(/\.md$/, '') },
-              props: {
-                story,
-                previousStory: index > 0 ? { title: stories[index - 1].data.title, url: stories[index - 1].data.public_url } : undefined,
-                nextStory: index + 1 < stories.length ? { title: stories[index + 1].data.title, url: stories[index + 1].data.public_url } : undefined,
-              },
-            }));
-          }
-          const { story, previousStory, nextStory } = Astro.props;
-          const { Content } = await render(story);
-          ---
-          <ShortProgrammeStoryLayout
-            title={story.data.title}
-            description={story.data.description}
-            storyNumber={story.data.story_number}
-            totalStories={story.data.total_stories}
-            heroImage={story.data.hero_image}
-            heroImageAlt={story.data.hero_image_alt}
-            previousStory={previousStory}
-            nextStory={nextStory}
-          >
-            <Content />
-          </ShortProgrammeStoryLayout>
-          ''').replace('\n          ', '\n').lstrip(), encoding='utf-8')
-
-          Path('src/pages/read/short-stories/index.astro').write_text(r'''---
-          import { getCollection } from 'astro:content';
-          import BaseLayout from '../../../layouts/BaseLayout.astro';
-          const stories = (await getCollection('stories', ({ data }) => data.arc === 'Short Story Programme'))
-            .sort((a, b) => a.data.story_number - b.data.story_number);
-          ---
-          <BaseLayout title="57 Vaelinya short stories" description="The complete 57-story Vaelinya Short Story Programme in reader order.">
-            <section class="page-section">
-              <p class="eyebrow">Read</p>
-              <h1>57 Vaelinya short stories</h1>
-              <p class="lede">The complete short-story programme, in the accepted reader order.</p>
-              <p>Read straight through or choose any story below. This first web edition preserves the accepted story text while the collection is proofread in public.</p>
-              <ol class="story-grid story-list" aria-label="57 Vaelinya short stories">
-                {stories.map((story) => (
-                  <li><a class="story-card" href={story.data.public_url} aria-label={`Read ${story.data.title}`}>
-                    <span>Story {story.data.story_number}</span><strong>{story.data.title}</strong><span class="story-card-action" aria-hidden="true">Read story</span>
-                  </a></li>
-                ))}
-              </ol>
-              <div class="link-list"><a href="/read/">All reading paths</a><a href="/world/">Explore the world</a></div>
-            </section>
-          </BaseLayout>
-          ''').replace('\n          ', '\n').lstrip(), encoding='utf-8')
-
-          verifier = r'''import fs from 'node:fs';
-          import path from 'node:path';
-          import crypto from 'node:crypto';
-          const root = process.cwd();
-          const release = JSON.parse(fs.readFileSync(path.join(root, 'src/data/short-story-release-v1.json'), 'utf8'));
-          const dir = path.join(root, 'src/content/stories/short-programme');
-          const files = fs.readdirSync(dir).filter((name) => name.endsWith('.md')).sort();
-          if (release.story_count !== 57 || files.length !== 57) throw new Error(`Expected 57 stories; got ${files.length}`);
-          const bodies = [];
-          const titles = new Set();
-          for (let i = 0; i < files.length; i += 1) {
-            const position = i + 1;
-            if (!files[i].startsWith(String(position).padStart(2, '0') + '-')) throw new Error(`Wrong story position: ${files[i]}`);
-            const text = fs.readFileSync(path.join(dir, files[i]), 'utf8');
-            const match = text.match(/^# (.+)$/m);
-            if (!match) throw new Error(`Missing H1: ${files[i]}`);
-            titles.add(match[1]);
-            const marker = `# ${match[1]}\n\n`;
-            const at = text.indexOf(marker);
-            if (at < 0) throw new Error(`Malformed H1: ${files[i]}`);
-            if (!text.includes(`story_number: ${position}\n`)) throw new Error(`Wrong frontmatter position: ${files[i]}`);
-            if (!text.includes('total_stories: 57\n')) throw new Error(`Wrong total: ${files[i]}`);
-            bodies.push(Buffer.from(text.slice(at + marker.length), 'utf8'));
-          }
-          if (titles.size !== 57) throw new Error('Story titles are not unique');
-          const joined = Buffer.concat(bodies.flatMap((body, index) => index ? [Buffer.from([0]), body] : [body]));
-          const digest = crypto.createHash('sha256').update(joined).digest('hex');
-          if (digest !== release.program_body_sequence_sha256) throw new Error(`Programme body hash mismatch: ${digest}`);
-          console.log(`Verified 57 short stories; programme body hash ${digest}; source ${release.source_reading_master_sha256}.`);
-          '''.replace('\n          ', '\n').lstrip()
-          Path('scripts/verify-short-story-release.mjs').write_text(verifier, encoding='utf-8')
           Path('src/data/short-story-release-v1.generated').write_text(expected + '\n', encoding='utf-8')
-          print(f'Generated {len(stories)} stories; aggregate body hash {digest}')
+          print(f'Generated 57 stories; aggregate body hash {digest}')
           PY
 
       - name: Install and build exact release
@@ -211,6 +120,6 @@ jobs:
           git status --short
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add src/content/stories/short-programme src/pages/read/short-stories scripts/verify-short-story-release.mjs src/data/short-story-release-v1.generated
+          git add src/content/stories/short-programme src/data/short-story-release-v1.generated
           git commit -m 'Complete exact 57-story proofreading release'
           git push origin "HEAD:${HEAD_REF}"
