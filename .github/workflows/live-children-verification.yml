@@ -22,7 +22,7 @@ jobs:
           - label: origin · read shelf
             mode: content
             url: https://vaelinya-site.pages.dev/read/
-            marker: Children of Vaelinya · 72 story pages
+            marker: 'Start with the Children of Vaelinya: eight children, eight individual stories each, then eight adventures together.'
           - label: origin · parent shelf
             mode: content
             url: https://vaelinya-site.pages.dev/read/children-of-vaelinya/
@@ -46,7 +46,7 @@ jobs:
           - label: vaelinya.uk · read shelf
             mode: custom-front-door
             url: https://vaelinya.uk/read/
-            marker: Children of Vaelinya · 72 story pages
+            marker: 'Start with the Children of Vaelinya: eight children, eight individual stories each, then eight adventures together.'
           - label: vaelinya.uk · parent shelf
             mode: custom-front-door
             url: https://vaelinya.uk/read/children-of-vaelinya/
