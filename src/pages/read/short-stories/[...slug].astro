@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from 'astro:content';
+import ShortProgrammeStoryLayout from '../../../layouts/ShortProgrammeStoryLayout.astro';
+
+export async function getStaticPaths() {
+  const stories = (await getCollection('stories', ({ data }) => data.arc === 'Short Story Programme'))
+    .sort((a, b) => a.data.story_number - b.data.story_number);
+
+  return stories.map((story, index) => ({
+    params: { slug: story.id.replace(/^short-programme\//, '').replace(/\.md$/, '') },
+    props: {
+      story,
+      previousStory: index > 0 ? { title: stories[index - 1].data.title, url: stories[index - 1].data.public_url } : undefined,
+      nextStory: index + 1 < stories.length ? { title: stories[index + 1].data.title, url: stories[index + 1].data.public_url } : undefined,
+    },
+  }));
+}
+
+const { story, previousStory, nextStory } = Astro.props;
+const { Content } = await render(story);
+---
+<ShortProgrammeStoryLayout
+  title={story.data.title}
+  description={story.data.description}
+  storyNumber={story.data.story_number}
+  totalStories={story.data.total_stories}
+  heroImage={story.data.hero_image}
+  heroImageAlt={story.data.hero_image_alt}
+  previousStory={previousStory}
+  nextStory={nextStory}
+>
+  <Content />
+</ShortProgrammeStoryLayout>
