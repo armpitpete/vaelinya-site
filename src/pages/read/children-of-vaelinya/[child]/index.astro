@@ -1,0 +1,96 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import {
+  allChildrenOfVaelinyaGroups,
+  nestedLinaStoryUrl,
+  nestedProgrammeStoryUrl,
+} from '../../../../data/children-of-vaelinya';
+
+export function getStaticPaths() {
+  return allChildrenOfVaelinyaGroups.map((group) => ({
+    params: { child: group.slug },
+    props: { group },
+  }));
+}
+
+const { group } = Astro.props;
+const programmeStories = (await getCollection('stories', ({ data }) => data.arc === 'Short Story Programme'))
+  .sort((a, b) => a.data.story_number - b.data.story_number);
+const programmeByPosition = new Map(programmeStories.map((story) => [story.data.story_number, story]));
+
+let entries;
+if (group.slug === 'lina') {
+  const linaStories = (await getCollection('stories', ({ data }) => data.arc === 'Lina'))
+    .sort((a, b) => a.data.story_number - b.data.story_number);
+
+  if (linaStories.length !== 8) throw new Error(`Expected 8 Lina stories; found ${linaStories.length}`);
+  entries = linaStories.map((story) => ({
+    number: story.data.story_number,
+    title: story.data.title,
+    description: story.data.description,
+    href: nestedLinaStoryUrl(story.data.story_number, story.id),
+  }));
+} else if (group.slug === 'together') {
+  entries = group.programmePositions.map((position, index) => {
+    const story = programmeByPosition.get(position);
+    if (!story) throw new Error(`Missing Together programme position ${position}`);
+    return {
+      number: index + 1,
+      title: story.data.title,
+      description: story.data.description,
+      href: nestedProgrammeStoryUrl(group.slug, index + 1, story.id),
+    };
+  });
+} else {
+  if (!group.starter) throw new Error(`Missing starter story for ${group.name}`);
+  const laterStories = group.programmePositions.map((position, index) => {
+    const story = programmeByPosition.get(position);
+    if (!story) throw new Error(`Missing ${group.name} programme position ${position}`);
+    return {
+      number: index + 2,
+      title: story.data.title,
+      description: story.data.description,
+      href: nestedProgrammeStoryUrl(group.slug, index + 2, story.id),
+    };
+  });
+  entries = [
+    {
+      number: 1,
+      title: group.starter.title,
+      description: `${group.name}'s first story in the Children of Vaelinya sequence.`,
+      href: group.starter.href,
+    },
+    ...laterStories,
+  ];
+}
+
+if (entries.length !== 8) throw new Error(`Expected 8 stories for ${group.name}; found ${entries.length}`);
+const isTogether = group.slug === 'together';
+const description = `${group.name}: eight ${isTogether ? 'shared adventures' : 'stories'} in the Children of Vaelinya library.`;
+---
+<BaseLayout title={`${group.name} · Children of Vaelinya`} description={description}>
+  <section class="page-section">
+    <p class="eyebrow">Children of Vaelinya</p>
+    <h1>{isTogether ? 'Eight adventures together' : `${group.name}'s eight stories`}</h1>
+    <p class="lede">{group.description}</p>
+
+    <ol class="story-grid story-list" aria-label={`${group.name} stories in order`}>
+      {entries.map((entry) => (
+        <li>
+          <a class="story-card" href={entry.href} aria-label={`Read Story ${entry.number}: ${entry.title}`}>
+            <span>Story {entry.number} of 8</span>
+            <strong>{entry.title}</strong>
+            <p>{entry.description}</p>
+            <span class="story-card-action" aria-hidden="true">Read story</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+
+    <div class="link-list">
+      <a href="/read/children-of-vaelinya/">All Children of Vaelinya folders</a>
+      <a href="/read/">All reading paths</a>
+    </div>
+  </section>
+</BaseLayout>
