@@ -2,106 +2,38 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 const children = [
-  {
-    name: 'Fina',
-    story: 'Fina and the Smallest Bell',
-    href: '/read/children/fina-and-the-smallest-bell/',
-    status: 'Read now',
-    feel: 'small, precise, quiet, and bell-like',
-    description: 'Fina notices the warning that almost everyone else misses because it is very small.',
-  },
-  {
-    name: 'Nira',
-    story: 'Nira and the Lake That Listened',
-    href: '/read/children/nira-and-the-lake-that-listened/',
-    status: 'Read now',
-    feel: 'still, reflective, and emotionally accurate',
-    description: 'Nira listens for the quieter feeling underneath anger, fear, and tangled words.',
-  },
-  {
-    name: 'Liana',
-    story: 'Liana and the Room That Held Its Breath',
-    href: '/read/children/liana-and-the-room-that-held-its-breath/',
-    status: 'Read now',
-    feel: 'warm, gentle, room-based, and repair-focused',
-    description: 'Liana notices when a room is tidy on the outside but still holding hurt inside it.',
-  },
-  {
-    name: 'Valen',
-    story: 'Valen and the Broken Promise Stone',
-    href: '/read/children/valen-and-the-broken-promise-stone/',
-    status: 'Read now',
-    feel: 'steady, fair, and morally clear',
-    description: 'Valen helps a shared promise become clear and whole.',
-  },
-  {
-    name: 'Reo',
-    story: 'Reo and the Song That Went the Wrong Way',
-    href: '/read/children/reo-and-the-song-that-went-the-wrong-way/',
-    status: 'Read now',
-    feel: 'playful, comic, physical, and curious',
-    description: 'Reo follows a wrong note and finds that a mistake may be pointing towards a real problem.',
-  },
-  {
-    name: 'Kaelen',
-    story: 'Kaelen and the Door in the Wind',
-    href: '/read/children/kaelen-and-the-door-in-the-wind/',
-    status: 'Read now',
-    feel: 'fast, windy, bodily, and action-led',
-    description: 'Kaelen learns that courage is not only running quickly; it is also reading the moment properly.',
-  },
-  {
-    name: 'Elara',
-    story: 'Elara and the Star-Path Under the Hill',
-    href: '/read/children/elara-and-the-star-path-under-the-hill/',
-    status: 'Read now',
-    feel: 'luminous, careful, mythic, and wondrous',
-    description: 'Elara follows a faint path of remembered light when the obvious way has vanished.',
-  },
+  { name: 'Fina', story: 'Fina and the Smallest Bell', href: '/read/children/fina-and-the-smallest-bell/' },
+  { name: 'Nira', story: 'Nira and the Lake That Listened', href: '/read/children/nira-and-the-lake-that-listened/' },
+  { name: 'Liana', story: 'Liana and the Room That Held Its Breath', href: '/read/children/liana-and-the-room-that-held-its-breath/' },
+  { name: 'Valen', story: 'Valen and the Broken Promise Stone', href: '/read/children/valen-and-the-broken-promise-stone/' },
+  { name: 'Reo', story: 'Reo and the Song That Went the Wrong Way', href: '/read/children/reo-and-the-song-that-went-the-wrong-way/' },
+  { name: 'Kaelen', story: 'Kaelen and the Door in the Wind', href: '/read/children/kaelen-and-the-door-in-the-wind/' },
+  { name: 'Elara', story: 'Elara and the Star-Path Under the Hill', href: '/read/children/elara-and-the-star-path-under-the-hill/' },
 ];
 ---
-<BaseLayout title="The children of Vaelinya" description="Seven starter stories after Lina.">
+<BaseLayout title="Children of Vaelinya starter stories" description="The seven non-Lina Story 1 entries, now part of the full Children of Vaelinya library.">
   <section class="page-section">
-    <p class="eyebrow">Read</p>
-    <h1>The children of Vaelinya</h1>
-    <p class="lede">After Lina’s first story path, seven more children open different ways into Vaelinya.</p>
-    <p>Each child notices a different kind of pressure in the world. Read them as a small starter collection: clear, gentle, strange, and connected without making every child the same.</p>
+    <p class="eyebrow">Children of Vaelinya</p>
+    <h1>The seven non-Lina Story 1s</h1>
+    <p class="lede">These are not a separate seven-story series. Each is Story 1 of that child's eight-story folder.</p>
+    <p>Lina already has her own eight-story path. Fina, Nira, Liana, Valen, Reo, Kaelen and Elara each begin here, then continue with Stories 2–8 in the full Children of Vaelinya library.</p>
 
-    <article class="panel">
-      <p class="eyebrow">Starter collection</p>
-      <h2>Seven story doorways</h2>
-      <p>These are the seven non-Lina starter stories. They are shaped to help readers meet each child clearly before larger story cycles begin.</p>
-    </article>
-
-    <ol class="story-grid story-list" aria-label="Seven starter stories after Lina">
+    <ol class="story-grid story-list" aria-label="Seven non-Lina Story 1 entries">
       {children.map((child) => (
         <li>
-          {child.href ? (
-            <a class="story-card" href={child.href} aria-label={`Read ${child.story}`}>
-              <span>{child.name}</span>
-              <strong>{child.story}</strong>
-              <p>{child.description}</p>
-              <p><em>{child.feel}</em></p>
-              <span class="story-card-action" aria-hidden="true">{child.status}</span>
-            </a>
-          ) : (
-            <article class="story-card story-card-pending" aria-label={`${child.story} is not open yet`}>
-              <span>{child.name}</span>
-              <strong>{child.story}</strong>
-              <p>{child.description}</p>
-              <p><em>{child.feel}</em></p>
-              <span class="story-card-action" aria-hidden="true">{child.status}</span>
-            </article>
-          )}
+          <a class="story-card" href={child.href} aria-label={`Read ${child.story}`}>
+            <span>{child.name} · Story 1 of 8</span>
+            <strong>{child.story}</strong>
+            <span class="story-card-action" aria-hidden="true">Read Story 1</span>
+          </a>
         </li>
       ))}
     </ol>
 
     <div class="link-list">
-      <a href="/read/lina/">Begin with Lina</a>
-      <a href="/read/lina/01-the-bridge-that-sang-back/">Read Story 1</a>
-      <a href="/world/the-rim/">Explore the Rim</a>
-      <a href="/language/lexicon/">Open the lexicon</a>
+      <a href="/read/children-of-vaelinya/">Open all Children of Vaelinya folders</a>
+      <a href="/read/children-of-vaelinya/lina/">Lina's eight stories</a>
+      <a href="/read/children-of-vaelinya/together/">Eight adventures together</a>
     </div>
   </section>
 </BaseLayout>
