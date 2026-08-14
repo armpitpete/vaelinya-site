@@ -4,20 +4,29 @@ import crypto from 'node:crypto';
 
 const root = process.cwd();
 const release = JSON.parse(fs.readFileSync(path.join(root, 'src/data/short-story-release-v1.json'), 'utf8'));
-const titles = JSON.parse(fs.readFileSync(path.join(root, 'src/data/short-story-titles-v1.json'), 'utf8'));
-const chunkDir = path.join(root, 'src/data/short-stories/chunks');
-const chunkFiles = fs.readdirSync(chunkDir).filter((name) => /^\d{2}-\d{2}\.txt$/.test(name)).sort();
+const dir = path.join(root, 'src/content/stories/short-programme');
+const files = fs.readdirSync(dir).filter((name) => name.endsWith('.md')).sort();
 
-if (titles.length !== 57 || new Set(titles).size !== 57 || release.story_count !== 57) throw new Error('Expected exactly 57 unique titles');
+if (release.story_count !== 57 || files.length !== 57) throw new Error(`Expected 57 stories; got ${files.length}`);
 
 const bodies = [];
-for (let position = 1; position <= 57; position += 1) {
-  const prefix = `${String(position).padStart(2, '0')}-`;
-  const files = chunkFiles.filter((name) => name.startsWith(prefix));
-  if (files.length === 0) throw new Error(`Missing body chunks for story ${position}`);
-  bodies.push(Buffer.from(files.map((name) => fs.readFileSync(path.join(chunkDir, name), 'utf8')).join(''), 'utf8'));
+const titles = new Set();
+for (let i = 0; i < files.length; i += 1) {
+  const position = i + 1;
+  if (!files[i].startsWith(String(position).padStart(2, '0') + '-')) throw new Error(`Wrong story position: ${files[i]}`);
+  const text = fs.readFileSync(path.join(dir, files[i]), 'utf8');
+  const match = text.match(/^# (.+)$/m);
+  if (!match) throw new Error(`Missing H1: ${files[i]}`);
+  titles.add(match[1]);
+  const marker = `# ${match[1]}\n\n`;
+  const at = text.indexOf(marker);
+  if (at < 0) throw new Error(`Malformed H1: ${files[i]}`);
+  if (!text.includes(`story_number: ${position}\n`)) throw new Error(`Wrong frontmatter position: ${files[i]}`);
+  if (!text.includes('total_stories: 57\n')) throw new Error(`Wrong total: ${files[i]}`);
+  bodies.push(Buffer.from(text.slice(at + marker.length), 'utf8'));
 }
 
+if (titles.size !== 57) throw new Error('Story titles are not unique');
 const joined = Buffer.concat(bodies.flatMap((body, index) => index ? [Buffer.from([0]), body] : [body]));
 const digest = crypto.createHash('sha256').update(joined).digest('hex');
 if (digest !== release.program_body_sequence_sha256) throw new Error(`Programme body hash mismatch: ${digest}`);
