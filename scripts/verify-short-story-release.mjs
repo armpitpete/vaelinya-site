@@ -4,9 +4,9 @@ import crypto from 'node:crypto';
 
 const root = process.cwd();
 const release = JSON.parse(fs.readFileSync(path.join(root, 'src/data/short-story-release-v1.json'), 'utf8'));
-const batchDir = path.join(root, 'src/data/short-stories');
-const batchFiles = fs.readdirSync(batchDir).filter((name) => /^batch-\d+\.json$/.test(name)).sort();
-const stories = batchFiles.flatMap((name) => JSON.parse(fs.readFileSync(path.join(batchDir, name), 'utf8')));
+const storyDir = path.join(root, 'src/data/short-stories');
+const storyFiles = fs.readdirSync(storyDir).filter((name) => /^story-\d+\.json$/.test(name)).sort();
+const stories = storyFiles.map((name) => JSON.parse(fs.readFileSync(path.join(storyDir, name), 'utf8')));
 
 if (stories.length !== 57 || release.story_count !== 57) throw new Error('Expected exactly 57 short stories');
 
