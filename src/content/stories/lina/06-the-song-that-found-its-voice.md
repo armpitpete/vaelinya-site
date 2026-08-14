@@ -9,7 +9,7 @@ total_stories: 8
 status: "ready"
 public_url: "/read/lina/06-the-song-that-found-its-voice/"
 old_url: "/stories/canon/solo/child-01-lina/06-story/"
-hero_image: "/images/stories/lina/song-that-found-its-voice.webp"
+hero_image: "/images/read/lina/lina-06-the-song-that-found-its-voice.webp"
 related_world:
   - "/world/the-rim/"
   - "/world/the-warm-remembering/"

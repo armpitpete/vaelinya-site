@@ -9,7 +9,7 @@ total_stories: 8
 status: "ready"
 public_url: "/read/lina/04-the-mirror-pool/"
 old_url: "/stories/canon/solo/child-01-lina/04-story/"
-hero_image: "/images/stories/lina/mirror-pool.webp"
+hero_image: "/images/read/lina/lina-04-the-mirror-pool.webp"
 related_world:
   - "/world/the-rim/"
   - "/world/the-warm-remembering/"
