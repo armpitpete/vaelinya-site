@@ -12,7 +12,19 @@ export async function getStaticPaths() {
   const paths = [];
   const programmeStories = (await getCollection('stories', ({ data }) => data.arc === 'Short Story Programme'))
     .sort((a, b) => a.data.story_number - b.data.story_number);
+  if (programmeStories.length !== 57) throw new Error(`Expected 57 publication-programme stories; found ${programmeStories.length}`);
   const programmeByPosition = new Map(programmeStories.map((story) => [story.data.story_number, story]));
+
+  const assignedPositions = [
+    ...childStoryGroups.flatMap((group) => group.programmePositions),
+    ...togetherGroup.programmePositions,
+  ];
+  if (assignedPositions.length !== 57 || new Set(assignedPositions).size !== 57) {
+    throw new Error('Children of Vaelinya mapping must assign each of the 57 publication-programme positions exactly once');
+  }
+  for (let position = 1; position <= 57; position += 1) {
+    if (!assignedPositions.includes(position)) throw new Error(`Unassigned publication-programme position ${position}`);
+  }
 
   const linaStories = (await getCollection('stories', ({ data }) => data.arc === 'Lina'))
     .sort((a, b) => a.data.story_number - b.data.story_number);
@@ -37,6 +49,8 @@ export async function getStaticPaths() {
   }
 
   for (const group of childStoryGroups.filter((item) => item.slug !== 'lina')) {
+    if (!group.starter) throw new Error(`Missing starter story for ${group.name}`);
+    if (group.programmePositions.length !== 7) throw new Error(`Expected 7 later stories for ${group.name}`);
     for (let index = 0; index < group.programmePositions.length; index += 1) {
       const position = group.programmePositions[index];
       const story = programmeByPosition.get(position);
@@ -66,6 +80,7 @@ export async function getStaticPaths() {
     }
   }
 
+  if (togetherGroup.programmePositions.length !== 8) throw new Error('Expected 8 Together stories');
   for (let index = 0; index < togetherGroup.programmePositions.length; index += 1) {
     const position = togetherGroup.programmePositions[index];
     const story = programmeByPosition.get(position);
