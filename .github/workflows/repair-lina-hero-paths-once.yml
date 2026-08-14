@@ -1,0 +1,89 @@
+name: Repair Lina hero paths once
+
+on:
+  push:
+    branches: [agent/fix-lina-hero-images]
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/fix-lina-hero-images
+          fetch-depth: 0
+      - name: Repair six stale Lina hero paths and audit story assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          fixes = {
+              'src/content/stories/lina/03-the-maze-that-remembers.md': ('/images/stories/lina/maze-that-remembers.webp', '/images/read/lina/lina-03-the-maze-that-remembers.webp'),
+              'src/content/stories/lina/04-the-mirror-pool.md': ('/images/stories/lina/mirror-pool.webp', '/images/read/lina/lina-04-the-mirror-pool.webp'),
+              'src/content/stories/lina/05-the-sleeping-tree.md': ('/images/stories/lina/sleeping-tree.webp', '/images/read/lina/lina-05-the-sleeping-tree.webp'),
+              'src/content/stories/lina/06-the-song-that-found-its-voice.md': ('/images/stories/lina/song-that-found-its-voice.webp', '/images/read/lina/lina-06-the-song-that-found-its-voice.webp'),
+              'src/content/stories/lina/07-the-star-that-forgot-to-shine.md': ('/images/stories/lina/star-that-forgot-to-shine.webp', '/images/read/lina/lina-07-the-star-that-forgot-to-shine.webp'),
+              'src/content/stories/lina/08-the-whispering-cave.md': ('/images/stories/lina/whispering-cave.webp', '/images/read/lina/lina-08-the-whispering-cave.webp'),
+          }
+
+          changed = 0
+          for filename, (old, new) in fixes.items():
+              path = Path(filename)
+              text = path.read_text(encoding='utf-8')
+              if old in text:
+                  if text.count(old) != 1:
+                      raise SystemExit(f'{filename}: expected exactly one stale hero path, found {text.count(old)}')
+                  text = text.replace(old, new)
+                  path.write_text(text, encoding='utf-8')
+                  changed += 1
+              elif new not in text:
+                  raise SystemExit(f'{filename}: neither expected old nor new hero path is present')
+              asset = Path('public') / new.lstrip('/')
+              if not asset.is_file():
+                  raise SystemExit(f'{filename}: target hero asset missing: {asset}')
+
+          print(f'Repaired {changed} Lina hero-image references.')
+
+          # Global guard for story frontmatter: every local absolute hero_image must exist in public/.
+          broken = []
+          checked = 0
+          for path in Path('src/content/stories').rglob('*.md'):
+              text = path.read_text(encoding='utf-8')
+              match = re.search(r'^hero_image:\s*["\']?(/[^"\'\n]+)["\']?\s*$', text, re.M)
+              if not match:
+                  continue
+              hero = match.group(1)
+              checked += 1
+              target = Path('public') / hero.lstrip('/')
+              if not target.is_file():
+                  broken.append((str(path), hero))
+          if broken:
+              for filename, hero in broken:
+                  print(f'BROKEN hero_image: {filename} -> {hero}')
+              raise SystemExit(f'{len(broken)} story hero_image path(s) do not exist')
+          print(f'Hero-image audit PASS: {checked} local story hero images resolve to public assets.')
+          PY
+      - name: Commit repaired story metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- src/content/stories/lina; then
+            echo 'Lina hero paths already repaired; no commit needed.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/content/stories/lina/03-the-maze-that-remembers.md \
+                  src/content/stories/lina/04-the-mirror-pool.md \
+                  src/content/stories/lina/05-the-sleeping-tree.md \
+                  src/content/stories/lina/06-the-song-that-found-its-voice.md \
+                  src/content/stories/lina/07-the-star-that-forgot-to-shine.md \
+                  src/content/stories/lina/08-the-whispering-cave.md
+          git commit -m 'Fix Lina hero image paths'
+          git push origin HEAD:agent/fix-lina-hero-images
