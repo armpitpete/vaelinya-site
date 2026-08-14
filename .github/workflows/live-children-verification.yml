@@ -27,10 +27,10 @@ jobs:
             marker: Eight children. Eight stories each. Then eight adventures together.
           - label: origin · Lina folder
             url: https://vaelinya-site.pages.dev/read/children-of-vaelinya/lina/
-            marker: Lina's eight stories
+            marker: The Bridge That Sang Back
           - label: origin · Fina folder
             url: https://vaelinya-site.pages.dev/read/children-of-vaelinya/fina/
-            marker: Fina's eight stories
+            marker: Fina and the Smallest Bell
           - label: origin · Together folder
             url: https://vaelinya-site.pages.dev/read/children-of-vaelinya/together/
             marker: Eight adventures together
@@ -45,10 +45,10 @@ jobs:
             marker: Eight children. Eight stories each. Then eight adventures together.
           - label: vaelinya.uk · Lina folder
             url: https://vaelinya.uk/read/children-of-vaelinya/lina/
-            marker: Lina's eight stories
+            marker: The Bridge That Sang Back
           - label: vaelinya.uk · Fina folder
             url: https://vaelinya.uk/read/children-of-vaelinya/fina/
-            marker: Fina's eight stories
+            marker: Fina and the Smallest Bell
           - label: vaelinya.uk · Together folder
             url: https://vaelinya.uk/read/children-of-vaelinya/together/
             marker: Eight adventures together
@@ -71,7 +71,9 @@ jobs:
               --silent \
               --show-error \
               --location \
-              --user-agent 'Mozilla/5.0 (compatible; VaelinyaLiveStoryVerifier/1.1)' \
+              --user-agent 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36' \
+              --header 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8' \
+              --header 'Accept-Language: en-GB,en;q=0.9' \
               --connect-timeout 10 \
               --max-time 30 \
               --output "$body" \
@@ -86,6 +88,15 @@ jobs:
               echo "$CHECK_LABEL PASS: status=200 url=$effective_url marker=$REQUIRED_MARKER"
               rm -f "$body"
               exit 0
+            fi
+
+            if [[ "$status" == "403" ]] \
+              && grep --fixed-strings --quiet 'Just a moment...' "$body" \
+              && grep --fixed-strings --quiet 'challenges.cloudflare.com' "$body"; then
+              echo "::error::$CHECK_LABEL reached the custom domain but Cloudflare presented an interactive challenge; content was not counted as verified."
+              head -c 1000 "$body" || true
+              rm -f "$body"
+              exit 2
             fi
 
             echo "$CHECK_LABEL attempt $attempt/24: status=${status:-unknown} url=${effective_url:-unknown} marker_found=$marker_found"
