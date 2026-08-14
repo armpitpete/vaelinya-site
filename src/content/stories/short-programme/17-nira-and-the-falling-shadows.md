@@ -8,7 +8,7 @@ story_number: 17
 total_stories: 57
 status: "ready"
 public_url: "/read/short-stories/17-nira-and-the-falling-shadows/"
-hero_image: "/images/read/fables/luma-and-the-grass-that-held-sens-place/hero.webp"
+hero_image: "/images/read/fables/luma-and-the-grass-that-held-sens-place/hero.png"
 hero_image_alt: "Vaelinya artwork used as the header image for this story in the initial web edition."
 related_world:
   - "/world/"

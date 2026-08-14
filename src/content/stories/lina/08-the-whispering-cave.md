@@ -9,7 +9,7 @@ total_stories: 8
 status: "ready"
 public_url: "/read/lina/08-the-whispering-cave/"
 old_url: "/stories/canon/solo/child-01-lina/08-story/"
-hero_image: "/images/stories/lina/whispering-cave.webp"
+hero_image: "/images/read/lina/lina-08-the-whispering-cave.webp"
 symbol: "/images/stories/lina/symbols/lina-symbol-08-listening-stone.svg"
 symbol_alt: "A listening-stone with eight tiny lights for The Whispering Cave."
 related_world:

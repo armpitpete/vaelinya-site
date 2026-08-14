@@ -9,7 +9,7 @@ total_stories: 8
 status: "ready"
 public_url: "/read/lina/07-the-star-that-forgot-to-shine/"
 old_url: "/stories/canon/solo/child-01-lina/07-story/"
-hero_image: "/images/stories/lina/star-that-forgot-to-shine.webp"
+hero_image: "/images/read/lina/lina-07-the-star-that-forgot-to-shine.webp"
 related_world:
   - "/world/the-rim/"
   - "/world/the-warm-remembering/"

@@ -8,7 +8,7 @@ story_number: 24
 total_stories: 57
 status: "ready"
 public_url: "/read/short-stories/24-the-storm-of-shattered-songs/"
-hero_image: "/images/read/fables/luma-and-the-grass-that-held-sens-place/hero.webp"
+hero_image: "/images/read/fables/luma-and-the-grass-that-held-sens-place/hero.png"
 hero_image_alt: "Vaelinya artwork used as the header image for this story in the initial web edition."
 related_world:
   - "/world/"

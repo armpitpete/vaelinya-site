@@ -8,7 +8,7 @@ story_number: 51
 total_stories: 57
 status: "ready"
 public_url: "/read/short-stories/51-nira-and-the-night-bearings/"
-hero_image: "/images/read/fables/the-roof-that-waited-for-rain/hero.webp"
+hero_image: "/images/read/fables/the-roof-that-waited-for-rain/hero.png"
 hero_image_alt: "Vaelinya artwork used as the header image for this story in the initial web edition."
 related_world:
   - "/world/"
