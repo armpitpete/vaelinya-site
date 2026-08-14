@@ -1,0 +1,216 @@
+name: Complete short-story release
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  complete-release:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Stop if release is already generated
+        id: generated
+        shell: bash
+        run: |
+          if [[ -f src/data/short-story-release-v1.generated ]]; then
+            echo "done=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "done=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Download accepted publication artifact
+        if: steps.generated.outputs.done != 'true'
+        shell: bash
+        env:
+          ARTIFACT_URL: 'https://sdmntprnortheu.oaiusercontent.com/files/00000000-24f8-81f4-ba2e-29cfe62a8d79/raw?se=2026-08-14T20%3A57%3A53Z&sp=r&sv=2026-02-06&sr=b&scid=d66e7c35-4b81-5b67-99c5-128222b11b48&skoid=3804227d-1b52-417d-afd9-9ffbb50fa53e&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-14T18%3A44%3A54Z&ske=2026-08-15T18%3A44%3A54Z&sks=b&skv=2026-02-06&sig=5PTnNnpAc4jd3E3yYABXjhjvc1/Ue/fHDAOI6le6wXI%3D'
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --output /tmp/publication.zip "$ARTIFACT_URL"
+          rm -rf /tmp/publication
+          mkdir -p /tmp/publication
+          unzip -q /tmp/publication.zip -d /tmp/publication
+          master="$(find /tmp/publication -name 'Vaelinya_Short_Story_Reading_Master_v1.0.md' -print -quit)"
+          test -n "$master"
+          printf '%s  %s\n' 'e8232dc87180ce91b9028780a9f56bdabfc297110a15ff0d2484c394fee53d56' "$master" | sha256sum --check --strict
+          cp "$master" /tmp/Vaelinya_Short_Story_Reading_Master_v1.0.md
+
+      - name: Generate exact 57-story site content
+        if: steps.generated.outputs.done != 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import re, json, hashlib, unicodedata
+
+          master = Path('/tmp/Vaelinya_Short_Story_Reading_Master_v1.0.md').read_text(encoding='utf-8')
+          matches = list(re.finditer(r'^## (\d+)\. (.+)$', master, re.M))
+          if len(matches) != 57:
+              raise SystemExit(f'Expected 57 stories, found {len(matches)}')
+
+          hero_pool = [
+              '/images/read/fables/the-line-of-white-pebbles/hero.webp',
+              '/images/read/fables/the-roof-that-waited-for-rain/hero.webp',
+              '/images/read/fables/luma-and-the-grass-that-held-sens-place/hero.webp',
+              '/images/read/fables/the-mountain-healers-who-would-not-help-their-own/hero.webp',
+              '/images/begin-the-journey.webp',
+              '/images/door-read.webp',
+              '/images/lina-first-path.webp',
+          ]
+
+          def slugify(value):
+              value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore').decode('ascii').lower()
+              value = value.replace("'", '')
+              return re.sub(r'[^a-z0-9]+', '-', value).strip('-')
+
+          out = Path('src/content/stories/short-programme')
+          out.mkdir(parents=True, exist_ok=True)
+          for old in out.glob('*.md'):
+              old.unlink()
+
+          stories = []
+          bodies = []
+          for index, match in enumerate(matches):
+              position = int(match.group(1))
+              if position != index + 1:
+                  raise SystemExit(f'Unexpected position {position} at index {index + 1}')
+              title = match.group(2).strip()
+              start = match.end() + (1 if master[match.end():match.end()+1] == '\n' else 0)
+              end = matches[index + 1].start() if index + 1 < len(matches) else len(master)
+              body = master[start:end]
+              body = re.sub(r'\n\n---\n\s*$', '\n', body)
+              body = body.lstrip('\n').rstrip('\n') + '\n'
+              bodies.append(body.encode('utf-8'))
+              slug = f'{position:02d}-{slugify(title)}'
+              hero = hero_pool[index % len(hero_pool)]
+              description = f'Story {position} of 57 in the Vaelinya Short Story Programme: {title}.'
+              frontmatter = f'''---\ntitle: {json.dumps(title, ensure_ascii=False)}\ndescription: {json.dumps(description, ensure_ascii=False)}\nsection: "read"\nseries: "Vaelinya Short Story Programme"\narc: "Short Story Programme"\nstory_number: {position}\ntotal_stories: 57\nstatus: "ready"\npublic_url: "/read/short-stories/{slug}/"\nhero_image: "{hero}"\nhero_image_alt: "Vaelinya artwork used as the header image for this story in the initial web edition."\nrelated_world:\n  - "/world/"\nrelated_language:\n  - "/language/"\nrelated_artefacts: []\n---\n\n# {title}\n\n'''
+              (out / f'{slug}.md').write_text(frontmatter + body, encoding='utf-8')
+              stories.append((position, title, slug))
+
+          digest = hashlib.sha256(b'\0'.join(bodies)).hexdigest()
+          expected = '36a2e4c530960a5315c167bb5326f2dc9970d345b563c008a9936cf0ad194799'
+          if digest != expected:
+              raise SystemExit(f'Aggregate body hash mismatch: {digest}')
+
+          Path('src/pages/read/short-stories/[...slug].astro').write_text(r'''---
+          import { getCollection, render } from 'astro:content';
+          import ShortProgrammeStoryLayout from '../../../layouts/ShortProgrammeStoryLayout.astro';
+
+          export async function getStaticPaths() {
+            const stories = (await getCollection('stories', ({ data }) => data.arc === 'Short Story Programme'))
+              .sort((a, b) => a.data.story_number - b.data.story_number);
+            return stories.map((story, index) => ({
+              params: { slug: story.id.replace(/^short-programme\//, '').replace(/\.md$/, '') },
+              props: {
+                story,
+                previousStory: index > 0 ? { title: stories[index - 1].data.title, url: stories[index - 1].data.public_url } : undefined,
+                nextStory: index + 1 < stories.length ? { title: stories[index + 1].data.title, url: stories[index + 1].data.public_url } : undefined,
+              },
+            }));
+          }
+          const { story, previousStory, nextStory } = Astro.props;
+          const { Content } = await render(story);
+          ---
+          <ShortProgrammeStoryLayout
+            title={story.data.title}
+            description={story.data.description}
+            storyNumber={story.data.story_number}
+            totalStories={story.data.total_stories}
+            heroImage={story.data.hero_image}
+            heroImageAlt={story.data.hero_image_alt}
+            previousStory={previousStory}
+            nextStory={nextStory}
+          >
+            <Content />
+          </ShortProgrammeStoryLayout>
+          ''').replace('\n          ', '\n').lstrip(), encoding='utf-8')
+
+          Path('src/pages/read/short-stories/index.astro').write_text(r'''---
+          import { getCollection } from 'astro:content';
+          import BaseLayout from '../../../layouts/BaseLayout.astro';
+          const stories = (await getCollection('stories', ({ data }) => data.arc === 'Short Story Programme'))
+            .sort((a, b) => a.data.story_number - b.data.story_number);
+          ---
+          <BaseLayout title="57 Vaelinya short stories" description="The complete 57-story Vaelinya Short Story Programme in reader order.">
+            <section class="page-section">
+              <p class="eyebrow">Read</p>
+              <h1>57 Vaelinya short stories</h1>
+              <p class="lede">The complete short-story programme, in the accepted reader order.</p>
+              <p>Read straight through or choose any story below. This first web edition preserves the accepted story text while the collection is proofread in public.</p>
+              <ol class="story-grid story-list" aria-label="57 Vaelinya short stories">
+                {stories.map((story) => (
+                  <li><a class="story-card" href={story.data.public_url} aria-label={`Read ${story.data.title}`}>
+                    <span>Story {story.data.story_number}</span><strong>{story.data.title}</strong><span class="story-card-action" aria-hidden="true">Read story</span>
+                  </a></li>
+                ))}
+              </ol>
+              <div class="link-list"><a href="/read/">All reading paths</a><a href="/world/">Explore the world</a></div>
+            </section>
+          </BaseLayout>
+          ''').replace('\n          ', '\n').lstrip(), encoding='utf-8')
+
+          verifier = r'''import fs from 'node:fs';
+          import path from 'node:path';
+          import crypto from 'node:crypto';
+          const root = process.cwd();
+          const release = JSON.parse(fs.readFileSync(path.join(root, 'src/data/short-story-release-v1.json'), 'utf8'));
+          const dir = path.join(root, 'src/content/stories/short-programme');
+          const files = fs.readdirSync(dir).filter((name) => name.endsWith('.md')).sort();
+          if (release.story_count !== 57 || files.length !== 57) throw new Error(`Expected 57 stories; got ${files.length}`);
+          const bodies = [];
+          const titles = new Set();
+          for (let i = 0; i < files.length; i += 1) {
+            const position = i + 1;
+            if (!files[i].startsWith(String(position).padStart(2, '0') + '-')) throw new Error(`Wrong story position: ${files[i]}`);
+            const text = fs.readFileSync(path.join(dir, files[i]), 'utf8');
+            const match = text.match(/^# (.+)$/m);
+            if (!match) throw new Error(`Missing H1: ${files[i]}`);
+            titles.add(match[1]);
+            const marker = `# ${match[1]}\n\n`;
+            const at = text.indexOf(marker);
+            if (at < 0) throw new Error(`Malformed H1: ${files[i]}`);
+            if (!text.includes(`story_number: ${position}\n`)) throw new Error(`Wrong frontmatter position: ${files[i]}`);
+            if (!text.includes('total_stories: 57\n')) throw new Error(`Wrong total: ${files[i]}`);
+            bodies.push(Buffer.from(text.slice(at + marker.length), 'utf8'));
+          }
+          if (titles.size !== 57) throw new Error('Story titles are not unique');
+          const joined = Buffer.concat(bodies.flatMap((body, index) => index ? [Buffer.from([0]), body] : [body]));
+          const digest = crypto.createHash('sha256').update(joined).digest('hex');
+          if (digest !== release.program_body_sequence_sha256) throw new Error(`Programme body hash mismatch: ${digest}`);
+          console.log(`Verified 57 short stories; programme body hash ${digest}; source ${release.source_reading_master_sha256}.`);
+          '''.replace('\n          ', '\n').lstrip()
+          Path('scripts/verify-short-story-release.mjs').write_text(verifier, encoding='utf-8')
+          Path('src/data/short-story-release-v1.generated').write_text(expected + '\n', encoding='utf-8')
+          print(f'Generated {len(stories)} stories; aggregate body hash {digest}')
+          PY
+
+      - name: Install and build exact release
+        if: steps.generated.outputs.done != 'true'
+        run: |
+          npm install --no-audit --no-fund
+          npm run build
+
+      - name: Commit completed release back to PR branch
+        if: steps.generated.outputs.done != 'true'
+        shell: bash
+        env:
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+        run: |
+          set -euo pipefail
+          git status --short
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/content/stories/short-programme src/pages/read/short-stories scripts/verify-short-story-release.mjs src/data/short-story-release-v1.generated
+          git commit -m 'Complete exact 57-story proofreading release'
+          git push origin "HEAD:${HEAD_REF}"
