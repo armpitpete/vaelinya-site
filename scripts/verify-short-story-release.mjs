@@ -4,28 +4,18 @@ import crypto from 'node:crypto';
 
 const root = process.cwd();
 const release = JSON.parse(fs.readFileSync(path.join(root, 'src/data/short-story-release-v1.json'), 'utf8'));
-const storyDir = path.join(root, 'src/data/short-stories');
-const files = fs.readdirSync(storyDir).filter((name) => /^(story|group)-.*\.json$/.test(name)).sort();
-const stories = files.flatMap((name) => {
-  const value = JSON.parse(fs.readFileSync(path.join(storyDir, name), 'utf8'));
-  return Array.isArray(value) ? value : [value];
-}).sort((a, b) => a.position - b.position);
+const titles = JSON.parse(fs.readFileSync(path.join(root, 'src/data/short-story-titles-v1.json'), 'utf8'));
+const chunkDir = path.join(root, 'src/data/short-stories/chunks');
+const chunkFiles = fs.readdirSync(chunkDir).filter((name) => /^\d{2}-\d{2}\.txt$/.test(name)).sort();
 
-if (stories.length !== 57 || release.story_count !== 57) throw new Error('Expected exactly 57 short stories');
+if (titles.length !== 57 || new Set(titles).size !== 57 || release.story_count !== 57) throw new Error('Expected exactly 57 unique titles');
 
-const titles = new Set();
-const slugs = new Set();
 const bodies = [];
-for (let i = 0; i < stories.length; i += 1) {
-  const story = stories[i];
-  const position = i + 1;
-  if (story.position !== position) throw new Error(`Wrong story position at ${position}`);
-  if (!story.title || titles.has(story.title)) throw new Error(`Invalid or duplicate title at ${position}`);
-  if (!story.slug.startsWith(`${String(position).padStart(2, '0')}-`) || slugs.has(story.slug)) throw new Error(`Invalid or duplicate slug at ${position}`);
-  if (story.publicUrl !== `/read/short-stories/${story.slug}/`) throw new Error(`Wrong URL at ${position}`);
-  titles.add(story.title);
-  slugs.add(story.slug);
-  bodies.push(Buffer.from(story.bodyMarkdown, 'utf8'));
+for (let position = 1; position <= 57; position += 1) {
+  const prefix = `${String(position).padStart(2, '0')}-`;
+  const files = chunkFiles.filter((name) => name.startsWith(prefix));
+  if (files.length === 0) throw new Error(`Missing body chunks for story ${position}`);
+  bodies.push(Buffer.from(files.map((name) => fs.readFileSync(path.join(chunkDir, name), 'utf8')).join(''), 'utf8'));
 }
 
 const joined = Buffer.concat(bodies.flatMap((body, index) => index ? [Buffer.from([0]), body] : [body]));
