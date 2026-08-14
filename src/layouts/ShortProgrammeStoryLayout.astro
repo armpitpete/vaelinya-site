@@ -1,0 +1,63 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface NavStory { title: string; url: string; }
+interface Props {
+  title: string;
+  description: string;
+  storyNumber: number;
+  totalStories: number;
+  heroImage?: string;
+  heroImageAlt?: string;
+  previousStory?: NavStory;
+  nextStory?: NavStory;
+}
+
+const { title, description, storyNumber, totalStories, heroImage, heroImageAlt, previousStory, nextStory } = Astro.props;
+const site = Astro.site ?? new URL('https://vaelinya.uk');
+const canonicalUrl = new URL(Astro.url.pathname, site).toString();
+const imageUrl = heroImage ? new URL(heroImage, site).toString() : undefined;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ShortStory',
+  name: title,
+  description,
+  url: canonicalUrl,
+  isPartOf: { '@type': 'CreativeWorkSeries', name: 'Vaelinya Short Story Programme', url: new URL('/read/short-stories/', site).toString() },
+  position: storyNumber,
+  inLanguage: 'en',
+  ...(imageUrl ? { image: imageUrl } : {}),
+};
+---
+<BaseLayout title={title} description={description} image={heroImage} jsonLd={jsonLd}>
+  <article class="story-page">
+    <header class="story-header">
+      <p class="eyebrow">Vaelinya Short Story Programme · {storyNumber} of {totalStories}</p>
+      {heroImage && (
+        <figure class="story-hero-image">
+          <img src={heroImage} alt={heroImageAlt ?? ''} loading="eager" decoding="async" />
+        </figure>
+      )}
+    </header>
+    <div class="story-content"><slot /></div>
+    <footer class="story-footer">
+      <nav class="story-page-nav" aria-label="Short story navigation">
+        {previousStory && <a class="button secondary" href={previousStory.url}>Previous: {previousStory.title}</a>}
+        <a class="button secondary" href="/read/short-stories/">All 57 stories</a>
+        {nextStory && <a class="button secondary" href={nextStory.url}>Next: {nextStory.title}</a>}
+      </nav>
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  .story-page { width: min(100% - 2rem, 860px); margin-inline: auto; }
+  .story-header, .story-content, .story-footer { width: min(100%, 680px); margin-inline: auto; }
+  .story-hero-image { width: min(100%, 680px); margin: 1rem auto 0; }
+  .story-hero-image img { width: 100%; display: block; border-radius: 1.25rem; }
+  .story-content { margin-top: 1rem; }
+  :global(.story-page .story-content > h1) { font-size: clamp(1.7rem, 2.35vw, 2.35rem); line-height: 1.08; letter-spacing: -0.035em; }
+  .story-footer { margin-top: 2.25rem; }
+  .story-page-nav { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  @media (max-width: 520px) { .story-page { width: 100%; } }
+</style>
