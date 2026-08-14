@@ -11,69 +11,89 @@ permissions:
   contents: read
 
 jobs:
-  verify-live-children:
+  verify-live-route:
+    name: ${{ matrix.label }}
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 6
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: origin · read shelf
+            url: https://vaelinya-site.pages.dev/read/
+            marker: Children of Vaelinya · 72 story pages
+          - label: origin · parent shelf
+            url: https://vaelinya-site.pages.dev/read/children-of-vaelinya/
+            marker: Eight children. Eight stories each. Then eight adventures together.
+          - label: origin · Lina folder
+            url: https://vaelinya-site.pages.dev/read/children-of-vaelinya/lina/
+            marker: Lina's eight stories
+          - label: origin · Fina folder
+            url: https://vaelinya-site.pages.dev/read/children-of-vaelinya/fina/
+            marker: Fina's eight stories
+          - label: origin · Together folder
+            url: https://vaelinya-site.pages.dev/read/children-of-vaelinya/together/
+            marker: Eight adventures together
+          - label: origin · Together finale
+            url: https://vaelinya-site.pages.dev/read/children-of-vaelinya/together/08-the-house-with-one-welcome/
+            marker: The House With One Welcome
+          - label: vaelinya.uk · read shelf
+            url: https://vaelinya.uk/read/
+            marker: Children of Vaelinya · 72 story pages
+          - label: vaelinya.uk · parent shelf
+            url: https://vaelinya.uk/read/children-of-vaelinya/
+            marker: Eight children. Eight stories each. Then eight adventures together.
+          - label: vaelinya.uk · Lina folder
+            url: https://vaelinya.uk/read/children-of-vaelinya/lina/
+            marker: Lina's eight stories
+          - label: vaelinya.uk · Fina folder
+            url: https://vaelinya.uk/read/children-of-vaelinya/fina/
+            marker: Fina's eight stories
+          - label: vaelinya.uk · Together folder
+            url: https://vaelinya.uk/read/children-of-vaelinya/together/
+            marker: Eight adventures together
+          - label: vaelinya.uk · Together finale
+            url: https://vaelinya.uk/read/children-of-vaelinya/together/08-the-house-with-one-welcome/
+            marker: The House With One Welcome
     steps:
-      - name: Verify deployed story hierarchy on origin and custom domain
+      - name: Require HTTP 200 and deployed marker
         shell: bash
+        env:
+          TARGET_URL: ${{ matrix.url }}
+          REQUIRED_MARKER: ${{ matrix.marker }}
+          CHECK_LABEL: ${{ matrix.label }}
         run: |
           set -euo pipefail
+          body="$(mktemp)"
 
-          fetch_page() {
-            local url="$1"
-            local body="$2"
-            curl \
+          for attempt in $(seq 1 24); do
+            metadata="$({ curl \
               --silent \
               --show-error \
               --location \
-              --user-agent 'Mozilla/5.0 (compatible; VaelinyaLiveStoryVerifier/1.0)' \
+              --user-agent 'Mozilla/5.0 (compatible; VaelinyaLiveStoryVerifier/1.1)' \
               --connect-timeout 10 \
               --max-time 30 \
               --output "$body" \
               --write-out '%{http_code}\n%{url_effective}\n' \
-              "$url" 2>&1 || true
-          }
+              "$TARGET_URL"; } 2>&1 || true)"
+            status="$(printf '%s\n' "$metadata" | tail -n 2 | head -n 1)"
+            effective_url="$(printf '%s\n' "$metadata" | tail -n 1)"
+            marker_found=no
+            if grep --fixed-strings --quiet "$REQUIRED_MARKER" "$body"; then marker_found=yes; fi
 
-          verify_page() {
-            local url="$1"
-            local marker="$2"
-            local label="$3"
-            local body metadata status effective_url
-            body="$(mktemp)"
+            if [[ "$status" == "200" && "$marker_found" == "yes" ]]; then
+              echo "$CHECK_LABEL PASS: status=200 url=$effective_url marker=$REQUIRED_MARKER"
+              rm -f "$body"
+              exit 0
+            fi
 
-            for attempt in $(seq 1 30); do
-              metadata="$(fetch_page "$url" "$body")"
-              status="$(printf '%s\n' "$metadata" | tail -n 2 | head -n 1)"
-              effective_url="$(printf '%s\n' "$metadata" | tail -n 1)"
+            echo "$CHECK_LABEL attempt $attempt/24: status=${status:-unknown} url=${effective_url:-unknown} marker_found=$marker_found"
+            sleep 10
+          done
 
-              if [[ "$status" == "200" ]] && grep --fixed-strings --quiet "$marker" "$body"; then
-                echo "$label PASS: status=200 url=$effective_url marker=$marker"
-                rm -f "$body"
-                return 0
-              fi
-
-              echo "$label attempt $attempt/30: status=${status:-unknown} url=${effective_url:-unknown} marker_found=$(grep --fixed-strings --quiet "$marker" "$body" && echo yes || echo no)"
-              sleep 10
-            done
-
-            echo "::error::$label did not return HTTP 200 with required marker: $marker"
-            printf '%s\n' "$metadata"
-            head -c 1500 "$body" || true
-            rm -f "$body"
-            return 1
-          }
-
-          verify_set() {
-            local base="$1"
-            local label="$2"
-            verify_page "$base/read/" 'Children of Vaelinya · 72 story pages' "$label read shelf"
-            verify_page "$base/read/children-of-vaelinya/" 'Eight children. Eight stories each. Then eight adventures together.' "$label Children of Vaelinya parent"
-            verify_page "$base/read/children-of-vaelinya/lina/" "Lina's eight stories" "$label Lina folder"
-            verify_page "$base/read/children-of-vaelinya/fina/" "Fina's eight stories" "$label Fina folder"
-            verify_page "$base/read/children-of-vaelinya/together/" 'Eight adventures together' "$label Together folder"
-            verify_page "$base/read/children-of-vaelinya/together/08-the-house-with-one-welcome/" 'The House With One Welcome' "$label Together finale"
-          }
-
-          verify_set 'https://vaelinya-site.pages.dev' 'Cloudflare Pages origin'
-          verify_set 'https://vaelinya.uk' 'vaelinya.uk custom domain'
+          echo "::error::$CHECK_LABEL did not return HTTP 200 with required marker: $REQUIRED_MARKER"
+          printf '%s\n' "$metadata"
+          head -c 1500 "$body" || true
+          rm -f "$body"
+          exit 1
