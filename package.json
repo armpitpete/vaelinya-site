@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "verify:short-stories": "node scripts/verify-short-story-release.mjs",
+    "build": "npm run verify:short-stories && astro build",
     "preview": "astro preview",
     "test:builder": "node --test tests/vaelinya-builder/*.test.js"
   },
