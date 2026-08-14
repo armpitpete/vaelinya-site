@@ -1,0 +1,65 @@
+name: Live story image verification
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-image:
+    name: ${{ matrix.label }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: Lina 03 hero
+            url: https://vaelinya-site.pages.dev/images/read/lina/lina-03-the-maze-that-remembers.webp
+            content_type: image/webp
+          - label: Lina 08 hero
+            url: https://vaelinya-site.pages.dev/images/read/lina/lina-08-the-whispering-cave.webp
+            content_type: image/webp
+          - label: Roof fable provisional hero
+            url: https://vaelinya-site.pages.dev/images/read/fables/the-roof-that-waited-for-rain/hero.png
+            content_type: image/png
+          - label: Luma fable provisional hero
+            url: https://vaelinya-site.pages.dev/images/read/fables/luma-and-the-grass-that-held-sens-place/hero.png
+            content_type: image/png
+    steps:
+      - name: Verify deployed image binary
+        shell: bash
+        env:
+          TARGET_URL: ${{ matrix.url }}
+          EXPECTED_CONTENT_TYPE: ${{ matrix.content_type }}
+          CHECK_LABEL: ${{ matrix.label }}
+        run: |
+          set -euo pipefail
+          body="$(mktemp)"
+          headers="$(mktemp)"
+          trap 'rm -f "$body" "$headers"' EXIT
+
+          for attempt in $(seq 1 24); do
+            status="$(curl --silent --show-error --location \
+              --connect-timeout 10 --max-time 30 \
+              --dump-header "$headers" --output "$body" \
+              --write-out '%{http_code}' "$TARGET_URL" || true)"
+            content_type="$(awk -F': *' 'tolower($1)=="content-type" {print tolower($2)}' "$headers" | tr -d '\r' | tail -n 1)"
+            size="$(wc -c < "$body" | tr -d ' ')"
+
+            if [[ "$status" == "200" && "$content_type" == "$EXPECTED_CONTENT_TYPE"* && "$size" -gt 0 ]]; then
+              echo "$CHECK_LABEL PASS: status=$status content-type=$content_type bytes=$size url=$TARGET_URL"
+              exit 0
+            fi
+
+            echo "$CHECK_LABEL attempt $attempt/24: status=${status:-unknown} content-type=${content_type:-unknown} bytes=${size:-0}"
+            sleep 10
+          done
+
+          echo "::error::$CHECK_LABEL was not served as the expected non-empty image binary."
+          exit 1
