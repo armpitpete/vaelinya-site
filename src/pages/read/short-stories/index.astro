@@ -1,6 +1,9 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { shortStories } from '../../../data/short-stories';
+
+const stories = (await getCollection('stories', ({ data }) => data.arc === 'Short Story Programme'))
+  .sort((a, b) => a.data.story_number - b.data.story_number);
 ---
 <BaseLayout title="57 Vaelinya short stories" description="The complete 57-story Vaelinya Short Story Programme in reader order.">
   <section class="page-section">
@@ -8,17 +11,19 @@ import { shortStories } from '../../../data/short-stories';
     <h1>57 Vaelinya short stories</h1>
     <p class="lede">The complete short-story programme, in the accepted reader order.</p>
     <p>Read straight through or choose any story below. This first web edition preserves the accepted story text while the collection is proofread in public.</p>
+
     <ol class="story-grid story-list" aria-label="57 Vaelinya short stories">
-      {shortStories.map((story) => (
+      {stories.map((story) => (
         <li>
-          <a class="story-card" href={story.publicUrl} aria-label={`Read ${story.title}`}>
-            <span>Story {story.position}</span>
-            <strong>{story.title}</strong>
+          <a class="story-card" href={story.data.public_url} aria-label={`Read ${story.data.title}`}>
+            <span>Story {story.data.story_number}</span>
+            <strong>{story.data.title}</strong>
             <span class="story-card-action" aria-hidden="true">Read story</span>
           </a>
         </li>
       ))}
     </ol>
+
     <div class="link-list">
       <a href="/read/">All reading paths</a>
       <a href="/world/">Explore the world</a>
