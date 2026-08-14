@@ -1,32 +1,33 @@
 ---
+import { getCollection, render } from 'astro:content';
 import ShortProgrammeStoryLayout from '../../../layouts/ShortProgrammeStoryLayout.astro';
-import { shortStories } from '../../../data/short-stories';
-import { renderShortStoryMarkdown } from '../../../lib/renderShortStoryMarkdown';
 
-export function getStaticPaths() {
-  return shortStories.map((story, index) => ({
-    params: { slug: story.slug },
+export async function getStaticPaths() {
+  const stories = (await getCollection('stories', ({ data }) => data.arc === 'Short Story Programme'))
+    .sort((a, b) => a.data.story_number - b.data.story_number);
+
+  return stories.map((story, index) => ({
+    params: { slug: story.id.replace(/^short-programme\//, '').replace(/\.md$/, '') },
     props: {
       story,
-      previousStory: index > 0 ? { title: shortStories[index - 1].title, url: shortStories[index - 1].publicUrl } : undefined,
-      nextStory: index + 1 < shortStories.length ? { title: shortStories[index + 1].title, url: shortStories[index + 1].publicUrl } : undefined,
+      previousStory: index > 0 ? { title: stories[index - 1].data.title, url: stories[index - 1].data.public_url } : undefined,
+      nextStory: index + 1 < stories.length ? { title: stories[index + 1].data.title, url: stories[index + 1].data.public_url } : undefined,
     },
   }));
 }
 
 const { story, previousStory, nextStory } = Astro.props;
-const bodyHtml = renderShortStoryMarkdown(story.bodyMarkdown);
+const { Content } = await render(story);
 ---
 <ShortProgrammeStoryLayout
-  title={story.title}
-  description={story.description}
-  storyNumber={story.position}
-  totalStories={57}
-  heroImage={story.heroImage}
-  heroImageAlt={story.heroImageAlt}
+  title={story.data.title}
+  description={story.data.description}
+  storyNumber={story.data.story_number}
+  totalStories={story.data.total_stories}
+  heroImage={story.data.hero_image}
+  heroImageAlt={story.data.hero_image_alt}
   previousStory={previousStory}
   nextStory={nextStory}
 >
-  <h1>{story.title}</h1>
-  <Fragment set:html={bodyHtml} />
+  <Content />
 </ShortProgrammeStoryLayout>
