@@ -52,7 +52,6 @@ jobs:
           test "$(jq -r '.commit.sha' <<<"$MAIN_JSON")" = "$EXPECTED_MAIN"
           test "$(jq -r '.forks_count' <<<"$REPO_JSON")" = '0'
           test "$(jq 'length' <<<"$OPEN_PRS")" = '0'
-
           echo "EXPECTED_MAIN=$EXPECTED_MAIN" >> "$GITHUB_ENV"
 
       - name: Set up Python
@@ -190,9 +189,9 @@ jobs:
           PY
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Build rewritten main independently
         shell: bash
@@ -229,19 +228,16 @@ jobs:
           from pathlib import Path
 
           expected = {}
-          after = {}
           with Path('accepted/evidence/all-ref-map.tsv').open(newline='', encoding='utf-8') as f:
               for row in csv.DictReader(f, delimiter='\t'):
                   if row['category'].startswith('pushable-'):
                       expected[row['ref']] = row['before']
-                      after[row['ref']] = row['after']
 
           remote = {}
           for line in Path('current-remote-refs.tsv').read_text().splitlines():
               oid, ref = line.split('\t', 1)
-              if ref.endswith('^{}'):
-                  continue
-              remote[ref] = oid
+              if not ref.endswith('^{}'):
+                  remote[ref] = oid
 
           assert set(remote) == set(expected), (
               f'remote branch/tag set changed: missing={sorted(set(expected)-set(remote))} '
@@ -249,7 +245,6 @@ jobs:
           )
           drift = [(ref, expected[ref], remote[ref]) for ref in expected if remote[ref] != expected[ref]]
           assert not drift, f'remote ref drift detected: {drift}'
-
           Path('preflight-ok.txt').write_text(
               f'pushable_refs={len(expected)}\nall_before_refs_match=true\n', encoding='utf-8'
           )
@@ -263,7 +258,8 @@ jobs:
           set -euo pipefail
           git clone --mirror accepted/evidence/vaelinya-site-rewritten-candidate.bundle final-push.git
           cd final-push.git
-          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git remote remove origin
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
           args=(git push --atomic origin)
           while IFS=$'\t' read -r ref category before after changed present_after; do
@@ -271,7 +267,6 @@ jobs:
             [[ "$category" == pushable-* ]] || continue
             args+=("--force-with-lease=${ref}:${before}" "${ref}:${ref}")
           done < ../accepted/evidence/all-ref-map.tsv
-
           "${args[@]}"
 
       - name: Verify every rewritten remote ref
