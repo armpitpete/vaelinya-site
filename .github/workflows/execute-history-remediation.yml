@@ -1,0 +1,339 @@
+name: Execute approved history remediation
+
+on:
+  push:
+    branches:
+      - security/history-remediation-executor
+    paths:
+      - security/HISTORY_REWRITE_EXECUTION_AUTHORIZATION.txt
+
+permissions:
+  contents: write
+  issues: write
+
+env:
+  EXECUTION_MARKER: security/HISTORY_REWRITE_EXECUTION_AUTHORIZATION.txt
+
+jobs:
+  build-candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Check out exact trigger head
+        uses: actions/checkout@v4
+
+      - name: Validate explicit execution marker and remote safety boundary
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f "$EXECUTION_MARKER"
+          grep -Fx 'ISSUE-21 EXECUTE AUTHORIZED' "$EXECUTION_MARKER"
+          EXPECTED_MAIN="$(sed -n 's/^expected_main=//p' "$EXECUTION_MARKER")"
+          test -n "$EXPECTED_MAIN"
+
+          REPO_JSON="$(curl -fsSL \
+            -H 'Accept: application/vnd.github+json' \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H 'X-GitHub-Api-Version: 2022-11-28' \
+            "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY")"
+          MAIN_JSON="$(curl -fsSL \
+            -H 'Accept: application/vnd.github+json' \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H 'X-GitHub-Api-Version: 2022-11-28' \
+            "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/branches/main")"
+          OPEN_PRS="$(curl -fsSL \
+            -H 'Accept: application/vnd.github+json' \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H 'X-GitHub-Api-Version: 2022-11-28' \
+            "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/pulls?state=open&per_page=1")"
+
+          test "$(jq -r '.commit.sha' <<<"$MAIN_JSON")" = "$EXPECTED_MAIN"
+          test "$(jq -r '.forks_count' <<<"$REPO_JSON")" = '0'
+          test "$(jq 'length' <<<"$OPEN_PRS")" = '0'
+
+          echo "EXPECTED_MAIN=$EXPECTED_MAIN" >> "$GITHUB_ENV"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pinned history-rewrite dependency
+        run: python -m pip install --disable-pip-version-check git-filter-repo==2.47.0
+
+      - name: Clone complete current repository mirror
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --mirror "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" source.git
+
+      - name: Build exact non-pushed candidate and rollback backup
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/security/history_remediation.py \
+            --mirror source.git \
+            --output evidence \
+            --repository-url "https://github.com/${GITHUB_REPOSITORY}.git" \
+            --require-main-tree-preserved | tee evidence-summary.json
+
+          python tools/security/final_candidate_boundary.py \
+            --source-mirror source.git \
+            --candidate-bundle evidence/vaelinya-site-rewritten-candidate.bundle \
+            --output evidence \
+            --repository-url "https://github.com/${GITHUB_REPOSITORY}.git" | tee reference-boundary-summary.json
+
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          boundary = json.loads(Path('evidence/reference-boundary.json').read_text())
+          manifest = json.loads(Path('evidence/manifest.json').read_text())
+          assert boundary['main_before'] == os.environ['EXPECTED_MAIN']
+          assert manifest['main_tree_preserved'] is True
+          assert manifest['main_tree_preservation_required'] is True
+          assert boundary['force_push_executed'] is False
+          assert boundary['github_support_purge_completed'] is False
+          assert Path('evidence/remaining-forbidden-blobs.tsv').read_text().splitlines() == [
+              'oid\tclassification\tdisposition\tsize\tpatterns\tpaths'
+          ]
+          PY
+
+      - name: Upload immutable pre-execution package
+        uses: actions/upload-artifact@v4
+        with:
+          name: issue-21-execution-package-${{ github.sha }}
+          path: |
+            evidence/
+            evidence-summary.json
+            reference-boundary-summary.json
+          if-no-files-found: error
+          retention-days: 90
+
+  independent-review:
+    needs: build-candidate
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Check out independent verifier
+        uses: actions/checkout@v4
+
+      - name: Download immutable execution package
+        uses: actions/download-artifact@v4
+        with:
+          name: issue-21-execution-package-${{ github.sha }}
+          path: review
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Independently verify bundles, refs, checksums and forbidden-path absence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import csv, hashlib, importlib.util, json, subprocess
+          from pathlib import Path
+
+          root = Path('review/evidence')
+          manifest = json.loads((root / 'manifest.json').read_text())
+          boundary = json.loads((root / 'reference-boundary.json').read_text())
+
+          def sha256(path):
+              h = hashlib.sha256()
+              with Path(path).open('rb') as f:
+                  for chunk in iter(lambda: f.read(1024 * 1024), b''):
+                      h.update(chunk)
+              return h.hexdigest()
+
+          backup = root / 'vaelinya-site-pre-rewrite.bundle'
+          candidate = root / 'vaelinya-site-rewritten-candidate.bundle'
+          assert sha256(backup) == manifest['backup_bundle_sha256']
+          assert sha256(candidate) == manifest['candidate_bundle_sha256']
+          assert sha256(candidate) == boundary['candidate_bundle_file_sha256']
+          assert manifest['main_tree_preserved'] is True
+          assert manifest['affected_blob_count'] > 0
+          assert boundary['pushable_ref_count'] > 0
+          assert boundary['github_controlled_pull_ref_count'] > 0
+
+          subprocess.run(['git', 'bundle', 'verify', str(backup)], check=True)
+          subprocess.run(['git', 'bundle', 'verify', str(candidate)], check=True)
+          subprocess.run(['git', 'clone', '--mirror', str(candidate), 'candidate-review.git'], check=True)
+          subprocess.run(['git', '--git-dir', 'candidate-review.git', 'fsck', '--full'], check=True)
+
+          spec = importlib.util.spec_from_file_location('remediation', 'tools/security/history_remediation.py')
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          remaining = module.inventory(Path('candidate-review.git'), Path('remaining-independent.tsv'))
+          assert not remaining, f'forbidden paths remain: {remaining}'
+
+          expected = {}
+          for line in (root / 'post-refs.tsv').read_text().splitlines():
+              if line.strip():
+                  ref, oid = line.split('\t', 1)
+                  expected[ref] = oid
+          actual = module.refs(Path('candidate-review.git'))
+          assert actual == expected
+
+          pushable = []
+          with (root / 'all-ref-map.tsv').open(newline='', encoding='utf-8') as f:
+              for row in csv.DictReader(f, delimiter='\t'):
+                  if row['category'].startswith('pushable-'):
+                      pushable.append(row)
+          assert len(pushable) == boundary['pushable_ref_count']
+          assert all(r['changed'] == 'yes' and r['present_after'] == 'yes' for r in pushable)
+          PY
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build rewritten main independently
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone review/evidence/vaelinya-site-rewritten-candidate.bundle candidate-worktree
+          cd candidate-worktree
+          git checkout main
+          npm install --no-audit --no-fund
+          npm run build
+
+  execute-atomic-rewrite:
+    needs: independent-review
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Download independently accepted package
+        uses: actions/download-artifact@v4
+        with:
+          name: issue-21-execution-package-${{ github.sha }}
+          path: accepted
+
+      - name: Exact remote-ref preflight
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          REMOTE="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git ls-remote --heads --tags "$REMOTE" > current-remote-refs.tsv
+
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          expected = {}
+          after = {}
+          with Path('accepted/evidence/all-ref-map.tsv').open(newline='', encoding='utf-8') as f:
+              for row in csv.DictReader(f, delimiter='\t'):
+                  if row['category'].startswith('pushable-'):
+                      expected[row['ref']] = row['before']
+                      after[row['ref']] = row['after']
+
+          remote = {}
+          for line in Path('current-remote-refs.tsv').read_text().splitlines():
+              oid, ref = line.split('\t', 1)
+              if ref.endswith('^{}'):
+                  continue
+              remote[ref] = oid
+
+          assert set(remote) == set(expected), (
+              f'remote branch/tag set changed: missing={sorted(set(expected)-set(remote))} '
+              f'extra={sorted(set(remote)-set(expected))}'
+          )
+          drift = [(ref, expected[ref], remote[ref]) for ref in expected if remote[ref] != expected[ref]]
+          assert not drift, f'remote ref drift detected: {drift}'
+
+          Path('preflight-ok.txt').write_text(
+              f'pushable_refs={len(expected)}\nall_before_refs_match=true\n', encoding='utf-8'
+          )
+          PY
+
+      - name: Atomically push rewritten owner-controlled refs with leases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --mirror accepted/evidence/vaelinya-site-rewritten-candidate.bundle final-push.git
+          cd final-push.git
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+
+          args=(git push --atomic origin)
+          while IFS=$'\t' read -r ref category before after changed present_after; do
+            [[ "$ref" == "ref" ]] && continue
+            [[ "$category" == pushable-* ]] || continue
+            args+=("--force-with-lease=${ref}:${before}" "${ref}:${ref}")
+          done < ../accepted/evidence/all-ref-map.tsv
+
+          "${args[@]}"
+
+      - name: Verify every rewritten remote ref
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          REMOTE="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git ls-remote --heads --tags "$REMOTE" > rewritten-remote-refs.tsv
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          expected = {}
+          with Path('accepted/evidence/all-ref-map.tsv').open(newline='', encoding='utf-8') as f:
+              for row in csv.DictReader(f, delimiter='\t'):
+                  if row['category'].startswith('pushable-'):
+                      expected[row['ref']] = row['after']
+          remote = {}
+          for line in Path('rewritten-remote-refs.tsv').read_text().splitlines():
+              oid, ref = line.split('\t', 1)
+              if not ref.endswith('^{}'):
+                  remote[ref] = oid
+          assert remote == expected, 'remote refs do not exactly equal accepted rewritten ref map'
+          Path('execution-result.md').write_text(
+              '## Issue #21 owner-controlled rewrite executed\n\n'
+              f'- rewritten refs: `{len(expected)}`\n'
+              '- atomic push: `success`\n'
+              '- force-with-lease preconditions: `all matched`\n'
+              '- post-push ref map: `exact match`\n'
+              '- backup retained: `yes`\n'
+              '- GitHub-controlled pull refs/cache: `still require GitHub Support`\n',
+              encoding='utf-8'
+          )
+          PY
+
+      - name: Record execution and remaining Support gate on Issue 21
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            cat execution-result.md
+            echo
+            echo '### GitHub Support packet'
+            echo
+            sed -n '1,120p' accepted/evidence/GITHUB_SUPPORT_REQUEST.md
+          } > issue-comment.md
+          gh issue comment 21 --repo "$GITHUB_REPOSITORY" --body-file issue-comment.md
+
+      - name: Preserve execution evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: issue-21-execution-result-${{ github.run_id }}
+          path: |
+            preflight-ok.txt
+            rewritten-remote-refs.tsv
+            execution-result.md
+            accepted/evidence/GITHUB_SUPPORT_REQUEST.md
+            accepted/evidence/reference-boundary.json
+            accepted/evidence/manifest.json
+          if-no-files-found: error
+          retention-days: 90
