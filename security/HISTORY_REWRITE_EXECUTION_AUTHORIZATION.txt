@@ -1,0 +1,5 @@
+ISSUE-21 EXECUTE AUTHORIZED
+expected_main=de538ca7b4accfec81db67ddbbf43e366e07e3f7
+owner_authority=2026-08-15 complete priorities 1 2 and 3
+backup_deletion_authorized=false
+support_purge_required_after_owner_refs=true
