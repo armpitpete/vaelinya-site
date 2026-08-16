@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { isIndexablePublicationUrl } from './src/config/publicationRoutes.mjs';
 import removePublicStoryScaffolding from './src/plugins/removePublicStoryScaffolding.mjs';
 
 const lexiconEntryRedirects = Object.fromEntries(
@@ -11,7 +12,7 @@ const lexiconEntryRedirects = Object.fromEntries(
 
 export default defineConfig({
   site: 'https://vaelinya.uk',
-  integrations: [sitemap()],
+  integrations: [sitemap({ filter: isIndexablePublicationUrl })],
   markdown: {
     remarkPlugins: [removePublicStoryScaffolding],
   },

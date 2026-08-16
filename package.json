@@ -9,7 +9,9 @@
     "verify:story-assets": "node scripts/verify-story-hero-assets.mjs",
     "build": "npm run verify:short-stories && npm run verify:story-assets && astro build",
     "preview": "astro preview",
-    "test:builder": "node --test tests/vaelinya-builder/*.test.js"
+    "test:builder": "node --test tests/vaelinya-builder/*.test.js",
+    "test:search-discovery": "node --test tests/search-discovery/*.test.mjs",
+    "test": "npm run test:builder && npm run test:search-discovery"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
