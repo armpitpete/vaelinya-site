@@ -20,7 +20,7 @@ concurrency:
 
 jobs:
   build-support-package:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
     timeout-minutes: 50
     steps:
       - name: Check out exact tested state
@@ -153,7 +153,7 @@ jobs:
             sensitive-removal-summary.json
             support-summary.md
           if-no-files-found: error
-          retention-days: 30
+          retention-days: 1
 
       - name: Upload compact support metadata
         uses: actions/upload-artifact@v4
@@ -175,11 +175,11 @@ jobs:
             evidence/RESTORE.md
             support-summary.md
           if-no-files-found: error
-          retention-days: 30
+          retention-days: 1
 
   independent-review:
     needs: build-support-package
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
     timeout-minutes: 45
     steps:
       - name: Download complete support package
@@ -295,7 +295,7 @@ jobs:
   record-final-support-package:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: independent-review
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
     steps:
       - name: Download compact support metadata
         uses: actions/download-artifact@v4
