@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   capture:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
     timeout-minutes: 20
     steps:
       - name: Check out tested pull-request merge result
@@ -139,4 +139,4 @@ jobs:
           name: ds-02-visual-evidence-${{ github.sha }}
           path: visual-evidence/
           if-no-files-found: error
-          retention-days: 30
+          retention-days: 1
