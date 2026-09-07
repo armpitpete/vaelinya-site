@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   build-candidate:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
     timeout-minutes: 45
     steps:
       - name: Check out remediation tooling
@@ -116,7 +116,7 @@ jobs:
             reference-boundary-summary.json
             candidate-summary.md
           if-no-files-found: error
-          retention-days: 30
+          retention-days: 1
 
       - name: Upload compact inspection evidence
         uses: actions/upload-artifact@v4
@@ -140,11 +140,11 @@ jobs:
             reference-boundary-summary.json
             candidate-summary.md
           if-no-files-found: error
-          retention-days: 30
+          retention-days: 1
 
   independent-review:
     needs: build-candidate
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
     timeout-minutes: 45
     steps:
       - name: Check out independent verifier
@@ -253,7 +253,7 @@ jobs:
   record-final-candidate:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: independent-review
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
     steps:
       - name: Download compact evidence
         uses: actions/download-artifact@v4
