@@ -13,7 +13,7 @@ permissions:
 jobs:
   verify-image:
     name: ${{ matrix.label }}
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
     timeout-minutes: 6
     strategy:
       fail-fast: false
