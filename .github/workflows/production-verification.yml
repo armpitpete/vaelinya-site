@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   verify-live-site:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
     timeout-minutes: 15
     steps:
       - name: Verify production content and custom-domain front door
