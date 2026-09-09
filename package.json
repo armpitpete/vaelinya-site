@@ -11,7 +11,8 @@
     "preview": "astro preview",
     "test:builder": "node --test tests/vaelinya-builder/*.test.js",
     "test:search-discovery": "node --test tests/search-discovery/*.test.mjs",
-    "test": "npm run test:builder && npm run test:search-discovery"
+    "test": "npm run test:builder && npm run test:search-discovery",
+    "validate:language-public": "node scripts/validate-language-public-boundary.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
