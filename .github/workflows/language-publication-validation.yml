@@ -1,0 +1,41 @@
+name: Public Vaelinya language validation
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/pages/language/**'
+      - 'src/pages/studio/cultural-records/**'
+      - 'src/content/lexicon/**'
+      - 'docs/language-publication-boundary.md'
+      - 'docs/ci-zero-billed-policy.md'
+      - 'scripts/validate-language-public-boundary.mjs'
+      - 'scripts/validate-ci-cost-policy.mjs'
+      - 'package.json'
+      - '.github/workflows/language-publication-validation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-language:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate zero-billed CI routing
+        run: node scripts/validate-ci-cost-policy.mjs
+      - name: Validate public language boundary
+        run: npm run validate:language-public
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Run repository tests
+        run: npm test
+      - name: Build public site
+        run: npm run build
