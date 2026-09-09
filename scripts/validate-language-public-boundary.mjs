@@ -38,6 +38,23 @@ if (!lexicon.includes('public approval does not imply that every word has identi
   errors.push('lexicon page: deeper authority distinction is missing');
 }
 
+const expectedPublicWords = [
+  'aelok', 'meras', 'naerith', 'orivai', 'eirav', 'siral',
+  'sarek', 'navak', 'noras', 'ismak', 'threnai',
+].sort();
+
+const publicWords = fs.readdirSync('src/content/lexicon')
+  .filter((name) => name.endsWith('.md'))
+  .map((name) => fs.readFileSync(`src/content/lexicon/${name}`, 'utf8'))
+  .filter((text) => /^status:\s*public\s*$/m.test(text))
+  .map((text) => text.match(/^word:\s*([^\r\n]+)$/m)?.[1]?.trim())
+  .filter(Boolean)
+  .sort();
+
+if (JSON.stringify(publicWords) !== JSON.stringify(expectedPublicWords)) {
+  errors.push(`lexicon content: public doorway set drifted: ${publicWords.join(', ')}`);
+}
+
 if (errors.length) {
   console.error('VAELINYA PUBLIC LANGUAGE BOUNDARY: FAIL');
   for (const error of errors) console.error(`- ${error}`);
