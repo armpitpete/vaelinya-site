@@ -30,6 +30,14 @@ if (!prototype.includes('not as the general Vaelinya greeting')) {
   errors.push('cultural-record prototype: explicit greeting boundary is missing');
 }
 
+const lexicon = fs.readFileSync('src/pages/language/lexicon/index.astro', 'utf8');
+if (!lexicon.includes('These eleven are approved doorway words')) {
+  errors.push('lexicon page: eleven-word public selection boundary is missing');
+}
+if (!lexicon.includes('public approval does not imply that every word has identical deeper dictionary or canon status')) {
+  errors.push('lexicon page: deeper authority distinction is missing');
+}
+
 if (errors.length) {
   console.error('VAELINYA PUBLIC LANGUAGE BOUNDARY: FAIL');
   for (const error of errors) console.error(`- ${error}`);
