@@ -177,27 +177,15 @@ Neither of them spoke for a moment.
 
 Then Senn said, “I dislike where this conversation is going.”
 
-Fina rolled the wheel across the yard.
+Fina rolled the wheel across the yard. It wobbled again.
 
-It wobbled again.
+A slower push made no difference.
 
-She rolled it more slowly.
+She slid a stick through the square centre and held both ends. The wheel turned around it, catching every few turns against the worn hole.
 
-Still wobble.
+Fast made it worse. A thicker stick would not fit.
 
-She pushed a stick through the square centre and held the stick at both ends. The wheel turned around it, but every few turns it caught against the rounded hole.
-
-Fina frowned.
-
-Fast made it worse.
-
-She tried a thicker stick.
-
-It did not fit.
-
-She wrapped a strip of cloth around the first stick.
-
-The wheel turned more smoothly for six rotations, then the cloth slid sideways.
+Cloth around the first stick gave her six smoother rotations before it slipped sideways.
 
 Senn had stopped winding the rope.
 
