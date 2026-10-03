@@ -107,9 +107,7 @@ The bell had been funny for exactly as long as nobody thought it could fall.
 
 Now the yard cleared.
 
-Kaelen liked that nobody argued with safety.
-
-They set a rope boundary around the frame and fetched a ladder.
+Kaelen liked that nobody argued with safety. They set a rope boundary around the frame and fetched a ladder.
 
 Rian reached for it.
 
