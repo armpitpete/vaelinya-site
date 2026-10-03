@@ -231,17 +231,9 @@ Under the workshop notice Valen wrote:
 
 **Tomorrow's staffing includes one festival-related availability. Primary cause of cancellation remains broken guide.**
 
-The sentence was uglier than the triangle.
+The sentence was uglier than the triangle. It was also better.
 
-It was also better.
-
-After lunch, Valen came back to the archive and found themself staring at the three notices again.
-
-They thought of another person they could ask.
-
-Then another.
-
-Then another.
+After lunch, Valen came back to the archive and found themself staring at the three notices again. They thought of another person they could ask. Then another. Then another.
 
 Pela sat opposite them and ate an apple.
 

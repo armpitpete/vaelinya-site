@@ -135,29 +135,13 @@ Pell’s mother leaned towards him.
 
 “There is space on the bench.”
 
-Pell shook his head.
+Pell shook his head. She pointed at Liana’s end, and he shook his head again.
 
-She pointed at Liana’s end.
+Liana did not wave him over, pat the bench, or point to the chair.
 
-He shook his head again.
+Pell stood by the door for a moment. Then he noticed it himself: the chair by the wall.
 
-Liana did not wave him over.
-
-She did not pat the bench.
-
-She did not point to the chair.
-
-Pell stood by the door for a moment.
-
-Then he noticed it himself.
-
-The chair by the wall.
-
-He went to it.
-
-Sat.
-
-Put both feet flat on the floor.
+He went to it, sat, and put both feet flat on the floor.
 
 His mother sat on the bench nearby.
 

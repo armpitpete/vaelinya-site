@@ -317,27 +317,11 @@ In the lower field, people spread blankets on the grass. Someone brought bread. 
 
 The ground did not move for the rest of the afternoon.
 
-By evening, the mason had checked the main buildings.
+By evening, the mason had checked the main buildings. Two rooms remained closed. The courtyard reopened only for collecting essential things, with adults controlling the route.
 
-Two rooms remained closed.
+Kaelen went back the next day. The broken branch had been cut into manageable pieces and stacked away from the wall. The old tree still stood, sunlight moving across the bark. Its trunk was as broad as ever.
 
-The courtyard reopened only for collecting essential things, with adults controlling the route.
-
-Kaelen went back the next day.
-
-The broken branch had been cut into manageable pieces and stacked away from the wall.
-
-The old tree still stood.
-
-Sunlight moved across the bark.
-
-Its trunk was as broad as ever.
-
-Kaelen put a hand against it.
-
-The bark felt rough and solid.
-
-For a moment they wondered if touching it was somehow wrong now.
+Kaelen put a hand against it. The bark felt rough and solid. For a moment they wondered if touching it was somehow wrong now.
 
 Then Mara came through the gate carrying a basket.
 

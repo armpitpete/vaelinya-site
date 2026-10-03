@@ -464,10 +464,4 @@ The workshop door closed behind them.
 
 Its pale marks disappeared into shadow.
 
-Nothing about it had chosen Reo.
 
-Nothing about it had wanted to be understood.
-
-It had simply behaved.
-
-And because it behaved consistently enough to be wrong about, Reo could learn something real from it.

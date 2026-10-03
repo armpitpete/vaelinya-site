@@ -295,13 +295,7 @@ Tessa looked at Bram.
 
 “That one may deserve permanence.”
 
-They carried the empty carts outside.
-
-The moment they reached the courtyard, three conversations started at once.
-
-Pela asked what was for supper.
-
-Bram argued that shouting at walls had scientific value.
+They carried the empty carts outside. The moment they reached the courtyard, three conversations started at once: Pela asked what was for supper, while Bram argued that shouting at walls had scientific value.
 
 Tessa called across the yard for someone to return a key.
 

@@ -385,10 +385,4 @@ Then moved.
 
 Fina felt the answer in her feet before she heard it.
 
-She had not guessed the stair correctly.
 
-She had tried it, listened to what happened, and changed the next step.
-
-That was slower than being right at once.
-
-It was also much more useful.

@@ -489,24 +489,4 @@ Nira said, “There is a design. People built the roof.”
 
 “Yes.”
 
-No constellation had appeared to tell them where everything belonged.
 
-No chosen pattern had revealed itself.
-
-No child had discovered the arrangement everyone else was meant to follow.
-
-The roof had changed.
-
-The plants had different needs.
-
-The work routes mattered.
-
-The people tending the plants knew things the diagrams did not.
-
-Some problems needed immediate trials.
-
-One problem needed temporary shelter and time.
-
-The repair was not restoring the sky.
-
-It was learning, together, how the changed glasshouse could work now.

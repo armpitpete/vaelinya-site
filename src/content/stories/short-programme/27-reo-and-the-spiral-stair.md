@@ -89,15 +89,9 @@ Pela arrived.
 
 Reo recognised the tone. It meant Pela had stored a future argument.
 
-The next morning she used it.
+The next morning she used it. They were sent back to the record room with a wider crate containing stiff document boards.
 
-They were sent back to the record room with a wider crate containing stiff document boards.
-
-Reo turned toward the cross-path.
-
-The entrance was open.
-
-The space between the herb beds was not wide enough for the crate unless they tilted it almost upright.
+Reo turned toward the cross-path. The entrance was open, but the space between the herb beds was not wide enough for the crate unless they tilted it almost upright.
 
 Pela stopped.
 

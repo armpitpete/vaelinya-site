@@ -547,8 +547,4 @@ The quiet western beds had stayed quiet.
 
 The gardeners had kept every work route they needed.
 
-Nobody had discovered the true path across the water garden.
 
-There was no true path waiting to be found.
-
-There were only paths that worked for particular people, loads, times and conditions—and a group willing to revise them when those conditions changed.

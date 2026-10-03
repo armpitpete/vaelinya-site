@@ -233,25 +233,15 @@ That made Maer Pell smile.
 
 They set two low stools opposite each other and laid the stick across them. The wheel turned between the stools. Fina tied one end of a short practice cord to the rim.
 
-She pushed the wheel.
+She pushed the wheel. The cord wound once around it, then slipped off.
 
-The cord wound once around it, then slipped off.
+She pushed again. Same result.
 
-She pushed again.
-
-Same result.
-
-She tried looping the cord through a spoke.
-
-The wheel jerked sideways.
+She tried looping the cord through a spoke. The wheel jerked sideways.
 
 “That would pull badly on a long rope,” Maer Pell said.
 
-Fina nodded.
-
-She had wanted it to work at once.
-
-The wanting was still in her hands.
+Fina nodded. She had wanted it to work at once; the wanting was still in her hands.
 
 But the wheel did not care what she wanted.
 

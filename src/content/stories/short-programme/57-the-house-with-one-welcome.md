@@ -769,40 +769,14 @@ The front desk remained busy enough to prove that making help optional had not m
 
 Near closing time, the woman who had earlier said she did not want an escort returned.
 
-She used the side door.
+She used the side door, read the outdoor information board, filled a cup of water and sat on a bench. Nobody approached her.
 
-She read the outdoor information board.
+After a while, she walked to Hessa and asked a question. Hessa answered.
 
-She filled a cup of water.
+Nira recorded only what had happened.
 
-She sat on a bench.
-
-Nobody approached her.
-
-After a while, she walked to Hessa and asked a question.
-
-Hessa answered.
-
-That was all.
-
-Lina saw it happen.
-
-She did not write down what the woman must have felt.
-
-Nira recorded only that the side entrance had been used and the person later chose the help desk.
-
-Valen added no grand conclusion.
-
-The woman was not proof that the design now worked for everyone.
-
-She was one person using the building on her own terms.
-
-The sign above the front door still said:
+Above the front door, the sign still said:
 
 **EVERYONE WELCOME.**
 
-The useful change was not in the sentence.
-
-It was that fewer people had to perform one particular kind of arrival before the welcome became available.
-
-And the Wayhouse remained allowed to change again when future use showed what this trial had still failed to see.
+On Valen’s board, trial three still said **CURRENT TEST**.

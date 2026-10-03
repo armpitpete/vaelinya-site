@@ -343,8 +343,6 @@ The next entrance landed cleanly.
 
 Kaelen noticed that too.
 
-Removing a support did not prove strength. Keeping one did not prove failure. The useful question was whether the person using it could say what helped and whether the arrangement could change when the answer changed.
-
 They began another round.
 
 This time Kaelen sat near the wall and listened.
@@ -355,10 +353,4 @@ The next corrected.
 
 Nobody stopped.
 
-Nothing held the whole room together.
 
-Several people held enough of it, for long enough, and handed the work on.
-
-The song did not need a root that could never move.
-
-It needed supports people could share, test and let go.

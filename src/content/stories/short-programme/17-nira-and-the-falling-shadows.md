@@ -25,29 +25,15 @@ Nira noticed because she was tying bean strings.
 
 The afternoon sun lay behind the west ridge, throwing long narrow shadows from the garden poles across the soil. Each pole made one dark line.
 
-Then, for three breaths, every line blurred.
-
-Nira stopped with the string between her fingers.
-
-The shadows sharpened again.
+Then, for three breaths, every line blurred. Nira stopped with the string between her fingers. The shadows sharpened again.
 
 Sella, working two rows away, kept tying.
 
-Nira looked up.
-
-The sky above the gardens was still blue.
-
-A low grey bank sat beyond the western ridge.
+Nira looked up. The sky above the gardens was still blue. A low grey bank sat beyond the western ridge.
 
 Rain, Nira thought.
 
-She tied the string off and watched.
-
-The shadows blurred again.
-
-This time they did not only soften.
-
-They moved sideways.
+She tied the string off and watched. The shadows blurred again; this time they did not only soften. They moved sideways.
 
 Not much.
 

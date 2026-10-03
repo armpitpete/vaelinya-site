@@ -424,18 +424,6 @@ Inside the hall, chairs moved and people laughed.
 
 Outside, the garden held several different ways of being in the same place.
 
-The bench had not become a cure.
-
-Quiet had not become a virtue.
-
-The sign had not discovered a universal rule.
-
-One person had asked for one condition.
-
-Other people had described what they needed.
-
-The arrangement had been tested, corrected and given a backup.
-
 Liana looked at the small sign.
 
 It was already weathering at one corner.

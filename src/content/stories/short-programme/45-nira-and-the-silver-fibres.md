@@ -191,27 +191,13 @@ A bundle of awning ties had gone from the cloth table to the store shelf.
 
 Pell had carried a folded curtain through the room the previous afternoon.
 
-That sounded promising.
-
-They found the curtain.
+That sounded promising. They found the curtain.
 
 No silver fibres.
 
-Nira went back to the tables.
+Nira went back to the tables. The first fibre had been on her sleeve, and she tried to remember where she had been before she noticed it.
 
-The first fibre had been on her sleeve.
-
-She tried to remember where she had been before she noticed it.
-
-The doorway.
-
-The bench.
-
-The rope table.
-
-The water jug.
-
-Everywhere.
+The doorway. The bench. The rope table. The water jug. Everywhere.
 
 “Too many places,” she said.
 

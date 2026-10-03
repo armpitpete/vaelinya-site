@@ -283,13 +283,7 @@ Benn smiled.
 
 Then it failed.
 
-Two workers above began knocking at the same time.
-
-The tunnel filled with wood beats.
-
-Reo laughed.
-
-Benn did not.
+Two workers above began knocking at the same time, filling the tunnel with wood beats. Reo laughed. Benn did not.
 
 “New rule,” Reo said. “Only the hatch receiving a basket answers.”
 

@@ -374,22 +374,6 @@ Pela laughed harder.
 
 The yard had not become harmless.
 
-Night still changed shapes.
-
-Wind still moved things people could not see immediately.
-
-But Pela now had more than one story available.
-
-Something unknown had happened.
-
-Some of it could be explained.
-
-Some of it could be made safer.
-
-If fear returned, the herb-room route still existed.
-
-Valen liked stories that opened choices better than stories that closed every question.
-
 On the way home, Tor said, “You never named the creature.”
 
 “There may not have been one.”

@@ -139,25 +139,9 @@ By the fifth card, the chime had begun to irritate one of the younger children.
 
 “No,” said Tessa. “It is a tool, not a rule.”
 
-The child pushed it farther away.
+The child pushed it farther away. For several minutes nobody used it. The conversation did not collapse. That surprised Elara more than she expected.
 
-For several minutes nobody used it.
-
-The conversation did not collapse.
-
-That surprised Elara more than she expected.
-
-Then they reached the last card.
-
-It belonged to an old gardener who had written only four sentences.
-
-The storm had broken two young fruit trees.
-
-He had replanted one.
-
-The other had not survived.
-
-He remembered his neighbour bringing dry socks.
+Then they reached the last card. It belonged to an old gardener who had written only four sentences. The storm had broken two young fruit trees. He had replanted one; the other had not survived. He remembered his neighbour bringing dry socks.
 
 Elara stared at the final line.
 

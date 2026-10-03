@@ -127,27 +127,11 @@ At the hall door she turned and waited.
 
 Sori asked the group, “Anybody want to try as far as the post?”
 
-Pell shook his head.
+Pell shook his head. Jori shook his head without uncovering his ears. Nemi said, “With you,” and Sori walked with her.
 
-Jori shook his head without uncovering his ears.
+Fina stayed at the hall door. Every part of her wanted to run back and join them. She made herself remain visible instead.
 
-Nemi said, “With you.”
-
-Sori walked with her.
-
-Fina stayed at the hall door.
-
-Every part of her wanted to run back and join them.
-
-She made herself remain visible instead.
-
-Nemi and Sori reached the post.
-
-Nemi stopped.
-
-Rain sheeted across the yard beyond them.
-
-She looked at Fina.
+Nemi and Sori reached the post. Nemi stopped as rain sheeted across the yard beyond them. She looked at Fina.
 
 Fina lifted both arms again.
 

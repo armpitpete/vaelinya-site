@@ -127,17 +127,7 @@ The tables did not fit the people.
 
 One long table stood through the centre of the room. People carrying tools had to squeeze around it. The sign painters needed to spread paper flat, so their elbows reached into the walking route. The metal sorters kept asking others to repeat themselves because they were too far apart. Hessa, who worked with the nets, flinched whenever someone brushed unexpectedly behind her chair.
 
-Everyone had a solution.
-
-Move the tables together.
-
-Move them apart.
-
-Move them to the wall.
-
-Use only two.
-
-Bring in a fourth.
+Everyone had a solution. Move the tables together. Move them apart. Move them to the wall. Use only two. Bring in a fourth.
 
 The glass sang so often that nobody laughed anymore.
 

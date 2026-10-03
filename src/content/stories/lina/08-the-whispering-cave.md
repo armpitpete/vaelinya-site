@@ -367,19 +367,7 @@ Quick answers could become another way of getting lost.
 
 She listened first.
 
-The bridge had taught her to hear before answering.
-
-The cloud had taught her to stay.
-
-The maze had taught her to look for what was hidden.
-
-The pool had taught her one step.
-
-The tree had taught her to wait.
-
-The path-song had taught her to find the right voice.
-
-The star had taught her that light needed its place.
+She remembered each earlier path without turning it into an answer.
 
 Now the cave was asking her to choose which whisper was true.
 
@@ -797,13 +785,9 @@ Lina placed her hand beside the marks.
 
 The stone was warm.
 
-The seventh star shone above the Rim. The path-stones glowed faintly along the hill. Far away, where the reed-bed lay, the path-reed’s tune seemed to answer from memory. Somewhere in the grove, the Sleeping Tree kept its closed bud safe. Somewhere in the maze, the memory-leaf knew the way out. Somewhere in the meadow, the blue-grey flowers held rain. Somewhere beyond all that, the bridge waited for anyone who knew how to listen and answer.
+The seventh star shone above the Rim. Far away, where the reed-bed lay, the path-reed’s tune seemed to answer from memory.
 
-Lina felt all of it.
-
-Not as weight.
-
-As belonging.
+Lina felt the memories settle around her—not as weight, but as belonging.
 
 Her mother came to stand beside her.
 

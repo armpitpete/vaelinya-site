@@ -253,23 +253,9 @@ Maer Sova said, “Show me.”
 
 So they did.
 
-They placed the old ferry operating normally first.
+They placed the old ferry operating normally first, then the high water, the damaged western post, the second rope, the changed crossing rule, the shallowing river, and finally the closure.
 
-Then the high water.
-
-Then the damaged western post.
-
-Then the second rope.
-
-Then the changed crossing rule.
-
-Then the shallowing river.
-
-Then the final closure.
-
-It made sense.
-
-Too much sense.
+It made sense. Too much sense.
 
 The girl from the landing store pointed at the changed crossing rule.
 

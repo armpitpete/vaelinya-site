@@ -567,18 +567,6 @@ Valen looked at the crowded courtyard.
 
 He pointed to the maintenance board.
 
-They had repaired shifted wood.
-
-They had repaired a bad test method.
-
-They had repaired timing.
-
-They had repaired assumptions about where people stood.
-
-They had repaired the idea that useful meant identical.
-
-The courtyard still returned different voices differently.
+Around them, the courtyard still returned different voices differently.
 
 That was not broken.
-
-The broken part had been the conditions that stopped those voices reaching one another.
