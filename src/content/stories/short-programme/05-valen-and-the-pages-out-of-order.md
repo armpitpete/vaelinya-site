@@ -19,9 +19,7 @@ related_artefacts: []
 
 # Valen and the Pages Out of Order
 
-The pages arrived in a flour sack.
-
-This was not how the archive preferred to receive history.
+The pages arrived in a flour sack. This was not how the archive preferred to receive history.
 
 Valen knew because Maer Sova looked into the sack, looked at the boy carrying it, then looked back into the sack as if a better explanation might have appeared between glances.
 
