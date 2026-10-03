@@ -26,6 +26,10 @@ const {
   relatedArtefacts = [],
 } = Astro.props;
 
+const storyContent = (await Astro.slots.render('default')).replace(
+  /<p><strong>Lina — Story \d+ of 8<\/strong><\/p>\s*/,
+  '',
+);
 const site = Astro.site ?? new URL('https://vaelinya.uk');
 const canonicalUrl = new URL(Astro.url.pathname, site).toString();
 
@@ -118,7 +122,7 @@ const storyJsonLd = {
       )}
     </header>
     <div class="story-content">
-      <slot />
+      <Fragment set:html={storyContent} />
     </div>
     {relatedLinks.length > 0 && (
       <footer class="story-related">

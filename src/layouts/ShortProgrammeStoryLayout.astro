@@ -28,6 +28,10 @@ const {
   collectionUrl = '/read/short-stories/',
   collectionLabel = 'All 57 stories',
 } = Astro.props;
+const storyContent = (await Astro.slots.render('default')).replace(
+  /<p><strong>Lina — Story \d+ of 8<\/strong><\/p>\s*/,
+  '',
+);
 const site = Astro.site ?? new URL('https://vaelinya.uk');
 const canonicalUrl = new URL(Astro.url.pathname, site).toString();
 const imageUrl = heroImage ? new URL(heroImage, site).toString() : undefined;
@@ -53,7 +57,7 @@ const jsonLd = {
         </figure>
       )}
     </header>
-    <div class="story-content"><slot /></div>
+    <div class="story-content"><Fragment set:html={storyContent} /></div>
     <footer class="story-footer">
       <nav class="story-page-nav" aria-label="Story navigation">
         {previousStory && <a class="button secondary" href={previousStory.url}>Previous: {previousStory.title}</a>}
