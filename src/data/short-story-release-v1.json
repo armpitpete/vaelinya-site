@@ -1,10 +1,15 @@
 {
-  "record_version": "vaelinya-site-short-story-release-v1.0",
+  "record_version": "vaelinya-site-short-story-release-v1.1",
   "source_repository": "armpitpete/vaelinya-canon",
   "source_publication_integration_commit": "26f15de2b30b8fe75c6c9328f76f3f0312d32092",
   "source_reading_master_sha256": "e8232dc87180ce91b9028780a9f56bdabfc297110a15ff0d2484c394fee53d56",
   "story_count": 57,
-  "program_body_sequence_sha256": "36a2e4c530960a5315c167bb5326f2dc9970d345b563c008a9936cf0ad194799",
-  "prose_policy": "Story body after the site H1 is copied from the accepted reading master section, excluding only package inter-story separators.",
-  "header_image_policy": "Initial proofreading edition reuses existing Vaelinya site artwork; bespoke story illustrations are not part of this release."
+  "program_body_sequence_sha256": "d75c98b4674aad15f31f6a3a4a5f4493a25e45387dc25f5c5645966de48f89fd",
+  "prose_policy": "Story bodies remain based on the accepted publication corpus. Writing & AI Editing Standard v1.4 local repairs are applied only to the exact programme stories listed in the v1.4 repair manifest; all other programme bodies remain unchanged.",
+  "header_image_policy": "Initial proofreading edition reuses existing Vaelinya site artwork; bespoke story illustrations are not part of this release.",
+  "source_editorial_standard": "Writing & AI Editing Standard v1.4 — FINAL / ACTIVE / FROZEN",
+  "source_editorial_repair_repository": "armpitpete/vaelinya-canon",
+  "source_editorial_repair_branch": "editorial/v1-4-local-repairs",
+  "source_editorial_repair_manifest_path": "story-validation/ai-editing-v1.4-story-repairs/REPAIR_MANIFEST.json",
+  "source_editorial_repair_status": "CANDIDATE_PENDING_CANON_MERGE"
 }
