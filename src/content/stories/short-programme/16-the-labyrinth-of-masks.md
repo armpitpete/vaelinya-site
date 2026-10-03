@@ -537,17 +537,7 @@ Valen stood near the old stack of discarded signs.
 
 **UNMASKED PERFORMERS.**
 
-They were not evil signs.
-
-They had simply assumed that knowing a person’s category was the easiest way to tell them where to go.
-
-That assumption had turned a room into a labyrinth as soon as people stopped fitting neatly.
-
-The new hall still had masks.
-
-It still had roles.
-
-It still had private spaces and group spaces and signs that named activities when naming the activity actually helped.
+The new hall still had masks, roles, private spaces and group spaces. Its signs named activities when that actually helped.
 
 What it no longer demanded was an identity before offering a direction.
 
