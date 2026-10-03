@@ -381,14 +381,4 @@ The display had begun with three names that looked as if they wanted to become o
 
 It ended with more names, more connections and more visible uncertainty.
 
-Valen still liked clean accounts.
 
-But he had learned not to make people clean for the sake of an account.
-
-The archive could keep the records.
-
-The community could keep adding to them.
-
-No single person had to become keeper of the finished story.
-
-Because the story was not finished.
