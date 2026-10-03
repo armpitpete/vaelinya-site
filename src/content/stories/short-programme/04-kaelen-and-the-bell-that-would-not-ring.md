@@ -173,25 +173,11 @@ Kaelen considered this.
 
 “Yes.”
 
-The keeper laughed from the ladder.
+The keeper laughed from the ladder. They lowered the bell before doing anything else. It took six people—not because Kaelen could not lift their share, but because heavy things became safer when nobody needed to prove they could manage alone.
 
-They lowered the bell before doing anything else.
+The bell settled onto folded sacks. Up close, its silence became easier to understand.
 
-It took six people.
-
-Not because Kaelen could not lift their share.
-
-Because heavy things became safer when nobody needed to prove they could manage alone.
-
-The bell settled onto folded sacks.
-
-Up close, its silence became easier to understand.
-
-The clapper moved freely.
-
-The bell was not broken.
-
-The problem was the structure that held it.
+The clapper moved freely. The bell was not broken; the problem was the structure that held it.
 
 Rian tapped the bronze rim with one knuckle.
 
