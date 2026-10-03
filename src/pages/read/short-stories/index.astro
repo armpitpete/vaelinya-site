@@ -20,7 +20,6 @@ const stories = (await getCollection('stories', ({ data }) => data.arc === 'Shor
       {stories.map((story) => (
         <li>
           <a class="story-card" href={story.data.public_url} aria-label={`Read ${story.data.title}`}>
-            <span>Publication position {story.data.story_number}</span>
             <strong>{story.data.title}</strong>
             <span class="story-card-action" aria-hidden="true">Read story</span>
           </a>

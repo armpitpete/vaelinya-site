@@ -19,7 +19,6 @@ const {
   description,
   series,
   storyNumber,
-  totalStories,
   heroImage,
   heroImageAlt,
   relatedWorld = [],
@@ -110,7 +109,7 @@ const storyJsonLd = {
 ---
 <BaseLayout title={title} description={description} image={resolvedHeroImage} jsonLd={storyJsonLd}>
   <article class="story-page">
-    <header class="story-header story-header-compact" aria-label={`${series}, story ${storyNumber} of ${totalStories}`}>
+    <header class="story-header story-header-compact" aria-label={series}>
       <p class="eyebrow">{series}</p>
       {resolvedHeroImage && (
         <figure class="story-hero-image">

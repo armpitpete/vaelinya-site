@@ -78,8 +78,7 @@ const description = `${group.name}: eight ${isTogether ? 'shared adventures' : '
     <ol class="story-grid story-list" aria-label={`${group.name} stories in order`}>
       {entries.map((entry) => (
         <li>
-          <a class="story-card" href={entry.href} aria-label={`Read Story ${entry.number}: ${entry.title}`}>
-            <span>Story {entry.number} of 8</span>
+          <a class="story-card" href={entry.href} aria-label={`Read ${entry.title}`}>
             <strong>{entry.title}</strong>
             <p>{entry.description}</p>
             <span class="story-card-action" aria-hidden="true">Read story</span>
