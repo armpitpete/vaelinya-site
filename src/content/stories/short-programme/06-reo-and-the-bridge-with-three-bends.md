@@ -71,17 +71,9 @@ The worker shook his head. “Not on that deck. The middle planks are twisting b
 
 Reo crouched.
 
-The bridge was not broken everywhere.
+The bridge was not broken everywhere. That seemed important.
 
-That seemed important.
-
-The first two planks were firm.
-
-The next pair dipped.
-
-The final two rose again to the far landing.
-
-The rails were still solid because their posts stood outside the sunken centre.
+The first two planks were firm. The next pair dipped; the final two rose again to the far landing. The rails were still solid because their posts stood outside the sunken centre.
 
 Reo walked along the bank.
 
