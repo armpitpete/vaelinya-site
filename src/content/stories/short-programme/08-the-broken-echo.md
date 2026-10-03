@@ -275,9 +275,7 @@ Fina looked annoyed for one breath, then nodded.
 
 They needed a way to know when a test was truly finished.
 
-Elara proposed a simple hand interval: arm raised while they waited, lowered only after the far return had faded.
-
-That helped, but the courtyard was not actually quiet.
+Elara proposed a simple hand interval: arm raised while they waited, lowered only after the far return had faded. That helped, but the courtyard was not actually quiet.
 
 Pigeons fluttered under the roof edge.
 
@@ -567,18 +565,8 @@ Valen looked at the crowded courtyard.
 
 He pointed to the maintenance board.
 
-They had repaired shifted wood.
-
-They had repaired a bad test method.
-
-They had repaired timing.
-
-They had repaired assumptions about where people stood.
-
-They had repaired the idea that useful meant identical.
-
 The courtyard still returned different voices differently.
 
 That was not broken.
 
-The broken part had been the conditions that stopped those voices reaching one another.
+The shifted wood, timing and bad assumptions had been.
