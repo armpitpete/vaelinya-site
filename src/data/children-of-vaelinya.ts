@@ -71,7 +71,7 @@ export const childStoryGroups: ChildStoryGroup[] = [
 
 export const togetherGroup: ChildStoryGroup = {
   slug: 'together',
-  name: 'All Eight Together',
+  name: '8 Team Adventures',
   description: 'Eight adventures in which the children face larger problems together.',
   programmePositions: [8, 16, 24, 32, 40, 48, 56, 57],
 };
