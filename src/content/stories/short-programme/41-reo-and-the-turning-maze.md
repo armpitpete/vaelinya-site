@@ -451,27 +451,13 @@ Pera lowered the card.
 
 They stood outside the maze while the next pair entered.
 
-A child immediately chose the shortest-looking passage.
-
-Reo opened their mouth.
-
-They were about to call a warning.
-
-Pera looked at them.
-
-Reo shut it.
+A child immediately chose the shortest-looking passage. Reo opened their mouth, about to call a warning. Pera looked at them. Reo shut it.
 
 The child could discover the loop.
 
 Or not.
 
-The bell rang.
-
-A red screen moved.
-
-The maze turned again.
-
-Pera tucked the stamped card into her pocket.
+The bell rang. A red screen moved. The maze turned again. Pera tucked the stamped card into her pocket.
 
 “Another go?”
 
