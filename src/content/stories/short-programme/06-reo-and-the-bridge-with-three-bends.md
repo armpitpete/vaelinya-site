@@ -77,9 +77,7 @@ The first two planks were firm.
 
 The next pair dipped.
 
-The final two rose again to the far landing.
-
-The rails were still solid because their posts stood outside the sunken centre.
+The final two rose again to the far landing. The rails were still solid because their posts stood outside the sunken centre.
 
 Reo walked along the bank.
 
