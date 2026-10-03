@@ -533,30 +533,6 @@ A dancer pointed to the layers of changes.
 
 Fina looked across the square.
 
-Before the rain, three groups had been practising three different things.
+Elara heard the drummers begin again beneath the arcade. A reed line started from the side room. The dancers counted their steps in the hall.
 
-During the storm, pressure had made each group’s urgency collide with everyone else’s.
-
-The solution had not been to make them care about the same thing.
-
-It had been to coordinate what differed.
-
-Elara heard the drummers begin again beneath the arcade.
-
-A reed line started from the side room.
-
-The dancers counted their steps in the hall.
-
-Three rehearsals.
-
-Three tempos.
-
-Three different needs.
-
-They overlapped without destroying one another.
-
-The storm had shattered the assumption that everyone could simply “move under cover.”
-
-What replaced it was not one song.
-
-It was a way for different work to remain different and still survive the same pressure together.
+Three rehearsals, three tempos, three different needs. They overlapped without destroying one another.
