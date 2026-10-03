@@ -22,9 +22,9 @@ const children = [
       {children.map((child) => (
         <li>
           <a class="story-card" href={child.href} aria-label={`Read ${child.story}`}>
-            <span>{child.name} · Story 1 of 8</span>
+            <span>{child.name}</span>
             <strong>{child.story}</strong>
-            <span class="story-card-action" aria-hidden="true">Read Story 1</span>
+            <span class="story-card-action" aria-hidden="true">Read story</span>
           </a>
         </li>
       ))}

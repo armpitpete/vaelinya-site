@@ -19,7 +19,6 @@ const {
   description,
   series,
   storyNumber,
-  totalStories,
   heroImage,
   heroImageAlt,
   relatedWorld = [],
@@ -27,6 +26,10 @@ const {
   relatedArtefacts = [],
 } = Astro.props;
 
+const storyContent = (await Astro.slots.render('default')).replace(
+  /<p><strong>Lina — Story \d+ of 8<\/strong><\/p>\s*/,
+  '',
+);
 const site = Astro.site ?? new URL('https://vaelinya.uk');
 const canonicalUrl = new URL(Astro.url.pathname, site).toString();
 
@@ -110,7 +113,7 @@ const storyJsonLd = {
 ---
 <BaseLayout title={title} description={description} image={resolvedHeroImage} jsonLd={storyJsonLd}>
   <article class="story-page">
-    <header class="story-header story-header-compact" aria-label={`${series}, story ${storyNumber} of ${totalStories}`}>
+    <header class="story-header story-header-compact" aria-label={series}>
       <p class="eyebrow">{series}</p>
       {resolvedHeroImage && (
         <figure class="story-hero-image">
@@ -119,7 +122,7 @@ const storyJsonLd = {
       )}
     </header>
     <div class="story-content">
-      <slot />
+      <Fragment set:html={storyContent} />
     </div>
     {relatedLinks.length > 0 && (
       <footer class="story-related">

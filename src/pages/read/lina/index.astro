@@ -70,7 +70,7 @@ const linaItemListJsonLd = {
     </article>
 
     <div class="link-list">
-      <a href="/read/lina/01-the-bridge-that-sang-back/">Begin with Story 01: The Bridge That Sang Back</a>
+      <a href="/read/lina/01-the-bridge-that-sang-back/">Begin with The Bridge That Sang Back</a>
       <a href="/read/lina/songs/">Listen to Lina’s songs</a>
       <a href="/world/the-rim/">See the Rim</a>
     </div>
@@ -85,8 +85,7 @@ const linaItemListJsonLd = {
         if (story) {
           return (
             <li>
-              <a class={`story-card lina-story-card lina-story-card-${story.data.story_number}`} href={story.data.public_url} aria-label={`Read Story ${story.data.story_number}: ${story.data.title}`}>
-                <span>Story {story.data.story_number}</span>
+              <a class={`story-card lina-story-card lina-story-card-${story.data.story_number}`} href={story.data.public_url} aria-label={`Read ${story.data.title}`}>
                 <strong>{story.data.title}</strong>
                 <p>{story.data.description}</p>
                 <span class="story-card-action" aria-hidden="true">Read this story</span>
@@ -99,7 +98,6 @@ const linaItemListJsonLd = {
           <li>
             <article class="story-card story-card-pending" aria-label={`${plannedStory.title} is not open yet`}>
               {symbolSrc && <img class="story-card-symbol" src={symbolSrc} alt={symbolAlt} loading="lazy" />}
-              <span>Story {plannedStory.number}</span>
               <strong>{plannedStory.title}</strong>
               <p>This story path is not open yet.</p>
             </article>
