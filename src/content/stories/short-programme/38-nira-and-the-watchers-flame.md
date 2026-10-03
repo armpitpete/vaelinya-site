@@ -237,22 +237,10 @@ Nira looked at the three piles.
 
 That distinction pleased her.
 
-A repeating light could be communication.
-
-A cloud could imitate part of a pattern.
-
-A known code could still carry an answer that was out of date.
-
-A correct interpretation of the signal did not automatically make the underlying fact correct.
-
 The far light blinked once that evening.
 
-Nira looked at Tessa.
-
-Tessa looked at the shared sheet.
+Nira looked at Tessa. Tessa looked at the shared sheet.
 
 “Ordinary acknowledgement from another exchange,” she said.
 
 Nira went back to the tallies.
-
-She no longer needed every flicker to become a message for her.
