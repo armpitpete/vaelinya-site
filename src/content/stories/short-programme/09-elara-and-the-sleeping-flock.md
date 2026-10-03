@@ -105,23 +105,13 @@ It also had the right to use them backwards.
 
 After a while, Maer Seli scattered a little feed just inside the doorway.
 
-The nearest goats ate it.
+The nearest goats ate it. She scattered more at the threshold, and the brown goat approached with one hoof outside.
 
-She scattered more at the threshold.
-
-The brown goat approached.
-
-One hoof outside.
-
-A gust moved through the yard.
-
-A wooden scoop hanging from a peg struck the wall.
+A gust moved through the yard. A wooden scoop hanging from a peg struck the wall.
 
 Clack.
 
-The brown goat jumped backwards.
-
-The whole flock compressed deeper into the shelter.
+The brown goat jumped backwards, and the whole flock compressed deeper into the shelter.
 
 Maer Seli closed her eyes.
 
