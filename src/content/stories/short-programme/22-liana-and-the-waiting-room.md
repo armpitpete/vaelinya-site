@@ -219,17 +219,11 @@ Maer Sera looked up from the stove.
 
 Liana watched his hands.
 
-He was not confused about the risk.
-
-He hated the waiting.
+He was not confused about the risk. He hated the waiting.
 
 Sera said, “If you go onto the closure, the keepers will have to stop inspecting the slope to bring you back.”
 
-The young man looked toward the door.
-
-That changed the choice.
-
-He sat down hard.
+The young man looked toward the door. That changed the choice. He sat down hard.
 
 Liana brought him a mug of water.
 
