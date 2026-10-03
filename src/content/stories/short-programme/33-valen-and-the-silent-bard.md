@@ -153,21 +153,9 @@ Valen closed his mouth.
 
 Tovin turned the red hat card right way up, then placed the black dog beside it.
 
-Now the audience produced five different guesses.
+Now the audience produced five different guesses. The dog owned the hat. The dog had stolen the hat. The dog was guarding the hat. The hat was actually a very small tent.
 
-The dog owned the hat.
-
-The dog had stolen the hat.
-
-The dog was guarding the hat.
-
-The hat was actually a very small tent.
-
-Tovin accepted none of them as fact.
-
-He also did not reject the fun of guessing.
-
-He simply kept control of what appeared next.
+Tovin accepted none of them as fact. He also did not reject the fun of guessing; he simply kept control of what appeared next.
 
 When the bridge card came out, Valen thought he finally understood the connection. He changed his sentence before speaking.
 
