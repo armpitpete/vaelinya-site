@@ -72,7 +72,7 @@ const description = `${group.name}: eight ${isTogether ? 'shared adventures' : '
 <BaseLayout title={`${group.name} · Children of Vaelinya`} description={description}>
   <section class="page-section">
     <p class="eyebrow">Children of Vaelinya</p>
-    <h1>{isTogether ? 'Eight adventures together' : `${group.name}'s eight stories`}</h1>
+    <h1>{isTogether ? group.name : `${group.name}'s eight stories`}</h1>
     <p class="lede">{group.description}</p>
 
     <ol class="story-grid story-list" aria-label={`${group.name} stories in order`}>

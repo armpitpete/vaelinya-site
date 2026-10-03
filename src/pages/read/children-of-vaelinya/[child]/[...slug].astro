@@ -120,7 +120,7 @@ const { Content } = await render(story);
   nextStory={nextStory}
   seriesName={`Children of Vaelinya · ${groupName}`}
   collectionUrl={`/read/children-of-vaelinya/${Astro.params.child}/`}
-  collectionLabel={groupName === 'All Eight Together' ? 'All eight Together adventures' : `${groupName}'s eight stories`}
+  collectionLabel={Astro.params.child === 'together' ? groupName : `${groupName}'s eight stories`}
 >
   <Content />
 </ShortProgrammeStoryLayout>
