@@ -19,9 +19,7 @@ related_artefacts: []
 
 # Nira and the Falling Shadows
 
-The shadows changed before the wind did.
-
-Nira noticed because she was tying bean strings.
+The shadows changed before the wind did. Nira noticed because she was tying bean strings.
 
 The afternoon sun lay behind the west ridge, throwing long narrow shadows from the garden poles across the soil. Each pole made one dark line.
 
