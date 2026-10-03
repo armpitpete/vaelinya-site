@@ -107,19 +107,11 @@ Mira noticed them first.
 
 “Please do not let this become a gathering.”
 
-Elara stood before the pair reached the bank.
+Elara stood before the pair reached the bank. “Mira wants quiet company, not a group.”
 
-“Mira wants quiet company, not a group.”
+One person, Savi, stopped immediately. The other, Talla, held up the blanket. “Should we leave these?”
 
-One person, Savi, stopped immediately.
-
-The other, Talla, held up the blanket.
-
-“Should we leave these?”
-
-Elara looked back at Mira instead of answering for her.
-
-Mira nodded.
+Elara looked back at Mira instead of answering for her. Mira nodded.
 
 “Please.”
 
