@@ -499,6 +499,4 @@ Elara waited for a handcart to pass before they crossed the exit.
 
 Fina smiled.
 
-The right path had never been one path.
 
-It had been the path that was workable for this person, this load, this destination and this moment—and the willingness to choose again when any of those things changed.
