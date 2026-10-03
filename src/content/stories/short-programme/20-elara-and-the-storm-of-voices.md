@@ -85,23 +85,13 @@ Benn said, “And the barley does not get less wet while we practise manners.”
 
 A woman by the far table laughed once without amusement.
 
-Elara felt her face warm.
-
-Taking turns had sounded sensible from the doorway.
-
-Inside the problem, it was too small.
-
-She moved farther into the room.
+Elara felt her face warm. Taking turns had sounded sensible from the doorway; inside the problem, it was too small. She moved farther into the room.
 
 “Then not turns,” she said.
 
 No one heard.
 
-Elara climbed onto the low footstool beside the cloth basket.
-
-She did not shout.
-
-She picked up the wooden spoon that lay beside the kettle and struck the rim once.
+Elara climbed onto the low footstool beside the cloth basket. She did not shout. She picked up the wooden spoon that lay beside the kettle and struck the rim once.
 
 Clonk.
 
