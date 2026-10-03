@@ -19,9 +19,7 @@ related_artefacts: []
 
 # Elara and the Listening Chime
 
-The small brass chime stood beside six cards from the harvest exhibition.
-
-Each card described the same storm from a different person’s memory.
+The small brass chime stood beside six cards from the harvest exhibition. Each card described the same storm from a different person’s memory.
 
 One remembered fear.
 

@@ -19,9 +19,7 @@ related_artefacts: []
 
 # Elara and the Moon of Tears
 
-Mira did not want anyone to make her feel better.
-
-She said this after three people had tried.
+Mira did not want anyone to make her feel better. She said this after three people had tried.
 
 That morning her old goat Sen had left with a travelling caretaker for a quieter winter pasture. Sen's joints had become stiff, the lower yard was slippery after rain, and everyone involved agreed the sheltered pasture would be gentler for her.
 

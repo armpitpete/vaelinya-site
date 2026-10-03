@@ -309,35 +309,7 @@ Soven laughed from the next table.
 
 Nira ignored him.
 
-That evening, she carried the old notebook outside.
-
-The sky was clear.
-
-She found the bright star above the mill roof.
-
-For a moment, standing in the dark, the alignment felt almost magical.
-
-The same light had been seen by someone years before.
-
-Nira understood why people wanted to turn patterns like that into messages.
-
-It was satisfying.
-
-It was also unnecessary.
-
-The star did not know about the marker.
-
-The marker did not know about the star.
-
-A person had measured one from the other.
-
-Another person had written it down.
-
-Years later, Nira had tested the record against the ground.
-
-And when the ground disagreed with her first clean answer, the ground had won.
-
-She closed the notebook.
+Nira closed the notebook.
 
 Above the mill, the bright star remained exactly where it appeared to be.
 

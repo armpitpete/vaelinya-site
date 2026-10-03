@@ -29,9 +29,7 @@ Rain had loosened the clay bank above the north road before dawn. A section of e
 
 No one knew whether more would fall.
 
-So the path keepers closed the road and went to inspect the slope.
-
-Everyone else waited in the north wayhouse.
+So the path keepers closed the road and went to inspect the slope. Everyone else waited in the north wayhouse.
 
 Liana sat near the stove with a cup between both hands.
 

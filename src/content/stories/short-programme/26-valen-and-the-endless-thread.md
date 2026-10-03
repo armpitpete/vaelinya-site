@@ -19,9 +19,7 @@ related_artefacts: []
 
 # Valen and the Endless Thread
 
-Valen found three notices pinned in three different rooms.
-
-Each said that a plan had changed.
+Valen found three notices pinned in three different rooms. Each said that a plan had changed.
 
 That was enough to make a story begin in their head.
 

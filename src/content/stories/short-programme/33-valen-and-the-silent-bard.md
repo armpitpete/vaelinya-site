@@ -41,9 +41,7 @@ That was clearer.
 
 The performance would happen in the small hall after lunch. Tovin usually told stories aloud, shifting voices and rhythms so quickly that children tried to guess which character would interrupt next. Today, word had already spread that he could not speak.
 
-Some people assumed the performance would be cancelled.
-
-Others assumed Valen would narrate for him.
+Some people assumed the performance would be cancelled. Others assumed Valen would narrate for him.
 
 Valen had assumed that too for approximately three seconds.
 

@@ -547,16 +547,6 @@ A reed line started from the side room.
 
 The dancers counted their steps in the hall.
 
-Three rehearsals.
-
-Three tempos.
-
-Three different needs.
+Three rehearsals. Three tempos. Three different needs.
 
 They overlapped without destroying one another.
-
-The storm had shattered the assumption that everyone could simply “move under cover.”
-
-What replaced it was not one song.
-
-It was a way for different work to remain different and still survive the same pressure together.

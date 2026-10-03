@@ -33,9 +33,7 @@ By the first afternoon, the room had twelve people, three work tables, two tool 
 
 The glass began to hum.
 
-At first the sound was so faint that only Elara noticed it.
-
-A high note trembled in the panel whenever several voices rose together.
+At first the sound was so faint that only Elara noticed it. A high note trembled in the panel whenever several voices rose together.
 
 She turned her head.
 

@@ -31,9 +31,7 @@ Two volunteers moved one screen to another white mark.
 
 The route changed.
 
-Pera had not understood that part when she agreed to enter.
-
-They were three turns from the far gate when the bell rang for the first time.
+Pera had not understood that part when she agreed to enter. They were three turns from the far gate when the bell rang for the first time.
 
 A yellow screen rolled across the passage ahead.
 

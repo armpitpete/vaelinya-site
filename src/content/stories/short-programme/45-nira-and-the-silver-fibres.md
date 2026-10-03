@@ -19,9 +19,7 @@ related_artefacts: []
 
 # Nira and the Silver Fibres
 
-The first bright fibre was stuck to Nira’s sleeve.
-
-She noticed it when the morning light reached across the work table and made one tiny strand flash against the brown cloth.
+The first bright fibre was stuck to Nira’s sleeve. She noticed it when the morning light reached across the work table and made one tiny strand flash against the brown cloth.
 
 Nira pinched it between two fingers.
 

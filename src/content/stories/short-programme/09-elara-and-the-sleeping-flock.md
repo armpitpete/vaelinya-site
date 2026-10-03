@@ -95,7 +95,9 @@ Elara sat on the low wall beside the gate.
 
 She did not sing.
 
-She did not speak softly at the goats as if soft words could explain a storm. She did not carry the brown goat outside to show the others it was safe.
+She did not speak softly at the goats as if soft words could explain a storm.
+
+She did not carry the brown goat outside to show the others it was safe.
 
 The goat had legs.
 

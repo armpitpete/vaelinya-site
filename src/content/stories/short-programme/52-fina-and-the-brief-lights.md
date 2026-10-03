@@ -337,6 +337,4 @@ It had still mattered.
 
 Fina smiled and went inside.
 
-The best record had not come from finding one perfect place.
 
-It had come from letting several useful places remain useful at the same time.

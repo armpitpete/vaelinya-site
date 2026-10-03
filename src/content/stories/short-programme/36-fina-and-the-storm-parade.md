@@ -59,9 +59,7 @@ Nemi shook her head.
 
 The rain struck the roof above them like hundreds of small thrown stones.
 
-Pell stared at the water crossing the open gap.
-
-Jori had both hands over his ears.
+Pell stared at the water crossing the open gap. Jori had both hands over his ears.
 
 Fina looked at Sori.
 

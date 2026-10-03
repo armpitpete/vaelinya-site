@@ -305,9 +305,7 @@ All three sounded good.
 
 All three belonged to Valen.
 
-Nemi had not said any of them.
-
-At rehearsal, Nemi wore the plain covering and carried the Traveller’s staff.
+Nemi had not said any of them. At rehearsal, Nemi wore the plain covering and carried the Traveller’s staff.
 
 The scene began.
 

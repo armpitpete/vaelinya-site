@@ -19,9 +19,7 @@ related_artefacts: []
 
 # Reo and the Spiral Stair
 
-The archive courtyard had a path everyone called the Spiral Stair even though it was completely flat.
-
-Its pale stones curled around the central herb bed in five broad loops before reaching the record room door.
+The archive courtyard had a path everyone called the Spiral Stair even though it was completely flat. Its pale stones curled around the central herb bed in five broad loops before reaching the record room door.
 
 Reo disliked this immediately.
 

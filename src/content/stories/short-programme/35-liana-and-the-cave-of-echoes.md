@@ -211,9 +211,7 @@ He did.
 
 The wheel came free.
 
-The pause had not solved the stuck cart.
-
-It had only made enough space for the real instructions to arrive separately.
+The pause had not solved the stuck cart. It had only made enough space for the real instructions to arrive separately.
 
 Halfway through the inventory, Liana's head began to feel full anyway.
 

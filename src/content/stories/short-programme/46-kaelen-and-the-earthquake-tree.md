@@ -19,9 +19,7 @@ related_artefacts: []
 
 # Kaelen and the Earthquake Tree
 
-The cups rattled before anyone felt the ground move.
-
-Kaelen was stacking them after the midday meal when six clay cups began tapping against one another on the shelf.
+The cups rattled before anyone felt the ground move. Kaelen was stacking them after the midday meal when six clay cups began tapping against one another on the shelf.
 
 Tik-tik-tik-tik.
 
