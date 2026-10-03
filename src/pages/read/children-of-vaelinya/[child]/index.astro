@@ -80,7 +80,9 @@ const description = `${group.name}: eight ${isTogether ? 'shared adventures' : '
         <li>
           <a class="story-card" href={entry.href} aria-label={`Read ${entry.title}`}>
             <strong>{entry.title}</strong>
-            <p>{entry.description}</p>
+            {!/^Story \d+ of \d+ in the Vaelinya Short Story Programme:/.test(entry.description) && (
+              <p>{entry.description}</p>
+            )}
             <span class="story-card-action" aria-hidden="true">Read story</span>
           </a>
         </li>
