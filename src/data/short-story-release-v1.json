@@ -9,7 +9,7 @@
   "header_image_policy": "Initial proofreading edition reuses existing Vaelinya site artwork; bespoke story illustrations are not part of this release.",
   "source_editorial_standard": "Writing & AI Editing Standard v1.4 — FINAL / ACTIVE / FROZEN",
   "source_editorial_repair_repository": "armpitpete/vaelinya-canon",
-  "source_editorial_repair_branch": "editorial/v1-4-local-repairs",
   "source_editorial_repair_manifest_path": "story-validation/ai-editing-v1.4-story-repairs/REPAIR_MANIFEST.json",
-  "source_editorial_repair_status": "CANDIDATE_PENDING_CANON_MERGE"
+  "source_editorial_repair_status": "OWNER_ACCEPTED_CANON_MERGED",
+  "source_editorial_repair_commit": "da846bf450011bfa28c288c2b481aadda5e88ade"
 }
