@@ -43,9 +43,7 @@ Elara stopped in the doorway.
 
 The south workroom was usually a gentle place. Long tables stood beneath high windows. Hooks lined the walls. In autumn, bundles of herbs dried from the rafters and the room smelled of mint, dust and warm wood.
 
-Today it smelled of wet wool, damp grain and people who had run out of easy patience.
-
-The storm had broken tiles on two storage roofs.
+Today it smelled of wet wool, damp grain and people who had run out of easy patience. The storm had broken tiles on two storage roofs.
 
 One group had moved sacks of barley into the south room to keep them dry.
 
