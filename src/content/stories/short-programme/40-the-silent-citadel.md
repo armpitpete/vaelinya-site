@@ -545,28 +545,4 @@ Reo raised his hands.
 
 Fina opened the heavy Citadel door.
 
-The square rushed back into their ears.
-
-Voices.
-
-Carts.
-
-A dog barking.
-
-Someone laughing near the trough.
-
-The Citadel had needed silence for part of the work.
-
-It had also needed movement, comparison, timing, stable labels, user testimony, alternative tests, visible records and someone willing to begin the next test without beginning it too soon.
-
-Silence had made one faint piece of evidence available.
-
-It had not explained the evidence.
-
-It had not repaired the pipe.
-
-It had not been morally better than sound.
-
-It had simply been necessary for one part of one problem.
-
-And then the work had needed all the other parts too.
+The square rushed back into their ears: voices, carts, a dog barking, someone laughing near the trough.
