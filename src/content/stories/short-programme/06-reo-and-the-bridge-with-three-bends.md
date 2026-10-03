@@ -27,9 +27,7 @@ Reo stood on the bank and looked at it.
 
 Six long planks crossed the irrigation channel from one stone landing to the other. Two side rails ran along them. A small handcart waited behind Reo with three sacks of turnips inside.
 
-On the far bank, the path continued towards the kitchen gardens.
-
-Between Reo and the far bank, one middle support had sunk.
+On the far bank, the path continued towards the kitchen gardens. Between Reo and the far bank, one middle support had sunk.
 
 The bridge dipped sharply in the centre.
 
