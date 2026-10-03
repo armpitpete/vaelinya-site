@@ -231,9 +231,7 @@ A low woven panel on one side could be removed in warm weather for airflow.
 
 They did.
 
-The new opening was wider than the doorway and faced away from the place where the rain-cover had been striking the ground.
-
-Elara sat down again.
+The new opening was wider than the doorway and faced away from the place where the rain-cover had been striking the ground. Elara sat down again.
 
 The goats now had two exits.
 
