@@ -53,9 +53,7 @@ The long table would fill.
 
 Someone would bring tea.
 
-Someone would speak too loudly over someone else.
-
-Someone would say they did not mind where they sat and then mind very much.
+Someone would speak too loudly over someone else. Someone would say they did not mind where they sat and then mind very much.
 
 Liana looked at the chair by the door.
 
