@@ -291,23 +291,9 @@ Over the next few days, several people used the cupboard without asking Liana.
 
 At first, Liana noticed every time.
 
-A man returned bean seeds.
+A man returned bean seeds while Liana watched from the other side of the room. He read the index, opened the correct drawer, paused to read the packet again, then filed it.
 
-Liana watched from the other side of the room.
-
-He read the index.
-
-Opened the correct drawer.
-
-Paused.
-
-Read the packet again.
-
-Filed it.
-
-Liana waited until he left.
-
-Then she checked.
+Liana waited until he left before checking.
 
 Correct.
 
