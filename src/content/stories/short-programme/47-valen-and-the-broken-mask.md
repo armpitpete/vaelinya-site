@@ -275,17 +275,11 @@ Nemi looked in the polished metal mirror.
 
 “Can the lines come off?”
 
-Sova removed them.
-
-Nemi looked again.
+Sova removed them. Nemi looked again.
 
 “Can the panel come off?”
 
-It did.
-
-Underneath was a simple unpainted shape.
-
-Nemi breathed out.
+It did. Underneath was a simple unpainted shape. Nemi breathed out.
 
 “This.”
 
