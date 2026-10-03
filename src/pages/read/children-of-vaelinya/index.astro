@@ -14,9 +14,8 @@ const description = 'The Children of Vaelinya story library: eight children, eig
     <ol class="story-grid story-list" aria-label="Children of Vaelinya story folders">
       {allChildrenOfVaelinyaGroups.map((group) => (
         <li>
-          <a class="story-card" href={`/read/children-of-vaelinya/${group.slug}/`} aria-label={`Open ${group.name} stories`}>
-            {group.slug === 'together' && <span>Together folder</span>}
-            <strong>{group.name}</strong>
+          <a class="story-card" href={`/read/children-of-vaelinya/${group.slug}/`} aria-label={`Open ${group.slug === 'together' ? '8 Team Adventures' : `${group.name} stories`}`}>
+            <strong>{group.slug === 'together' ? '8 Team Adventures' : group.name}</strong>
             <p>{group.description}</p>
             <span class="story-card-action" aria-hidden="true">8 stories</span>
           </a>
